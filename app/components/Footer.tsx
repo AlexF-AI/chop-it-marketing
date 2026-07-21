@@ -35,6 +35,7 @@ export default function Footer() {
           <span className="soon-link">Careers</span>
           <Link href="/blog">Blog</Link>
           <a href="mailto:hello@chop-it.com">Contact</a>
+          <a href="/support">Support</a>
           <a href="/privacy">Privacy</a>
           <a href="/terms">Terms</a>
           <a href="/data-deletion">Data deletion</a>

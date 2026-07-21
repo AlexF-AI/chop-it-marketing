@@ -26,6 +26,7 @@ const ROUTES: StaticRoute[] = [
   { path: '/privacy', changefreq: 'monthly', priority: '0.3', lastmod: '2026-05-29' },
   { path: '/terms', changefreq: 'monthly', priority: '0.3', lastmod: '2026-05-29' },
   { path: '/data-deletion', changefreq: 'monthly', priority: '0.3', lastmod: '2026-05-29' },
+  { path: '/support', changefreq: 'monthly', priority: '0.3', lastmod: '2026-07-21' },
 ];
 
 // YYYY-MM-DD → W3C datetime (UTC midnight), a valid <lastmod> value.
