@@ -74,7 +74,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
     description:
       "Online grocery digitised delivery but not the decision of what to cook. Here's why conversational AI is the missing layer, and how it changes the weekly shop.",
     datePublished: '2026-05-31',
-    dateModified: '2026-05-31',
+    dateModified: '2026-07-23',
   },
   {
     slug: 'how-to-eat-30-plants-a-week',
@@ -90,7 +90,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
     description:
       'We compare Good Food, Paprika, Samsung Food, Mealime, AnyList, Mob and Chop It — ranked by the job you want done, from biggest recipe library to more variety.',
     datePublished: '2026-05-29',
-    dateModified: '2026-05-29',
+    dateModified: '2026-07-23',
   },
 ];
 

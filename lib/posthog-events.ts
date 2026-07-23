@@ -15,7 +15,13 @@ import posthog from 'posthog-js';
 // Where on the site the CTA lives. Add to this union when adding a new
 // surface — the literal type forces every call site to be explicit and
 // keeps the dashboard groupings clean.
-export type CtaLocation = 'nav' | 'mobile_menu' | 'hero' | 'download_cta' | 'recipe_page';
+export type CtaLocation =
+  | 'nav'
+  | 'mobile_menu'
+  | 'hero'
+  | 'download_cta'
+  | 'recipe_page'
+  | 'blog_cta';
 
 export type NavCtaDestination =
   | 'web_app'
@@ -93,7 +99,8 @@ export type CtaSurface =
   | 'mobile_menu'
   | 'footer'
   | 'recipe_page_inline'
-  | 'recipe_page_footer';
+  | 'recipe_page_footer'
+  | 'blog_footer';
 
 export type CtaClickedProps = {
   cta_location: CtaSurface;

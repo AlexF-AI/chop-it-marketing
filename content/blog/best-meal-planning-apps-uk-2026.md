@@ -109,9 +109,11 @@ The pick for anyone planning to a number. Set your calorie and macro targets and
 ### Chop It
 The newest app here, and the only one built around a different question. Other apps help you find and store recipes. Chop It scores how varied your week is (plants, fibre and protein) through a Weekly Diversity Score, and its "What's In?" feature turns whatever's in your fridge into tonight's dinner so less of it ends up in the bin. By design, it keeps your comfort food rather than swapping it for "healthier" versions: eating better without losing what you love.
 
+It's also the only app on this list that works [inside ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6a1c0dfa60b88191b3360153a1c6613c): search its recipe catalogue, build the week's menu and get one consolidated shopping list without leaving the conversation, then find everything you saved waiting in the iPhone app. If your planning already starts with "ask ChatGPT what's for dinner", that's a habit none of the others can meet you in.
+
 **The catch:** new (launched May 2026), UK-focused, on iOS and web for now. No Android app yet, and the recipe library is smaller than a decades-old brand like Good Food. If you want the biggest recipe bank or you're on Android, start elsewhere for now.
 **Price:** free to start (15 credits, no card); pay-as-you-go credit bundles, or Pro at £3.99/month (£35.99/year).
-**Platforms:** iOS, web app.
+**Platforms:** iOS, web app, ChatGPT.
 
 ---
 

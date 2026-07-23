@@ -6,6 +6,7 @@
 
 import Link from 'next/link';
 
+import { BlogCTAButtons } from '@/app/components/BlogCTA';
 import SaladExplorer from '@/app/components/SaladExplorer';
 import type { FullMenuRecipe } from '@/app/lib/menuRecipes';
 
@@ -73,14 +74,10 @@ export default function SummerSaladsArticle({ recipes, menuUrl, datePublished }:
           doubling back for the second bunch of mint. Tick things off as you shop, then pull up the
           method for whichever salad you&rsquo;re making that night.
         </p>
-        <div className="salad-outro-cta">
-          <Link className="btn btn-primary" href={menuUrl}>
-            Cook this in Chop It →
-          </Link>
-          <Link className="btn btn-ghost" href="/">
-            What is Chop It?
-          </Link>
-        </div>
+        {/* Standard end-of-article dual CTA (ChatGPT primary + App Store
+            secondary). The in-article "Cook this in Chop It" menu link above
+            the explorer still carries the menu deep-link. */}
+        <BlogCTAButtons className="salad-outro-cta" />
         <p className="salad-pin mono">📌 Pin this for the week</p>
       </section>
     </article>

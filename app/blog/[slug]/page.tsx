@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
+import BlogCTA from '@/app/components/BlogCTA';
 import Breadcrumbs, { type Crumb } from '@/app/components/Breadcrumbs';
 import Footer from '@/app/components/Footer';
 import Nav from '@/app/components/Nav';
@@ -184,6 +185,7 @@ export default async function BlogArticlePage({
           <div className="blog-article-body">
             <ReactMarkdown remarkPlugins={[remarkGfm]}>{body}</ReactMarkdown>
           </div>
+          <BlogCTA />
         </article>
       </main>
       <script

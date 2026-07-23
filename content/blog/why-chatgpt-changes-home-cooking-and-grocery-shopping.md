@@ -46,6 +46,16 @@ A few starting points to browse:
 - [High-protein weeknights](https://chop-it.com/recipes/collection/high_protein)
 - [Gut-friendly dinners](https://chop-it.com/recipes/collection/fodmap)
 
+## Chop It is live in ChatGPT
+
+You don't have to wait for any of this — Chop It is in the ChatGPT app directory now, so the whole flow above runs inside a conversation you're already having. Three steps:
+
+1. **Open Chop It in ChatGPT** via [this link](https://chatgpt.com/plugins/plugin_asdk_app_6a1c0dfa60b88191b3360153a1c6613c).
+2. **Connect it** when ChatGPT asks — that links the conversation to your Chop It library, so everything you save is waiting in the app.
+3. **Ask for your first plan** — mention @Chop it and try something like *"plan five dinners under 30 minutes, no fish"*. You'll get a week of recipes, one consolidated shopping list, and a Whisk handoff to the supermarket of your choice.
+
+Anything you import along the way — a website link, a TikTok or Instagram recipe — is restructured into a standard Chop It recipe and saved to the same library the iPhone app reads.
+
 ## The money and waste angle
 
 The average UK family with children throws away around **£60 of food a month**, roughly **£1,000 a year**, according to government-backed figures from WRAP. UK households bin about **£14 billion** of food a year, and **60% of UK food waste happens in our own homes** rather than in shops or restaurants.
