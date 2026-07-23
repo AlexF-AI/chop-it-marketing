@@ -61,7 +61,7 @@ export default function BlogCTA() {
     <aside className="blog-cta" aria-label="Try Chop It">
       <h2 className="blog-cta-h">Put this into practice this week</h2>
       <p className="blog-cta-sub">
-        Chop It works inside ChatGPT — plan the week in a conversation and get one consolidated
+        Chop It works inside ChatGPT: plan the week in a conversation and get one consolidated
         shopping list. Everything you save is waiting in the iPhone app.
       </p>
       <BlogCTAButtons />

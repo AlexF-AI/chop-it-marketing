@@ -32,7 +32,7 @@ export default function SummerSaladsArticle({ recipes, menuUrl, datePublished }:
         <div className="kicker mono">— THIS WEEK&rsquo;S DINNERS 👇</div>
         <h1 className="salad-hero-h">{recipes.length} easy summer salads to cook this week</h1>
         <p className="salad-hero-lead">
-          Salads that hold their own as dinner — not a sad bowl of leaves next to the
+          Salads that hold their own as dinner, not a sad bowl of leaves next to the
           &ldquo;real&rdquo; food. Every one is built the same way: something with bite, something
           that fills you up, and a dressing sharp enough to make you go back for more. Tap any salad
           to see the ingredients and method, then send the whole shop to your phone in one go.
@@ -49,18 +49,18 @@ export default function SummerSaladsArticle({ recipes, menuUrl, datePublished }:
 
       <div className="salad-intro">
         <p>
-          There are {recipes.length} here, which is more than any one week needs — that&rsquo;s the
+          There are {recipes.length} here, which is more than any one week needs. That&rsquo;s the
           point. Treat it as a pantry of options: pick four or five, lean on what&rsquo;s cheap and
           good that week, and let the rest wait. A few are ten-minute assemblies (watermelon, feta
           and mint); a few want a hot pan and ten minutes of attention (charred tenderstem, grilled
           peach). Most land somewhere in between.
         </p>
         <p>
-          The annoying part of cooking from a list like this has always been the shopping — 49
-          recipes is a few hundred ingredients, half of them overlapping. So the lazy version is
-          built in: choose the salads you want in Chop It and it merges everything into one shopping
-          list, deduped and sorted by aisle. No app needed to read the recipes below; the app just
-          saves you copying them out by hand.
+          The annoying part of cooking from a list like this has always been the shopping. This
+          many recipes is a few hundred ingredients, half of them overlapping. So the lazy version
+          is built in: choose the salads you want in Chop It and it merges everything into one
+          shopping list, deduped and sorted by aisle. No app needed to read the recipes below; the
+          app just saves you copying them out by hand.
         </p>
       </div>
 
@@ -69,7 +69,7 @@ export default function SummerSaladsArticle({ recipes, menuUrl, datePublished }:
       <section className="salad-outro">
         <h2 className="salad-outro-h">Send the whole list to your phone</h2>
         <p>
-          Open the menu in Chop It and the entire week becomes one shopping list — quantities added
+          Open the menu in Chop It and the entire week becomes one shopping list: quantities added
           up across salads, duplicates merged, everything grouped by aisle so you&rsquo;re not
           doubling back for the second bunch of mint. Tick things off as you shop, then pull up the
           method for whichever salad you&rsquo;re making that night.

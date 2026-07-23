@@ -36,6 +36,14 @@ export type BlogPostMeta = {
 
 export const BLOG_POSTS: BlogPostMeta[] = [
   {
+    slug: 'future-of-meal-prep-ai-customisation',
+    title: 'The Future of Meal Prep: AI as the Customisation Layer',
+    description:
+      'Meal prep tools spent twenty years handing everyone the same plan. AI turns your constraints, spoken like a human, into a week you can cook and one shop you can buy.',
+    datePublished: '2026-07-23',
+    dateModified: '2026-07-23',
+  },
+  {
     slug: 'easy-summer-salads-this-weeks-dinners',
     title: '49 Easy Summer Salads to Cook This Week',
     description:

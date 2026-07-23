@@ -1,10 +1,12 @@
 # Why ChatGPT Is About to Change How Britain Cooks and Shops for Food
 
+*By Alex Fahey, founder of Chop It. Last updated 23 July 2026.*
+
 Online grocery has been "the future" for fifteen years. It hasn't arrived.
 
 Fashion moved online. Electronics moved online. Banking, travel and takeaways reorganised around the screen. Grocery sat out. In December 2024, around **9% of UK food retail sales happened online**, down from the pandemic peak of roughly 12% at the start of 2021. Other categories kept climbing while the weekly food shop drifted back to the supermarket car park.
 
-That's odd for the most frequent purchase most households make. The fix is conversational AI, for a reason that's cognitive rather than technological.
+That's odd for the most frequent purchase most households make. I think the fix is conversational AI, for a reason that's cognitive rather than technological.
 
 ## Online grocery digitised the wrong half
 
@@ -30,7 +32,7 @@ The industry has clocked this. Through 2025 and into 2026, the big players moved
 
 There's a catch. A general assistant can plan you a lovely week of meals and have no idea how to merge them into one shopping list, or that you're about to buy three separate bunches of coriander. The conversation is the easy bit. Turning "five dinners" into one accurate, de-duplicated shop is where it falls over, because that needs real recipes with real quantities and the logic to consolidate them.
 
-That's the layer Chop It was built to be.
+That's the layer I built Chop It to be.
 
 ## Chop It in practice
 
@@ -48,13 +50,13 @@ A few starting points to browse:
 
 ## Chop It is live in ChatGPT
 
-You don't have to wait for any of this — Chop It is in the ChatGPT app directory now, so the whole flow above runs inside a conversation you're already having. Three steps:
+You don't have to wait for any of this. Chop It is in the ChatGPT app directory now, so the whole flow above runs inside a conversation you're already having. Three steps:
 
 1. **Open Chop It in ChatGPT** via [this link](https://chatgpt.com/plugins/plugin_asdk_app_6a1c0dfa60b88191b3360153a1c6613c).
-2. **Connect it** when ChatGPT asks — that links the conversation to your Chop It library, so everything you save is waiting in the app.
-3. **Ask for your first plan** — mention @Chop it and try something like *"plan five dinners under 30 minutes, no fish"*. You'll get a week of recipes, one consolidated shopping list, and a Whisk handoff to the supermarket of your choice.
+2. **Connect it** when ChatGPT asks. That links the conversation to your Chop It library, so everything you save is waiting in the app.
+3. **Ask for your first plan.** Mention @Chop it and try something like *"plan five dinners under 30 minutes, no fish"*. You'll get a week of recipes, one consolidated shopping list, and a Whisk handoff to the supermarket of your choice.
 
-Anything you import along the way — a website link, a TikTok or Instagram recipe — is restructured into a standard Chop It recipe and saved to the same library the iPhone app reads.
+Anything you import along the way, a website link or a TikTok or Instagram recipe, is restructured into a standard Chop It recipe and saved to the same library the iPhone app reads.
 
 ## The money and waste angle
 
@@ -68,7 +70,7 @@ A week built from real recipes uses what you buy, leaving fewer mystery purchase
 
 Online grocery didn't stall because Britain dislikes convenience. It stalled because it digitised the easy half and left the hard half, "what's for dinner?", as manual as it was in 1995.
 
-Conversational AI is the first technology that can credibly take on that hard half. The assistants can hold the conversation. Turning the conversation into a real, costed, ready-to-shop week needs a layer that knows recipes and quantities. That's the job Chop It was built for.
+Conversational AI is the first technology that can credibly take on that hard half. The assistants can hold the conversation. Turning the conversation into a real, costed, ready-to-shop week needs a layer that knows recipes and quantities. That's the job I built Chop It for.
 
 The weekly shop is about to swap the blank search box for a sentence. That's overdue.
 
