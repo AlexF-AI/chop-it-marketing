@@ -31,17 +31,17 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'Chop it — Weekly shop, sorted in minutes',
+  title: 'Chop it — Every recipe you’ve saved, in one place, inside ChatGPT',
   description:
-    'Chop it plans your week, writes the shop, and quietly coaches you toward more varied, plant-forward eating — without giving up the meals you love.',
+    'Chop It gathers the recipes you’ve saved from books, websites and socials into one library. Plan the week and write the shopping list inside ChatGPT — it’s all waiting in the iPhone app.',
   metadataBase: new URL('https://chop-it.com'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'Chop it — Weekly shop, sorted in minutes',
+    title: 'Chop it — Every recipe you’ve saved, in one place, inside ChatGPT',
     description:
-      'Chop it plans your week, writes the shop, and quietly coaches you toward more varied, plant-forward eating.',
+      'Books, websites, socials — one recipe library. Plan the week and write the shop inside ChatGPT; everything you save is waiting in the app.',
     url: 'https://chop-it.com',
     siteName: 'Chop it',
     locale: 'en_GB',
@@ -49,9 +49,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Chop it — Weekly shop, sorted in minutes',
+    title: 'Chop it — Every recipe you’ve saved, in one place, inside ChatGPT',
     description:
-      'Chop it plans your week, writes the shop, and quietly coaches you toward more varied, plant-forward eating.',
+      'Books, websites, socials — one recipe library. Plan the week and write the shop inside ChatGPT; everything you save is waiting in the app.',
   },
   // Google Search Console — URL-prefix property verification.
   // Property: https://chop-it.com

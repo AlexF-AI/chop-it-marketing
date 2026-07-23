@@ -7,6 +7,7 @@ import Hero from './Hero';
 import WhyChatGPT from './WhyChatGPT';
 import CostBlock from './CostBlock';
 import WhatItDoes from './WhatItDoes';
+import CaptureBlock from './CaptureBlock';
 import PantrySection from './PantrySection';
 import ScoreExplainer from './ScoreExplainer';
 import HowItWorks from './HowItWorks';
@@ -83,6 +84,7 @@ export default function Home({
       <div id="what">
         <WhatItDoes />
       </div>
+      <CaptureBlock />
       <PantrySection pantryShowcase={pantryShowcase} />
       <div id="score">
         <ScoreExplainer
