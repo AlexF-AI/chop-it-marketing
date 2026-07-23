@@ -22,12 +22,14 @@ export const IOS_LIVE = APP_STORE_URL !== '#';
 
 export const ANDROID_LIVE = process.env.NEXT_PUBLIC_ANDROID_LIVE === 'true';
 
-// Custom ChatGPT GPT — opens our "Weekly Food Shop Planner" agent in
-// chatgpt.com. Treated as a third install/entry surface alongside the
-// native stores. Env-overridable so we can swap to a new GPT id without
-// a code change.
+// Chop It in ChatGPT — the Apps SDK app in the ChatGPT app directory
+// (replaces the old "Weekly Food Shop Planner" Custom GPT). Primary entry
+// surface for the ChatGPT-first positioning; the App Store remains the
+// download/monetisation destination. Env-overridable so we can swap the
+// app id without a code change — if NEXT_PUBLIC_CHATGPT_URL is set in
+// Vercel, it must be updated there too.
 export const CHATGPT_URL =
   process.env.NEXT_PUBLIC_CHATGPT_URL ??
-  'https://chatgpt.com/g/g-69610d39455c8191b7afbc92fd09baae-weekly-food-shop-planner-chop-it';
+  'https://chatgpt.com/plugins/plugin_asdk_app_6a1c0dfa60b88191b3360153a1c6613c';
 
 export const CHATGPT_LIVE = CHATGPT_URL !== '#';

@@ -1,12 +1,11 @@
 'use client';
 
-// Block 08 — Closing CTA. App Store pill is the primary action while
-// Android isn't live yet. The Google Play pill renders alongside in a
-// "COMING SOON" state so visitors see both platforms are coming — its
-// href/eyebrow flip to the live PLAY_STORE_URL when ANDROID_LIVE turns
-// true. The "Try the web app" outline button is removed for now — Alex
-// wants the single primary CTA route through iOS until Android lands;
-// it can come back as a third pill when the lineup is complete.
+// Block 08 — Closing CTA. ChatGPT is the primary action (filled,
+// AI-accent pill) per the ChatGPT-first positioning; the App Store pill
+// pairs as the outline secondary (never two filled CTAs side by side).
+// The Google Play pill renders in a "COMING SOON" state so visitors see
+// Android is coming — its href/eyebrow flip to the live PLAY_STORE_URL
+// when ANDROID_LIVE turns true.
 
 import { m } from 'motion/react';
 
@@ -51,12 +50,38 @@ export default function DownloadCTA() {
           transition={COPY_TRANSITION}
         >
           <div className="kicker mono">— START THIS WEEK</div>
-          <h2 className="h-editorial download-cta-h">Eat better this week. Save the planet on the side.</h2>
+          <h2 className="h-editorial download-cta-h">Start in ChatGPT. It&rsquo;s all waiting in the app.</h2>
           <p className="download-cta-sub">
-            Free to try. Web, iPhone, and Android. Your weekly shop, sorted in minutes.
+            Free to try. Plan your first week inside ChatGPT — everything you save lands in your
+            Chop It library, ready in the iPhone app.
           </p>
         </m.div>
         <div className="download-cta-row">
+          {/* ChatGPT entry point — the Chop It app in the ChatGPT directory.
+              Primary surface; rendered while CHATGPT_LIVE is true. */}
+          {CHATGPT_LIVE && (
+            <m.a
+              className="store-pill store-pill-ai"
+              href={CHATGPT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Use Chop It inside ChatGPT"
+              whileHover={PILL_HOVER}
+              whileTap={PILL_TAP}
+              transition={PILL_SPRING}
+              onClick={() => {
+                trackChatgptClick({ location: 'download_cta' });
+                trackCtaClicked({
+                  cta_location: 'homepage_secondary',
+                  cta_label: 'ChatGPT',
+                  cta_destination: CHATGPT_URL,
+                });
+              }}
+            >
+              <span className="store-pill-top mono">USE IT INSIDE</span>
+              <span className="store-pill-bot">ChatGPT</span>
+            </m.a>
+          )}
           <m.a
             className="store-pill"
             href={APP_STORE_URL}
@@ -123,32 +148,6 @@ export default function DownloadCTA() {
             >
               <span className="store-pill-top mono">COMING SOON</span>
               <span className="store-pill-bot">Google Play</span>
-            </m.a>
-          )}
-          {/* ChatGPT entry point — opens the "Weekly Food Shop Planner"
-              custom GPT. Third surface alongside the native stores; rendered
-              unconditionally while CHATGPT_LIVE is true. */}
-          {CHATGPT_LIVE && (
-            <m.a
-              className="store-pill"
-              href={CHATGPT_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Try Chop It on ChatGPT"
-              whileHover={PILL_HOVER}
-              whileTap={PILL_TAP}
-              transition={PILL_SPRING}
-              onClick={() => {
-                trackChatgptClick({ location: 'download_cta' });
-                trackCtaClicked({
-                  cta_location: 'homepage_secondary',
-                  cta_label: 'ChatGPT',
-                  cta_destination: CHATGPT_URL,
-                });
-              }}
-            >
-              <span className="store-pill-top mono">TRY IT ON</span>
-              <span className="store-pill-bot">ChatGPT</span>
             </m.a>
           )}
         </div>
