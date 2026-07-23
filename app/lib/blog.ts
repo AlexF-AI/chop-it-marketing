@@ -58,7 +58,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
     description:
       'A meal-planning method that survives a real week: pick 4–5 dinners, write one merged shopping list, shop once. Plus how to keep the habit going.',
     datePublished: '2026-06-16',
-    dateModified: '2026-06-16',
+    dateModified: '2026-07-23',
   },
   {
     slug: 'how-to-reduce-food-waste-at-home',
@@ -66,7 +66,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
     description:
       'UK households bin about £14bn of food a year, mostly from shopping without a plan. The four habits that cut the most waste, and the money, at home.',
     datePublished: '2026-06-16',
-    dateModified: '2026-06-16',
+    dateModified: '2026-07-23',
   },
   {
     slug: 'how-much-fibre-do-you-need-a-day',
@@ -74,7 +74,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
     description:
       'The UK target is 30g of fibre a day; most adults get about 20g and only ~9% hit it. The simple swaps that close the gap without counting grams.',
     datePublished: '2026-06-16',
-    dateModified: '2026-06-16',
+    dateModified: '2026-07-23',
   },
   {
     slug: 'why-chatgpt-changes-home-cooking-and-grocery-shopping',
@@ -90,7 +90,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
     description:
       "What the 30-plants-a-week gut-health rule actually means, exactly what counts (herbs, spices, nuts, coffee all do), and how to hit it without a spreadsheet.",
     datePublished: '2026-05-31',
-    dateModified: '2026-05-31',
+    dateModified: '2026-07-23',
   },
   {
     slug: 'best-meal-planning-apps-uk-2026',
