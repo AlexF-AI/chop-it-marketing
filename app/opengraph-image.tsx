@@ -19,8 +19,10 @@ export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 export const alt = 'Chop it — Weekly shop, sorted in minutes';
 
-// Locked pillar colours (must match the in-app Weekly Diversity Score
-// rings). Kept in sync with --pink / --amber / --green in globals.css.
+// Locked pillar colours — the vivid dark-tile originals. The share card
+// stays a dark brand asset (logo.png has its neon glow baked onto solid
+// black), so these deliberately do NOT track the light site palette in
+// globals.css.
 const PROTEIN = '#E8547A';
 const FIBRE = '#F5A623';
 const PLANTS = '#6DC56E';

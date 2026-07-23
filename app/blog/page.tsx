@@ -7,7 +7,7 @@ import Nav from '@/app/components/Nav';
 import { getAllPostsMeta } from '@/app/lib/blog';
 import { buildBreadcrumbJsonLd, serializeJsonLd, SITE_ORIGIN } from '@/app/lib/recipeSchema';
 
-const ACCENT = '#E8547A';
+const ACCENT = '#BD4D76';
 
 const BLOG_TITLE = 'Blog · Chop it';
 const BLOG_DESCRIPTION =

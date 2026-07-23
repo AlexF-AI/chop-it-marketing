@@ -19,7 +19,7 @@ import { buildBreadcrumbJsonLd, serializeJsonLd, SITE_ORIGIN } from '@/app/lib/r
 // refreshes on the next deploy / revalidation.
 export const dynamicParams = false;
 
-const ACCENT = '#E8547A';
+const ACCENT = '#BD4D76';
 
 // schema.org ItemList of Recipes for the interactive menu post — gives each
 // salad a Recipe rich-result with ingredients, steps and time. Each item

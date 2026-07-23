@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Instrument_Serif, JetBrains_Mono } from 'next/font/google';
 import './styles/globals.css';
 
@@ -22,6 +22,13 @@ const jetbrainsMono = JetBrains_Mono({
   variable: '--font-jetbrains-mono',
   display: 'swap',
 });
+
+// Light theme — browser chrome (mobile address bar, etc.) matches the cream
+// background from globals.css.
+export const viewport: Viewport = {
+  themeColor: '#fbf5ec',
+  colorScheme: 'light',
+};
 
 export const metadata: Metadata = {
   title: 'Chop it — Weekly shop, sorted in minutes',

@@ -100,7 +100,7 @@ export async function generateMetadata({
   return base;
 }
 
-const ACCENT = '#E8547A';
+const ACCENT = '#BD4D76';
 
 // SearchResultsPage with a nested ItemList. Google's GSC URL inspector
 // fails to detect a top-level ItemList on a search page — it expects the

@@ -21,7 +21,7 @@ import { buildBreadcrumbJsonLd, serializeJsonLd, SITE_ORIGIN } from '@/app/lib/r
 
 export const revalidate = 3600;
 
-const ACCENT = '#E8547A';
+const ACCENT = '#BD4D76';
 
 export async function generateStaticParams() {
   return CUISINE_SLUGS.map((slug) => ({ slug }));

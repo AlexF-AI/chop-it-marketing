@@ -1,6 +1,7 @@
-// Browser-tab favicon (32×32) — cleaver on the brand black so the icon
-// reads as part of the dark theme everywhere it surfaces (tab strip, tab
-// switcher, bookmarks). Rendered at build via the app-router icon convention.
+// Browser-tab favicon (32×32) — cleaver on the brand black tile. The tile
+// stays dark even though the site is light-themed: logo.png has the neon
+// glow baked onto solid black, so a light tile would show a black square.
+// Rendered at build via the app-router icon convention.
 
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';

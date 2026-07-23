@@ -2,7 +2,7 @@
 
 Next.js App Router implementation of the Chop it marketing homepage (chop-it.com).
 
-Sourced from a Claude Design handoff bundle; dark editorial theme, three fonts
+Light editorial theme (warm cream / ink, matching the app's light mode); three fonts
 (Instrument Serif display / Geist UI / JetBrains Mono meta), interactive
 Weekly Diversity Score ring and slider, phone mock in hero, four-up feature
 grid, featured recipes, three-step how-it-works, team quotes, final CTA, footer,
@@ -28,7 +28,7 @@ npm start
 
 - `app/` — App Router entry (`layout.tsx`, `page.tsx`, global styles)
 - `app/components/` — server + client components
-- `app/styles/globals.css` — ported verbatim from the design bundle
+- `app/styles/globals.css` — global styles (light theme palette + all sections)
 
 Client components (`'use client'`): `Home`, `Hero`, `ScoreExplainer`, `Tweaks` —
 anything with state, effects, or the score slider. Everything else renders on the
