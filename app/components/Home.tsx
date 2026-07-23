@@ -4,6 +4,7 @@ import { useEffect, useState, type ReactNode } from 'react';
 
 import Nav from './Nav';
 import Hero from './Hero';
+import WhyChatGPT from './WhyChatGPT';
 import CostBlock from './CostBlock';
 import WhatItDoes from './WhatItDoes';
 import PantrySection from './PantrySection';
@@ -77,6 +78,7 @@ export default function Home({
         demoRecipes={demoRecipes}
         demoPantryRecipes={demoPantryRecipes}
       />
+      <WhyChatGPT />
       <CostBlock />
       <div id="what">
         <WhatItDoes />

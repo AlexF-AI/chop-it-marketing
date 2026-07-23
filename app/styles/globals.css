@@ -147,6 +147,16 @@ button { font-family: inherit; }
 .btn-primary.btn-tiny { padding: 8px 14px; }
 .btn-ghost { background: transparent; color: var(--text); border-color: var(--border-2); }
 .btn-ghost:hover { border-color: #b9ad99; }
+/* Filled AI-accent button — the primary in ChatGPT CTA pairings (pairs
+   with .btn-ghost; never alongside another filled button). */
+.btn-ai {
+  background: var(--accent-secondary);
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  padding: 18px 24px;
+}
+.btn-ai:hover { filter: brightness(1.08); }
 .btn-tiny { padding: 8px 14px; font-size: 13px; }
 
 /* ---------- HERO ---------- */
