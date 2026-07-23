@@ -12,25 +12,25 @@ const ITEMS: Item[] = [
     kicker: '01',
     title: 'Plan the week, not the meal',
     body: 'Drop recipes into a week. Drag to re-order. Portions scale to your household.',
-    accent: '#E8547A',
+    accent: '#BD4D76',
   },
   {
     kicker: '02',
     title: 'One smart shop',
     body: 'Ingredients aggregated, pantry-aware, sorted by aisle. No double buying the coriander.',
-    accent: '#F5A623',
+    accent: '#8F660A',
   },
   {
     kicker: '03',
     title: 'Scored for variety',
     body: 'A weekly read on protein, fibre, and plants. One number. Small, achievable swaps.',
-    accent: '#6DC56E',
+    accent: '#2F7A35',
   },
   {
     kicker: '04',
     title: 'Snap a recipe, any recipe',
     body: 'Cookbook page, handwritten scrawl, something you saw online. We write it up properly.',
-    accent: '#7F77DD',
+    accent: '#6C63C7',
   },
 ];
 

@@ -15,21 +15,21 @@ const PILLARS = [
   {
     key: 'plants',
     name: 'Plants',
-    color: '#6DC56E',
+    color: '#4B9E50',
     body:
       'Aim for 30 different plants in a week. Onion, garlic, tomato, spinach, an apple — it adds up faster than you think.',
   },
   {
     key: 'fibre',
     name: 'Fibre',
-    color: '#F5A623',
+    color: '#C97F08',
     body:
       'From vegetables, legumes, oats, nuts, seeds, fruit and wholegrains. Variety and quantity both matter — most people fall short on both.',
   },
   {
     key: 'protein',
     name: 'Protein',
-    color: '#E8547A',
+    color: '#BD4D76',
     body:
       'A clear protein per dinner. Chicken, fish, eggs, beans, tofu — anchoring each meal makes the whole week feel sturdier.',
   },

@@ -85,7 +85,7 @@ export async function generateMetadata({
   };
 }
 
-const ACCENT = '#E8547A';
+const ACCENT = '#BD4D76';
 
 export default async function RecipePage({
   params,

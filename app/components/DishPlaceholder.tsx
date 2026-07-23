@@ -11,11 +11,11 @@ type DishPlaceholderProps = {
 };
 
 const palettes: Record<Tone, [string, string]> = {
-  warm:  ['#1a1714', '#221d18'],
-  herb:  ['#161a14', '#1e231c'],
-  berry: ['#1a1416', '#22181c'],
-  amber: ['#1a1612', '#221c16'],
-  smoke: ['#151515', '#1e1e1e'],
+  warm:  ['#f3ead9', '#ecdfc9'],
+  herb:  ['#eaf0df', '#dfe8cf'],
+  berry: ['#f5e5eb', '#eed7df'],
+  amber: ['#f5ecd4', '#eee1bf'],
+  smoke: ['#f0ede7', '#e6e2d9'],
 };
 
 // Stable pattern-id per (label, tone) so server and client renders match. djb2-ish hash.

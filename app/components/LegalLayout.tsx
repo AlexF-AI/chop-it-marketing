@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import Nav from './Nav';
 import Footer from './Footer';
 
-const DEFAULT_ACCENT = '#E8547A';
+const DEFAULT_ACCENT = '#BD4D76';
 
 type LegalLayoutProps = {
   title: string;

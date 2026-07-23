@@ -1,16 +1,21 @@
-// Helpers for the Weekly Diversity Score — exact port of ring.jsx's bandFor/coachingFor/BRAND.
+// Helpers for the Weekly Diversity Score — port of ring.jsx's bandFor/coachingFor/BRAND,
+// with the colours retuned for the light theme (the vivid dark-theme originals
+// wash out on cream/white surfaces).
 
+// Ring-arc graphics: ≥3:1 non-text contrast on white cards (WCAG 1.4.11).
 export const BRAND = {
-  protein: '#E8547A',
-  fibre: '#F5A623',
-  plants: '#6DC56E',
+  protein: '#BD4D76',
+  fibre: '#C97F08',
+  plants: '#4B9E50',
 } as const;
 
+// Keep in sync with --pink / --amber / --green / --purple in globals.css.
+// Used as text colours, so each clears 4.5:1 on --bg/--card.
 export const ACCENTS = {
-  pink:   '#E8547A',
-  amber:  '#F5A623',
-  green:  '#6DC56E',
-  purple: '#7F77DD',
+  pink:   '#BD4D76',
+  amber:  '#8F660A',
+  green:  '#2F7A35',
+  purple: '#6C63C7',
 } as const;
 
 export type AccentKey = keyof typeof ACCENTS;
