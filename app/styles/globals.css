@@ -29,6 +29,9 @@
   --purple:    #6C63C7;
 
   --accent:    var(--pink);
+  /* AI-surface accent (ChatGPT CTAs) — alias of the existing purple token,
+     mirroring the app's --accent-secondary role. Not a new colour. */
+  --accent-secondary: var(--purple);
 
   /* Hybrid type system to match the PWA:
      display headings use Instrument Serif, body/UI uses the system font stack
@@ -144,6 +147,16 @@ button { font-family: inherit; }
 .btn-primary.btn-tiny { padding: 8px 14px; }
 .btn-ghost { background: transparent; color: var(--text); border-color: var(--border-2); }
 .btn-ghost:hover { border-color: #b9ad99; }
+/* Filled AI-accent button — the primary in ChatGPT CTA pairings (pairs
+   with .btn-ghost; never alongside another filled button). */
+.btn-ai {
+  background: var(--accent-secondary);
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  padding: 18px 24px;
+}
+.btn-ai:hover { filter: brightness(1.08); }
 .btn-tiny { padding: 8px 14px; font-size: 13px; }
 
 /* ---------- HERO ---------- */
@@ -631,7 +644,7 @@ button { font-family: inherit; }
    ========================================================================== */
 .what-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   background: var(--border);
   border: 1px solid var(--border);
@@ -1626,15 +1639,15 @@ button { font-family: inherit; }
   margin: 16px auto 8px;
   width: 100%;
 }
-/* While Android is gated the row carries only the App Store pill —
-   sized to content, centered via the parent flex, and outlined in
-   brand pink so it reads as the primary action. */
+/* ChatGPT is the filled primary in this row (.store-pill-ai); the App
+   Store / Google Play pills keep the neutral outline so only one filled
+   CTA reads as primary. */
 .download-cta-row .store-pill {
   align-items: center;
   text-align: center;
-  border-color: var(--accent);
 }
-.download-cta-row .store-pill:hover { border-color: var(--accent); filter: brightness(1.1); }
+.download-cta-row .store-pill-ai { border-color: var(--accent-secondary); }
+.download-cta-row .store-pill-ai:hover { border-color: var(--accent-secondary); filter: brightness(1.08); }
 .store-pill {
   display: inline-flex;
   flex-direction: column;
@@ -1649,6 +1662,15 @@ button { font-family: inherit; }
   transition: border-color 200ms ease, transform 200ms ease;
 }
 .store-pill:hover { border-color: var(--text); transform: translateY(-1px); }
+/* Filled AI-accent variant — the one primary in any CTA pairing (never two
+   filled pills side by side; App Store pairs as the outline secondary). */
+.store-pill-ai {
+  background: var(--accent-secondary);
+  border-color: var(--accent-secondary);
+  color: #ffffff;
+}
+.store-pill-ai .store-pill-top { color: rgba(255, 255, 255, 0.75); }
+.store-pill-ai:hover { border-color: var(--accent-secondary); filter: brightness(1.08); }
 .store-pill-top {
   font-size: 9px;
   letter-spacing: 0.1em;
@@ -2548,6 +2570,36 @@ button { font-family: inherit; }
 .blog-card-more { color: var(--accent); font-size: 13px; }
 
 .blog-article { max-width: 760px; margin: 0 auto; padding: 48px 32px 96px; }
+/* End-of-article dual CTA (BlogCTA component). */
+.blog-cta {
+  margin-top: 48px;
+  padding: 32px 28px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  text-align: center;
+}
+.blog-cta-h {
+  font-family: var(--ff-display);
+  font-weight: 600;
+  font-size: clamp(24px, 3.4vw, 34px);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  margin: 0 0 10px;
+  color: var(--text);
+}
+.blog-cta-sub {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text-2);
+  max-width: 52ch;
+  margin: 0 auto 20px;
+}
+.blog-cta-row { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+@media (max-width: 480px) {
+  .blog-cta { padding: 24px 16px; }
+  .blog-cta-row { flex-direction: column; align-items: stretch; }
+}
 .blog-article-body { color: var(--text-2); font-size: 17px; line-height: 1.7; }
 .blog-article-body > :first-child { margin-top: 0; }
 .blog-article-body h1 {

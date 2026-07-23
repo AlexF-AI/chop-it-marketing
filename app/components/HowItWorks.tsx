@@ -54,23 +54,26 @@ export default function HowItWorks({ browseThumbs }: HowItWorksProps = {}) {
           longer cadence gives each step a moment before the next
           arrives. */}
       <StaggerGroup className="how-steps" stagger={0.12}>
-        {/* Step 01 — Browse or generate */}
+        {/* Step 01 — Capture from anywhere (leads, per the ChatGPT-first
+            positioning: the library is the product's front door). */}
         <StaggerItem className="how-step">
           <div className="how-num mono">01</div>
-          <div className="how-title">Browse or generate recipes</div>
+          <div className="how-title">Capture from anywhere</div>
           <div className="how-body">
-            Pull from our library. Snap a cookbook. Or ask for fifty BBQ ideas and pick your favourites.
+            Snap a cookbook page in the app. Paste a website, TikTok or Instagram link — in
+            ChatGPT or the app. Every import becomes one standard Chop It recipe.
           </div>
           <div className="how-visual">{browseThumbs ?? fallbackThumbs}</div>
         </StaggerItem>
 
-        {/* Step 02 — One smart shop */}
+        {/* Step 02 — Plan, then one smart shop */}
         <StaggerItem className="how-step">
           <div className="how-num mono">02</div>
-          <div className="how-title">One smart shop</div>
+          <div className="how-title">Plan, then one smart shop</div>
           <div className="how-body">
-            Ingredients aggregated, pantry-aware, sorted by aisle. No double buying the coriander.
-            Whisk handoff to your supermarket of choice.
+            Drop recipes into the week — in the app or straight from a ChatGPT conversation. One
+            consolidated list, sorted by aisle (the app even checks your pantry), with Whisk
+            handoff to your supermarket of choice.
           </div>
           <div className="how-visual how-visual-shop">
             {SHOP.map((it, i) => (

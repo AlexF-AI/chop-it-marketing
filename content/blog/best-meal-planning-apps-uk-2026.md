@@ -1,6 +1,6 @@
 # Best Meal Planning Apps in the UK for 2026
 
-*Last updated 29 May 2026. Prices and features checked against the App Store, Google Play and product pages on 29 May 2026. Prices change and some apps test regional pricing, so treat these figures as current UK examples.*
+*By Alex Fahey, founder of Chop It. Yes, one of the apps below is mine, so read the Chop It entry with that in mind; I've tried to be straight about the others. Last updated 23 July 2026. Prices and features checked against the App Store, Google Play and product pages on 29 May 2026. Prices change and some apps test regional pricing, so treat these figures as current UK examples.*
 
 **Short answer:** **Good Food** (formerly BBC Good Food) wins on library size and trust. **Paprika** wins on no-subscription ownership. **Samsung Food** is the best free cross-platform planner with shopping lists. **Mealime** delivers 30-minute dinners with a clean shopping list. If your problem is eating with more variety without dropping the food you like, or cooking from what's in your fridge, **Chop It** was built for that. It's the newest app here.
 
@@ -38,11 +38,11 @@ The apps solve different problems, so there is no single best. This guide ranks 
 
 ---
 
-## How we compared them
+## How I compared them
 
-We ranked these around the jobs that matter once you've used an app for more than a week.
+I ranked these around the jobs that matter once you've used an app for more than a week.
 
-| What we looked at                  | Weight | What we checked                                                        |
+| What I looked at                   | Weight | What I checked                                                         |
 | ---------------------------------- | ------ | --------------------------------------------------------------------- |
 | Planning the week                  | 25%    | Calendar, weekly view, leftovers, how little effort it takes          |
 | Shopping list                      | 20%    | Auto-built, aisle-sorted, editable, shareable, pantry-aware           |
@@ -107,11 +107,13 @@ The pick for anyone planning to a number. Set your calorie and macro targets and
 **Platforms:** iOS, Android, web.
 
 ### Chop It
-The newest app here, and the only one built around a different question. Other apps help you find and store recipes. Chop It scores how varied your week is (plants, fibre and protein) through a Weekly Diversity Score, and its "What's In?" feature turns whatever's in your fridge into tonight's dinner so less of it ends up in the bin. By design, it keeps your comfort food rather than swapping it for "healthier" versions: eating better without losing what you love.
+This one's mine, so judge accordingly. I built it because the others all answer "help me find recipes" and nobody was answering the question I actually had: is my week varied, and what's dying in my fridge? Chop It scores how varied your week is (plants, fibre and protein) through a Weekly Diversity Score, and its "What's In?" feature turns whatever's in your fridge into tonight's dinner so less of it ends up in the bin. By design, it keeps your comfort food rather than swapping it for "healthier" versions: eating better without losing what you love.
+
+It's also the only app on this list that works [inside ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6a1c0dfa60b88191b3360153a1c6613c): search its recipe catalogue, build the week's menu and get one consolidated shopping list without leaving the conversation, then find everything you saved waiting in the iPhone app. If your planning already starts with "ask ChatGPT what's for dinner", that's a habit none of the others can meet you in.
 
 **The catch:** new (launched May 2026), UK-focused, on iOS and web for now. No Android app yet, and the recipe library is smaller than a decades-old brand like Good Food. If you want the biggest recipe bank or you're on Android, start elsewhere for now.
 **Price:** free to start (15 credits, no card); pay-as-you-go credit bundles, or Pro at £3.99/month (£35.99/year).
-**Platforms:** iOS, web app.
+**Platforms:** iOS, web app, ChatGPT.
 
 ---
 
@@ -123,13 +125,13 @@ If you searched "meal planning" and you're thinking of **Gousto**, **HelloFresh*
 
 ## The gap none of the recipe apps fill
 
-Two things stand out after comparing all of these.
+Two things stood out to me after comparing all of these, and they're the two gaps I started Chop It to fill.
 
 First, most apps treat your week as a list of recipes and stop there. None of the established ones tell you whether you ate with any variety, whether you hit a sensible spread of plants and fibre instead of the same three dinners on rotation. Most apps count calories. Variety goes unmeasured. There's good evidence that the range of plants you eat matters as much as the quantity, and no mainstream app reflects that.
 
 Second, they all start from "here's a recipe, now go buy the ingredients." Almost none start from the more common situation: I have these things in the fridge and I need to use them before they go off. The average UK household with children throws away roughly £60 of food a month, about £1,000 a year (WRAP/Defra). An app that plans around what you already own solves a problem the others ignore.
 
-That's the space Chop It is in. It won't replace Paprika for serious recipe collectors or beat Good Food's library on size. But on those two specific jobs, eating with more variety without dropping favourite meals, and cooking from what you've already got, nothing else here competes, because nothing else is even trying.
+That's the space Chop It is in. It won't replace Paprika for serious recipe collectors or beat Good Food's library on size, and I'm not going to pretend otherwise. But on those two specific jobs, eating with more variety without dropping favourite meals, and cooking from what you've already got, nothing else here competes, because nothing else is even trying.
 
 ---
 

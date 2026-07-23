@@ -26,12 +26,8 @@ const ITEMS: Item[] = [
     body: 'A weekly read on protein, fibre, and plants. One number. Small, achievable swaps.',
     accent: '#2F7A35',
   },
-  {
-    kicker: '04',
-    title: 'Snap a recipe, any recipe',
-    body: 'Cookbook page, handwritten scrawl, something you saw online. We write it up properly.',
-    accent: '#6C63C7',
-  },
+  // "Snap a recipe, any recipe" was the fourth card here — it's now the
+  // full CaptureBlock section that follows this grid.
 ];
 
 export default function WhatItDoes() {
@@ -41,7 +37,7 @@ export default function WhatItDoes() {
         <div className="section-head">
           <div className="kicker mono">— WHAT CHOP IT DOES</div>
           <h2 className="h-editorial">
-            Four things, done well. <span className="muted">Nothing you don&rsquo;t need.</span>
+            Three things, done well. <span className="muted">Nothing you don&rsquo;t need.</span>
           </h2>
         </div>
       </Reveal>
