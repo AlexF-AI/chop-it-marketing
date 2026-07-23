@@ -14,17 +14,18 @@
   --card-2:    #F4ECDF;
   --border:    #EAE2D3;
   --border-2:  #DCD2C0;
-  --muted:     #8D8578;
+  --muted:     #746C5F;
   --muted-2:   #6E675C;
   --text:      #241F1B;
   --text-2:    #4C463E;
 
   /* Accents tuned for legibility on the cream background; the vivid
      dark-theme originals (#E8547A / #F5A623 / #6DC56E / #7F77DD) wash out
-     on light surfaces. Pink matches the app's --brand-primary. */
+     on light surfaces. Pink matches the app's --brand-primary. All four
+     (and --muted/--muted-2) clear WCAG AA 4.5:1 as text on --bg/--card. */
   --pink:      #BD4D76;
-  --amber:     #A8770D;
-  --green:     #3E8E43;
+  --amber:     #8F660A;
+  --green:     #2F7A35;
   --purple:    #6C63C7;
 
   --accent:    var(--pink);
@@ -168,13 +169,13 @@ button { font-family: inherit; }
 .hero-eyebrow .pulse {
   width: 7px; height: 7px; border-radius: 50%;
   background: var(--green);
-  box-shadow: 0 0 0 0 rgba(62,142,67,0.6);
+  box-shadow: 0 0 0 0 rgba(47,122,53,0.6);
   animation: pulse 2.4s ease-out infinite;
 }
 @keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(62,142,67,0.5); }
-  70% { box-shadow: 0 0 0 10px rgba(62,142,67,0); }
-  100% { box-shadow: 0 0 0 0 rgba(62,142,67,0); }
+  0% { box-shadow: 0 0 0 0 rgba(47,122,53,0.5); }
+  70% { box-shadow: 0 0 0 10px rgba(47,122,53,0); }
+  100% { box-shadow: 0 0 0 0 rgba(47,122,53,0); }
 }
 
 .hero-h {
@@ -315,8 +316,8 @@ button { font-family: inherit; }
 .phone-score-coach { font-size: 11px; line-height: 1.4; color: var(--text-2); margin-bottom: 10px; }
 .phone-pillars { display: flex; gap: 4px; flex-wrap: wrap; }
 .pill { font-size: 9px; font-family: var(--ff-mono); padding: 3px 7px; border-radius: 999px; border: 1px solid; }
-.pill-plants  { color: var(--green);  border-color: rgba(62,142,67,0.45); }
-.pill-fibre   { color: var(--amber);  border-color: rgba(168,119,13,0.45); }
+.pill-plants  { color: var(--green);  border-color: rgba(47,122,53,0.45); }
+.pill-fibre   { color: var(--amber);  border-color: rgba(143,102,10,0.45); }
 .pill-protein { color: var(--text);   border-color: var(--border-2); }
 
 .phone-meals-head {
@@ -618,7 +619,7 @@ button { font-family: inherit; }
 .dish-ph-label {
   position: absolute;
   inset: auto 10px 10px 10px;
-  color: rgba(36,31,27,0.55);
+  color: rgba(36,31,27,0.68);
   font-size: 9px;
   letter-spacing: 0.08em;
   text-transform: uppercase;

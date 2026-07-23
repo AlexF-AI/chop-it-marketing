@@ -18,13 +18,13 @@ const ITEMS: Item[] = [
     kicker: '02',
     title: 'One smart shop',
     body: 'Ingredients aggregated, pantry-aware, sorted by aisle. No double buying the coriander.',
-    accent: '#A8770D',
+    accent: '#8F660A',
   },
   {
     kicker: '03',
     title: 'Scored for variety',
     body: 'A weekly read on protein, fibre, and plants. One number. Small, achievable swaps.',
-    accent: '#3E8E43',
+    accent: '#2F7A35',
   },
   {
     kicker: '04',

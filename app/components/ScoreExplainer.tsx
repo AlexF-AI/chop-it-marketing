@@ -22,7 +22,7 @@ const PILLARS = [
   {
     key: 'fibre',
     name: 'Fibre',
-    color: '#DE8E0B',
+    color: '#C97F08',
     body:
       'From vegetables, legumes, oats, nuts, seeds, fruit and wholegrains. Variety and quantity both matter — most people fall short on both.',
   },
