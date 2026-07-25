@@ -86,8 +86,11 @@ export async function getDemoPantryRecipes(): Promise<DemoPantryRecipe[]> {
 
 export async function getDemoRecipes(): Promise<DemoRecipe[]> {
   if (!supabasePublic || !supabasePublicConfigured) return [];
+  // recipes_public, not recipes_published — see app/lib/recipes.ts for why.
+  // The view keeps seo_published and deleted_at as columns, so the two filters
+  // below are unchanged.
   const { data, error } = await supabasePublic
-    .from('recipes_published')
+    .from('recipes_public')
     .select(
       'id, slug, title, image_url, timings_json, servings, ingredients_json, display_priority',
     )

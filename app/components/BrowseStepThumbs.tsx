@@ -32,8 +32,9 @@ async function getThumbRecipes(): Promise<LiveRecipe[] | null> {
 
   // Skip the top 6 (those are in FeaturedRecipes above) and take the next 30
   // so the strip can split into two non-overlapping rows.
+  // recipes_public, not recipes_published — see app/lib/recipes.ts for why.
   const { data, error } = await supabase
-    .from('recipes_published')
+    .from('recipes_public')
     .select('id, title, image_url')
     .eq('season', 'summer')
     .not('image_url', 'is', null)
