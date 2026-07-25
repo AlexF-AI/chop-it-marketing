@@ -1,5 +1,28 @@
 import { supabase, supabaseConfigured } from './supabase';
 
+/**
+ * Public read projection of `recipes_published`, created by
+ * `server/migrations/20260725_exposure_lockdown_b_public_views.sql` in the
+ * Chop-it repo.
+ *
+ * The base table was readable by anon across all 48 columns, including the
+ * pre-rewrite evidence columns (`ingredients_json_pre_wave2_backup` and
+ * friends), `nutrition_raw_json`, `raw_id`, and the whole of `tags_json` —
+ * whose `_publish_meta` object carries the publish audit trail
+ * (`openai_batch_id`, `image_origin`, `published_from`, `regen_path`, …).
+ * None of that is read here, and none of it belongs in a browser.
+ *
+ * The view exposes only the columns this site uses, plus a `tags_json`
+ * projected down to `core` and `_catalog.segments` — the only two keys we
+ * read. It keeps `seo_published` and `deleted_at` as real columns so every
+ * query below keeps its exact shape: `count: 'exact'`, `.range()`, `.order()`
+ * and jsonb `.contains()` all behave identically on a view.
+ *
+ * Anon SELECT on `recipes_published` itself is revoked by Part C of that
+ * migration, which must not be applied until this file is deployed.
+ */
+const PUBLIC_RECIPES_RELATION = 'recipes_public';
+
 export type Ingredient = {
   display: string;
   optional?: boolean;
@@ -13,8 +36,16 @@ export type Timings = {
   total_minutes?: number | null;
 };
 
+/**
+ * The projected shape delivered by `recipes_public.tags_json`. `core` drives
+ * the cuisine (`core[0]`) and the tag chips; `_catalog.segments` drives the
+ * curated collection pages, the breadcrumb middle crumb and the JSON-LD.
+ * Everything else the base column carries — `autopick`, the rest of
+ * `_catalog`, and all of `_publish_meta` — is dropped by the view.
+ */
 export type TagsJson = {
   core?: string[];
+  _catalog?: { segments?: string[] } | null;
 } | null;
 
 export type Recipe = {
@@ -52,6 +83,10 @@ export type RecipeListItem = {
   updated_at: string;
 };
 
+// Column lists are unchanged from when these queries read the base table —
+// `recipes_public` exposes the same names, so the selects, the row types and
+// the rendered output are identical. What changed is what is NOT reachable:
+// the backup columns, nutrition_raw_json, raw_id and tags_json._publish_meta.
 const RECIPE_COLUMNS =
   'id, slug, title, hero_description, image_url, season, cost_band, display_priority, servings, ingredients_json, method_steps_json, timings_json, tags_json, nutrition_kcal, nutrition_protein_g, nutrition_fibre_g, nutrition_carbs_g, nutrition_fat_g, nutrition_source, published_at, updated_at';
 
@@ -63,7 +98,7 @@ const LIST_COLUMNS =
 export async function getAllRecipeIds(): Promise<string[]> {
   if (!supabase || !supabaseConfigured) return [];
   const { data, error } = await supabase
-    .from('recipes_published')
+    .from(PUBLIC_RECIPES_RELATION)
     .select('id')
     .is('deleted_at', null)
     .not('image_url', 'is', null);
@@ -74,7 +109,7 @@ export async function getAllRecipeIds(): Promise<string[]> {
 export async function getSlugById(id: string): Promise<string | null> {
   if (!supabase || !supabaseConfigured) return null;
   const { data, error } = await supabase
-    .from('recipes_published')
+    .from(PUBLIC_RECIPES_RELATION)
     .select('slug')
     .eq('id', id)
     .is('deleted_at', null)
@@ -86,7 +121,7 @@ export async function getSlugById(id: string): Promise<string | null> {
 export async function getRecipeById(id: string): Promise<Recipe | null> {
   if (!supabase || !supabaseConfigured) return null;
   const { data, error } = await supabase
-    .from('recipes_published')
+    .from(PUBLIC_RECIPES_RELATION)
     .select(RECIPE_COLUMNS)
     .eq('id', id)
     .is('deleted_at', null)
@@ -126,7 +161,7 @@ export async function getPublishedRecipeSlugs(): Promise<
   const rows = await fetchAllPaged<{ slug: string | null; updated_at: string }>(
     (from, to) =>
       supabase!
-        .from('recipes_published')
+        .from(PUBLIC_RECIPES_RELATION)
         .select('slug, updated_at')
         .eq('seo_published', true)
         .is('deleted_at', null)
@@ -141,7 +176,7 @@ export async function getPublishedRecipeSlugs(): Promise<
 export async function getPublishedRecipeBySlug(slug: string): Promise<Recipe | null> {
   if (!supabase || !supabaseConfigured) return null;
   const { data, error } = await supabase
-    .from('recipes_published')
+    .from(PUBLIC_RECIPES_RELATION)
     .select(RECIPE_COLUMNS)
     .eq('slug', slug)
     .eq('seo_published', true)
@@ -170,7 +205,7 @@ export async function listPublishedRecipes(
   const to = from + perPage - 1;
 
   let q = supabase
-    .from('recipes_published')
+    .from(PUBLIC_RECIPES_RELATION)
     .select(LIST_COLUMNS, { count: 'exact' })
     .eq('seo_published', true)
     .is('deleted_at', null)
@@ -223,7 +258,7 @@ export async function listCollectionRecipes(
   if (!supabase || !supabaseConfigured) return [];
   const limit = Math.max(1, Math.min(120, opts.limit ?? 60));
   const { data, error } = await supabase
-    .from('recipes_published')
+    .from(PUBLIC_RECIPES_RELATION)
     .select(LIST_COLUMNS)
     .eq('seo_published', true)
     .is('deleted_at', null)
@@ -375,7 +410,7 @@ export async function getDistinctCuisines(): Promise<string[]> {
   if (!supabase || !supabaseConfigured) return [];
   const rows = await fetchAllPaged<{ tags_json: TagsJson }>((from, to) =>
     supabase!
-      .from('recipes_published')
+      .from(PUBLIC_RECIPES_RELATION)
       .select('tags_json')
       .eq('seo_published', true)
       .is('deleted_at', null)
@@ -405,7 +440,7 @@ export async function getDistinctCuisines(): Promise<string[]> {
 export async function getDistinctCostBands(): Promise<string[]> {
   if (!supabase || !supabaseConfigured) return [];
   const { data, error } = await supabase
-    .from('recipes_published')
+    .from(PUBLIC_RECIPES_RELATION)
     .select('cost_band')
     .eq('seo_published', true)
     .is('deleted_at', null)
@@ -428,7 +463,7 @@ export async function getRecipesSitemapData(): Promise<RecipesSitemapData> {
   const rows = await fetchAllPaged<{ slug: string | null; updated_at: string }>(
     (from, to) =>
       supabase!
-        .from('recipes_published')
+        .from(PUBLIC_RECIPES_RELATION)
         .select('slug, updated_at')
         .eq('seo_published', true)
         .is('deleted_at', null)
@@ -446,7 +481,7 @@ export async function getRecipesSitemapData(): Promise<RecipesSitemapData> {
 export async function countPublishedRecipes(): Promise<number> {
   if (!supabase || !supabaseConfigured) return 0;
   const { count, error } = await supabase
-    .from('recipes_published')
+    .from(PUBLIC_RECIPES_RELATION)
     .select('id', { count: 'exact', head: true })
     .eq('seo_published', true)
     .is('deleted_at', null);

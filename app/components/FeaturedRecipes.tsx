@@ -70,8 +70,12 @@ async function getFeaturedRecipes(): Promise<LiveRecipe[] | null> {
 
   // Fetch more than we need so we have room to rebalance veg vs protein
   // post-query (the recipes table has no diet/type column to filter on).
+  // recipes_public, not recipes_published — see app/lib/recipes.ts for why.
+  // Deliberately unfiltered on seo_published / deleted_at, exactly as before:
+  // the view exposes both as real columns rather than baking the filter in, so
+  // this query returns the same rows it always has.
   const { data, error } = await supabase
-    .from('recipes_published')
+    .from('recipes_public')
     .select('id, slug, title, image_url, season, display_priority')
     .eq('season', 'summer')
     .not('image_url', 'is', null)

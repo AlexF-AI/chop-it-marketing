@@ -1,6 +1,24 @@
 import { supabase, supabaseConfigured } from './supabase';
 
-const GUEST_PANTRY_ACCOUNT = 'ZG7B41PRK67NEYXW02M864TV2J';
+/**
+ * Curated public projection of the demo pantry, created by
+ * `server/migrations/20260725_exposure_lockdown_b_public_views.sql` in the
+ * Chop-it repo.
+ *
+ * This used to query `pantry_items` directly, filtered on a hardcoded
+ * `owner_account_code`. That worked because `pantry_items_select` carried a
+ * matching clause — which made all 358 rows of one real person's pantry
+ * world-readable so this component could render eight of them.
+ *
+ * The view bakes HOMEPAGE_PANTRY_ALLOWLIST in on the database side, so the
+ * public surface is the eight rows below and nothing else, and the account
+ * code no longer sits in an RLS policy. Part C of that migration drops the
+ * clause once this is deployed.
+ *
+ * The seed data still has heavy duplication (Plain flour ×9, Salt ×8), so the
+ * dedup and ordering below is unchanged.
+ */
+const DEMO_PANTRY_RELATION = 'demo_pantry';
 
 export type PantryItem = {
   id: string;
@@ -40,9 +58,8 @@ export async function getGuestPantry(): Promise<PantryItem[]> {
   const allowedLowered = HOMEPAGE_PANTRY_ALLOWLIST.map((n) => n.toLowerCase());
 
   const { data: items, error } = await supabase
-    .from('pantry_items')
+    .from(DEMO_PANTRY_RELATION)
     .select('id, name, location, quantity, unit, expiry_date, created_at')
-    .eq('owner_account_code', GUEST_PANTRY_ACCOUNT)
     .order('created_at', { ascending: false });
 
   if (error || !items || items.length === 0) {
