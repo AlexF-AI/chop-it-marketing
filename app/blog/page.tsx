@@ -7,7 +7,6 @@ import Nav from '@/app/components/Nav';
 import { getAllPostsMeta } from '@/app/lib/blog';
 import { buildBreadcrumbJsonLd, serializeJsonLd, SITE_ORIGIN } from '@/app/lib/recipeSchema';
 
-const ACCENT = '#BD4D76';
 
 const BLOG_TITLE = 'Blog · Chop it';
 const BLOG_DESCRIPTION =
@@ -62,7 +61,7 @@ export default function BlogIndexPage() {
 
   return (
     <>
-      <Nav accent={ACCENT} />
+      <Nav />
       <main>
         <section className="section blog-index">
           <Breadcrumbs crumbs={crumbs} />

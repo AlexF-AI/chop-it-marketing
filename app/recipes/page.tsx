@@ -100,7 +100,6 @@ export async function generateMetadata({
   return base;
 }
 
-const ACCENT = '#BD4D76';
 
 // SearchResultsPage with a nested ItemList. Google's GSC URL inspector
 // fails to detect a top-level ItemList on a search page — it expects the
@@ -183,7 +182,7 @@ export default async function RecipesHubPage({
 
   return (
     <>
-      <Nav accent={ACCENT} />
+      <Nav />
       <main>
       <section className="section recipes-hub">
         <div className="section-head">

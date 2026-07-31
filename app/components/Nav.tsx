@@ -2,47 +2,51 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
+import ThemeToggle from './ThemeToggle';
 import { APP_STORE_URL, IOS_LIVE } from '@/app/lib/app-stores';
 import { trackCtaClicked, trackNavCtaClick } from '@/lib/posthog-events';
 
-type NavProps = { accent: string };
+const LINKS = [
+  { href: '/#chatgpt', label: 'ChatGPT plug-in' },
+  { href: '/#ai-chef', label: 'AI Chef' },
+  { href: '/recipes', label: 'Recipes' },
+  { href: '/method', label: 'Method' },
+  { href: '/blog', label: 'Blog' },
+];
 
-export default function Nav({ accent }: NavProps) {
+export default function Nav() {
+  const pathname = usePathname();
   // While iOS is the only live install path, "Get the app" deep-links
   // straight to the App Store listing instead of scrolling visitors to
   // the closing CTA block on the homepage. Defensive: if IOS_LIVE ever
   // flips false (URL yanked), revert to the in-page anchor.
   const getAppHref = IOS_LIVE ? APP_STORE_URL : '/#download';
+
   return (
     <nav className="nav">
       <div className="nav-inner">
         <Link href="/" className="wordmark">
-          <Image
-            src="/logo.webp"
-            alt=""
-            width={28}
-            height={28}
-            className="wordmark-logo"
-            priority
-          />
+          <Image src="/logo.webp" alt="" width={26} height={26} className="wordmark-logo" priority />
           Chop&nbsp;it
         </Link>
         <div className="nav-links">
-          {/* Absolute paths so the nav works from any page, not just /.
-              Diversity Score + How it works are anchors on the homepage;
-              Recipes points at the hub. From a deep page the hash links
-              still land on / and then scroll to the section. */}
-          <Link href="/#score">Diversity Score</Link>
-          <Link href="/recipes">Recipes</Link>
-          <Link href="/blog">Blog</Link>
-          <Link href="/#how">How it works</Link>
-          <span className="soon-link" title="Coming soon">Feasts</span>
+          {LINKS.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              aria-current={pathname === l.href ? 'page' : undefined}
+            >
+              {l.label}
+            </Link>
+          ))}
         </div>
+        <div className="nav-spacer" />
         <div className="nav-cta">
+          <ThemeToggle />
           <a
-            className="btn btn-primary"
-            style={{ background: accent }}
+            className="nav-get"
             href={getAppHref}
             rel={IOS_LIVE ? 'noopener noreferrer' : undefined}
             onClick={() => {

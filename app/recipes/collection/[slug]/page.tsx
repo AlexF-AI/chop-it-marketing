@@ -18,7 +18,6 @@ import { buildBreadcrumbJsonLd, serializeJsonLd, SITE_ORIGIN } from '@/app/lib/r
 
 export const revalidate = 3600;
 
-const ACCENT = '#BD4D76';
 
 export async function generateStaticParams() {
   return COLLECTION_SLUGS.map((slug) => ({ slug }));
@@ -100,7 +99,7 @@ export default async function CollectionPage({
 
   return (
     <>
-      <Nav accent={ACCENT} />
+      <Nav />
       <main>
       <section className="section recipes-hub">
         <Breadcrumbs crumbs={crumbs} />

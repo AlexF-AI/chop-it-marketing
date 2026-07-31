@@ -1,17 +1,17 @@
-# How Much Fibre Do You Need a Day? (And How to Actually Eat It)
+# How Much Fibre Do You Need a Day? (And How to Eat It)
 
 *By Alex Fahey, founder of Chop It. Last updated 23 July 2026.*
 
-**Short answer:** UK health guidelines recommend adults eat **30g of fibre a day**. Most of us eat nowhere near it. The average UK adult manages about **20g**, and only around **9% of adults** hit the 30g target. Closing that gap doesn't take supplements or a special diet. It takes a few deliberate swaps: wholegrains instead of white, beans and lentils in more meals, fruit and veg with skins on, and a handful of nuts or seeds. The foods that raise your fibre are the same ones that add plant variety, so the two goals pull in the same direction.
+**Short answer:** UK health guidelines recommend adults eat **30g of fibre a day**. Most of us eat nowhere near it. The average UK adult manages about **20g**, and around **9% of adults** hit the 30g target. A few deliberate swaps close that gap: wholegrains in place of white, beans and lentils in more meals, fruit and veg with skins on, and a handful of nuts or seeds. The foods that raise your fibre are the same ones that add plant variety, so the two goals pull in the same direction.
 
-This guide covers how much fibre you need, why almost nobody gets it, and the changes that close the gap without much effort.
+This guide covers how much fibre you need, why so few of us get it, and the changes that close the gap without much effort.
 
 ---
 
 ## Quick answers
 
 - **How much fibre per day?** 30g for adults, per UK government guidance (the "Eatwell" recommendation). Children need less, scaling up with age.
-- **How much do people actually eat?** Around 20g a day on average. Roughly two-thirds of the target.
+- **How much do people eat?** Around 20g a day on average, roughly two-thirds of the target.
 - **What share of adults hit 30g?** About 9%, according to the National Diet and Nutrition Survey. Fibre is one of the most widely missed nutrient targets in the UK.
 - **What's the easiest way to eat more?** Swap white bread, rice and pasta for wholegrain versions, and add beans, lentils or chickpeas to meals you already cook.
 - **Which foods are highest in fibre?** Pulses (beans, lentils, chickpeas), wholegrains (oats, wholewheat, brown rice), nuts, seeds, and veg and fruit eaten with skins on.
@@ -21,31 +21,31 @@ This guide covers how much fibre you need, why almost nobody gets it, and the ch
 
 ## What fibre is, and why 30g
 
-Fibre is the part of plant foods your body can't digest. Because it passes through largely intact, it does its work along the way: it keeps your bowels moving, slows how fast sugar is absorbed, and (this is the part that's had attention lately) feeds the bacteria in your gut. Different fibres feed different microbes, which is why range matters as much as amount.
+Fibre is the part of plant foods your body cannot digest. It passes through mostly intact and does its work along the way: keeping your bowels moving, slowing how fast you absorb sugar, and feeding the bacteria in your gut, the part that has drawn the recent attention. Different fibres feed different microbes, so range matters as much as amount.
 
-The UK's 30g figure comes from official dietary advice (SACN, the government's nutrition advisory committee, set it; the NHS Eatwell Guide promotes it). It's tied to real outcomes: higher fibre intake is associated with lower risk of heart disease, type 2 diabetes and bowel cancer. The evidence here is unusually consistent for nutrition. More fibre, better long-term health, across large studies.
+The UK's 30g figure comes from official dietary advice (SACN, the government's nutrition advisory committee, set it; the NHS Eatwell Guide promotes it). It is tied to outcomes: higher fibre intake is associated with lower risk of heart disease, type 2 diabetes and bowel cancer. For nutrition research the evidence is consistent, holding across large studies.
 
-It's worth saying that 30g is a target, not a cliff edge. Going from 15g to 25g is a genuine improvement on its own. You don't need to hit exactly 30 to benefit. You need to move in the right direction.
+Treat 30g as a target rather than a cliff edge. Going from 15g to 25g is an improvement in itself, and the direction of travel matters more than the exact number.
 
 ---
 
-## Why almost nobody hits it
+## Why so few of us hit it
 
-Two reasons, mostly.
+Two reasons carry most of it.
 
-The first is refined staples. White bread, white rice and standard pasta have had the fibre-rich outer layers stripped out. When those make up the base of most meals (toast, sandwich, pasta dinner), you start each day at a deficit that vegetables alone can't make up.
+The first is refined staples. White bread, white rice and standard pasta have had the fibre-rich outer layers stripped out. When those form the base of most meals (toast, sandwich, pasta dinner), you start each day at a deficit that vegetables cannot make up on their own.
 
-The second is that pulses barely feature in a typical British week. Beans, lentils and chickpeas are among the highest-fibre foods there are, and cheap, but outside of a tin of baked beans they rarely make the plate. Cuisines that lean on pulses (Indian dal, Middle Eastern hummus and falafel, Mexican black beans) hit fibre targets without trying.
+The second is that pulses barely feature in a typical British week. Beans, lentils and chickpeas are among the highest-fibre foods going, and cheap with it, yet outside a tin of baked beans they seldom reach the plate. Cuisines that lean on pulses (Indian dal, Middle Eastern hummus and falafel, Mexican black beans) hit fibre targets without trying.
 
-Put those together and the average 20g makes sense: refined base, light on pulses, fibre treated as something vegetables are supposed to deliver on their own. They can't, not at that volume.
+Put those together and the average 20g makes sense: a refined base, light on pulses, and vegetables left to deliver the whole target on their own. At that volume they cannot.
 
 ---
 
 ## The swaps that close the gap
 
-You don't need to overhaul your diet. A few changes to things you already eat do most of the work.
+A few changes to things you already eat do most of the work, with no overhaul required.
 
-**Switch the base to wholegrain.** Wholemeal bread, wholewheat pasta, brown rice, oats. A bowl of porridge is around 3g before toppings; two slices of wholemeal toast roughly double the fibre of white. This single category of swap moves the daily number more than anything else, because it touches every meal.
+**Switch the base to wholegrain.** Wholemeal bread, wholewheat pasta, brown rice, oats. A bowl of porridge is around 3g before toppings; two slices of wholemeal toast roughly double the fibre of white. This one category of swap moves the daily number more than any other, because it touches each meal.
 
 **Get pulses into meals you already make.** A tin of lentils into a bolognese or soup, chickpeas into a curry or roasted for a snack, black beans in a chilli. A single 200g portion of cooked pulses can add 8–10g of fibre. A third of the day in one ingredient.
 
@@ -53,7 +53,7 @@ You don't need to overhaul your diet. A few changes to things you already eat do
 
 **Add nuts and seeds.** A handful of almonds, a spoon of chia or flax on yoghurt or porridge. Small amounts, but they stack up and add variety.
 
-**Don't peel your veg habits down to two.** Broccoli, carrots, peas, leafy greens, and the more variety the better. Different plants bring different fibres.
+**Widen the veg you buy.** Broccoli, carrots, peas and leafy greens, and the wider the range the better. Different plants bring different fibres.
 
 A day that puts these together (porridge with seeds and berries, a wholemeal sandwich with a lentil soup, a bean-based dinner with veg) lands near 30g without anyone counting.
 
@@ -61,23 +61,23 @@ A day that puts these together (porridge with seeds and berries, a wholemeal san
 
 ## The link to gut health and plant variety
 
-You may have heard the advice to eat [30 different plants a week](https://chop-it.com/blog/how-to-eat-30-plants-a-week). It comes from gut-microbiome research, and it overlaps almost completely with the fibre target. The foods that push your plant count up (pulses, wholegrains, nuts, seeds, a wider range of veg) are the same ones that push your fibre up. Chase one and you largely get the other for free.
+You may have heard the advice to eat [30 different plants a week](https://chop-it.com/blog/how-to-eat-30-plants-a-week). It comes from gut-microbiome research and overlaps almost entirely with the fibre target. The foods that push your plant count up (pulses, wholegrains, nuts, seeds, a wider range of veg) are the ones that push your fibre up. Chase one and you get most of the other.
 
-This is the more useful way to think about fibre, and it's how I think about it myself: not as a number to grind out, but as a side effect of eating a varied range of plants. Counting grams is tedious and nobody keeps it up. Aiming for variety across the week is easier to hold in your head and lands you in the same place.
+I think about fibre as a side effect of eating a varied range of plants rather than a number to grind out. Counting grams is tedious and few people keep it up. Aiming for variety across the week is easier to hold in your head and lands you in the same place.
 
 ---
 
 ## A note on going too fast
 
-If you currently eat little fibre, jumping straight to 30g will make you bloated and gassy. Your gut bacteria need time to adjust. Build up over a couple of weeks rather than overnight, and drink more water as you add fibre, since it works by absorbing water as it moves through you. If you have IBS or another gut condition, some fermentable fibres can trigger symptoms, so increase gradually and talk to your GP or a dietitian before big changes.
+If you eat little fibre today, jumping straight to 30g will leave you bloated and gassy while your gut bacteria adjust. Build up over a couple of weeks and drink more water as you go, since fibre works by absorbing water as it moves through you. If you have IBS or another gut condition, some fermentable fibres can trigger symptoms, so raise the amount slowly and talk to your GP or a dietitian before big changes.
 
 ---
 
 ## How Chop It fits
 
-Counting fibre by hand is the kind of admin that lasts about three days. I built Chop It to take a different angle: every week you plan gets a **Weekly Diversity Score** covering plants, fibre and protein across your meals, so you can see whether the week is varied or stuck on the same few dinners, and where the gap is, without logging a single gram. It plans dinners from a library of over a thousand recipes and keeps your comfort food in the mix, so eating more fibre doesn't mean giving up the meals you actually like.
+Counting fibre by hand is the kind of admin that lasts about three days. I built Chop It to come at it from the other side: each week you plan gets a **Weekly Diversity Score** covering plants, fibre and protein across your meals, so you can see whether the week is varied or stuck on the same few dinners, and where the gap sits, without logging a gram. It plans dinners from a library of over a thousand recipes and keeps your comfort food in the mix, so eating more fibre costs you none of the meals you like.
 
-You can hit 30g with a notebook and some attention to wholegrains and beans. But if tracking is what's beaten you before, having the variety kept for you is what turns it into a habit.
+You can hit 30g with a notebook and some attention to wholegrains and beans. If tracking is what has beaten you before, having the variety kept for you is what turns it into a habit.
 
 ---
 
@@ -90,22 +90,22 @@ You can hit 30g with a notebook and some attention to wholegrains and beans. But
 Pulses (beans, lentils, chickpeas) top the list, followed by wholegrains (oats, wholewheat, brown rice, barley), nuts, seeds, and vegetables and fruit eaten with their skins.
 
 **Is 30g of fibre a lot?**
-It's more than most people eat. The UK average is around 20g. But it's very achievable with wholegrain bases and a daily serving of pulses. It feels like a lot only because refined staples leave so little room.
+It is more than most people eat, with the UK average around 20g, and it is within reach on wholegrain bases plus a daily serving of pulses. It feels like a lot because refined staples leave so little room.
 
 **Does fibre help you lose weight?**
-Indirectly. High-fibre foods are more filling and slow digestion, so they help with appetite and steady energy. They're not a weight-loss trick on their own, but they make a balanced diet easier to stick to.
+Indirectly. High-fibre foods fill you up and slow digestion, which helps with appetite and steady energy. On their own they are no weight-loss trick, though they make a balanced diet easier to stick to.
 
 **Can I just take a fibre supplement?**
-A supplement can help in specific cases, but it gives you one type of fibre. Whole foods give you many different fibres plus the vitamins and plant compounds that come with them, which is what your gut bacteria actually thrive on. Food first, supplement only if needed.
+A supplement helps in specific cases, and it gives you one type of fibre. Whole foods give you many different fibres plus the vitamins and plant compounds that come with them, which is what your gut bacteria thrive on. Food first, supplement if you need it.
 
 **Why does more fibre make me bloated?**
-A sudden increase ferments in the gut faster than your bacteria can adjust to, producing gas. Build up gradually over a week or two and drink plenty of water, and it usually settles.
+A sudden increase ferments in the gut faster than your bacteria can adjust to, which produces gas. Build up over a week or two and drink plenty of water, and it settles.
 
 ---
 
 ## The bottom line
 
-The fibre target is 30g a day, most people get about 20, and the gap is almost entirely down to refined staples and missing pulses. Swap your bread, rice and pasta for wholegrain, get beans or lentils into a few meals a week, and eat fruit and veg whole. That alone closes most of it. Think in terms of plant variety rather than grams and the number takes care of itself.
+The fibre target is 30g a day, most people get about 20, and refined staples plus missing pulses account for nearly all of the gap. Swap your bread, rice and pasta for wholegrain, get beans or lentils into a few meals a week, and eat fruit and veg whole. That closes most of it. Think in plant variety rather than grams and the number looks after itself.
 
 ---
 
