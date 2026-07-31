@@ -85,7 +85,6 @@ export async function generateMetadata({
   };
 }
 
-const ACCENT = '#BD4D76';
 
 export default async function RecipePage({
   params,
@@ -155,7 +154,7 @@ export default async function RecipePage({
 
   return (
     <>
-      <Nav accent={ACCENT} />
+      <Nav />
       <RecipeViewTracker
         recipe_id={recipe.id}
         recipe_slug={recipe.slug}

@@ -21,8 +21,9 @@ type StaticRoute = {
 // Priorities preserved from the previous monolithic sitemap.ts so we don't
 // inadvertently re-rank pages with Google.
 const ROUTES: StaticRoute[] = [
-  { path: '/', changefreq: 'weekly', priority: '1.0', lastmod: '2026-05-29' },
+  { path: '/', changefreq: 'weekly', priority: '1.0', lastmod: '2026-07-31' },
   { path: '/recipes', changefreq: 'weekly', priority: '0.8', lastmod: '2026-05-29' },
+  { path: '/method', changefreq: 'monthly', priority: '0.6', lastmod: '2026-07-31' },
   { path: '/privacy', changefreq: 'monthly', priority: '0.3', lastmod: '2026-05-29' },
   { path: '/terms', changefreq: 'monthly', priority: '0.3', lastmod: '2026-05-29' },
   { path: '/data-deletion', changefreq: 'monthly', priority: '0.3', lastmod: '2026-05-29' },

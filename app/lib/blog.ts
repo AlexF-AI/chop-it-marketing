@@ -39,7 +39,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
     slug: 'future-of-meal-prep-ai-customisation',
     title: 'The Future of Meal Prep: AI as the Customisation Layer',
     description:
-      'Meal prep tools spent twenty years handing everyone the same plan. AI turns your constraints, spoken like a human, into a week you can cook and one shop you can buy.',
+      'Meal prep tools spent twenty years handing every household the same plan. AI turns your constraints, spoken like a human, into a week you can cook and one shop you can buy.',
     datePublished: '2026-07-23',
     dateModified: '2026-07-23',
   },
@@ -47,7 +47,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
     slug: 'easy-summer-salads-this-weeks-dinners',
     title: '49 Easy Summer Salads to Cook This Week',
     description:
-      'A full week of easy summer salads you can actually make dinner — each with ingredients and method, plus a one-tap shopping list for the whole lot in Chop It.',
+      'A full week of easy summer salads that hold their own as dinner, each with ingredients and method, plus a one-tap shopping list for the whole lot in Chop It.',
     datePublished: '2026-06-22',
     dateModified: '2026-06-22',
     menuShareCode: 'MDSAP7JV',
@@ -70,7 +70,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
   },
   {
     slug: 'how-much-fibre-do-you-need-a-day',
-    title: 'How Much Fibre Do You Need a Day? (And How to Actually Eat It)',
+    title: 'How Much Fibre Do You Need a Day? (And How to Eat It)',
     description:
       'The UK target is 30g of fibre a day; most adults get about 20g and only ~9% hit it. The simple swaps that close the gap without counting grams.',
     datePublished: '2026-06-16',
@@ -80,15 +80,15 @@ export const BLOG_POSTS: BlogPostMeta[] = [
     slug: 'why-chatgpt-changes-home-cooking-and-grocery-shopping',
     title: 'Why ChatGPT Is About to Change How Britain Cooks and Shops for Food',
     description:
-      "Online grocery digitised delivery but not the decision of what to cook. Here's why conversational AI is the missing layer, and how it changes the weekly shop.",
+      "Online grocery digitised delivery and left the decision of what to cook untouched. Why conversational AI is the missing layer, and how it changes the weekly shop.",
     datePublished: '2026-05-31',
     dateModified: '2026-07-23',
   },
   {
     slug: 'how-to-eat-30-plants-a-week',
-    title: 'How to Eat 30 Plants a Week (and What Actually Counts)',
+    title: 'How to Eat 30 Plants a Week (and What Counts)',
     description:
-      "What the 30-plants-a-week gut-health rule actually means, exactly what counts (herbs, spices, nuts, coffee all do), and how to hit it without a spreadsheet.",
+      "What the 30-plants-a-week gut-health rule means, what counts (herbs, spices, nuts and coffee all do), and how to hit it without a spreadsheet.",
     datePublished: '2026-05-31',
     dateModified: '2026-07-23',
   },
@@ -96,7 +96,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
     slug: 'best-meal-planning-apps-uk-2026',
     title: 'Best Meal Planning Apps in the UK for 2026',
     description:
-      'We compare Good Food, Paprika, Samsung Food, Mealime, AnyList, Mob and Chop It — ranked by the job you want done, from biggest recipe library to more variety.',
+      'We compare Good Food, Paprika, Samsung Food, Mealime, AnyList, Mob and Chop It, ranked by the job you want done, from biggest recipe library to most variety.',
     datePublished: '2026-05-29',
     dateModified: '2026-07-23',
   },

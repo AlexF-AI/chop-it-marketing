@@ -1,18 +1,18 @@
 import type { Metadata, Viewport } from 'next';
-import { Instrument_Serif, JetBrains_Mono } from 'next/font/google';
+import { Archivo, JetBrains_Mono } from 'next/font/google';
 import './styles/globals.css';
 
 import CookieBanner from './components/CookieBanner';
 import MotionRoot from './components/MotionRoot';
 import NavTracker from './components/NavTracker';
 
-// Hybrid type system: Instrument Serif for display headings, JetBrains Mono for meta/numerals,
-// system-ui stack for body copy so we match the PWA visually (PWA is system-font-only under CSP).
-const instrumentSerif = Instrument_Serif({
+// Archivo carries headings and body copy; JetBrains Mono carries kickers,
+// meta rows and numerals. Both are wired to the CSS variables read by
+// --ff-display / --ff-sans / --ff-mono in globals.css.
+const archivo = Archivo({
   subsets: ['latin'],
-  weight: '400',
-  style: ['normal', 'italic'],
-  variable: '--font-instrument-serif',
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-archivo',
   display: 'swap',
 });
 
@@ -23,12 +23,20 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
-// Light theme — browser chrome (mobile address bar, etc.) matches the cream
-// background from globals.css.
+// Both themes ship, so the mobile address bar follows whichever one the
+// visitor lands in rather than being pinned to the light background.
 export const viewport: Viewport = {
-  themeColor: '#fbf5ec',
-  colorScheme: 'light',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#faf8f4' },
+    { media: '(prefers-color-scheme: dark)', color: '#131110' },
+  ],
+  colorScheme: 'light dark',
 };
+
+// Replays a stored theme choice onto <html> before first paint, so a
+// visitor who picked dark on a light-scheme OS never sees a cream flash.
+// Kept inline and dependency-free for that reason.
+const THEME_INIT = `try{var t=localStorage.getItem('chopit-theme');if(t==='light'||t==='dark'){document.documentElement.dataset.theme=t}}catch(e){}`;
 
 export const metadata: Metadata = {
   title: 'Chop it — Every recipe you’ve saved, in one place, inside ChatGPT',
@@ -97,8 +105,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en-GB"
-      className={`${instrumentSerif.variable} ${jetbrainsMono.variable}`}
+      className={`${archivo.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
     >
+      <head>
+        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT }} />
+      </head>
       <body>
         <script
           type="application/ld+json"

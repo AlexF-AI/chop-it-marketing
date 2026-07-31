@@ -10,30 +10,25 @@ export default function Footer() {
             <Image
               src="/logo.webp"
               alt=""
-              width={40}
-              height={40}
+              width={36}
+              height={36}
               className="wordmark-logo wordmark-logo-lg"
             />
-            Chop&nbsp;It.
+            Chop&nbsp;it
           </div>
-          <div className="footer-tag">Weekly shop, sorted in minutes.</div>
+          <div className="footer-tag">The home of AI cooking.</div>
         </div>
         <div className="footer-col">
-          <div className="footer-col-h mono">PRODUCT</div>
-          <span className="soon-link">This Week</span>
-          <span className="soon-link">Shop</span>
-          <span className="soon-link">Pantry</span>
-          <span className="soon-link">Diversity Score</span>
-          <span className="soon-link">
-            Feasts <span className="tag-soon mono">Summer &rsquo;26</span>
-          </span>
+          <div className="footer-col-h mono">Product</div>
+          <Link href="/#ai-chef">AI Chef</Link>
+          <Link href="/#chatgpt">The ChatGPT plug-in</Link>
+          <Link href="/recipes">Recipes</Link>
+          <Link href="/#download">Get the app</Link>
         </div>
         <div className="footer-col">
-          <div className="footer-col-h mono">COMPANY</div>
-          <span className="soon-link">Team</span>
-          <span className="soon-link">Press</span>
-          <span className="soon-link">Careers</span>
+          <div className="footer-col-h mono">Company</div>
           <Link href="/blog">Blog</Link>
+          <Link href="/method">Our method</Link>
           <a href="mailto:hello@chop-it.com">Contact</a>
           <a href="/support">Support</a>
           <a href="/privacy">Privacy</a>
@@ -41,8 +36,10 @@ export default function Footer() {
           <a href="/data-deletion">Data deletion</a>
         </div>
         <div className="footer-col">
-          <div className="footer-col-h mono">SOCIAL</div>
-          <a href="https://www.tiktok.com/@chop_it" target="_blank" rel="noopener noreferrer">TikTok · @chop_it</a>
+          <div className="footer-col-h mono">Social</div>
+          <a href="https://www.tiktok.com/@chop_it" target="_blank" rel="noopener noreferrer">
+            TikTok · @chop_it
+          </a>
         </div>
       </div>
       <div className="footer-base">

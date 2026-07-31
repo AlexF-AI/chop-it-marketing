@@ -1,9 +1,7 @@
-import BrowseStepThumbs from './components/BrowseStepThumbs';
-import FeaturedRecipes from './components/FeaturedRecipes';
 import Home from './components/Home';
-import PantryShowcase from './components/PantryShowcase';
+import Pantry from './components/home/Pantry';
+import RecipeRail from './components/home/RecipeRail';
 import { APP_STORE_URL } from './lib/app-stores';
-import { getDemoPantryRecipes, getDemoRecipes } from './lib/homepageDemo';
 import { serializeJsonLd, SITE_ORIGIN } from './lib/recipeSchema';
 
 export const revalidate = 3600;
@@ -42,16 +40,9 @@ const MOBILE_APP_JSONLD = {
   },
 };
 
-export default async function Page() {
-  // Pre-fetch both the This Week + Pantry recipe sets server-side so the
-  // phone simulator has real, SEO-visible HTML on first paint and the
-  // client bundle stays free of supabase-js. Pantry results are static-
-  // ish enough (always seeded with "chicken") that there's no value in
-  // a client-side fetch on tab activation.
-  const [demoRecipes, demoPantryRecipes] = await Promise.all([
-    getDemoRecipes(),
-    getDemoPantryRecipes(),
-  ]);
+export default function Page() {
+  // The rail and the pantry block both query Supabase, so they stay server
+  // components and get handed into the otherwise-static page shell.
   return (
     <>
       <script
@@ -59,13 +50,7 @@ export default async function Page() {
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(MOBILE_APP_JSONLD) }}
       />
-      <Home
-        featuredRecipes={<FeaturedRecipes />}
-        browseThumbs={<BrowseStepThumbs />}
-        pantryShowcase={<PantryShowcase />}
-        demoRecipes={demoRecipes}
-        demoPantryRecipes={demoPantryRecipes}
-      />
+      <Home recipeRail={<RecipeRail />} pantry={<Pantry />} />
     </>
   );
 }

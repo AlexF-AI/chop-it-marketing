@@ -3,7 +3,6 @@ import type { ReactNode } from 'react';
 import Nav from './Nav';
 import Footer from './Footer';
 
-const DEFAULT_ACCENT = '#BD4D76';
 
 type LegalLayoutProps = {
   title: string;
@@ -14,7 +13,7 @@ type LegalLayoutProps = {
 export default function LegalLayout({ title, lastUpdated, children }: LegalLayoutProps) {
   return (
     <>
-      <Nav accent={DEFAULT_ACCENT} />
+      <Nav />
       <main className="section legal">
         <header className="legal-head">
           <h1 className="h-editorial">{title}</h1>
