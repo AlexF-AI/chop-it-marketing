@@ -22,6 +22,12 @@ export const IOS_LIVE = APP_STORE_URL !== '#';
 
 export const ANDROID_LIVE = process.env.NEXT_PUBLIC_ANDROID_LIVE === 'true';
 
+// The homepage's small "Android coming later" line. Off by default: the design
+// package is explicit that no Android timing is published until the release
+// plan is confirmed, and "later" is still a claim. Opt in when it is.
+export const SHOW_ANDROID_NOTE =
+  process.env.NEXT_PUBLIC_SHOW_ANDROID_NOTE === 'true';
+
 // Chop It in ChatGPT — the Apps SDK app in the ChatGPT app directory
 // (replaces the old "Weekly Food Shop Planner" Custom GPT). Primary entry
 // surface for the ChatGPT-first positioning; the App Store remains the

@@ -1,0 +1,115 @@
+.eyebrow {
+  margin-bottom: 20px;
+}
+
+.h2 {
+  max-width: 18ch;
+  margin-bottom: clamp(36px, 5vw, 56px);
+}
+
+.features {
+  border-top: 1px solid var(--line);
+}
+
+.feature {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2px minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+  text-align: left;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  padding: 20px 0;
+  cursor: pointer;
+}
+
+/* The accent marks the selected feature and nothing else in this section. */
+.featureRule {
+  align-self: stretch;
+  background: transparent;
+}
+
+.featureActive .featureRule {
+  background: var(--accent);
+}
+
+.featureCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.featureLabel {
+  font-family: var(--ff-mono);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.featureActive .featureLabel {
+  color: var(--accent-text);
+}
+
+.featureText {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.featureActive .featureText {
+  color: var(--ink);
+}
+
+/* All three screens are stacked in one grid cell rather than toggled with
+   display:none. Only the selected one paints, so it looks the same, but the
+   other two keep a layout box — which is what lets their lazy images load with
+   the section instead of leaving an empty frame on the first tab click. */
+.screens {
+  display: grid;
+}
+
+.screen,
+.screenActive {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Also takes them out of the accessibility tree. */
+.screen {
+  visibility: hidden;
+}
+
+.frame {
+  aspect-ratio: 4 / 5;
+}
+
+.shot {
+  object-fit: cover;
+  object-position: top;
+}
+
+/* One screen stays large on desktop; on mobile all three become a manual snap
+   rail showing 1.1 cards, so it is obvious it scrolls. No autoplay. */
+@media (max-width: 900px) {
+  .screens {
+    display: flex;
+    overflow-x: auto;
+    gap: 12px;
+    scroll-snap-type: x mandatory;
+    margin: 0 calc(-1 * var(--gutter));
+    padding: 0 var(--gutter);
+  }
+
+  .screen,
+  .screenActive {
+    visibility: visible;
+    flex: 0 0 88%;
+    scroll-snap-align: start;
+  }
+}

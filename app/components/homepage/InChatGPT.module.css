@@ -1,0 +1,153 @@
+/* An ink band so the ChatGPT surface feels native and the middle of the page
+   changes pace. In dark mode ink and ground swap, so the band inverts with the
+   rest of the page and the `-inv` greys keep it legible either way. */
+.section {
+  background: var(--ink);
+  color: var(--ground);
+}
+
+.inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: clamp(56px, 8vw, 112px) var(--gutter);
+}
+
+.eyebrow {
+  font-family: var(--ff-mono);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-inv);
+  margin-bottom: 20px;
+}
+
+.h2 {
+  margin-bottom: 22px;
+}
+
+.body {
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--ink-2-inv);
+  max-width: 54ch;
+  margin-bottom: 30px;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  height: 52px;
+  padding: 0 26px;
+  background: var(--ground);
+  color: var(--ink);
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: clamp(32px, 4vw, 48px);
+}
+
+.cta:hover {
+  color: var(--ink);
+  opacity: 0.88;
+}
+
+.statusBlocks {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 28px;
+}
+
+.statusHeader {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 14px;
+}
+
+/* Filled square = shipped. Outlined square = not yet. */
+.markLive {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-inv);
+  flex: none;
+}
+
+.markSoon {
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--ink-2-inv);
+  flex: none;
+}
+
+.statusLabel {
+  font-family: var(--ff-mono);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.statusLabelSoon {
+  color: var(--ink-2-inv);
+}
+
+.rows {
+  border-top: 1px solid var(--line-inv);
+}
+
+.row {
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line-inv);
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.rowSoon {
+  color: var(--ink-2-inv);
+}
+
+.shots {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 3vw, 32px);
+}
+
+.pluginFrame {
+  position: relative;
+  border: 1px solid var(--line-inv);
+  border-radius: 4px;
+  overflow: hidden;
+  background: #0f0d0c;
+  aspect-ratio: 4 / 5;
+  display: flex;
+}
+
+.pluginShot {
+  object-fit: cover;
+  object-position: top;
+}
+
+/* The Plugins directory capture keeps its own height — it is a wide screenshot,
+   not a portrait product screen. */
+.directoryFrame {
+  border: 1px solid var(--line-inv);
+  border-radius: 4px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.directoryShot {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.shotCaption {
+  font-family: var(--ff-mono);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-2-inv);
+}

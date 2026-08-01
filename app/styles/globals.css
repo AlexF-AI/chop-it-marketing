@@ -20,9 +20,12 @@
 
   --ink:       #14120F;
   --ink-2:     #5C574F;
-  --ink-3:     #8F8A80;
+  --ink-3:     #6B665E;
   /* Secondary ink for text sitting on an inverted (ink) background. */
   --ink-2-inv: #A9A29A;
+  /* Accent and rule for that same inverted band. */
+  --accent-inv: #E4739A;
+  --line-inv:   #302B27;
 
   --line:      #E4E0D9;
   --line-2:    #F0EDE7;
@@ -47,6 +50,7 @@
   --ff-mono:    var(--font-jetbrains-mono), 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
 
   --maxw: 1240px;
+  --gutter: clamp(16px, 6.2vw, 56px);
 
   /* ---- Aliases for pages written against the previous token names ---- */
   --bg:        var(--ground);
@@ -74,8 +78,10 @@
     --surface-2: #232020;
     --ink:       #F7F4EE;
     --ink-2:     #A9A29A;
-    --ink-3:     #78716B;
+    --ink-3:     #9A938B;
     --ink-2-inv: #5C574F;
+    --accent-inv: #8E3A52;
+    --line-inv:   #E4E0D9;
     --line:      #302B27;
     --line-2:    #262220;
     --accent:      #E4739A;
@@ -99,8 +105,10 @@
   --surface-2: #232020;
   --ink:       #F7F4EE;
   --ink-2:     #A9A29A;
-  --ink-3:     #78716B;
+  --ink-3:     #9A938B;
   --ink-2-inv: #5C574F;
+  --accent-inv: #8E3A52;
+  --line-inv:   #E4E0D9;
   --line:      #302B27;
   --line-2:    #262220;
   --accent:      #E4739A;
