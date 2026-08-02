@@ -39,17 +39,17 @@ export const viewport: Viewport = {
 const THEME_INIT = `try{var t=localStorage.getItem('chopit-theme');if(t==='light'||t==='dark'){document.documentElement.dataset.theme=t}}catch(e){}`;
 
 export const metadata: Metadata = {
-  title: 'Chop it — Every recipe you’ve saved, in one place, inside ChatGPT',
+  title: 'Chop it | The home of AI cooking',
   description:
-    'Chop It gathers the recipes you’ve saved from books, websites and socials into one library. Plan the week and write the shopping list inside ChatGPT — it’s all waiting in the iPhone app.',
+    'Keep recipes from ChatGPT, cookbooks, websites and social in one place. Plan the week, build one shopping list and cook it from the iPhone app.',
   metadataBase: new URL('https://chop-it.com'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'Chop it — Every recipe you’ve saved, in one place, inside ChatGPT',
+    title: 'Chop it | The home of AI cooking',
     description:
-      'Books, websites, socials — one recipe library. Plan the week and write the shop inside ChatGPT; everything you save is waiting in the app.',
+      'Keep recipes from ChatGPT, cookbooks, websites and social in one place. Plan the week, build one shopping list and cook it from the iPhone app.',
     url: 'https://chop-it.com',
     siteName: 'Chop it',
     locale: 'en_GB',
@@ -57,9 +57,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Chop it — Every recipe you’ve saved, in one place, inside ChatGPT',
+    title: 'Chop it | The home of AI cooking',
     description:
-      'Books, websites, socials — one recipe library. Plan the week and write the shop inside ChatGPT; everything you save is waiting in the app.',
+      'Keep recipes from ChatGPT, cookbooks, websites and social in one place. Plan the week, build one shopping list and cook it from the iPhone app.',
   },
   // Google Search Console — URL-prefix property verification.
   // Property: https://chop-it.com
@@ -78,7 +78,7 @@ const ORGANIZATION_JSONLD = {
   url: 'https://chop-it.com',
   logo: 'https://chop-it.com/logo.webp',
   description:
-    'Chop it plans your week, writes the shop, and quietly coaches you toward more varied, plant-forward eating.',
+    'Chop it is the home of AI cooking: one place to keep recipes, plan the week, build the shop and cook.',
   // Instagram + X handles are noted as inactive — add them here when they go live.
   sameAs: ['https://chopit.app', 'https://www.tiktok.com/@chop_it'],
 };
