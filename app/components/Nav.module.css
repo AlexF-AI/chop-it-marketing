@@ -1,0 +1,137 @@
+/* Mobile drawer.
+ *
+ * Below 720px globals.css hides `.nav-links` outright, which left the site
+ * with no navigation at all on a phone — just the wordmark, the theme toggle
+ * and Get the app. This is that missing nav, built to the homepage design's
+ * left-drawer spec and shared by every route.
+ */
+
+.menuButton {
+  display: none;
+  width: 48px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--ink);
+  flex: none;
+}
+
+.menuButton:hover {
+  border-color: var(--ink-3);
+}
+
+/* Matches the breakpoint at which globals.css drops `.nav-links`. */
+@media (max-width: 720px) {
+  .menuButton {
+    display: flex;
+  }
+}
+
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 18, 15, 0.42);
+}
+
+.drawer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: min(308px, 86vw);
+  background: var(--ground);
+  border-right: 1px solid var(--line);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  margin-bottom: 10px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+
+.brandLogo {
+  display: block;
+  border-radius: 4px;
+}
+
+.close {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ink);
+  border-bottom: 1px solid var(--line-2);
+}
+
+.link:hover {
+  color: var(--accent-text);
+}
+
+.appearance {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  border-bottom: 1px solid var(--line-2);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  margin-top: 16px;
+  background: var(--ink);
+  color: var(--ground);
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.cta:hover {
+  color: var(--ground);
+  filter: brightness(1.15);
+}

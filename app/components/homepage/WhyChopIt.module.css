@@ -1,0 +1,61 @@
+.eyebrow {
+  margin-bottom: 20px;
+}
+
+.split {
+  margin-bottom: clamp(36px, 5vw, 60px);
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.step {
+  border-top: 1px solid var(--ink);
+  padding: 14px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stepNumber {
+  font-family: var(--ff-mono);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--ink-3);
+}
+
+.stepLabel {
+  font-family: var(--ff-mono);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.stepText {
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+/* Becomes a manual snap rail. It bleeds to the viewport edges so the cards can
+   run off-screen, but the negative margin is matched by the padding, so the
+   page itself never scrolls sideways. */
+@media (max-width: 900px) {
+  .steps {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin: 0 calc(-1 * var(--gutter));
+    padding: 0 var(--gutter) 4px;
+  }
+
+  .step {
+    flex: 0 0 66%;
+    scroll-snap-align: start;
+  }
+}

@@ -1,6 +1,12 @@
-import Home from './components/Home';
-import Pantry from './components/home/Pantry';
-import RecipeRail from './components/home/RecipeRail';
+import Footer from './components/Footer';
+import Nav from './components/Nav';
+import { FinalCTA } from './components/homepage/FinalCTA';
+import { Hero } from './components/homepage/Hero';
+import { InChatGPT } from './components/homepage/InChatGPT';
+import { OneLibrary } from './components/homepage/OneLibrary';
+import RecipeProof from './components/homepage/RecipeProof';
+import { RecipeToDinner } from './components/homepage/RecipeToDinner';
+import { WhyChopIt } from './components/homepage/WhyChopIt';
 import { APP_STORE_URL } from './lib/app-stores';
 import { serializeJsonLd, SITE_ORIGIN } from './lib/recipeSchema';
 
@@ -41,8 +47,6 @@ const MOBILE_APP_JSONLD = {
 };
 
 export default function Page() {
-  // The rail and the pantry block both query Supabase, so they stay server
-  // components and get handed into the otherwise-static page shell.
   return (
     <>
       <script
@@ -50,7 +54,18 @@ export default function Page() {
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(MOBILE_APP_JSONLD) }}
       />
-      <Home recipeRail={<RecipeRail />} pantry={<Pantry />} />
+      <Nav />
+      <main>
+        <Hero />
+        <WhyChopIt />
+        <OneLibrary />
+        <RecipeToDinner />
+        <InChatGPT />
+        {/* Server component — reads the featured recipes from Supabase. */}
+        <RecipeProof />
+        <FinalCTA />
+      </main>
+      <Footer />
     </>
   );
 }

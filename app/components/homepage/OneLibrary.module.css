@@ -1,0 +1,75 @@
+.eyebrow {
+  margin-bottom: 20px;
+}
+
+.intro {
+  margin-bottom: clamp(36px, 5vw, 56px);
+}
+
+.sources {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+
+/* A cropped source object beside the line it proves. No stock icons. */
+.source {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 18px;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.sourceThumb {
+  position: relative;
+  aspect-ratio: 1;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--surface-2);
+}
+
+.sourceThumbImage {
+  object-fit: cover;
+}
+
+.sourceCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.sourceLabel {
+  font-family: var(--ff-mono);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.sourceText {
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+.frame {
+  aspect-ratio: 4 / 5;
+}
+
+.shot {
+  object-fit: cover;
+  object-position: top;
+}
+
+.closing {
+  font-size: 17px;
+  line-height: 1.5;
+  margin-top: clamp(28px, 4vw, 44px);
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  max-width: 56ch;
+}
