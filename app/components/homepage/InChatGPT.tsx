@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { chatgptSection } from '@/app/lib/chatgpt';
-import { APP_STORE_URL, CHATGPT_URL } from '@/app/lib/app-stores';
+import { CHATGPT_URL } from '@/app/lib/app-stores';
 import shared from './shared.module.css';
 import styles from './InChatGPT.module.css';
 
@@ -17,9 +17,9 @@ export function InChatGPT() {
             Keep using the AI you already use.
           </h2>
           <p className={styles.body}>
-            Add the free Chop it plug-in to ChatGPT to search Chop it recipes,
-            create or import something new, plan a week and build the shop. Open
-            anything you want to keep in the iPhone app.
+            Use the free Chop it plug-in to find or create recipes, build a week
+            and turn it into one shopping list. Open anything you want to keep
+            in the iPhone app.
           </p>
           <a href={CHATGPT_URL} className={styles.cta}>
             Use Chop it in ChatGPT
@@ -83,23 +83,6 @@ export function InChatGPT() {
               </figcaption>
             </figure>
           ) : null}
-
-          <figure className={shared.figure}>
-            <div className={styles.directoryFrame}>
-              <Image
-                src="/screens/chatgpt-plugins-directory.jpeg"
-                alt="Searching Plugins in ChatGPT for Chop it"
-                width={1178}
-                height={1229}
-                loading="lazy"
-                sizes="(max-width: 1000px) 92vw, 42vw"
-                className={styles.directoryShot}
-              />
-            </div>
-            <figcaption className={styles.shotCaption}>
-              Plugins, search “Chop it”, enable
-            </figcaption>
-          </figure>
         </div>
       </div>
     </section>
