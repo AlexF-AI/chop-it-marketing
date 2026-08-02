@@ -30,7 +30,7 @@ export function RecipeToDinner() {
   const [active, setActive] = useState(0);
 
   return (
-    <section className={shared.section}>
+    <section id="how" className={shared.section}>
       <div className={shared.shellPadded}>
         <div className={`${shared.eyebrow} ${styles.eyebrow}`}>From recipe to dinner</div>
         <h2 className={`${shared.h2} ${styles.h2}`}>
