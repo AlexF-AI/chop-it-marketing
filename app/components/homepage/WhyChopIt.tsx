@@ -1,12 +1,19 @@
 import shared from './shared.module.css';
 import styles from './WhyChopIt.module.css';
 
-const STEPS = [
-  { n: '01', label: 'Ask', text: 'Start in ChatGPT or AI Chef.' },
-  { n: '02', label: 'Keep', text: 'Save the useful answer.' },
-  { n: '03', label: 'Plan', text: 'Put it into the week.' },
-  { n: '04', label: 'Shop', text: 'Combine every ingredient.' },
-  { n: '05', label: 'Cook', text: 'Follow it from the same library.' },
+const STATS = [
+  {
+    value: '66.8%',
+    text: 'of Britons have used AI tools for food-related activities.',
+  },
+  {
+    value: '75.9%',
+    text: 'would be comfortable with AI-recommended recipes.',
+  },
+  {
+    value: '63%',
+    text: 'cook from scratch at least a few times a week.',
+  },
 ];
 
 export function WhyChopIt() {
@@ -18,21 +25,40 @@ export function WhyChopIt() {
         <div className={`${shared.split} ${shared.splitEnd} ${styles.split}`}>
           <h2 className={shared.h2}>A good dinner idea should outlive the chat.</h2>
           <p className={shared.lede}>
-            Chop it keeps what AI creates, puts it beside the recipes you
-            already trust and turns the whole lot into a week you can shop and
-            cook.
+            Britons are already using AI for food, but dinner still happens in
+            a real kitchen. Chop it keeps the useful ideas and turns them into
+            a week you can shop and cook.
           </p>
         </div>
 
-        <div className={`${shared.rail} ${styles.steps}`}>
-          {STEPS.map((step) => (
-            <div key={step.n} className={styles.step}>
-              <span className={styles.stepNumber}>{step.n}</span>
-              <span className={styles.stepLabel}>{step.label}</span>
-              <span className={styles.stepText}>{step.text}</span>
+        <div className={styles.stats}>
+          {STATS.map((stat) => (
+            <div key={stat.value} className={styles.stat}>
+              <strong className={styles.statValue}>{stat.value}</strong>
+              <span className={styles.statText}>{stat.text}</span>
             </div>
           ))}
         </div>
+
+        <p className={styles.sources}>
+          Sources:{' '}
+          <a
+            href="https://www.askattest.com/blog/research/ai-in-the-kitchen-the-future-of-food-or-recipe-for-disaster"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Attest, AI in the food industry (2026)
+          </a>{' '}
+          and{' '}
+          <a
+            href="https://yougov.com/en-gb/articles/51613-how-people-in-the-uk-prefer-to-cook-from-scratch-or-meal-kits"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            YouGov Profiles (2025)
+          </a>
+          .
+        </p>
       </div>
     </section>
   );
