@@ -4,7 +4,7 @@ import styles from './FinalCTA.module.css';
 
 export function FinalCTA() {
   return (
-    <section className={shared.section}>
+    <section id="download" className={shared.section}>
       <div className={shared.shellPadded}>
         <div className={`${shared.eyebrow} ${styles.eyebrow}`}>Start this week</div>
         <h2 className={`${shared.h2} ${styles.h2}`}>
