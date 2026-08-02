@@ -54,7 +54,7 @@
 
 .statusBlocks {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 28px;
 }
 
@@ -119,28 +119,13 @@
   border-radius: 4px;
   overflow: hidden;
   background: #0f0d0c;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 3 / 4;
   display: flex;
 }
 
 .pluginShot {
   object-fit: cover;
   object-position: top;
-}
-
-/* The Plugins directory capture keeps its own height — it is a wide screenshot,
-   not a portrait product screen. */
-.directoryFrame {
-  border: 1px solid var(--line-inv);
-  border-radius: 4px;
-  overflow: hidden;
-  background: #ffffff;
-}
-
-.directoryShot {
-  display: block;
-  width: 100%;
-  height: auto;
 }
 
 .shotCaption {
@@ -150,4 +135,10 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--ink-2-inv);
+}
+
+@media (max-width: 640px) {
+  .statusBlocks {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
