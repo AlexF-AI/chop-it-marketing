@@ -57,7 +57,10 @@
 }
 
 .frame {
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 9 / 16;
+  width: min(100%, 460px);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .shot {

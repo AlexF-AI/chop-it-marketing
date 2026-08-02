@@ -70,6 +70,8 @@
    the section instead of leaving an empty frame on the first tab click. */
 .screens {
   display: grid;
+  width: min(100%, 440px);
+  justify-self: center;
 }
 
 .screen,
@@ -86,7 +88,7 @@
 }
 
 .frame {
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 9 / 16;
 }
 
 .shot {
@@ -99,6 +101,7 @@
 @media (max-width: 900px) {
   .screens {
     display: flex;
+    width: auto;
     overflow-x: auto;
     gap: 12px;
     scroll-snap-type: x mandatory;

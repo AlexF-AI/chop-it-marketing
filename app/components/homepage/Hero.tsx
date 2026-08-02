@@ -62,8 +62,8 @@ export function Hero() {
           <figcaption className={shared.caption}>In the app</figcaption>
           <div className={`${shared.frame} ${styles.frame}`}>
             <Image
-              src="/screens/this-week.jpeg"
-              alt="Chop it This week, showing tonight’s dinner and the rest of the week queued"
+              src="/screens/plan-the-week.webp"
+              alt="Chop it showing four dinners saved as a week"
               fill
               priority
               sizes="(max-width: 900px) 92vw, (max-width: 1240px) 30vw, 360px"

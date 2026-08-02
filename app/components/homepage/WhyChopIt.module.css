@@ -6,56 +6,70 @@
   margin-bottom: clamp(36px, 5vw, 60px);
 }
 
-.steps {
+.stats {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--line);
 }
 
-.step {
-  border-top: 1px solid var(--ink);
-  padding: 14px 0 0;
+.stat {
+  padding: clamp(22px, 3vw, 34px) clamp(18px, 3vw, 34px);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
+  border-left: 1px solid var(--line);
 }
 
-.stepNumber {
-  font-family: var(--ff-mono);
-  font-weight: 600;
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  color: var(--ink-3);
+.stat:first-child {
+  border-left: 0;
 }
 
-.stepLabel {
-  font-family: var(--ff-mono);
-  font-weight: 600;
-  font-size: 13px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+.statValue {
+  font-size: clamp(42px, 6vw, 68px);
+  line-height: 0.95;
+  letter-spacing: -0.055em;
+  color: var(--accent-text);
 }
 
-.stepText {
+.statText {
   font-size: 15px;
   line-height: 1.45;
   color: var(--ink-2);
+  max-width: 28ch;
 }
 
-/* Becomes a manual snap rail. It bleeds to the viewport edges so the cards can
-   run off-screen, but the negative margin is matched by the padding, so the
-   page itself never scrolls sideways. */
-@media (max-width: 900px) {
-  .steps {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    margin: 0 calc(-1 * var(--gutter));
-    padding: 0 var(--gutter) 4px;
+.sources {
+  margin: 16px 0 0;
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.sources a {
+  border-bottom: 1px solid var(--line);
+}
+
+.sources a:hover {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+
+@media (max-width: 720px) {
+  .stats {
+    grid-template-columns: minmax(0, 1fr);
   }
 
-  .step {
-    flex: 0 0 66%;
-    scroll-snap-align: start;
+  .stat {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .stat:first-child {
+    border-top: 0;
   }
 }
