@@ -26,7 +26,7 @@ const SOURCES = [
 
 export function OneLibrary() {
   return (
-    <section className={shared.section}>
+    <section id="ai-chef" className={shared.section}>
       <div className={shared.shellPadded}>
         <div className={`${shared.eyebrow} ${styles.eyebrow}`}>One library</div>
 
@@ -66,7 +66,7 @@ export function OneLibrary() {
             <div className={`${shared.frame} ${styles.frame}`}>
               <Image
                 src="/screens/app-thread.webp"
-                alt=""
+                alt="AI Chef finding recipes from a plain-language request"
                 fill
                 loading="lazy"
                 sizes="(max-width: 1000px) 92vw, 44vw"
