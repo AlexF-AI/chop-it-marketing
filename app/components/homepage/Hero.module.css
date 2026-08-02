@@ -65,7 +65,9 @@
 }
 
 .frame {
-  aspect-ratio: 3 / 4;
+  /* Both captures are genuinely tall product states. A 9:16 frame preserves
+     the request, most of the generated week and all four app meals. */
+  aspect-ratio: 9 / 16;
 }
 
 .shot {
@@ -112,7 +114,7 @@
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 640px) {
   .viz {
     grid-template-columns: minmax(0, 1fr);
   }
