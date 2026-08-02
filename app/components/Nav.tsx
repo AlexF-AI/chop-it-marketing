@@ -13,7 +13,7 @@ import styles from './Nav.module.css';
 // Homepage anchors are absolute (`/#why`) so they still resolve from
 // /recipes, /blog, /method and the legal pages.
 const LINKS = [
-  { href: '/#why', label: 'How it works' },
+  { href: '/#how', label: 'How it works' },
   { href: '/#chatgpt', label: 'In ChatGPT' },
   { href: '/recipes', label: 'Recipes' },
   { href: '/method', label: 'Our method' },
