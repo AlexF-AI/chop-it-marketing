@@ -22,6 +22,18 @@ const SOURCES = [
     src: '/screens/source-paste-a-link.webp',
     objectPosition: '58% 50%',
   },
+  {
+    label: 'Scan your shop',
+    text: 'Photograph a veg box or food shop and add it straight to your pantry.',
+    src: '/screens/source-scan-your-shop.webp',
+    objectPosition: '50% 50%',
+  },
+  {
+    label: 'Snap a dish',
+    text: 'Turn a restaurant dish into a recipe you can cook at home.',
+    src: '/screens/source-snap-a-dish.webp',
+    objectPosition: '50% 50%',
+  },
 ];
 
 export function OneLibrary() {
@@ -33,9 +45,11 @@ export function OneLibrary() {
         <div className={`${shared.split} ${shared.splitEnd} ${styles.intro}`}>
           <h2 className={shared.h2}>AI recipes meet the ones you already trust.</h2>
           <p className={shared.lede}>
-            Save a ChatGPT recipe, photograph a cookbook page or paste a link
-            from a website, TikTok or Instagram. Chop it gives each one metric
-            quantities, clear ingredients and a method you can actually follow.
+            Save a ChatGPT recipe, photograph a cookbook page, paste a link,
+            recreate a restaurant dish or scan a food shop into your pantry.
+            Chop it keeps everything organised and turns every recipe into
+            metric quantities, clear ingredients and a method you can actually
+            follow.
           </p>
         </div>
 
