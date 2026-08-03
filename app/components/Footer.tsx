@@ -21,7 +21,7 @@ export default function Footer() {
         <div className="footer-col">
           <div className="footer-col-h mono">Product</div>
           <Link href="/#ai-chef">AI Chef</Link>
-          <Link href="/#chatgpt">The ChatGPT plug-in</Link>
+          <Link href="/#chatgpt">Chop it in ChatGPT</Link>
           <Link href="/recipes">Recipes</Link>
           <Link href="/#download">Get the app</Link>
         </div>

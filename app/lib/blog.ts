@@ -36,53 +36,69 @@ export type BlogPostMeta = {
 
 export const BLOG_POSTS: BlogPostMeta[] = [
   {
+    slug: 'future-of-ai-cooking',
+    title: 'The Future of AI Cooking: From Chat to Kitchen',
+    description:
+      'AI can generate dinner ideas in seconds. The future is making those recipes persistent, structured and useful from chat through planning, shopping and cooking.',
+    datePublished: '2026-08-03',
+    dateModified: '2026-08-03',
+  },
+  {
+    slug: 'what-to-cook-with-a-veg-box',
+    title: 'What to Cook With a Veg Box (Without Wasting Half of It)',
+    description:
+      'Photograph your veg box, turn its contents into a pantry, and plan meals that use the fragile produce first. A practical way to waste less of every delivery.',
+    datePublished: '2026-08-03',
+    dateModified: '2026-08-03',
+  },
+  {
     slug: 'future-of-meal-prep-ai-customisation',
     title: 'The Future of Meal Prep: AI as the Customisation Layer',
     description:
-      'Meal prep tools spent twenty years handing every household the same plan. AI turns your constraints, spoken like a human, into a week you can cook and one shop you can buy.',
+      "AI meal planning turns a household's changing constraints into recipes, a practical weekly menu and one shopping list. Here is the customisation layer.",
     datePublished: '2026-07-23',
-    dateModified: '2026-07-23',
+    dateModified: '2026-08-03',
   },
   {
     slug: 'easy-summer-salads-this-weeks-dinners',
     title: '49 Easy Summer Salads to Cook This Week',
     description:
-      'A full week of easy summer salads that hold their own as dinner, each with ingredients and method, plus a one-tap shopping list for the whole lot in Chop It.',
+      'A full week of easy summer salads that hold their own as dinner, each with ingredients and method, plus a one-tap shopping list for the whole lot in Chop it.',
     datePublished: '2026-06-22',
-    dateModified: '2026-06-22',
+    dateModified: '2026-08-03',
     menuShareCode: 'MDSAP7JV',
   },
   {
     slug: 'how-to-meal-plan-for-the-week',
-    title: 'How to Meal Plan for the Week (A Simple System That Sticks)',
+    title: 'How to Meal Plan for the Week (A System That Sticks)',
     description:
       'A meal-planning method that survives a real week: pick 4–5 dinners, write one merged shopping list, shop once. Plus how to keep the habit going.',
     datePublished: '2026-06-16',
-    dateModified: '2026-07-23',
+    dateModified: '2026-08-03',
   },
   {
     slug: 'how-to-reduce-food-waste-at-home',
-    title: 'How to Reduce Food Waste at Home (A Practical UK Guide)',
+    title: 'How to Reduce Food Waste at Home (UK Guide)',
     description:
-      'UK households bin about £14bn of food a year, mostly from shopping without a plan. The four habits that cut the most waste, and the money, at home.',
+      'UK households throw away food worth £17bn a year. These practical habits make ingredients easier to use before they reach the bin.',
     datePublished: '2026-06-16',
-    dateModified: '2026-07-23',
+    dateModified: '2026-08-03',
   },
   {
     slug: 'how-much-fibre-do-you-need-a-day',
     title: 'How Much Fibre Do You Need a Day? (And How to Eat It)',
     description:
-      'The UK target is 30g of fibre a day; most adults get about 20g and only ~9% hit it. The simple swaps that close the gap without counting grams.',
+      'The UK target is 30g of fibre a day, yet 96% of adults fall short. These simple swaps help close the gap without counting every gram.',
     datePublished: '2026-06-16',
-    dateModified: '2026-07-23',
+    dateModified: '2026-08-03',
   },
   {
     slug: 'why-chatgpt-changes-home-cooking-and-grocery-shopping',
-    title: 'Why ChatGPT Is About to Change How Britain Cooks and Shops for Food',
+    title: 'How ChatGPT Will Change Cooking and Grocery Shopping',
     description:
-      "Online grocery digitised delivery and left the decision of what to cook untouched. Why conversational AI is the missing layer, and how it changes the weekly shop.",
+      'ChatGPT can plan meals and draft a grocery list. The useful future connects that conversation to reliable recipes, one library and the weekly shop.',
     datePublished: '2026-05-31',
-    dateModified: '2026-07-23',
+    dateModified: '2026-08-03',
   },
   {
     slug: 'how-to-eat-30-plants-a-week',
@@ -90,15 +106,15 @@ export const BLOG_POSTS: BlogPostMeta[] = [
     description:
       "What the 30-plants-a-week gut-health rule means, what counts (herbs, spices, nuts and coffee all do), and how to hit it without a spreadsheet.",
     datePublished: '2026-05-31',
-    dateModified: '2026-07-23',
+    dateModified: '2026-08-03',
   },
   {
     slug: 'best-meal-planning-apps-uk-2026',
     title: 'Best Meal Planning Apps in the UK for 2026',
     description:
-      'We compare Good Food, Paprika, Samsung Food, Mealime, AnyList, Mob and Chop It, ranked by the job you want done, from biggest recipe library to most variety.',
+      'We compare Good Food, Paprika, Samsung Food, Mealime, AnyList, Mob and Chop it by the job you need done, from recipe discovery to keeping every recipe together.',
     datePublished: '2026-05-29',
-    dateModified: '2026-07-23',
+    dateModified: '2026-08-03',
   },
 ];
 

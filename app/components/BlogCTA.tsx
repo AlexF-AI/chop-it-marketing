@@ -58,11 +58,12 @@ export function BlogCTAButtons({ className = 'blog-cta-row' }: { className?: str
 export default function BlogCTA() {
   if (!CHATGPT_LIVE && !IOS_LIVE) return null;
   return (
-    <aside className="blog-cta" aria-label="Try Chop It">
-      <h2 className="blog-cta-h">Put this into practice this week</h2>
+    <aside className="blog-cta" aria-label="Try Chop it">
+      <h2 className="blog-cta-h">Keep the good ideas</h2>
       <p className="blog-cta-sub">
-        Chop It works inside ChatGPT: plan the week in a conversation and get one consolidated
-        shopping list. Everything you save is waiting in the iPhone app.
+        Create or find a recipe with Chop it in ChatGPT, then open anything you want to keep in
+        the iPhone app alongside recipes from cookbooks, websites and social. Plan the week, build
+        one shopping list and cook from the same library.
       </p>
       <BlogCTAButtons />
     </aside>

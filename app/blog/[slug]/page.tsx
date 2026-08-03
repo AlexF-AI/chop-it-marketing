@@ -121,7 +121,9 @@ export default async function BlogArticlePage({
     description: post.description,
     datePublished: new Date(`${post.datePublished}T00:00:00Z`).toISOString(),
     dateModified: new Date(`${post.dateModified}T00:00:00Z`).toISOString(),
-    author: { '@type': 'Organization', name: BLOG_AUTHOR, url: SITE_ORIGIN },
+    author: post.menuShareCode
+      ? { '@type': 'Organization', name: BLOG_AUTHOR, url: SITE_ORIGIN }
+      : { '@type': 'Person', name: 'Alex Fahey' },
     publisher: {
       '@type': 'Organization',
       name: BLOG_AUTHOR,
@@ -129,7 +131,7 @@ export default async function BlogArticlePage({
       logo: { '@type': 'ImageObject', url: `${SITE_ORIGIN}/logo.webp` },
     },
     mainEntityOfPage: url,
-    image: `${SITE_ORIGIN}/logo.webp`,
+    image: `${url}/opengraph-image`,
   };
 
   // Menu-backed interactive post (e.g. "This week's dinners").
@@ -149,7 +151,7 @@ export default async function BlogArticlePage({
             <SummerSaladsArticle
               recipes={menu.recipes}
               menuUrl={menuUrl}
-              datePublished={post.datePublished}
+              dateModified={post.dateModified}
             />
           </div>
         </main>

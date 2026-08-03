@@ -10,7 +10,7 @@ import { buildBreadcrumbJsonLd, serializeJsonLd, SITE_ORIGIN } from '@/app/lib/r
 
 const BLOG_TITLE = 'Blog · Chop it';
 const BLOG_DESCRIPTION =
-  'Guides and comparisons on meal planning, eating with more variety, and wasting less food — from the team building Chop it.';
+  'Guides to cooking with AI, keeping recipes in one place, planning the week, shopping once and making better use of the food you already have.';
 
 export const metadata: Metadata = {
   title: BLOG_TITLE,
@@ -69,7 +69,8 @@ export default function BlogIndexPage() {
             <div className="kicker mono">— BLOG</div>
             <h1 className="h-editorial">Blog</h1>
             <p className="lead">
-              Guides on planning the week, eating with more variety, and wasting less.
+              Guides to AI cooking, saving good ideas, planning the week and making better use of
+              what you have.
             </p>
           </div>
 

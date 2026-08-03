@@ -13,7 +13,7 @@ import type { FullMenuRecipe } from '@/app/lib/menuRecipes';
 type Props = {
   recipes: FullMenuRecipe[];
   menuUrl: string;
-  datePublished: string;
+  dateModified: string;
 };
 
 function formatDate(iso: string): string {
@@ -25,7 +25,7 @@ function formatDate(iso: string): string {
   });
 }
 
-export default function SummerSaladsArticle({ recipes, menuUrl, datePublished }: Props) {
+export default function SummerSaladsArticle({ recipes, menuUrl, dateModified }: Props) {
   return (
     <article className="salad-article">
       <header className="salad-hero">
@@ -39,10 +39,10 @@ export default function SummerSaladsArticle({ recipes, menuUrl, datePublished }:
         </p>
         <div className="salad-hero-cta">
           <Link className="btn btn-primary" href={menuUrl}>
-            Get the shopping list in Chop It
+            Get the shopping list in Chop it
           </Link>
           <span className="salad-hero-meta mono">
-            Updated {formatDate(datePublished)} · Shopping list ready
+            Updated {formatDate(dateModified)} · Shopping list ready
           </span>
         </div>
       </header>
@@ -58,7 +58,7 @@ export default function SummerSaladsArticle({ recipes, menuUrl, datePublished }:
         <p>
           The shopping is the annoying part of cooking from a list like this. This many recipes
           runs to a few hundred ingredients, half of them overlapping. So the lazy version is built
-          in: choose the salads you want in Chop It and it merges everything into one shopping
+          in: choose the salads you want in Chop it and it merges everything into one shopping
           list, deduped and sorted by aisle. Reading the recipes below needs no app. The app saves
           you copying them out by hand.
         </p>
@@ -69,13 +69,13 @@ export default function SummerSaladsArticle({ recipes, menuUrl, datePublished }:
       <section className="salad-outro">
         <h2 className="salad-outro-h">Send the whole list to your phone</h2>
         <p>
-          Open the menu in Chop It and the week becomes one shopping list: quantities added up
+          Open the menu in Chop it and the week becomes one shopping list: quantities added up
           across salads, duplicates merged, everything grouped by aisle so you are not doubling
           back for a second bunch of mint. Tick things off as you shop, then pull up the method for
           whichever salad you are making that night.
         </p>
         {/* Standard end-of-article dual CTA (ChatGPT primary + App Store
-            secondary). The in-article "Cook this in Chop It" menu link above
+            secondary). The in-article "Cook this in Chop it" menu link above
             the explorer still carries the menu deep-link. */}
         <BlogCTAButtons className="salad-outro-cta" />
         <p className="salad-pin mono">📌 Pin this for the week</p>
