@@ -8,6 +8,7 @@ import Breadcrumbs, { type Crumb } from '@/app/components/Breadcrumbs';
 import Footer from '@/app/components/Footer';
 import Nav from '@/app/components/Nav';
 import SummerSaladsArticle from '@/app/components/SummerSaladsArticle';
+import { ALEX_FAHEY } from '@/app/lib/authors';
 import { BLOG_AUTHOR, getAllPostsMeta, getPostBody, getPostMeta } from '@/app/lib/blog';
 import { isoDuration } from '@/app/lib/iso';
 import { getMenuRecipesFull, type FullMenuRecipe } from '@/app/lib/menuRecipes';
@@ -75,10 +76,14 @@ export async function generateMetadata({
   if (!post) return { title: 'Article not found · Chop it' };
 
   const url = `${SITE_ORIGIN}/blog/${post.slug}`;
+  const author = post.menuShareCode
+    ? { name: BLOG_AUTHOR, url: SITE_ORIGIN }
+    : { name: ALEX_FAHEY.name, url: ALEX_FAHEY.url };
   return {
     title: `${post.title} · Chop it`,
     description: post.description,
     alternates: { canonical: url },
+    authors: [author],
     openGraph: {
       title: post.title,
       description: post.description,
@@ -86,6 +91,7 @@ export async function generateMetadata({
       type: 'article',
       publishedTime: new Date(`${post.datePublished}T00:00:00Z`).toISOString(),
       modifiedTime: new Date(`${post.dateModified}T00:00:00Z`).toISOString(),
+      authors: [author.name],
     },
     twitter: {
       card: 'summary_large_image',
@@ -123,7 +129,12 @@ export default async function BlogArticlePage({
     dateModified: new Date(`${post.dateModified}T00:00:00Z`).toISOString(),
     author: post.menuShareCode
       ? { '@type': 'Organization', name: BLOG_AUTHOR, url: SITE_ORIGIN }
-      : { '@type': 'Person', name: 'Alex Fahey' },
+      : {
+          '@type': 'Person',
+          '@id': `${ALEX_FAHEY.url}#person`,
+          name: ALEX_FAHEY.name,
+          url: ALEX_FAHEY.url,
+        },
     publisher: {
       '@type': 'Organization',
       name: BLOG_AUTHOR,

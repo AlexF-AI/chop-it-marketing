@@ -1,6 +1,6 @@
 # The Future of Meal Prep: AI as the Customisation Layer
 
-*By Alex Fahey, founder of Chop it. Last updated 3 August 2026.*
+*By [Alex Fahey](/author/alex-fahey), founder of Chop it. Last updated 3 August 2026.*
 
 **Short answer:** meal prep is about to stop being one-size-fits-all. For twenty years the tools handed every household the same plan, the same recipe database, the same "7-day clean eating" PDF, and left you the hard part: adapting it to your household, your fridge and your tastes. AI moves that work to the machine. Say "five dinners under 30 minutes, no fish, the kids won't touch mushrooms" and get a real plan with a real shopping list back, and customisation turns from a premium feature into the default. That is the layer AI adds to meal prep.
 

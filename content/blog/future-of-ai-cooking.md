@@ -1,6 +1,6 @@
 # The Future of AI Cooking: From Chat to Kitchen
 
-*By Alex Fahey, founder of Chop it. Published 3 August 2026.*
+*By [Alex Fahey](/author/alex-fahey), founder of Chop it. Published 3 August 2026.*
 
 **Short answer:** the future of AI cooking is not a machine inventing endless recipes. We already have that. The useful change is what happens after the answer: a recipe becomes structured, joins the recipes you already trust, fits the week, contributes to one shopping list and stays readable at the hob. AI will be the conversational front door to cooking. A permanent recipe library will make the conversation useful.
 

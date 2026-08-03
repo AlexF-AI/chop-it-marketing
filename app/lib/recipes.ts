@@ -414,31 +414,33 @@ export async function getDistinctCostBands(): Promise<string[]> {
   return Array.from(new Set(data.map((r) => r.cost_band as string))).sort();
 }
 
-// One-shot fetch for the recipes sitemap. Returns just the slug list now
-// — the tag/cuisine/season maps the previous shape carried are no longer
-// emitted because the free-text /recipes/tag and /recipes/season routes
-// were retired (curated taxonomies live in app/lib/collections.ts and
-// app/lib/cuisines.ts, with fixed lastmod = now).
+// One-shot fetch for the recipes sitemap. Returns each canonical slug, its
+// real last-modified value and its primary image. The curated cuisine and
+// collection routes are added by the sitemap route itself.
 export type RecipesSitemapData = {
-  recipes: { slug: string; updated_at: string }[];
+  recipes: { slug: string; updated_at: string; image_url: string | null }[];
 };
 
 export async function getRecipesSitemapData(): Promise<RecipesSitemapData> {
   if (!supabase || !supabaseConfigured) return { recipes: [] };
-  const rows = await fetchAllPaged<{ slug: string | null; updated_at: string }>(
+  const rows = await fetchAllPaged<{
+    slug: string | null;
+    updated_at: string;
+    image_url: string | null;
+  }>(
     (from, to) =>
       supabase!
         .from('recipes_published')
-        .select('slug, updated_at')
+        .select('slug, updated_at, image_url')
         .eq('seo_published', true)
         .is('deleted_at', null)
         .not('slug', 'is', null)
         .range(from, to),
   );
-  const recipes: { slug: string; updated_at: string }[] = [];
+  const recipes: RecipesSitemapData['recipes'] = [];
   for (const r of rows) {
     if (typeof r.slug !== 'string') continue;
-    recipes.push({ slug: r.slug, updated_at: r.updated_at });
+    recipes.push({ slug: r.slug, updated_at: r.updated_at, image_url: r.image_url ?? null });
   }
   return { recipes };
 }

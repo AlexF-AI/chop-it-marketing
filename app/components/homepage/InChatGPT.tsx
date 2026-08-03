@@ -17,7 +17,7 @@ export function InChatGPT() {
             Keep using the AI you already use.
           </h2>
           <p className={styles.body}>
-            Use the free Chop it plug-in to find or create recipes, build a week
+            Use Chop it free in ChatGPT to find or create recipes, build a week
             and turn it into one shopping list. Open anything you want to keep
             in the iPhone app.
           </p>

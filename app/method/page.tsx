@@ -81,8 +81,8 @@ export default function MethodPage() {
         <aside className="method-aside" aria-label="Try Chop it">
           <h2 className="method-aside-h">Put this into practice this week</h2>
           <p className="method-aside-p">
-            Chop it works as a plug-in inside ChatGPT: plan the week in a conversation and get one
-            consolidated shopping list. Everything you save is waiting in the iPhone app.
+            Use Chop it inside ChatGPT to plan the week in a conversation and get one consolidated
+            shopping list. Open any result you want to keep in the iPhone app.
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
             <StoreLink
@@ -90,10 +90,10 @@ export default function MethodPage() {
               href={CHATGPT_URL}
               location="download_cta"
               surface="homepage_secondary"
-              label="Add the ChatGPT plug-in"
+              label="Use Chop it in ChatGPT"
               className="cta-solid"
             >
-              Add the ChatGPT plug-in
+              Use Chop it in ChatGPT
             </StoreLink>
             <StoreLink
               destination="app_store"

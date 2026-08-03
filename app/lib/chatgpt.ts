@@ -1,7 +1,7 @@
 /**
  * The ChatGPT section's content config.
  *
- * The plug-in itself is live and must never carry a "Coming soon" label. What
+ * Chop it in ChatGPT is live and must never carry a "Coming soon" label. What
  * is not live is the account connection, personal-library/pantry access in the
  * conversation, and the rich recipe carousels.
  *
@@ -38,7 +38,7 @@ export type PluginShot = {
  */
 const PLUGIN_SHOT_UNAUTHED: PluginShot = {
   src: '/screens/chatgpt-shopping-list.jpeg',
-  alt: 'The Chop it plug-in in ChatGPT combining the week into one shopping list',
+  alt: 'Chop it in ChatGPT combining the week into one shopping list',
   width: 1179,
   height: 1568,
 };

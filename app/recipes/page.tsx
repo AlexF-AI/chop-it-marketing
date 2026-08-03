@@ -26,14 +26,9 @@ type SearchParams = {
   cost?: string;
 };
 
-// H5 + faceted-nav SEO: anything beyond the canonical /recipes view should
-// be noindex,follow — pagination (?page=2+) and any filter narrowing
-// (?cuisine=…, ?season=…, ?cost=…). The canonical for those filtered views
-// is the dedicated taxonomy page (/recipes/cuisine/<x>) when one exists.
-//
-// Search (?q=…) is the exception: it gets its own metadata branch with
-// index,follow (or noindex when zero results) so see generateMetadata
-// below.
+// Anything beyond the canonical /recipes view is noindex,follow: pagination,
+// filter narrowing and arbitrary on-site search results. Curated cuisine and
+// collection routes carry the indexable category intent instead.
 function isCanonicalHubView(sp: SearchParams): boolean {
   const page = Number.parseInt(sp.page ?? '1', 10) || 1;
   if (page > 1) return false;
@@ -41,9 +36,7 @@ function isCanonicalHubView(sp: SearchParams): boolean {
   return true;
 }
 
-// Build a canonical search URL. Avoids URLSearchParams's `+` encoding for
-// spaces — encodeURIComponent uses %20, which matches what the form
-// submission produces and what we set as the alternates.canonical.
+// Build the visible search-results URL used by SearchResultsPage JSON-LD.
 function searchUrl(query: string): string {
   return `${SITE_ORIGIN}/recipes?q=${encodeURIComponent(query)}`;
 }
@@ -57,39 +50,32 @@ export async function generateMetadata({
   const q = sp.q?.trim() ?? '';
 
   if (q) {
-    // We have to run the search once here just to get total_count for the
-    // index/noindex decision and the description. Next caches the RPC at
-    // the route ISR level so the duplicate call inside the page body is a
-    // no-op.
-    const { total } = await searchPublicRecipes(q, { perPage: PER_PAGE });
-    const canonical = searchUrl(q);
+    const title = `"${q}" recipes | Chop it`;
+    const description = `Search results for "${q}" in the Chop it recipe library.`;
     return {
-      title: `"${q}" recipes | Chop it`,
-      description: `${total} recipes matching "${q}" — cooking inspiration from Chop it.`,
-      alternates: { canonical },
+      title,
+      description,
+      alternates: { canonical: `${SITE_ORIGIN}/recipes` },
       openGraph: {
-        title: `"${q}" recipes · Chop it`,
-        description: `${total} recipes matching "${q}".`,
-        url: canonical,
+        title,
+        description,
+        url: searchUrl(q),
         type: 'website',
       },
-      robots:
-        total === 0
-          ? { index: false, follow: true }
-          : { index: true, follow: true },
+      robots: { index: false, follow: true },
     };
   }
 
   const canonical = isCanonicalHubView(sp);
   const base: Metadata = {
-    title: 'Recipes · Chop it',
+    title: 'Recipes for UK kitchens | Chop it',
     description:
-      'Browse chef-approved recipes. Sorted by season, scored by diversity.',
+      'Browse dinner recipes built for UK kitchens, with metric quantities, familiar ingredient names and clear methods for planning and cooking the week.',
     alternates: { canonical: `${SITE_ORIGIN}/recipes` },
     openGraph: {
-      title: 'Recipes · Chop it',
+      title: 'Recipes for UK kitchens | Chop it',
       description:
-        'Browse chef-approved recipes. Sorted by season, scored by diversity.',
+        'Browse dinner recipes built for UK kitchens, with metric quantities, familiar ingredient names and clear methods.',
       url: `${SITE_ORIGIN}/recipes`,
       type: 'website',
     },
@@ -188,12 +174,12 @@ export default async function RecipesHubPage({
         <div className="section-head">
           <div className="kicker mono">— EVERY RECIPE</div>
           <h1 className="h-editorial">
-            {searchMode ? `Recipes matching "${q}"` : 'Recipes'}
+            {searchMode ? `Recipes matching "${q}"` : 'Recipes for UK kitchens'}
           </h1>
           <p className="lead">
             {searchMode
               ? `${resultTotal} ${resultTotal === 1 ? 'recipe' : 'recipes'} matching "${q}".`
-              : `Browse ${total} chef-approved recipes. Sorted by season, scored by diversity.`}
+              : `Browse ${total} dinner recipes with metric quantities, familiar ingredient names and clear methods.`}
           </p>
         </div>
 

@@ -1,6 +1,6 @@
 # How to Reduce Food Waste at Home (UK Guide)
 
-*By Alex Fahey, founder of Chop it. Last updated 3 August 2026.*
+*By [Alex Fahey](/author/alex-fahey), founder of Chop it. Last updated 3 August 2026.*
 
 **Short answer:** UK households throw away food worth **£17 billion a year**, and much of it was bought to be eaten. Four dull fixes make a real difference: check what you have, plan a few meals before you shop, store food so it lasts and cook the fragile ingredients first. The point is not a perfect zero-waste kitchen. It is giving more of the food you buy a clear route to dinner.
 

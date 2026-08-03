@@ -1,6 +1,6 @@
 # What to Cook With a Veg Box (Without Wasting Half of It)
 
-*By Alex Fahey, founder of Chop it. Published 3 August 2026.*
+*By [Alex Fahey](/author/alex-fahey), founder of Chop it. Published 3 August 2026.*
 
 **Short answer:** unpack the box, identify the vegetables, cook leafy greens and anything bruised first, leave roots and squash until later, and plan four or five meals that share the contents. Chop it can shorten the awkward bit: photograph the open veg box, confirm what the scan found, add it to your pantry and find or create recipes around those ingredients. The final shopping list then contains the extras you need, not another round of vegetables.
 

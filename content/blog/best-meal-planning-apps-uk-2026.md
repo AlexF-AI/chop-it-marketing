@@ -1,10 +1,12 @@
 # Best Meal Planning Apps in the UK for 2026
 
-*By Alex Fahey, founder of Chop it. Yes, one of the apps below is mine, so read that entry with this interest in mind. Last updated 3 August 2026. Feature descriptions were reviewed against product pages on 3 August; quoted prices were checked on 29 May. They change, so treat prices as examples and check before buying.*
+*By [Alex Fahey](/author/alex-fahey), founder of Chop it. Yes, one of the apps below is mine, so read that entry with this interest in mind. Last updated 3 August 2026. Feature descriptions were reviewed against product pages on 3 August; quoted prices were checked on 29 May. They change, so treat prices as examples and check before buying.*
 
 **Short answer:** **Good Food** (formerly BBC Good Food) wins on library size and trust. **Paprika** wins on no-subscription recipe ownership. **Samsung Food** is a strong free cross-platform planner with shopping lists. **Mealime** is built around quick dinners. If you cook with AI and want those recipes kept beside cookbook pages, website recipes and social saves, **Chop it** is built for that job.
 
 These apps solve different problems, so no single one wins outright. This guide ranks them by the job you are trying to do.
+
+Being useful in a UK kitchen is more than adding "UK" to a title. Chop it uses metric quantities, familiar ingredient names and a grocery handoff available here. Its main difference is still the library: AI recipes can live beside cookbook pages, websites and social saves.
 
 ---
 

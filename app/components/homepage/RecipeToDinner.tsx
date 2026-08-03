@@ -7,12 +7,6 @@ import styles from './RecipeToDinner.module.css';
 
 const FEATURES = [
   {
-    label: 'Plan the week',
-    text: 'Choose dinners from any mix of Chop it recipes and your own saves. Move them around until the week works.',
-    src: '/screens/plan-the-week.webp',
-    caption: 'A week of dinners, ready to use',
-  },
-  {
     label: 'Shop once',
     text: 'Every ingredient becomes one list, combined by aisle and checked against what you already have. Send it to Whisk when you are ready to buy.',
     src: '/screens/shop-once.webp',
@@ -32,9 +26,9 @@ export function RecipeToDinner() {
   return (
     <section id="how" className={shared.section}>
       <div className={shared.shellPadded}>
-        <div className={`${shared.eyebrow} ${styles.eyebrow}`}>From recipe to dinner</div>
+        <div className={`${shared.eyebrow} ${styles.eyebrow}`}>From plan to dinner</div>
         <h2 className={`${shared.h2} ${styles.h2}`}>
-          One week. One shop. One place to cook.
+          One shop. One place to cook.
         </h2>
 
         <div className={`${shared.split} ${shared.splitStart}`}>

@@ -3,54 +3,65 @@
 // export the canonical set (default, generateMetadata, generateStaticParams,
 // revalidate, …) — any other named export is rejected at build time.
 //
-// Placeholder intro copy is the v1 stub; Vita rewrites later. Slugs match
-// the curated tags_json._catalog.segments[] values produced by the
-// offline catalog pass.
+// Slugs match the curated tags_json._catalog.segments[] values produced by
+// the offline catalog pass. Names and introductions are written for the
+// search intent each page serves, while keeping the copy useful on-page.
 
 export const COLLECTION_META: Record<string, { name: string; intro: string }> = {
   bbq_szn: {
-    name: 'BBQ Season',
-    intro: 'Charcoal, smoke, and the rest of summer — placeholder copy, awaiting Vita.',
+    name: 'BBQ recipes',
+    intro:
+      'Find BBQ recipes for a proper British summer, from charred chicken and smoky vegetables to burgers, skewers and easy sides for cooking outdoors.',
   },
   quick: {
-    name: 'Quick Weeknight Dinners',
-    intro: '30 minutes or under, no compromise — placeholder copy, awaiting Vita.',
+    name: 'Quick dinner recipes',
+    intro:
+      'Quick dinner recipes for busy weeknights, with clear methods, familiar ingredients and meals you can get on the table in 30 minutes or less.',
   },
   batch: {
-    name: 'Batch & Freezer',
-    intro: 'Cook once, eat well all week — placeholder copy, awaiting Vita.',
+    name: 'Batch cooking recipes',
+    intro:
+      'Batch cooking recipes that make several portions, freeze well and turn one session in the kitchen into easier dinners later in the week.',
   },
   comfort: {
-    name: 'Comfort Classics',
-    intro: 'The food you actually want to eat — placeholder copy, awaiting Vita.',
+    name: 'Comfort food recipes',
+    intro:
+      'Comfort food recipes for the nights that call for pies, pasta bakes, curries, stews and the familiar dinners everyone is pleased to see.',
   },
   puds: {
-    name: 'Puds & Desserts',
-    intro: 'End the week on a high — placeholder copy, awaiting Vita.',
+    name: 'Pudding and dessert recipes',
+    intro:
+      'Pudding and dessert recipes for finishing dinner properly, from fruit crumbles and baked classics to chocolate puddings and simple weekend treats.',
   },
   tray_bake: {
-    name: 'Traybakes',
-    intro: 'One tin, minimal washing up — placeholder copy, awaiting Vita.',
+    name: 'Traybake recipes',
+    intro:
+      'Easy traybake recipes with the main ingredients cooked together in one tin. Expect clear timings, plenty of weeknight options and less washing up.',
   },
   fodmap: {
-    name: 'Low-FODMAP',
-    intro: 'Gut-friendly without sacrificing flavour — placeholder copy, awaiting Vita.',
+    name: 'Low-FODMAP dinner recipes',
+    intro:
+      'Low-FODMAP dinner recipes built around satisfying meals, clear ingredients and practical swaps. Always follow your own tolerances and clinical advice.',
   },
   healthy: {
-    name: 'Lighter & Brighter',
-    intro: 'Good food that still tastes like dinner — placeholder copy, awaiting Vita.',
+    name: 'Healthy dinner recipes',
+    intro:
+      'Healthy dinner recipes that still feel like dinner, with vegetables, fibre and useful protein alongside the flavour and comfort that make a meal worth cooking.',
   },
   high_protein: {
-    name: 'High Protein',
-    intro: 'Strong meals for stronger weeks — placeholder copy, awaiting Vita.',
+    name: 'High-protein dinner recipes',
+    intro:
+      'High-protein dinner recipes with clear per-serving nutrition, from chicken and fish to vegetarian meals built around beans, lentils, eggs and dairy.',
   },
   one_pot: {
-    name: 'One Pot',
-    intro: 'Everything in, nothing to scrub — placeholder copy, awaiting Vita.',
+    name: 'One-pot recipes',
+    intro:
+      'One-pot recipes for stews, curries, pasta and rice dishes that keep the method simple, build flavour in one pan and leave less washing up.',
   },
   kid_friendly: {
-    name: 'Kid Friendly',
-    intro: "Crowd-pleasers that won't bore the adults — placeholder copy, awaiting Vita.",
+    name: 'Family-friendly dinner recipes',
+    intro:
+      'Family-friendly dinner recipes that work for children without boring the adults, with approachable flavours, flexible toppings and easy ways to adjust a plate.',
   },
 };
 

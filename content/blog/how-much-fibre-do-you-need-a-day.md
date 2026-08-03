@@ -1,6 +1,6 @@
 # How Much Fibre Do You Need a Day? (And How to Eat It)
 
-*By Alex Fahey, founder of Chop it. Last updated 3 August 2026.*
+*By [Alex Fahey](/author/alex-fahey), founder of Chop it. Last updated 3 August 2026.*
 
 **Short answer:** UK health guidelines recommend adults eat **30g of fibre a day**. Most of us fall short. In the latest National Diet and Nutrition Survey, **96% of adults did not meet the recommendation**. A few deliberate swaps help close the gap: wholegrains in place of white, beans and lentils in more meals, fruit and veg with skins on, and a handful of nuts or seeds. The foods that raise your fibre are the same ones that add plant variety, so the two goals pull in the same direction.
 

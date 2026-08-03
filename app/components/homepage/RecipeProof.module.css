@@ -13,6 +13,24 @@
   margin-bottom: clamp(32px, 4vw, 48px);
 }
 
+.methodCopy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.methodLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding-top: 4px;
+  border-bottom: 1px solid var(--line);
+  font-size: 16px;
+  font-weight: 600;
+}
+
 .rail {
   display: flex;
   gap: 12px;
