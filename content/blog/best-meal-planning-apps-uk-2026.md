@@ -1,8 +1,8 @@
 # Best Meal Planning Apps in the UK for 2026
 
-*By Alex Fahey, founder of Chop It. Yes, one of the apps below is mine, so read the Chop It entry with that in mind; I've tried to be straight about the others. Last updated 23 July 2026. Prices and features checked against the App Store, Google Play and product pages on 29 May 2026. Prices change and some apps test regional pricing, so treat these figures as current UK examples.*
+*By Alex Fahey, founder of Chop it. Yes, one of the apps below is mine, so read that entry with this interest in mind. Last updated 3 August 2026. Feature descriptions were reviewed against product pages on 3 August; quoted prices were checked on 29 May. They change, so treat prices as examples and check before buying.*
 
-**Short answer:** **Good Food** (formerly BBC Good Food) wins on library size and trust. **Paprika** wins on no-subscription ownership. **Samsung Food** is the best free cross-platform planner with shopping lists. **Mealime** delivers 30-minute dinners with a clean shopping list. If your problem is eating with more variety without dropping the food you like, or cooking from what is in your fridge, **Chop It** was built for that, and it is the newest app here.
+**Short answer:** **Good Food** (formerly BBC Good Food) wins on library size and trust. **Paprika** wins on no-subscription recipe ownership. **Samsung Food** is a strong free cross-platform planner with shopping lists. **Mealime** is built around quick dinners. If you cook with AI and want those recipes kept beside cookbook pages, website recipes and social saves, **Chop it** is built for that job.
 
 These apps solve different problems, so no single one wins outright. This guide ranks them by the job you are trying to do.
 
@@ -10,15 +10,15 @@ These apps solve different problems, so no single one wins outright. This guide 
 
 ## Quick answers
 
-- **Best big recipe library:** Good Food. 17,000+ triple-tested recipes, a brand most UK kitchens know.
+- **Best big recipe library:** Good Food. A large catalogue of tested recipes from a brand most UK kitchens know.
 - **Best no-subscription app:** Paprika. Pay once and the recipes stay yours.
 - **Best free planner with shopping lists:** Samsung Food (formerly Whisk). Free core on web, iOS and Android.
 - **Best for quick weeknight dinners:** Mealime. 30-minute recipes, aisle-sorted grocery list, usable free tier.
 - **Best for shared household lists:** AnyList. List-sharing is the heart of the product.
 - **Best modern British cooking:** Mob. Strong originals and a clear point of view.
 - **Best for calorie and macro targets:** Eat This Much. Builds plans to hit a calorie goal.
-- **Best for eating more variety and using what you have:** Chop It. Scores the variety of your week and plans dinner around what's in your fridge. UK-built, new.
-- **Free to start, no card needed:** Tasty, Samsung Food, Mealime, AnyList and Chop It.
+- **Best for keeping AI and saved recipes together:** Chop it. One library for AI recipes, cookbook pages, websites and social saves, with planning and shopping built in.
+- **Free to start, no card needed:** Tasty, Samsung Food, Mealime, AnyList and Chop it.
 
 ---
 
@@ -33,8 +33,8 @@ These apps solve different problems, so no single one wins outright. This guide 
 | One shared shopping list the household edits                     | AnyList           | Shared lists are the core feature                                   |
 | Modern British recipes and video-led cooking                     | Mob               | Original, well-shot recipes with a clear point of view              |
 | To hit a calorie or macro target                                 | Eat This Much     | Generates plans against a numeric goal                              |
-| To eat with more variety without dropping favourite meals        | Chop It           | Scores plants, fibre and protein across the week; keeps comfort food |
-| To cook dinner from what's in the fridge                         | Chop It           | "What's In?" turns your ingredients into a meal and cuts waste      |
+| To keep AI, cookbook, website and social recipes together        | Chop it           | One permanent library, however a recipe reaches you                  |
+| To cook dinner from what's in the fridge                         | Chop it           | Pantry tools start with the food you already have                    |
 
 ---
 
@@ -106,14 +106,16 @@ The pick for anyone planning to a number. Set your calorie and macro targets and
 **Price:** free basics; Premium subscription.
 **Platforms:** iOS, Android, web.
 
-### Chop It
-This one is mine, so judge it accordingly. I built it because the others answer "help me find recipes" and I had a different question: is my week varied, and what is dying in my fridge? Chop It scores how varied your week is across plants, fibre and protein through a Weekly Diversity Score, and its "What's In?" feature turns whatever is in your fridge into tonight's dinner so less of it reaches the bin. It keeps your comfort food in place rather than swapping it for "healthier" versions.
+### Chop it
+This one is mine, so judge it accordingly. I built it because a good dinner idea should not disappear when the ChatGPT conversation ends. Chop it keeps AI recipes beside the ones you scan from cookbooks or rescue from websites, TikTok and Instagram. From that one library you can plan the week, merge the ingredients into one shopping list and cook from a clear method.
 
-It is also the only app here that works [inside ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6a1c0dfa60b88191b3360153a1c6613c): search the recipe catalogue, build the week's menu and get one consolidated shopping list without leaving the conversation, then find everything you saved in the iPhone app. If your planning already starts with "ask ChatGPT what's for dinner", none of the others can meet you there.
+It also works [inside ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6a1c0dfa60b88191b3360153a1c6613c). You can find or create a recipe, build a weekly menu and shopping list, then open results in the iPhone app when you want to keep them. Account-linked access to your personal library and pantry inside ChatGPT is not live yet, so the current handoff into the app is explicit.
 
-**The catch:** new (launched May 2026), UK-focused, on iOS and web for now. No Android app yet, and the recipe library is smaller than a decades-old brand like Good Food. If you want the biggest recipe bank, or you are on Android, start elsewhere.
-**Price:** free to start (15 credits, no card); pay-as-you-go credit bundles, or Pro at £3.99/month (£35.99/year).
-**Platforms:** iOS, web app, ChatGPT.
+Pantry tools help with the opposite starting point: what can I cook with the food already here? You can add ingredients manually or photograph a veg box or food shop, confirm the scan and plan from there. The Weekly Diversity Score adds a view of plants, fibre and protein across the week, but it is a supporting feature rather than the whole product.
+
+**The catch:** new (launched May 2026), UK-focused and iPhone-first. There is no Android app, and the built-in recipe catalogue is smaller than a decades-old publisher such as Good Food. If you want the biggest editorial recipe bank or use Android, start elsewhere.
+**Price:** free to start; optional credit bundles cover AI recipe creation.
+**Platforms:** iPhone and ChatGPT, with shareable recipe pages on the web.
 
 ---
 
@@ -123,15 +125,13 @@ If you searched "meal planning" and you're thinking of **Gousto**, **HelloFresh*
 
 ---
 
-## The gap none of the recipe apps fill
+## The gap between finding a recipe and keeping it
 
-Two things stood out after comparing all of these, and they are the two gaps I started Chop It to fill.
+Most comparisons begin with the size of the built-in recipe catalogue. That matters if you want a publisher to tell you what to cook. It matters less when good recipes now arrive from everywhere: an AI chat, a cookbook, a restaurant plate, a website or a social video.
 
-First, most apps treat your week as a list of recipes and stop there. None of the established ones tell you whether you ate with any variety, or whether you hit a decent spread of plants and fibre rather than the same three dinners on rotation. They count calories and leave variety unmeasured, even though the evidence says the range of plants you eat matters as much as the quantity.
+The newer problem is continuity. Can the app turn each of those sources into a recipe you can find again? Can that recipe join the weekly plan, the shopping list and the cooking view without being copied between tools?
 
-Second, they start from "here is a recipe, now go buy the ingredients." Few start from the more common situation: I have these things in the fridge and I need to use them before they turn. The average UK household with children throws away roughly £60 of food a month, about £1,000 a year (WRAP/Defra). An app that plans around what you already own solves a problem the others ignore.
-
-That is the space Chop It sits in. It will not replace Paprika for serious recipe collectors or beat Good Food's library on size, and I will not pretend otherwise. On those two jobs, eating with more variety while keeping favourite meals, and cooking from what you already have, the rest of this list is not competing.
+That is the space Chop it sits in. It will not replace Paprika for somebody who wants a mature manual recipe manager or beat Good Food's editorial library on size. It is for somebody whose cooking already crosses AI and traditional sources and who wants one home for all of it. Pantry and variety tools then make that library more useful week to week.
 
 ---
 
@@ -141,19 +141,19 @@ That is the space Chop It sits in. It will not replace Paprika for serious recip
 No. You can browse a large number of recipes for free. The meal planner, ad-free browsing, Cook Mode extras and some exclusive recipes are part of the Premium subscription.
 
 **Which meal planning apps are free in the UK?**
-Tasty is free. Samsung Food, Mealime and AnyList have usable free tiers. Chop It is free to start with no card. Paprika is a one-time purchase rather than a subscription.
+Tasty is free. Samsung Food, Mealime and AnyList have usable free tiers. Chop it is free to start. Paprika is a one-time purchase rather than a subscription. Prices and limits can change, so check the current listing before choosing.
 
 **Best app for cooking on a budget?**
-Two angles. For low-cost recipes, Good Food, Mob and Tasty all have budget recipe collections. For the bigger cost, the food you buy and bin, an app that plans around what is in your fridge (Chop It's "What's In?") tackles the £1,000 a year the average family wastes. Meal kits like Gousto and HelloFresh cut waste too, at a higher price per meal.
+Two angles. For low-cost recipes, Good Food, Mob and Tasty all have budget collections. For making better use of food you already bought, Chop it's pantry tools can start a plan from those ingredients. WRAP estimates that an average UK household of four wastes food worth about £1,000 a year. Meal kits can reduce leftover ingredients too, at a higher price per meal.
 
 **Can I import recipes from websites or social media?**
-Paprika and Samsung Food are strong at clipping from websites. For recipes saved from social video and screenshots, the newer apps are better. Chop It imports from a recipe URL or social post and rewrites it into a shoppable format.
+Paprika and Samsung Food are strong at clipping from websites. For recipes saved from social video, cookbook pages and AI chats, check how each app handles the source rather than assuming a web clipper covers it. Chop it can import a link or photographed page and turn it into a structured recipe.
 
 **Which apps sync across devices?**
-Paprika, Samsung Food, AnyList and Good Food all sync (Paprika needs the matching purchase on each platform). Chop It syncs between its iOS app and web app; there's no Android app yet.
+Paprika, Samsung Food, AnyList and Good Food all offer multi-device access, with terms that vary by platform and plan. Chop it is iPhone-first and has no Android app yet. Its ChatGPT app can open results in the iPhone app, but personal-library access inside ChatGPT is still to come.
 
 **Is there an app that helps me eat more plants or more fibre?**
-Most apps let you filter for vegetarian or high-protein recipes, and none of the established ones measure the variety of your week. Chop It's Weekly Diversity Score tracks plants, fibre and protein across the days you've planned, which is closer to how nutritionists talk about a varied diet than a single calorie number.
+Most apps let you filter for vegetarian or high-protein recipes. Chop it's Weekly Diversity Score tracks plants, fibre and protein across the days you have planned. Treat it as a broad view of the week, not a medical assessment.
 
 **Cooking for one or two people?**
 Most of these scale servings up and down, so take your pick. Paprika and Mealime handle serving sizes cleanly. The friction is shopping for two without waste, which is where pantry-aware planning helps.
@@ -169,6 +169,10 @@ Most of these scale servings up and down, so take your pick. Paprika and Mealime
 - **One shared family list:** AnyList.
 - **Modern British recipes:** Mob.
 - **Cooking to a calorie target:** Eat This Much.
-- **More variety, less waste:** Chop It.
+- **AI recipes and everything else in one library:** Chop it.
 
-The best meal planning app is the one you are still using in week three. Match it to the job in front of you: finding recipes, or eating with more variety and using up what is already in the fridge.
+The best meal planning app is the one you are still using in week three. Match it to the job in front of you: discovering recipes, owning a collection, sharing a list, hitting a nutrition target or keeping every source in one usable library.
+
+---
+
+*Product sources: [Good Food](https://www.bbcgoodfood.com/), [Mob](https://www.mob.co.uk/), [Tasty](https://tasty.co/), [Paprika](https://www.paprikaapp.com/), [Samsung Food](https://samsungfood.com/), [AnyList](https://www.anylist.com/), [Mealime](https://www.mealime.com/) and [Eat This Much](https://www.eatthismuch.com/). Household food-waste figure from [WRAP](https://www.wrap.ngo/media-centre/press-releases/sunday-15-march-average-uk-household-four-will-have-already-wasted). Features and prices change; check the current product page or app-store listing before buying.*

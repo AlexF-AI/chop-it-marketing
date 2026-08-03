@@ -10,7 +10,7 @@ import { getAllPostsMeta, getPostMeta } from '@/app/lib/blog';
 
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
-export const alt = 'Chop it — Blog';
+export const alt = 'Chop it blog article title card';
 
 // Locked pillar colours, kept in sync with the site-wide OG card and the
 // in-app Weekly Diversity Score rings.
@@ -32,7 +32,7 @@ export default async function BlogOpengraphImage({
 }) {
   const { slug } = await params;
   const post = getPostMeta(slug);
-  const title = post?.title ?? 'Chop it — Blog';
+  const title = post?.title ?? 'Chop it Blog';
 
   return new ImageResponse(
     (

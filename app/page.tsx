@@ -29,7 +29,7 @@ export const revalidate = 3600;
 const MOBILE_APP_JSONLD = {
   '@context': 'https://schema.org',
   '@type': 'MobileApplication',
-  name: 'Chop It',
+  name: 'Chop it',
   operatingSystem: 'iOS',
   applicationCategory: 'LifestyleApplication',
   url: SITE_ORIGIN,

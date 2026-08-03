@@ -1,8 +1,8 @@
-# How to Reduce Food Waste at Home (A Practical UK Guide)
+# How to Reduce Food Waste at Home (UK Guide)
 
-*By Alex Fahey, founder of Chop It. Last updated 23 July 2026.*
+*By Alex Fahey, founder of Chop it. Last updated 3 August 2026.*
 
-**Short answer:** the average UK household throws away food worth hundreds of pounds a year, and the cause is shopping without a plan and buying more than the week needs. Four dull fixes do most of the work: plan your meals before you shop, buy to that plan, store food so it lasts, and cook what you already have before it turns. Get those right and most of the waste goes, along with a chunk of the bill.
+**Short answer:** UK households throw away food worth **£17 billion a year**, and much of it was bought to be eaten. Four dull fixes make a real difference: check what you have, plan a few meals before you shop, store food so it lasts and cook the fragile ingredients first. The point is not a perfect zero-waste kitchen. It is giving more of the food you buy a clear route to dinner.
 
 This guide covers where home food waste comes from, the habits that cut it most, and how to make the changes stick.
 
@@ -10,9 +10,9 @@ This guide covers where home food waste comes from, the habits that cut it most,
 
 ## Quick answers
 
-- **How much food does a UK household waste?** UK households bin roughly **£14 billion** of edible food a year. For a family with children that is about **£60 a month, close to £1,000 a year** (WRAP).
-- **Where does most food waste happen?** In our own homes. Around **60% of UK food waste is household waste** rather than shops or restaurants.
-- **What's the number one cause?** Buying more than you use. You shop without a plan, then watch it spoil. "Not used in time" and "cooked or served too much" are the two biggest reasons.
+- **How much food does the UK waste at home?** Households throw away food worth roughly **£17 billion a year**. For an average household of four that is about **£1,000 a year**, according to WRAP.
+- **Where does most food waste happen?** In our own homes. Around **70% of UK food waste** comes from households rather than shops, restaurants or the supply chain.
+- **Why does edible food get binned?** Common reasons include food not being used in time and cooking, preparing or serving too much.
 - **What's the most-wasted food?** Fresh fruit and veg, bread, and milk. The perishable staples households overbuy.
 - **What's the single most effective habit?** Planning meals before you shop, then buying to that plan.
 - **Does the freezer help?** More than most people expect. You can freeze bread, milk, cheese and cooked leftovers, and freezing pauses spoilage.
@@ -21,9 +21,9 @@ This guide covers where home food waste comes from, the habits that cut it most,
 
 ## Why home food waste is a bigger deal than it looks
 
-Food waste feels like a minor household sin. A sad bag of spinach, a heel of bread. Across a year it adds up to real money. UK households throw away about **6.4 million tonnes** of food annually, most of it edible, worth roughly **£14 billion**. WRAP, the government-backed body that runs the Love Food Hate Waste campaign, puts the cost for a typical family with children at around **£60 a month**.
+Food waste feels like a minor household sin. A sad bag of spinach, a heel of bread. Across a year it adds up to real money. [WRAP now puts the value of food wasted by UK households at about **£17 billion a year**](https://www.wrap.ngo/media-centre/press-releases/sunday-15-march-average-uk-household-four-will-have-already-wasted), or roughly **£1,000 for an average household of four**.
 
-It is a *home* problem before it is anything else. Blaming supermarkets and their wonky-veg policies is tempting, but **around 60% of UK food waste happens in households**, well ahead of retail, hospitality or manufacturing. That is good news of a sort: it puts the fix in your kitchen rather than someone else's supply chain.
+It is a *home* problem before it is anything else. [Around **70% of UK food waste comes from households**](https://www.wrap.ngo/what-we-do/future-proof-food/reducing-food-waste), well ahead of retail or hospitality. That is good news of a sort: plenty of the fix sits in your kitchen rather than somebody else's supply chain.
 
 A climate angle rides along with the money. Food that someone grew, packed, transported and refrigerated only for you to bin it carries all of that carbon for nothing. Cutting household food waste is one of the more effective everyday things you can do for your budget and your footprint at the same time.
 
@@ -49,9 +49,9 @@ Four changes do most of the work, and none of them ask you to compost or ferment
 
 ### 1. Plan the week before you shop
 
-This is the highest-leverage change by a distance. Decide what you are going to eat, even loosely, even only the dinners, and your shopping list stops being a wishlist and becomes a parts list. You buy the half-bag of spinach the recipe needs rather than the full bag "because it's healthy," and then you use it, because something is waiting for it.
+This is the change that does the most work. Decide what you are going to eat, even loosely, even only the dinners, and your shopping list stops being a wishlist and becomes a parts list. You buy the half-bag of spinach the recipe needs rather than the full bag "because it's healthy," and then you use it, because something is waiting for it.
 
-Shopping without a plan causes most of the "not used in time" waste, so the plan is where the saving starts.
+A plan gives each perishable ingredient a job before it reaches the basket, so it is a useful place to start.
 
 ### 2. Buy to the plan (and resist the top-up trap)
 
@@ -77,7 +77,9 @@ Before you plan anything new, look at what is already in the fridge and on its w
 
 Planning meals reduces waste, and most of us know it. Doing it by hand is the faff that stops us. You sit down on a Sunday, thumb through recipes, write a list, cross-check the fridge, work out quantities so you do not over-buy. That is enough friction to lose most Sundays, and then you are back to wandering the aisles.
 
-I built [Chop It](https://chop-it.com) to take that friction out. You tell it what you fancy for the week and it builds the dinners from a library of over a thousand recipes, then rolls every ingredient into **one consolidated shopping list with duplicates merged**, so you buy the right amount once rather than three bunches of coriander across three recipes. Its **"What's In?"** feature works the other way round: tell it what is in the fridge and it builds a meal around that, so the food you have gets used before it gets binned.
+I built [Chop it](https://chop-it.com) to give every recipe and ingredient a useful place in the same system. AI recipes sit alongside cookbook pages, website recipes and social saves in one library. From there you can plan the week and turn the chosen recipes into **one consolidated shopping list with duplicates merged**.
+
+The pantry works from the other direction. Tell Chop it what is in the fridge, or photograph a veg box or food shop and confirm what the scan found. You can then look for recipes that use those ingredients before adding more to the list. A camera will not know the exact weight or ripeness of every vegetable, so the quick confirmation matters. The aim is practical: make the food you already own visible while you decide what to cook.
 
 It will not stop you over-buying biscuits, and a notebook plus some discipline does the same job. But if "I'll plan the week properly" has failed every Sunday for years, removing the faff is what turns it into a habit that lowers the bill.
 
@@ -86,10 +88,10 @@ It will not stop you over-buying biscuits, and a notebook plus some discipline d
 ## Frequently asked questions
 
 **How much money can I save by reducing food waste?**
-For a typical UK family with children, wasted food costs around £60 a month, close to £1,000 a year (WRAP). You will not reclaim all of it, and cutting half of the avoidable waste is still a meaningful saving for an hour of planning a week.
+For an average UK household of four, wasted food costs about £1,000 a year according to WRAP. You will not reclaim all of it, but using more of what you buy can still make a meaningful difference.
 
 **Is "best before" the same as "use by"?**
-No, and the confusion wastes a lot of food. **Use by** is a safety date: do not eat food after it. **Best before** is a quality date: food is safe afterwards, if past its peak. Judge best-before foods by sight and smell rather than binning them on the date.
+No. **Use by** is a safety date: do not eat food after it, even if it looks or smells fine. **Best before** is about quality. For food with a best-before date, follow the storage instructions and use appropriate sensory checks rather than treating the date as an automatic bin deadline.
 
 **What foods can I freeze that people don't realise?**
 Bread (slice it first), milk, hard cheese (it crumbles after thawing but cooks fine), cooked rice (cool it fast, freeze, reheat until piping hot), most cooked leftovers, herbs (chop into ice-cube trays with a little oil or water), and eggs out of the shell. The freezer pauses spoilage on nearly everything.
@@ -113,4 +115,4 @@ Start with one week of planning your dinners before you shop. It does the most o
 
 ---
 
-*Sources: WRAP / Love Food Hate Waste and Defra (UK household food waste tonnage, cost, and causes); Food Standards Agency (date-label guidance and fridge temperature). Figures are current UK estimates and are periodically revised.*
+*Sources: [WRAP on the £17 billion household cost](https://www.wrap.ngo/media-centre/press-releases/sunday-15-march-average-uk-household-four-will-have-already-wasted), [WRAP on where UK food waste occurs](https://www.wrap.ngo/what-we-do/future-proof-food/reducing-food-waste), [WRAP's 2022 household waste report](https://www.wrap.ngo/resources/report/household-food-and-drink-waste-uk-2022), and [Food Standards Agency date-label guidance](https://www.food.gov.uk/safety-hygiene/best-before-and-use-by-dates). Figures are periodically revised.*

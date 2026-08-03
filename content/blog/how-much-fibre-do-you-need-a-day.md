@@ -1,8 +1,8 @@
 # How Much Fibre Do You Need a Day? (And How to Eat It)
 
-*By Alex Fahey, founder of Chop It. Last updated 23 July 2026.*
+*By Alex Fahey, founder of Chop it. Last updated 3 August 2026.*
 
-**Short answer:** UK health guidelines recommend adults eat **30g of fibre a day**. Most of us eat nowhere near it. The average UK adult manages about **20g**, and around **9% of adults** hit the 30g target. A few deliberate swaps close that gap: wholegrains in place of white, beans and lentils in more meals, fruit and veg with skins on, and a handful of nuts or seeds. The foods that raise your fibre are the same ones that add plant variety, so the two goals pull in the same direction.
+**Short answer:** UK health guidelines recommend adults eat **30g of fibre a day**. Most of us fall short. In the latest National Diet and Nutrition Survey, **96% of adults did not meet the recommendation**. A few deliberate swaps help close the gap: wholegrains in place of white, beans and lentils in more meals, fruit and veg with skins on, and a handful of nuts or seeds. The foods that raise your fibre are the same ones that add plant variety, so the two goals pull in the same direction.
 
 This guide covers how much fibre you need, why so few of us get it, and the changes that close the gap without much effort.
 
@@ -12,7 +12,7 @@ This guide covers how much fibre you need, why so few of us get it, and the chan
 
 - **How much fibre per day?** 30g for adults, per UK government guidance (the "Eatwell" recommendation). Children need less, scaling up with age.
 - **How much do people eat?** Around 20g a day on average, roughly two-thirds of the target.
-- **What share of adults hit 30g?** About 9%, according to the National Diet and Nutrition Survey. Fibre is one of the most widely missed nutrient targets in the UK.
+- **What share of adults hit 30g?** Only about 4% in the latest National Diet and Nutrition Survey. Put another way, 96% did not meet the recommendation.
 - **What's the easiest way to eat more?** Swap white bread, rice and pasta for wholegrain versions, and add beans, lentils or chickpeas to meals you already cook.
 - **Which foods are highest in fibre?** Pulses (beans, lentils, chickpeas), wholegrains (oats, wholewheat, brown rice), nuts, seeds, and veg and fruit eaten with skins on.
 - **Can you eat too much?** Going from low to high fibre too fast causes bloating and wind. Increase gradually and drink more water as you do.
@@ -73,9 +73,11 @@ If you eat little fibre today, jumping straight to 30g will leave you bloated an
 
 ---
 
-## How Chop It fits
+## How Chop it fits
 
-Counting fibre by hand is the kind of admin that lasts about three days. I built Chop It to come at it from the other side: each week you plan gets a **Weekly Diversity Score** covering plants, fibre and protein across your meals, so you can see whether the week is varied or stuck on the same few dinners, and where the gap sits, without logging a gram. It plans dinners from a library of over a thousand recipes and keeps your comfort food in the mix, so eating more fibre costs you none of the meals you like.
+Counting fibre by hand is the kind of admin that lasts about three days. [Chop it](https://chop-it.com) comes at it from the other side. Keep AI recipes, cookbook pages, website recipes and social saves in one library, then choose a week you actually want to cook. The **Weekly Diversity Score** gives you a view of plants, fibre and protein across that plan without asking you to log every gram.
+
+The score is a supporting feature, not the reason the library exists. The bigger job is making every useful recipe easy to keep, plan, shop and cook, whether the idea began in ChatGPT or on a stained cookbook page.
 
 You can hit 30g with a notebook and some attention to wholegrains and beans. If tracking is what has beaten you before, having the variety kept for you is what turns it into a habit.
 
@@ -105,8 +107,8 @@ A sudden increase ferments in the gut faster than your bacteria can adjust to, w
 
 ## The bottom line
 
-The fibre target is 30g a day, most people get about 20, and refined staples plus missing pulses account for nearly all of the gap. Swap your bread, rice and pasta for wholegrain, get beans or lentils into a few meals a week, and eat fruit and veg whole. That closes most of it. Think in plant variety rather than grams and the number looks after itself.
+The fibre target is 30g a day and 96% of adults surveyed did not meet it. Swap some white bread, rice and pasta for wholegrain versions, get beans or lentils into a few meals a week, and eat fruit and veg whole. Think in plant variety rather than chasing one perfect number, increase gradually and let the changes accumulate.
 
 ---
 
-*Sources: NHS Eatwell Guide and SACN (UK 30g/day fibre recommendation); National Diet and Nutrition Survey (average intake ~20g; share of adults meeting the target). Children's targets per NHS guidance. Figures are current UK estimates and periodically revised.*
+*Sources: [NHS fibre guidance](https://www.nhs.uk/live-well/eat-well/digestive-health/how-to-get-more-fibre-into-your-diet/) (adult and children's targets) and the [National Diet and Nutrition Survey 2019 to 2023](https://www.gov.uk/government/statistics/national-diet-and-nutrition-survey-2019-to-2023/national-diet-and-nutrition-survey-2019-to-2023-report) (current UK intake and compliance).*

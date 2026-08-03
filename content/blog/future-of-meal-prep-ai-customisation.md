@@ -1,6 +1,6 @@
 # The Future of Meal Prep: AI as the Customisation Layer
 
-*By Alex Fahey, founder of Chop It. Last updated 23 July 2026.*
+*By Alex Fahey, founder of Chop it. Last updated 3 August 2026.*
 
 **Short answer:** meal prep is about to stop being one-size-fits-all. For twenty years the tools handed every household the same plan, the same recipe database, the same "7-day clean eating" PDF, and left you the hard part: adapting it to your household, your fridge and your tastes. AI moves that work to the machine. Say "five dinners under 30 minutes, no fish, the kids won't touch mushrooms" and get a real plan with a real shopping list back, and customisation turns from a premium feature into the default. That is the layer AI adds to meal prep.
 
@@ -13,7 +13,7 @@ This is an opinion piece about where I think meal prep goes next, written from i
 - **What does AI change about meal prep?** The interface. Constraints you used to configure with filters and spreadsheets ("quick, veggie twice, no coriander") become a sentence, and the plan adapts to you instead of the other way round.
 - **Is this recipe generation?** Generated recipes are the easy half. The valuable half is planning against your constraints and consolidating the result into one accurate shop.
 - **Will AI replace cooking?** No. It takes the admin around cooking: deciding, listing, de-duplicating, remembering.
-- **Can I use any of this today?** Yes. Chop It runs [inside ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6a1c0dfa60b88191b3360153a1c6613c): plan a week in a conversation, get one consolidated shopping list, and find everything saved in the app.
+- **Can I use any of this today?** Yes. Chop it runs [inside ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6a1c0dfa60b88191b3360153a1c6613c): find or create recipes, build a weekly menu and turn it into one shopping list. Open a result in the iPhone app when you want to keep and cook it.
 - **What's still to come?** Deeper personalisation: plans that know your pantry, your household's tastes and what you cooked last month, without you filling in a form.
 
 ---
@@ -24,7 +24,7 @@ The first generation of meal-prep tooling had one move: hand you someone else's 
 
 The Sunday batch-cook guides, the laminated 7-day plans, the apps with a thousand recipes behind a filter bar. All of it assumed a household that does not exist: one that eats anything, has unlimited time, owns every ingredient and will eat the same turkey and rice five days running.
 
-Real households have constraints. A partner who won't eat fish. A Tuesday that's always a write-off. A child in a beige-food phase. Half a bag of spinach that needs using by Thursday. A budget. The old tools could not see any of that, so you closed the gap between "the plan" and "your week" by hand. Most people close it for about a fortnight and then stop. I did that three or four times over, which is a large part of why Chop It exists.
+Real households have constraints. A partner who won't eat fish. A Tuesday that's always a write-off. A child in a beige-food phase. Half a bag of spinach that needs using by Thursday. A budget. The old tools could not see any of that, so you closed the gap between "the plan" and "your week" by hand. Most people close it for about a fortnight and then stop. I did that three or four times over, which is a large part of why Chop it exists.
 
 The most successful meal-prep tool of the last decade was the takeaway app, which at least answered tonight's question with no admin.
 
@@ -48,11 +48,11 @@ The shape of it: assistants hold the conversation, and a structured layer undern
 
 ## What this looks like today
 
-The first version of this is already live.
+The first version of this is already live. Chop it in ChatGPT can find or create recipes from a plain-English request, build a weekly menu and consolidate that menu into one shopping list. When an idea is worth keeping, you can open it in the iPhone app as a structured recipe with metric quantities, clear ingredients and a method you can follow.
 
-Chop It runs inside ChatGPT. You ask for a week in plain English, it searches a catalogue of over a thousand real recipes, builds the menu, writes one consolidated shopping list, and hands off to Whisk so you can pick your supermarket. Paste a website, TikTok or Instagram link and it restructures the recipe into a standard format: UK ingredients, metric quantities, a method you can cook from. Everything you save lands in your library, which is open in the iPhone app when you are at the hob.
+The app is the permanent layer. It keeps AI recipes alongside the recipes you rescue from websites, TikTok and Instagram, or scan from a cookbook page. From that one library you can plan the week, build the list and cook. A good dinner idea should outlive the chat that produced it.
 
-That is the customisation layer, version one: constraints in a sentence, structure underneath, and your own recipes in place of someone else's plan.
+That is the customisation layer, version one: constraints in a sentence, structure underneath and your own mixed recipe library in place of someone else's fixed plan.
 
 ## Where it goes from here
 
@@ -64,13 +64,13 @@ Predictions rather than promises. This is the direction I am building in, and I 
 
 **The household rather than the user.** Food is the most multiplayer decision in the home, and today's tools treat it as single-player. The customisation layer has to hold the whole household's constraints at once, your fibre goal against their fish veto, and find the overlap.
 
-**Variety as a first-class constraint.** Personalisation narrows. Feed a recommender your favourites and it serves you the same five dinners for a year. Food is the one domain where the system should push the other way, which is why Chop It scores the variety of your week across plants, fibre and protein rather than learning your favourites. The plan I want keeps your comfort food *and* widens the range around it.
+**Variety as a first-class constraint.** Personalisation narrows. Feed a recommender your favourites and it serves you the same five dinners for a year. Food is the one domain where the system should push the other way, which is why Chop it scores the variety of your week across plants, fibre and protein rather than learning your favourites. The plan I want keeps your comfort food *and* widens the range around it.
 
 ## What won't change
 
 The cooking. None of this touches the twenty minutes at the hob, which is the good bit. Your Friday lasagne stays exactly as it is.
 
-Everything around it changes: the deciding, the listing, the de-duplicating, the guilt about the spinach. That is admin, and admin is what software should take. The average UK family bins around £60 of food a month (WRAP), mostly because the admin never happened. Make the admin free and the waste follows it down.
+Everything around it changes: the deciding, the listing, the de-duplicating, the guilt about the spinach. That is admin, and admin is what software should take. [WRAP estimates](https://www.wrap.ngo/media-centre/press-releases/sunday-15-march-average-uk-household-four-will-have-already-wasted) that an average UK household of four wastes food worth about £1,000 a year. Make the admin easier and more of the food you buy has a chance of becoming dinner.
 
 ## The bottom line
 
@@ -78,8 +78,8 @@ Meal prep tools spent twenty years handing households the same plan and treating
 
 The assistants will hold the conversation and the structured layer underneath will do the arithmetic, which leaves you with your plan rather than the average household's.
 
-If you want to see how far along it already is, [open Chop It in ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6a1c0dfa60b88191b3360153a1c6613c) and ask for your week.
+If you want to see how far along it already is, [open Chop it in ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6a1c0dfa60b88191b3360153a1c6613c) and ask for your week.
 
 ---
 
-*Sources: WRAP / Love Food Hate Waste (UK household food waste cost). Product capabilities described are Chop It's current ChatGPT integration; forward-looking sections are the author's opinion about direction, not announced features.*
+*Sources: [WRAP](https://www.wrap.ngo/media-centre/press-releases/sunday-15-march-average-uk-household-four-will-have-already-wasted) (UK household food waste cost). Product capabilities described are current as of 3 August 2026. Forward-looking sections are the author's opinion about direction, not announced features.*

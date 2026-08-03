@@ -89,7 +89,7 @@ const ORGANIZATION_JSONLD = {
 const WEBSITE_JSONLD = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: 'Chop It',
+  name: 'Chop it',
   url: 'https://chop-it.com',
   potentialAction: {
     '@type': 'SearchAction',

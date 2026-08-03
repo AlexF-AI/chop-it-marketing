@@ -1,6 +1,6 @@
-# How to Meal Plan for the Week (A Simple System That Sticks)
+# How to Meal Plan for the Week (A System That Sticks)
 
-*By Alex Fahey, founder of Chop It. Last updated 23 July 2026.*
+*By Alex Fahey, founder of Chop it. Last updated 3 August 2026.*
 
 **Short answer:** the meal-planning systems people abandon are the elaborate ones. Colour-coded spreadsheets, batch-cooking marathons, a month mapped out in advance. The one that sticks is small: pick a handful of dinners for the week, write the one shopping list those meals need, and shop to it once. That is the whole job. Leftovers, theme nights and prepping ahead are polish on top of those three steps.
 
@@ -25,7 +25,7 @@ Two payoffs, both real.
 
 The first is the mental load. You answer "what's for dinner?" badly most days, at the worst hour: 6pm, tired, staring into the fridge. Planning moves that decision into one calm half-hour a week, made once instead of seven times under pressure. Skipping the blank 6pm fridge is the payoff people underrate, and the one I underrated until I fixed it.
 
-The second is money. The average UK family with children throws away around **£60 of food a month, close to £1,000 a year** (WRAP), and the main cause is buying without a plan, then watching it spoil. When every item on your list maps to a specific meal, far less of it dies in the salad drawer. Planning is the cheapest way to spend less on food without eating worse.
+The second is money. [WRAP estimates](https://www.wrap.ngo/media-centre/press-releases/sunday-15-march-average-uk-household-four-will-have-already-wasted) that an average UK household of four throws away food worth about **£1,000 a year**. When more of what you buy maps to a specific meal, less of it is left to die in the salad drawer. Planning is a practical way to spend less on food without eating worse.
 
 ---
 
@@ -70,7 +70,9 @@ Most people manage one good week and then drift. A few things keep it alive:
 
 You can run this whole system with a notepad, and plenty of people do. An app earns its place by removing the mechanical steps.
 
-The mechanical steps are choosing the meals and building the consolidated shopping list. That's what I built [Chop It](https://chop-it.com) to automate: you pick the week's dinners from a library of over a thousand recipes (or tell it what's in your fridge with **"What's In?"** and let it build around that), and it rolls every ingredient into **one shopping list with duplicates merged**, ready to send to your grocery basket. Each week also comes with a **Weekly Diversity Score** so you can see whether you're eating with any variety or rotating the same five dinners.
+The mechanical steps are gathering the recipes, choosing the meals and building the consolidated shopping list. That is what I built [Chop it](https://chop-it.com) to organise. AI ideas, cookbook pages, website recipes and social saves all live in one library instead of four different places. Pick the week's dinners from there and Chop it rolls the ingredients into **one shopping list with duplicates merged**. You can also start in ChatGPT, build a menu in conversation and open anything worth keeping in the iPhone app.
+
+The point is not to make you cook somebody else's plan. It is to give every good recipe a permanent home, then remove the admin between that recipe and dinner. The **Weekly Diversity Score** is still there when you want a view of plants, fibre and protein across the week, but it supports the plan rather than defining it.
 
 No app can show up for you each week. The habit stays yours. What the app does is turn the half-hour into five minutes, which is often the difference between a system that sticks and one that fizzles by the second Sunday.
 
@@ -91,7 +93,7 @@ Plan around what you already have, lean on cheap staples (pulses, frozen veg, eg
 Cook recipes that scale down cleanly, or make extra for lunch the next day. Buying for one or two without waste is the hard part, so favour ingredients you will use across more than one meal.
 
 **Is meal planning worth it?**
-If you find dinner decisions draining or you waste food, yes. It trades a daily 6pm scramble for one calm half-hour a week and cuts into the roughly £1,000 a year the average family wastes. If you enjoy improvising each night and waste little, you can skip it.
+If you find dinner decisions draining or you waste food, yes. It trades a daily 6pm scramble for one calm half-hour a week and can help you use more of the food you buy. If you enjoy improvising each night and waste little, you can skip it.
 
 **What if my week never goes to plan?**
 Then plan loosely: three or four meals with no fixed nights. A bendable plan you keep beats a perfect one you abandon.
@@ -104,4 +106,4 @@ Meal planning works when it stays small: a handful of dinners, one merged shoppi
 
 ---
 
-*Sources: WRAP / Love Food Hate Waste and Defra (UK household food waste cost and causes). Food waste and shopping-frequency figures are current UK estimates and periodically revised.*
+*Source: [WRAP](https://www.wrap.ngo/media-centre/press-releases/sunday-15-march-average-uk-household-four-will-have-already-wasted) (UK household food waste cost). Figures are periodically revised.*
