@@ -4,9 +4,8 @@
 // come from the search_public_recipes RPC (p_cuisines arg) so the
 // canonical cuisine→recipes mapping lives server-side.
 //
-// Coexists with /recipes/tag/[tag] and /recipes/season/[season] — those
-// are full-taxonomy listings; the cuisine routes are a curated
-// 17-bucket subset with editorial intro copy.
+// The cuisine routes are a curated 17-bucket subset with unique editorial
+// copy, separate from the noindexed filter state on the main recipe hub.
 
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
@@ -39,7 +38,7 @@ export async function generateMetadata({
   const meta = CUISINE_META[slug];
   if (!meta) return { title: 'Cuisine not found · Chop it' };
   const url = cuisineUrl(slug);
-  const title = `${meta.name} Recipes | Chop It`;
+  const title = `${meta.name} recipes | Chop it`;
   const description = meta.intro;
   return {
     title,
@@ -64,7 +63,7 @@ function buildCuisineJsonLd(
   return {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: `${meta.name} Recipes`,
+    name: `${meta.name} recipes`,
     description: meta.intro,
     url,
     mainEntity: {
@@ -110,7 +109,7 @@ export default async function CuisineCollectionPage({
         <Breadcrumbs crumbs={crumbs} />
         <div className="section-head">
           <div className="kicker mono">— CUISINE</div>
-          <h1 className="h-editorial">{meta.name}</h1>
+          <h1 className="h-editorial">{meta.name} recipes</h1>
           <p className="lead intro">{meta.intro}</p>
         </div>
         <RecipeGrid items={items} />

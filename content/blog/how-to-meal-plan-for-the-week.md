@@ -1,6 +1,6 @@
 # How to Meal Plan for the Week (A System That Sticks)
 
-*By Alex Fahey, founder of Chop it. Last updated 3 August 2026.*
+*By [Alex Fahey](/author/alex-fahey), founder of Chop it. Last updated 3 August 2026.*
 
 **Short answer:** the meal-planning systems people abandon are the elaborate ones. Colour-coded spreadsheets, batch-cooking marathons, a month mapped out in advance. The one that sticks is small: pick a handful of dinners for the week, write the one shopping list those meals need, and shop to it once. That is the whole job. Leftovers, theme nights and prepping ahead are polish on top of those three steps.
 

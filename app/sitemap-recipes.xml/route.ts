@@ -12,13 +12,44 @@ import { SITE_ORIGIN } from '../lib/recipeSchema';
 
 export const revalidate = 3600;
 
-function urlEntry(path: string, lastmod: string, priority: string): string {
+const TAXONOMY_COPY_UPDATED_AT = '2026-08-03T00:00:00.000Z';
+
+function xmlEscape(value: string): string {
+  return value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&apos;');
+}
+
+function absoluteImageUrl(value: string | null): string | null {
+  if (!value) return null;
+  try {
+    return new URL(value, SITE_ORIGIN).toString();
+  } catch {
+    return null;
+  }
+}
+
+function urlEntry(
+  path: string,
+  lastmod: string,
+  priority: string,
+  imageUrl?: string | null,
+): string {
+  const image = absoluteImageUrl(imageUrl ?? null);
   return (
     `  <url>\n` +
-    `    <loc>${SITE_ORIGIN}${path}</loc>\n` +
-    `    <lastmod>${lastmod}</lastmod>\n` +
+    `    <loc>${xmlEscape(`${SITE_ORIGIN}${path}`)}</loc>\n` +
+    `    <lastmod>${xmlEscape(lastmod)}</lastmod>\n` +
     `    <changefreq>weekly</changefreq>\n` +
     `    <priority>${priority}</priority>\n` +
+    (image
+      ? `    <image:image>\n` +
+        `      <image:loc>${xmlEscape(image)}</image:loc>\n` +
+        `    </image:image>\n`
+      : '') +
     `  </url>`
   );
 }
@@ -29,22 +60,27 @@ export async function GET() {
   const entries: string[] = [];
 
   // Stable lastmod for the hub and the curated landing pages: the most
-  // recent recipe update. The recipes drive these pages' content, so this
-  // moves only when recipe data actually changes — never on every revalidate
-  // cycle. Stamping `now` here taught Google our <lastmod> was noise (the
-  // same trap the static sitemap deliberately avoids). Falls back to `now`
-  // only if there are no recipes (empty dataset).
+  // recent recipe update, with a floor for the current editorial-copy release.
+  // It moves when recipe data or the landing-page copy actually changes, never
+  // on every revalidation cycle. Falls back to `now` only for an empty dataset.
   const latestRecipeUpdate =
     recipes.reduce<string>((max, r) => (r.updated_at > max ? r.updated_at : max), '') || now;
-  const collectionsLastmod = new Date(latestRecipeUpdate).toISOString();
+  const collectionsLastmod = new Date(
+    Math.max(Date.parse(latestRecipeUpdate), Date.parse(TAXONOMY_COPY_UPDATED_AT)),
+  ).toISOString();
 
   // /recipes hub (also present in /sitemap-static.xml — keeping it here as
   // well so a crawler hitting just this file still sees the hub).
   entries.push(urlEntry('/recipes', collectionsLastmod, '0.8'));
 
-  for (const { slug, updated_at } of recipes) {
+  for (const { slug, updated_at, image_url } of recipes) {
     entries.push(
-      urlEntry(`/recipes/${slug}`, updated_at ? new Date(updated_at).toISOString() : now, '0.6'),
+      urlEntry(
+        `/recipes/${slug}`,
+        updated_at ? new Date(updated_at).toISOString() : now,
+        '0.6',
+        image_url,
+      ),
     );
   }
 
@@ -66,7 +102,8 @@ export async function GET() {
 
   const body =
     '<?xml version="1.0" encoding="UTF-8"?>\n' +
-    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" ' +
+    'xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n' +
     entries.join('\n') +
     '\n</urlset>\n';
 

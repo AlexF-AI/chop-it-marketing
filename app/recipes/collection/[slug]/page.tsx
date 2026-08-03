@@ -1,9 +1,7 @@
-// Editorial collection landing pages (v1). 11 SEO-indexable URLs at
+// Editorial collection landing pages. 11 SEO-indexable URLs at
 // /recipes/collection/<slug>, each rendering a hand-picked taxonomy
-// segment (tags_json._catalog.segments[…]) as a curated grid with intro
-// copy. Placeholder copy lives in app/lib/collections.ts — Vita rewrites
-// later. Coexists with /recipes/tag/[tag] and /recipes/cuisine/[cuisine];
-// both stay indexable. Collections are an addition, not a replacement.
+// segment (tags_json._catalog.segments[…]) as a curated grid with useful,
+// search-led copy. Collections complement the fixed cuisine landings.
 
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
@@ -36,8 +34,8 @@ export async function generateMetadata({
   const meta = COLLECTION_META[slug];
   if (!meta) return { title: 'Collection not found · Chop it' };
   const url = collectionUrl(slug);
-  const title = `${meta.name} recipes | Chop it`;
-  const description = meta.intro.slice(0, 150);
+  const title = `${meta.name} | Chop it`;
+  const description = meta.intro;
   return {
     title,
     description,
@@ -62,7 +60,7 @@ function buildCollectionJsonLd(
   return {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: `${meta.name} recipes`,
+    name: meta.name,
     description: meta.intro,
     url,
     mainEntity: {

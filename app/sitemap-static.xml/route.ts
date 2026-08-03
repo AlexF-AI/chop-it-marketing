@@ -21,13 +21,19 @@ type StaticRoute = {
 // Priorities preserved from the previous monolithic sitemap.ts so we don't
 // inadvertently re-rank pages with Google.
 const ROUTES: StaticRoute[] = [
-  { path: '/', changefreq: 'weekly', priority: '1.0', lastmod: '2026-07-31' },
-  { path: '/recipes', changefreq: 'weekly', priority: '0.8', lastmod: '2026-05-29' },
+  { path: '/', changefreq: 'weekly', priority: '1.0', lastmod: '2026-08-03' },
+  { path: '/recipes', changefreq: 'weekly', priority: '0.8', lastmod: '2026-08-03' },
   { path: '/method', changefreq: 'monthly', priority: '0.6', lastmod: '2026-07-31' },
   { path: '/privacy', changefreq: 'monthly', priority: '0.3', lastmod: '2026-05-29' },
   { path: '/terms', changefreq: 'monthly', priority: '0.3', lastmod: '2026-05-29' },
   { path: '/data-deletion', changefreq: 'monthly', priority: '0.3', lastmod: '2026-05-29' },
   { path: '/support', changefreq: 'monthly', priority: '0.3', lastmod: '2026-07-21' },
+  {
+    path: '/author/alex-fahey',
+    changefreq: 'monthly',
+    priority: '0.5',
+    lastmod: '2026-08-03',
+  },
 ];
 
 // YYYY-MM-DD → W3C datetime (UTC midnight), a valid <lastmod> value.

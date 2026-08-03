@@ -13,29 +13,91 @@
 export type CuisineMeta = { name: string; intro: string };
 
 export const CUISINE_META: Record<string, CuisineMeta> = {
-  british: { name: 'British', intro: 'Roasts, pies, classics — the food we grew up on.' },
-  italian: { name: 'Italian', intro: 'Pasta, pizza, plates that don’t try too hard.' },
-  mediterranean: { name: 'Mediterranean', intro: 'Olive oil, lemons, sunshine on a plate.' },
+  british: {
+    name: 'British',
+    intro:
+      'British recipes for everyday cooking, from roast dinners and cottage pie to curries, traybakes and the comfort food UK kitchens return to.',
+  },
+  italian: {
+    name: 'Italian',
+    intro:
+      'Italian recipes built around pasta, risotto, tomatoes, cheese and good olive oil, with quick weeknight dinners alongside slower weekend cooking.',
+  },
+  mediterranean: {
+    name: 'Mediterranean',
+    intro:
+      'Mediterranean recipes full of vegetables, pulses, fish, herbs, lemon and olive oil, from fresh salads to generous one-pan dinners.',
+  },
   'middle-eastern': {
     name: 'Middle Eastern',
-    intro: 'Big flavours, generous spices, food for sharing.',
+    intro:
+      'Middle Eastern recipes with warm spices, grains, herbs and dishes made for sharing, including kebabs, mezze, pilafs and slow-cooked mains.',
   },
-  mexican: { name: 'Mexican', intro: 'Tacos, salsas, the good stuff.' },
-  asian: { name: 'Asian', intro: 'Stir-fries, noodles, big bowls of comfort.' },
-  japanese: { name: 'Japanese', intro: 'Clean, precise, deeply satisfying.' },
-  american: { name: 'American', intro: 'Diners, BBQs, the food America does best.' },
-  french: { name: 'French', intro: 'Bistro classics. Butter, wine, and time.' },
-  indian: { name: 'Indian', intro: 'Curries, dals, the spice cabinet at full tilt.' },
-  greek: { name: 'Greek', intro: 'Mezze, lamb, lemon and oregano.' },
-  thai: { name: 'Thai', intro: 'Sweet, sour, hot, salty — all at once.' },
-  spanish: { name: 'Spanish', intro: 'Tapas, paella, food that takes its time.' },
+  mexican: {
+    name: 'Mexican',
+    intro:
+      'Mexican recipes for tacos, enchiladas, chilli, salsas and bright weeknight dinners, with heat and toppings kept easy to adjust at the table.',
+  },
+  asian: {
+    name: 'Asian',
+    intro:
+      'A broad collection of Asian-inspired recipes, including stir-fries, curries, noodle dishes and rice bowls made for practical home cooking.',
+  },
+  japanese: {
+    name: 'Japanese',
+    intro:
+      'Japanese recipes for ramen, rice bowls, katsu, teriyaki and lighter dishes, using clear methods and ingredients available in UK shops.',
+  },
+  american: {
+    name: 'American',
+    intro:
+      'American recipes for burgers, barbecue, fried chicken, mac and cheese, diner favourites and big, relaxed meals built for sharing.',
+  },
+  french: {
+    name: 'French',
+    intro:
+      'French recipes that bring bistro cooking home, from gratins, tarts and steak suppers to braises that reward a slower afternoon.',
+  },
+  indian: {
+    name: 'Indian',
+    intro:
+      'Indian recipes for curries, dals, rice dishes and grilled favourites, with layered spices and practical methods for the home kitchen.',
+  },
+  greek: {
+    name: 'Greek',
+    intro:
+      'Greek recipes with lemon, oregano, feta, vegetables and lamb, from quick mezze and salads to traybakes and slow-cooked family meals.',
+  },
+  thai: {
+    name: 'Thai',
+    intro:
+      'Thai recipes balancing sweet, sour, salty and hot flavours across curries, noodle dishes, stir-fries and fresh, herb-led meals.',
+  },
+  spanish: {
+    name: 'Spanish',
+    intro:
+      'Spanish recipes for tapas, paella, tortilla, seafood and slow-cooked dishes, with bold flavours and plenty made for the middle of the table.',
+  },
   vietnamese: {
     name: 'Vietnamese',
-    intro: 'Fresh herbs, fish sauce, big flavour, light touch.',
+    intro:
+      'Vietnamese recipes combining fresh herbs, sharp dressings, noodles and deeply savoury broths in meals that stay bright and balanced.',
   },
-  korean: { name: 'Korean', intro: 'Gochujang, kimchi, fire and ferment.' },
-  moroccan: { name: 'Moroccan', intro: 'Tagines, preserved lemon, spice and slow heat.' },
-  chinese: { name: 'Chinese', intro: 'Wok-fried, steamed, braised — the full kitchen.' },
+  korean: {
+    name: 'Korean',
+    intro:
+      'Korean recipes built around gochujang, kimchi, sesame and soy, from crisp fried favourites to rice bowls, noodles and barbecue-style dinners.',
+  },
+  moroccan: {
+    name: 'Moroccan',
+    intro:
+      'Moroccan recipes with warm spices, preserved lemon, couscous and slow-cooked tagines, plus quicker dishes for an ordinary weeknight.',
+  },
+  chinese: {
+    name: 'Chinese',
+    intro:
+      'Chinese recipes for stir-fries, noodles, dumplings, steamed dishes and slow braises, with clear steps for getting the best from a home hob.',
+  },
 };
 
 // Order by recipe-count desc so the /recipes hub "Browse by cuisine"

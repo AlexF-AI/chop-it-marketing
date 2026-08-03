@@ -7,7 +7,9 @@ export function Hero() {
   return (
     <header id="top" className={styles.hero}>
       <div>
-        <div className={`${shared.eyebrow} ${styles.eyebrow}`}>The home of AI cooking</div>
+        <div className={`${shared.eyebrow} ${styles.eyebrow}`}>
+          The home of AI cooking, built for UK kitchens
+        </div>
         <h1 className={styles.h1}>
           Everything you cook with AI, kept in one place.
         </h1>
@@ -29,7 +31,7 @@ export function Hero() {
         <div className={styles.status}>
           <span className={styles.statusDot} />
           <span className={styles.statusLabel}>
-            iPhone app + ChatGPT plug-in live now
+            iPhone app + Chop it in ChatGPT live now
           </span>
         </div>
       </div>
@@ -40,7 +42,7 @@ export function Hero() {
           <div className={`${shared.frame} ${styles.frame}`}>
             <Image
               src="/screens/chatgpt-week.jpeg"
-              alt="The Chop it plug-in in ChatGPT returning a five-dinner week"
+              alt="Chop it in ChatGPT returning a five-dinner week"
               fill
               priority
               sizes="(max-width: 900px) 92vw, (max-width: 1240px) 30vw, 360px"

@@ -1,6 +1,6 @@
 # How ChatGPT Will Change Cooking and Grocery Shopping
 
-*By Alex Fahey, founder of Chop it. Last updated 3 August 2026.*
+*By [Alex Fahey](/author/alex-fahey), founder of Chop it. Last updated 3 August 2026.*
 
 **Short answer:** ChatGPT changes home cooking because it can start with the way people actually think: "I need four quick dinners, one vegetarian, and I have half a bag of spinach." That sentence is more useful than a supermarket search box. The catch is that a good conversation is not yet a kitchen system. Recipes still need reliable quantities, a permanent home, a weekly plan and one accurate shopping list. The useful future joins those pieces together.
 

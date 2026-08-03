@@ -38,18 +38,19 @@ export const viewport: Viewport = {
 // Kept inline and dependency-free for that reason.
 const THEME_INIT = `try{var t=localStorage.getItem('chopit-theme');if(t==='light'||t==='dark'){document.documentElement.dataset.theme=t}}catch(e){}`;
 
+const SITE_DESCRIPTION =
+  'The home of AI cooking for UK kitchens. Save recipes from ChatGPT, cookbooks, websites and social, then plan, shop and cook from one library.';
+
 export const metadata: Metadata = {
   title: 'Chop it | The home of AI cooking',
-  description:
-    'Keep recipes from ChatGPT, cookbooks, websites and social in one place. Plan the week, build one shopping list and cook it from the iPhone app.',
+  description: SITE_DESCRIPTION,
   metadataBase: new URL('https://chop-it.com'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: 'Chop it | The home of AI cooking',
-    description:
-      'Keep recipes from ChatGPT, cookbooks, websites and social in one place. Plan the week, build one shopping list and cook it from the iPhone app.',
+    description: SITE_DESCRIPTION,
     url: 'https://chop-it.com',
     siteName: 'Chop it',
     locale: 'en_GB',
@@ -58,8 +59,18 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Chop it | The home of AI cooking',
-    description:
-      'Keep recipes from ChatGPT, cookbooks, websites and social in one place. Plan the week, build one shopping list and cook it from the iPhone app.',
+    description: SITE_DESCRIPTION,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
   },
   // Google Search Console — URL-prefix property verification.
   // Property: https://chop-it.com
@@ -83,22 +94,14 @@ const ORGANIZATION_JSONLD = {
   sameAs: ['https://chopit.app', 'https://www.tiktok.com/@chop_it'],
 };
 
-// WebSite + SearchAction — declares the on-site recipe search so Google can
-// surface a sitelinks search box on branded queries. The target maps to the
-// /recipes hub's ?q= search param.
+// Site identity. Google's sitelinks search box was retired, so this deliberately
+// omits the obsolete SearchAction markup that used to point at arbitrary ?q=
+// result pages.
 const WEBSITE_JSONLD = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'Chop it',
   url: 'https://chop-it.com',
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: {
-      '@type': 'EntryPoint',
-      urlTemplate: 'https://chop-it.com/recipes?q={search_term_string}',
-    },
-    'query-input': 'required name=search_term_string',
-  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

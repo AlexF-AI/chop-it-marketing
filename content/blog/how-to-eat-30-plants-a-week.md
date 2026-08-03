@@ -1,6 +1,6 @@
 # How to Eat 30 Plants a Week (and What Counts)
 
-*By Alex Fahey, founder of Chop it. Last updated 3 August 2026.*
+*By [Alex Fahey](/author/alex-fahey), founder of Chop it. Last updated 3 August 2026.*
 
 **Short answer:** eating 30 different plants a week is a gut-health target popularised by Professor Tim Spector of ZOE. It draws on a 2018 observational study in which people eating 30 or more types of plant a week tended to have more diverse gut microbiomes than those eating 10 or fewer. "Plants" is broader than fruit and veg: wholegrains, beans, lentils, nuts, seeds, herbs and spices all contribute. Treat 30 as a useful prompt to widen your week, not a magic threshold or a reason to count parsley leaves.
 

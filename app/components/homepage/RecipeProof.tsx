@@ -19,11 +19,25 @@ export default async function RecipeProof() {
           <h2 className={shared.h2}>
             Start with {RECIPE_COUNT} recipes. Add everything else.
           </h2>
-          <p className={shared.lede}>
-            Chop it comes with a full dinner library built for UK kitchens:
-            metric quantities, clear methods and useful nutrition. The average
-            recipe has 5.6 plants and 34g of protein per serving.
-          </p>
+          <div className={styles.methodCopy}>
+            <p className={shared.lede}>
+              AI Chef built all {RECIPE_COUNT} to a nine-stage standard, from
+              the centre of the plate and its cuisine through umami,
+              aromatics, plants, acid, texture and a fresh finish.
+            </p>
+            <p className={shared.lede}>
+              Each recipe is checked so its ingredients, method, timings,
+              nutrition and food-safety instructions agree. Everything uses
+              UK English and metric quantities. Taste has the veto: we add
+              flavour before replacing what makes a dish good.
+            </p>
+            <p className={shared.lede}>
+              The average recipe has 5.6 plants and 34g of protein per serving.
+            </p>
+            <Link href="/method" className={styles.methodLink}>
+              How we build a Chop it recipe <span aria-hidden="true">→</span>
+            </Link>
+          </div>
         </div>
       </div>
 
