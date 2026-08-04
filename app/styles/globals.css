@@ -718,6 +718,10 @@ button { font-family: inherit; }
   transition: border-color 200ms ease, transform 200ms ease;
 }
 .store-pill:hover { border-color: var(--text); transform: translateY(-1px); }
+/* Inert "coming soon" pill — rendered as a <span>, not an anchor, so it must
+   not read as clickable. Mirrors .store-card-soon and drops the hover lift. */
+.store-pill-soon { border-color: var(--line); color: var(--ink-3); }
+.store-pill-soon:hover { border-color: var(--line); transform: none; }
 /* Filled AI-accent variant — the one primary in any CTA pairing (never two
    filled pills side by side; App Store pairs as the outline secondary). */
 .store-pill-ai {

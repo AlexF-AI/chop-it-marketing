@@ -1,6 +1,6 @@
 import Composer from './Composer';
 import StoreLink from './StoreLink';
-import { APP_STORE_URL, CHATGPT_URL } from '@/app/lib/app-stores';
+import { appStoreUrl, CHATGPT_URL } from '@/app/lib/app-stores';
 
 export default function Hero() {
   return (
@@ -24,7 +24,7 @@ export default function Hero() {
         <div className="hero-ctas">
           <StoreLink
             destination="app_store"
-            href={APP_STORE_URL}
+            href={appStoreUrl('homepage_hero')}
             location="hero"
             surface="homepage_hero"
             label="Get the iPhone app"
@@ -35,7 +35,6 @@ export default function Hero() {
           <StoreLink
             destination="chatgpt"
             href={CHATGPT_URL}
-            location="hero"
             surface="homepage_hero"
             label="Use it free in ChatGPT"
             className="cta-outline"

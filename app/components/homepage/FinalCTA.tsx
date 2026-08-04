@@ -1,4 +1,5 @@
-import { APP_STORE_URL, CHATGPT_URL, SHOW_ANDROID_NOTE } from '@/app/lib/app-stores';
+import StoreLink from '@/app/components/home/StoreLink';
+import { appStoreUrl, CHATGPT_URL, SHOW_ANDROID_NOTE } from '@/app/lib/app-stores';
 import shared from './shared.module.css';
 import styles from './FinalCTA.module.css';
 
@@ -16,12 +17,25 @@ export function FinalCTA() {
         </p>
 
         <div className={shared.ctaRow}>
-          <a href={APP_STORE_URL} className={`${shared.btn} ${shared.btnPrimary}`}>
+          <StoreLink
+            destination="app_store"
+            href={appStoreUrl('homepage_secondary')}
+            location="download_cta"
+            surface="homepage_secondary"
+            label="Get the iPhone app"
+            className={`${shared.btn} ${shared.btnPrimary}`}
+          >
             Get the iPhone app
-          </a>
-          <a href={CHATGPT_URL} className={`${shared.btn} ${shared.btnSecondary}`}>
+          </StoreLink>
+          <StoreLink
+            destination="chatgpt"
+            href={CHATGPT_URL}
+            surface="homepage_secondary"
+            label="Use it free in ChatGPT"
+            className={`${shared.btn} ${shared.btnSecondary}`}
+          >
             Use it free in ChatGPT <span aria-hidden="true">→</span>
-          </a>
+          </StoreLink>
         </div>
 
         {SHOW_ANDROID_NOTE ? (

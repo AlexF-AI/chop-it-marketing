@@ -12,7 +12,7 @@
 // install, not to advertise the browser surface. Other entry points on
 // the homepage already cover the web fallback.
 
-import { ANDROID_LIVE, APP_STORE_URL, IOS_LIVE, PLAY_STORE_URL } from '@/app/lib/app-stores';
+import { ANDROID_LIVE, appStoreUrl, IOS_LIVE, PLAY_STORE_URL } from '@/app/lib/app-stores';
 import {
   trackAppStoreClick,
   trackCtaClicked,
@@ -35,27 +35,37 @@ export default function RecipeCTA({ recipeSlug, recipeTitle }: RecipeCTAProps = 
         Get the app to scan your fridge, plan the week, and shop in one tap.
       </p>
       <div className="recipe-cta-row">
-        <a
-          className="store-pill"
-          href={APP_STORE_URL}
-          rel={IOS_LIVE ? 'noopener noreferrer' : undefined}
-          aria-label="Download on the App Store"
-          onClick={() => {
-            trackAppStoreClick({
-              recipe_slug: recipeSlug,
-              recipe_title: recipeTitle,
-              location: 'recipe_page',
-            });
-            trackCtaClicked({
-              cta_location: 'recipe_page_footer',
-              cta_label: 'App Store',
-              cta_destination: APP_STORE_URL,
-            });
-          }}
-        >
-          <span className="store-pill-top mono">{IOS_LIVE ? 'DOWNLOAD ON THE' : 'COMING SOON'}</span>
-          <span className="store-pill-bot">App Store</span>
-        </a>
+        {IOS_LIVE ? (
+          <a
+            className="store-pill"
+            href={appStoreUrl('recipe_page_footer')}
+            rel="noopener noreferrer"
+            aria-label="Download on the App Store"
+            onClick={() => {
+              trackAppStoreClick({
+                recipe_slug: recipeSlug,
+                recipe_title: recipeTitle,
+                location: 'recipe_page',
+              });
+              trackCtaClicked({
+                cta_location: 'recipe_page_footer',
+                cta_label: 'App Store',
+                cta_destination: appStoreUrl('recipe_page_footer'),
+              });
+            }}
+          >
+            <span className="store-pill-top mono">DOWNLOAD ON THE</span>
+            <span className="store-pill-bot">App Store</span>
+          </a>
+        ) : (
+          // No live listing to send anyone to. Render the pill inert rather
+          // than as an anchor with a dead href — a non-interactive element
+          // is not a CTA and must not emit CTA events.
+          <span className="store-pill store-pill-soon">
+            <span className="store-pill-top mono">COMING SOON</span>
+            <span className="store-pill-bot">App Store</span>
+          </span>
+        )}
         {ANDROID_LIVE && (
           <a
             className="store-pill"

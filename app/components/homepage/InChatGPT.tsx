@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import StoreLink from '@/app/components/home/StoreLink';
 import { chatgptSection } from '@/app/lib/chatgpt';
 import { CHATGPT_URL } from '@/app/lib/app-stores';
 import shared from './shared.module.css';
@@ -21,9 +22,15 @@ export function InChatGPT() {
             and turn it into one shopping list. Open anything you want to keep
             in the iPhone app.
           </p>
-          <a href={CHATGPT_URL} className={styles.cta}>
+          <StoreLink
+            destination="chatgpt"
+            href={CHATGPT_URL}
+            surface="homepage_chatgpt_panel"
+            label="Use Chop it in ChatGPT"
+            className={styles.cta}
+          >
             Use Chop it in ChatGPT
-          </a>
+          </StoreLink>
 
           <div className={styles.statusBlocks}>
             <div>

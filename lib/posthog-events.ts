@@ -23,14 +23,6 @@ export type CtaLocation =
   | 'recipe_page'
   | 'blog_cta';
 
-export type NavCtaDestination =
-  | 'web_app'
-  | 'app_store'
-  | 'play_store'
-  | 'sign_in'
-  | 'get_app'
-  | 'see_how_it_works';
-
 export type StoreClickProps = {
   recipe_slug?: string;
   recipe_title?: string;
@@ -58,11 +50,6 @@ export type RecipeViewProps = {
   entry_path: string;
 };
 
-export type NavCtaProps = {
-  destination: NavCtaDestination;
-  location: CtaLocation;
-};
-
 export function trackAppStoreClick(props: StoreClickProps): void {
   posthog.capture('app_store_click', props);
 }
@@ -71,30 +58,24 @@ export function trackPlayStoreClick(props: StoreClickProps): void {
   posthog.capture('play_store_click', props);
 }
 
-// Custom ChatGPT GPT click — shape matches the native store clicks so the
-// three CTA surfaces sit in the same PostHog funnel.
-export function trackChatgptClick(props: StoreClickProps): void {
-  posthog.capture('chatgpt_click', props);
-}
-
 export function trackRecipeView(props: RecipeViewProps): void {
   posthog.capture('recipe_view', props);
 }
 
-export function trackNavCtaClick(props: NavCtaProps): void {
-  posthog.capture('nav_cta_click', props);
-}
-
-// Generic CTA tracking — fires alongside the typed helpers above so the
-// dashboard can pivot on a single `cta_clicked` event with a closed
-// `cta_location` enum (autocapture misses icon buttons + image links).
+// `cta_clicked` is the single event for every on-site CTA. It used to fire
+// alongside per-surface duplicates (`nav_cta_click`, `chatgpt_click`) that
+// doubled every CTA metric; those are gone. Anything measuring CTA volume
+// pivots on `cta_location` here.
 //
 // Closed enum: extend this union when adding a new surface; ad-hoc string
 // values are rejected at compile time so dashboards don't accumulate
-// typo'd variants.
+// typo'd variants. The same values are used as the App Store `ct=`
+// campaign token (see app/lib/app-stores.ts) so PostHog clicks and Apple
+// App Analytics reconcile surface-for-surface.
 export type CtaSurface =
   | 'homepage_hero'
   | 'homepage_secondary'
+  | 'homepage_chatgpt_panel'
   | 'header_nav'
   | 'mobile_menu'
   | 'footer'

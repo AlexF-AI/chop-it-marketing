@@ -6,8 +6,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import ThemeToggle from './ThemeToggle';
-import { APP_STORE_URL, IOS_LIVE } from '@/app/lib/app-stores';
-import { trackCtaClicked, trackNavCtaClick } from '@/lib/posthog-events';
+import { appStoreUrl, IOS_LIVE } from '@/app/lib/app-stores';
+import { trackCtaClicked } from '@/lib/posthog-events';
 import styles from './Nav.module.css';
 
 // Homepage anchors are absolute (`/#why`) so they still resolve from
@@ -33,8 +33,13 @@ export default function Nav() {
   // While iOS is the only live install path, "Get the app" deep-links
   // straight to the App Store listing instead of scrolling visitors to
   // the closing CTA block on the homepage. Defensive: if IOS_LIVE ever
-  // flips false (URL yanked), revert to the in-page anchor.
-  const getAppHref = IOS_LIVE ? APP_STORE_URL : '/#download';
+  // flips false (URL yanked, or NEXT_PUBLIC_IOS_LIVE=false), revert to
+  // the in-page anchor.
+  //
+  // The two nav surfaces are separate campaigns in App Analytics, so the
+  // desktop bar and the mobile drawer carry different `ct=` tokens.
+  const navHref = IOS_LIVE ? appStoreUrl('header_nav') : '/#download';
+  const drawerHref = IOS_LIVE ? appStoreUrl('mobile_menu') : '/#download';
 
   // Hold the page still behind the drawer. `overflow: hidden` is not enough —
   // it stops user scrolling but not programmatic, and iOS Safari ignores it on
@@ -111,13 +116,13 @@ export default function Nav() {
     };
   }, [navOpen, closeNav]);
 
-  // Both enums already carry `mobile_menu`; no need to extend them.
-  const trackGetApp = (location: 'nav' | 'mobile_menu') => {
-    trackNavCtaClick({ destination: 'get_app', location });
+  // One event per click. This used to fire `nav_cta_click` alongside
+  // `cta_clicked`, which doubled every nav CTA metric in PostHog.
+  const trackGetApp = (surface: 'header_nav' | 'mobile_menu') => {
     trackCtaClicked({
-      cta_location: location === 'nav' ? 'header_nav' : 'mobile_menu',
+      cta_location: surface,
       cta_label: 'Get the app',
-      cta_destination: getAppHref,
+      cta_destination: surface === 'header_nav' ? navHref : drawerHref,
     });
   };
 
@@ -151,9 +156,9 @@ export default function Nav() {
           <ThemeToggle />
           <a
             className="nav-get"
-            href={getAppHref}
+            href={navHref}
             rel={IOS_LIVE ? 'noopener noreferrer' : undefined}
-            onClick={() => trackGetApp('nav')}
+            onClick={() => trackGetApp('header_nav')}
           >
             Get the app
           </a>
@@ -244,7 +249,7 @@ export default function Nav() {
 
             <a
               className={styles.cta}
-              href={getAppHref}
+              href={drawerHref}
               rel={IOS_LIVE ? 'noopener noreferrer' : undefined}
               onClick={() => trackGetApp('mobile_menu')}
             >
