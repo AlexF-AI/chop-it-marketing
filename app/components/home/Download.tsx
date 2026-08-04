@@ -38,7 +38,7 @@ export default function Download() {
             <span className="store-card-bot">ChatGPT</span>
           </StoreLink>
 
-          {ANDROID_LIVE ? (
+          {ANDROID_LIVE && PLAY_STORE_URL ? (
             <a className="store-card" href={PLAY_STORE_URL} rel="noopener noreferrer">
               <span className="store-card-top">Get it on</span>
               <span className="store-card-bot">Google Play</span>

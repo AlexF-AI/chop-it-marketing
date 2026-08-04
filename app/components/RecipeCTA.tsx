@@ -28,6 +28,11 @@ type RecipeCTAProps = {
 };
 
 export default function RecipeCTA({ recipeSlug, recipeTitle }: RecipeCTAProps = {}) {
+  // Local alias so the null check narrows inside the click handler too —
+  // TypeScript won't carry narrowing of an imported binding across a
+  // function boundary.
+  const playStoreUrl = PLAY_STORE_URL;
+
   return (
     <section className="recipe-cta">
       <h2 className="recipe-cta-h">Cook this in Chop it</h2>
@@ -66,10 +71,10 @@ export default function RecipeCTA({ recipeSlug, recipeTitle }: RecipeCTAProps = 
             <span className="store-pill-bot">App Store</span>
           </span>
         )}
-        {ANDROID_LIVE && (
+        {ANDROID_LIVE && playStoreUrl && (
           <a
             className="store-pill"
-            href={PLAY_STORE_URL}
+            href={playStoreUrl}
             rel="noopener noreferrer"
             aria-label="Get it on Google Play"
             onClick={() => {
@@ -81,11 +86,11 @@ export default function RecipeCTA({ recipeSlug, recipeTitle }: RecipeCTAProps = 
               trackCtaClicked({
                 cta_location: 'recipe_page_footer',
                 cta_label: 'Google Play',
-                cta_destination: PLAY_STORE_URL,
+                cta_destination: playStoreUrl,
               });
             }}
           >
-            <span className="store-pill-top mono">COMING SOON</span>
+            <span className="store-pill-top mono">GET IT ON</span>
             <span className="store-pill-bot">Google Play</span>
           </a>
         )}
