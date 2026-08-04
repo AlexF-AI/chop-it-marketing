@@ -1,4 +1,5 @@
 import { supabase, supabaseConfigured } from './supabase';
+import { CUISINE_META, CUISINE_SLUGS } from './cuisines';
 
 export type Ingredient = {
   display: string;
@@ -15,6 +16,7 @@ export type Timings = {
 
 export type TagsJson = {
   core?: string[];
+  _catalog?: { cuisines?: string[]; segments?: unknown };
 } | null;
 
 export type Recipe = {
@@ -160,6 +162,15 @@ export type ListFilter = {
   perPage?: number;
 };
 
+function cuisineSlug(value: string): string | null {
+  const normalized = value.trim().toLowerCase().replace(/[\s_]+/g, '-');
+  if (CUISINE_SLUGS.includes(normalized)) return normalized;
+  const displayName = value.trim().toLowerCase();
+  return CUISINE_SLUGS.find(
+    (slug) => CUISINE_META[slug].name.toLowerCase() === displayName,
+  ) ?? null;
+}
+
 export async function listPublishedRecipes(
   filter: ListFilter = {},
 ): Promise<{ items: RecipeListItem[]; total: number }> {
@@ -178,10 +189,10 @@ export async function listPublishedRecipes(
 
   if (filter.season) q = q.eq('season', filter.season);
   if (filter.costBand) q = q.eq('cost_band', filter.costBand);
-  // Cuisine = tags_json.core[0] (positional convention); use jsonb contains
-  // on the whole core array so the cuisine string matches by element.
   if (filter.cuisine) {
-    q = q.contains('tags_json', { core: [filter.cuisine] });
+    const slug = cuisineSlug(filter.cuisine);
+    if (!slug) return { items: [], total: 0 };
+    q = q.contains('tags_json', { _catalog: { cuisines: [slug] } });
   }
   if (filter.tag) {
     q = q.contains('tags_json', { core: [filter.tag] });
@@ -366,11 +377,8 @@ export async function searchPublicRecipes(
 // to preserve those tags as `/recipes/tag/modern-british` URLs.
 export const URL_SAFE_SLUG_RE = /^[A-Za-z0-9_-]+$/;
 
-// Distinct taxonomy values for static-param generation + the hub filter bar.
-// `core[0]` is the cuisine by team convention. Both this and getDistinctTags
-// scan the full tags_json column, so they MUST paginate — once the
-// seo_published set crossed 1,000 rows the un-paginated version silently
-// dropped categories.
+// Distinct taxonomy values for the hub filter bar. Read the same canonical
+// multi-membership array as the app and curated cuisine landing-page RPC.
 export async function getDistinctCuisines(): Promise<string[]> {
   if (!supabase || !supabaseConfigured) return [];
   const rows = await fetchAllPaged<{ tags_json: TagsJson }>((from, to) =>
@@ -379,18 +387,20 @@ export async function getDistinctCuisines(): Promise<string[]> {
       .select('tags_json')
       .eq('seo_published', true)
       .is('deleted_at', null)
+      .not('slug', 'is', null)
       .range(from, to),
   );
   const out = new Set<string>();
   for (const r of rows) {
-    const core = r.tags_json?.core;
-    if (Array.isArray(core) && core.length > 0 && typeof core[0] === 'string') {
-      // Drop URL-unsafe cuisines (spaces, accents, etc.) so we don't try
-      // to pre-render /recipes/cuisine/<%-encoded%>/ — see URL_SAFE_SLUG_RE.
-      if (URL_SAFE_SLUG_RE.test(core[0])) out.add(core[0]);
+    const cuisines = r.tags_json?._catalog?.cuisines;
+    if (!Array.isArray(cuisines)) continue;
+    for (const slug of cuisines) {
+      if (CUISINE_SLUGS.includes(slug)) out.add(slug);
     }
   }
-  return Array.from(out).sort();
+  return CUISINE_SLUGS
+    .filter((slug) => out.has(slug))
+    .map((slug) => CUISINE_META[slug].name);
 }
 
 // Note: getDistinctSeasons() and getDistinctTags() were removed when the
@@ -399,7 +409,7 @@ export async function getDistinctCuisines(): Promise<string[]> {
 // throttling crawl). The curated taxonomies are app/lib/cuisines.ts and
 // app/lib/collections.ts. getDistinctCuisines() is kept solely for the
 // /recipes hub's cuisine-filter chip (?cuisine=... noindexed facet) —
-// it operates on the raw tags_json.core[] values, separate from the
+// it uses the same tags_json._catalog.cuisines[] memberships as the
 // curated /recipes/cuisine/[slug] landings.
 
 export async function getDistinctCostBands(): Promise<string[]> {

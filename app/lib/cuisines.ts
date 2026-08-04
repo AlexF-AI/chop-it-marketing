@@ -6,7 +6,7 @@
 // the /recipes hub "Browse by cuisine" section.
 //
 // The order in CUISINE_SLUGS is recipe-count descending at the time of
-// writing (British 255 → Chinese 10). Counts come from the
+// writing (British 335 → Moroccan 11). Counts come from the
 // search_public_recipes RPC with p_cuisines=[slug] — see the RPC
 // implementation in the backend repo for the cuisine → recipe mapping.
 
@@ -105,23 +105,24 @@ export const CUISINE_META: Record<string, CuisineMeta> = {
 // counts returned by search_public_recipes(p_cuisines := ARRAY[slug])
 // at PR time — used only for ordering + the optional count badge.
 export const CUISINE_COUNTS: Record<string, number> = {
-  british: 255,
-  italian: 109,
-  mediterranean: 70,
-  'middle-eastern': 52,
-  mexican: 41,
+  british: 335,
+  italian: 152,
+  mediterranean: 92,
+  'middle-eastern': 63,
+  mexican: 58,
   asian: 38,
-  japanese: 35,
-  american: 32,
-  french: 26,
-  indian: 22,
-  greek: 18,
+  japanese: 36,
+  american: 67,
+  french: 31,
+  indian: 32,
+  greek: 37,
   thai: 16,
-  spanish: 15,
-  vietnamese: 13,
-  korean: 12,
+  spanish: 21,
+  vietnamese: 14,
+  korean: 16,
   moroccan: 11,
-  chinese: 10,
+  chinese: 19,
 };
 
-export const CUISINE_SLUGS = Object.keys(CUISINE_META) as readonly string[];
+export const CUISINE_SLUGS = Object.keys(CUISINE_META)
+  .sort((left, right) => CUISINE_COUNTS[right] - CUISINE_COUNTS[left]) as readonly string[];
