@@ -32,6 +32,11 @@ const MOBILE_APP_JSONLD = {
   name: 'Chop it',
   operatingSystem: 'iOS',
   applicationCategory: 'LifestyleApplication',
+  // Verified GB-only: an App Store lookup for id6762079343 returns the app on
+  // the gb storefront and resultCount 0 on us, ie, au, ca, de and fr. Worth
+  // declaring rather than leaving Google to infer availability, since a US
+  // searcher cannot install this.
+  countriesSupported: 'GB',
   url: SITE_ORIGIN,
   downloadUrl: APP_STORE_URL,
   author: {
