@@ -32,7 +32,7 @@ Recipes grouped into sets by the job they do, the same way the website's [collec
 
 ## Pantry
 
-What your kitchen holds: fridge, freezer and cupboards. The philosophy is automatic management, because a pantry you have to maintain by hand is a pantry you abandon by February. It updates itself as you add shops, photographed or bought. Ingredients come off it when you complete a meal. Perishables drop off after two weeks rather than sitting as phantom spinach. For anything bulk, the chat handles it in one instruction: "empty everything in the fridge" is a sentence, not a tapping session.
+What your kitchen holds: fridge, freezer and cupboards. The philosophy is automatic management, because a pantry you have to maintain by hand is a pantry you abandon by February. It updates itself as you add shops, photographed or bought. Ingredients come off it when you mark a meal cooked, and back on if you unmark it. Every item carries a use-by life matched to what it is, days for fish, a fortnight for hardy veg, and gets flagged to use before it turns rather than sitting as phantom spinach. For anything bulk, the chat takes one instruction: say "empty my fridge" and the app lists what would go, then clears it on your confirmation.
 
 The pantry feeds the two features that depend on knowing what you own: recipe suggestions that start from your ingredients rather than a shopping trip, and the shorter shopping list below. The thinking behind pantry-first cooking is in [our food waste guide](/learn/can-ai-reduce-food-waste).
 
