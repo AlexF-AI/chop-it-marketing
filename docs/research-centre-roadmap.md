@@ -7,8 +7,16 @@ each one only when its input exists.
 
 ## State of AI Meal Planning 2026
 
-The flagship. Needs an original survey — nothing citable exists at this
-title, which is exactly why it would earn citations.
+DECISION, 5 August 2026: the commissioned panel survey is deferred — the
+founder is not spending on a report at this stage. Do not re-raise it as a
+near-term action. The accumulation path is the free one: the reader survey
+below gathers responses continuously, and product volumes are re-checked
+quarterly. Revisit a commissioned panel only if the founder raises it, or
+when the site has traffic that would make the report's distribution worth
+the spend.
+
+The flagship, when it happens. Needs an original survey — nothing citable
+exists at this title, which is exactly why it would earn citations.
 
 Required input: a commissioned consumer survey (Attest or similar run UK
 panels from ~£1 per response; 500+ UK respondents makes the numbers
