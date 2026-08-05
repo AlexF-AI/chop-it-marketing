@@ -10,12 +10,14 @@ const FEATURES = [
     label: 'Shop once',
     text: 'Every ingredient becomes one list, combined by aisle and checked against what you already have. Send it to Whisk when you are ready to buy.',
     src: '/screens/shop-once.webp',
+    alt: 'Chop it shopping list with ingredients from several recipes combined into one line each and grouped by supermarket aisle',
     caption: 'One list, combined by aisle',
   },
   {
     label: 'Cook from the same place',
     text: 'Open each meal in Cook Mode for clear ingredients, steps and timers. Tick meals off as the week moves.',
     src: '/screens/cook-mode.webp',
+    alt: 'Chop it Cook Mode part way through a recipe, showing the current step alongside its ingredients and a timer',
     caption: 'Cook Mode, step 3 of 9',
   },
 ];
@@ -66,7 +68,13 @@ export function RecipeToDinner() {
                 <div className={`${shared.frame} ${styles.frame}`}>
                   <Image
                     src={feature.src}
-                    alt=""
+                    // Described rather than left decorative: the figcaption
+                    // below labels the screen ("Cook Mode, step 3 of 9") but
+                    // does not say what is on it, and these are the two
+                    // screenshots carrying the product claim in this section.
+                    // Matches how Hero and InChatGPT already treat their
+                    // phone frames.
+                    alt={feature.alt}
                     fill
                     loading="lazy"
                     sizes="(max-width: 1000px) 88vw, 44vw"

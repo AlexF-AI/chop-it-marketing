@@ -98,8 +98,17 @@ const ORGANIZATION_JSONLD = {
   logo: 'https://chop-it.com/logo.webp',
   description:
     'Chop it is the home of AI cooking: one place to keep recipes, plan the week, build the shop and cook.',
-  // Instagram + X handles are noted as inactive — add them here when they go live.
-  sameAs: ['https://chopit.app', 'https://www.tiktok.com/@chop_it'],
+  // The App Store listing is the strongest entity signal available: it ties
+  // this Organization to the published app. Instagram + X are still omitted
+  // because neither handle could be confirmed live (Instagram rate-limits
+  // unauthenticated requests, and x.com returns 200 for any path because it
+  // is a single-page app, so neither check proves a profile exists). A sameAs
+  // pointing at a profile that does not exist is worse than a shorter list.
+  sameAs: [
+    'https://chopit.app',
+    'https://apps.apple.com/gb/app/chop-it/id6762079343',
+    'https://www.tiktok.com/@chop_it',
+  ],
 };
 
 // Site identity. Google's sitelinks search box was retired, so this deliberately
