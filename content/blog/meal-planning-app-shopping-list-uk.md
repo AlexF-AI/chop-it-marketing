@@ -1,4 +1,4 @@
-# Meal Planning Apps With a Shopping List: Which Ones Actually Merge Your Ingredients
+# Meal Planning Apps With a Shopping List: Which UK Apps Actually Merge Your Ingredients
 
 *By [Alex Fahey](/author/alex-fahey), founder of Chop it. Last updated 5 August 2026. App prices checked on the UK App Store on 5 August 2026.*
 
