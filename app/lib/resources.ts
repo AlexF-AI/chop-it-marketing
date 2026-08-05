@@ -57,12 +57,12 @@ export const LEARN_RESOURCES: ResourceMeta[] = [
       {
         question: 'What are Chef IQ Recipes?',
         answer:
-          'The catalogue built by Chop it’s AI chef: ready-made recipes you can browse or ask for in plain language. The same catalogue is public at chop-it.com/recipes, organised by cuisine and collection.',
+          'The Chef IQ catalogue: ready-made recipes you can browse or ask for in plain language. The same catalogue is public at chop-it.com/recipes, organised by cuisine and collection.',
       },
       {
         question: 'What is the difference between New chat and the Recipe Generator?',
         answer:
-          'New chat is a conversation: ideas, adaptation and planning, back and forth. The Recipe Generator is one-shot: it takes your request and returns a finished recipe card with quantities, method, macros and the diversity wheel in a single step.',
+          'New chat is a conversation: ideas, adaptation and planning, back and forth. The Recipe Generator is one-shot: it takes your request and returns a finished recipe card with quantities, method, macros and the Weekly Diversity Score in a single step.',
       },
       {
         question: 'Does Chop it work on Android?',
@@ -175,14 +175,14 @@ export const LEARN_RESOURCES: ResourceMeta[] = [
     title: 'Chop it vs ChatGPT: What Each Does Better',
     seoTitle: 'Chop it vs ChatGPT for Meal Planning',
     description:
-      'ChatGPT creates the recipes; Chop it adds guardrails: staged menus tuned for plant variety, UK phrasing, recipe cards with macros and a diversity wheel.',
+      'ChatGPT creates the recipes; Chop it adds guardrails: staged menus tuned for plant variety, UK phrasing, and recipe cards with macros.',
     datePublished: '2026-08-05',
     dateModified: '2026-08-05',
     faq: [
       {
         question: 'Is Chop it a replacement for ChatGPT?',
         answer:
-          'No. ChatGPT creates Chop it’s recipes, so the two are additive rather than competitive. Chop it wraps the generation in guardrails: staged menus tuned to raise plant variety and keep fibre and protein high, UK phrasing and methods on every recipe, and structured recipe cards with macros and a diversity wheel. It also holds what a conversation cannot: the week, the merged list, the pantry and a library that takes recipes from sources other than AI.',
+          'No. ChatGPT creates Chop it’s recipes, so the two are additive rather than competitive. Chop it wraps the generation in guardrails: staged menus tuned to raise plant variety and keep fibre and protein high, UK phrasing and methods on every recipe, and structured recipe cards with macros and the Weekly Diversity Score. It also holds what a conversation cannot: the week, the merged list, the pantry and a library that takes recipes from sources other than AI.',
       },
       {
         question: 'Do I need both?',

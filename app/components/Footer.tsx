@@ -20,7 +20,7 @@ export default function Footer() {
         </div>
         <div className="footer-col">
           <div className="footer-col-h mono">Product</div>
-          <Link href="/#ai-chef">AI Chef</Link>
+          <Link href="/#ai-chef">Chef IQ</Link>
           <Link href="/#chatgpt">Chop it in ChatGPT</Link>
           <Link href="/recipes">Recipes</Link>
           {/* In-page navigation to the closing CTA block, not an install CTA.

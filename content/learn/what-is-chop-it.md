@@ -20,11 +20,11 @@ Your library. Everything you have saved, whatever direction it arrived from: a p
 
 ## Chef IQ Recipes
 
-The catalogue built by Chop it's AI chef, the feature the site used to call AI Chef. These are ready-made recipes you can browse or ask for in plain language, and the same catalogue is public at [chop-it.com/recipes](/recipes), organised by cuisine and collection. Menus assembled from it are staged for plant variety, with fibre and protein kept high by design.
+The Chef IQ catalogue: ready-made recipes you can browse or ask for in plain language, and the same catalogue is public at [chop-it.com/recipes](/recipes), organised by cuisine and collection. Menus assembled from it are staged for plant variety, with fibre and protein kept high by design.
 
 ## Recipe Generator
 
-One-shot creation. Where New chat converses, the Generator takes your request and produces a finished recipe card in a single step: ingredients with real quantities, a method you can cook from, macros and the diversity wheel. Use it when you know what you want and need the recipe, not a discussion.
+One-shot creation. Where New chat converses, the Generator takes your request and produces a finished recipe card in a single step: ingredients with real quantities, a method you can cook from, macros and the Weekly Diversity Score. Use it when you know what you want and need the recipe, not a discussion.
 
 ## Collections
 
@@ -32,7 +32,9 @@ Recipes grouped into sets by the job they do, the same way the website's [collec
 
 ## Pantry
 
-What your kitchen holds: fridge, freezer and cupboards. Add items by hand or photograph a food shop or veg box and confirm what the scan recognised. The pantry feeds the two features that depend on knowing what you own: recipe suggestions that start from your ingredients rather than a shopping trip, and the shorter shopping list below. The thinking behind pantry-first cooking is in [our food waste guide](/learn/can-ai-reduce-food-waste).
+What your kitchen holds: fridge, freezer and cupboards. The philosophy is automatic management, because a pantry you have to maintain by hand is a pantry you abandon by February. It updates itself as you add shops, photographed or bought. Ingredients come off it when you complete a meal. Perishables drop off after two weeks rather than sitting as phantom spinach. For anything bulk, the chat handles it in one instruction: "empty everything in the fridge" is a sentence, not a tapping session.
+
+The pantry feeds the two features that depend on knowing what you own: recipe suggestions that start from your ingredients rather than a shopping trip, and the shorter shopping list below. The thinking behind pantry-first cooking is in [our food waste guide](/learn/can-ai-reduce-food-waste).
 
 ## Shop
 

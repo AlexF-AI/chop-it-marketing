@@ -80,7 +80,7 @@ export function OneLibrary() {
             <div className={`${shared.frame} ${styles.frame}`}>
               <Image
                 src="/screens/app-thread.webp"
-                alt="AI Chef finding recipes from a plain-language request"
+                alt="Chef IQ finding recipes from a plain-language request"
                 fill
                 loading="lazy"
                 sizes="(max-width: 1000px) 92vw, 44vw"

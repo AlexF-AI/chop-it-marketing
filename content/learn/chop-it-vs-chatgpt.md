@@ -12,7 +12,7 @@ The honest answer to "should I just use ChatGPT?" starts with an admission: Chat
 | Adapt a recipe to constraints | Yes, best in class | Yes, through the same conversation |
 | Staged refinement of the week | You prompt each round yourself | Built in, tuned for plant variety |
 | UK phrasing, metric, UK methods | On request, and it drifts | Always |
-| Recipe output | Prose in a chat window | Recipe card with macros and a diversity wheel |
+| Recipe output | Prose in a chat window | Recipe card with macros and the Weekly Diversity Score |
 | Remember your week on Thursday | No, it lives in a scrolled chat | Yes, the week is a persistent plan |
 | One merged shopping list across recipes | On request, hit and miss | Yes, structured merge with totals |
 | Know what is in your cupboards | No | Yes, including photographed shops |
@@ -35,7 +35,7 @@ Since the same model writes the recipes either way, the difference is what happe
 
 **UK phrasing and methods.** Coriander, not cilantro. Aubergine, not eggplant. Metric quantities, UK pack sizes, a grill that means a grill. ChatGPT does this when asked and drifts when the conversation runs long. Chop it enforces it on every recipe.
 
-**The recipe card.** Generation ends as prose in a chat window. Chop it turns the same output into a structured card: ingredients with real quantities, a method you can cook from, macros, and a diversity wheel showing the plant variety across your week. The wheel is directional guidance on variety, nothing more, and that structure is what makes [the merged shopping list](/learn/how-ai-shopping-lists-work) possible at all.
+**The recipe card.** Generation ends as prose in a chat window. Chop it turns the same output into a structured card: ingredients with real quantities, a method you can cook from, macros, and the Weekly Diversity Score showing plant variety across your week. The score is directional guidance on variety, nothing more, and that structure is what makes [the merged shopping list](/learn/how-ai-shopping-lists-work) possible at all.
 
 ## Where Chop it wins outright
 
