@@ -70,7 +70,7 @@ The same library holds recipes that never came from a chat, which is most of the
 
 What it does not do yet: signing in to your own account inside ChatGPT, so it can reach your existing library and pantry mid-conversation, is not live. Today the handoff into the iPhone app is explicit. There is no Android app.
 
-If you never install it, use the five-step method above. It works, and it costs nothing.
+If you never install it, use the five-step method above. It works, and it costs nothing. For a capability-by-capability breakdown of the split, see [Chop it vs ChatGPT: what each does better](/learn/chop-it-vs-chatgpt).
 
 ## Frequently asked questions
 

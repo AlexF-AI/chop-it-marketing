@@ -21,7 +21,7 @@ export default async function RecipeProof() {
           </h2>
           <div className={styles.methodCopy}>
             <p className={shared.lede}>
-              AI Chef built all {RECIPE_COUNT} to a nine-stage standard, from
+              Chef IQ built all {RECIPE_COUNT} to a nine-stage standard, from
               the centre of the plate and its cuisine through umami,
               aromatics, plants, acid, texture and a fresh finish.
             </p>
@@ -58,7 +58,7 @@ export default async function RecipeProof() {
                   sizes="(max-width: 640px) 60vw, 300px"
                 />
               ) : null}
-              <span className={styles.badge}>AI Chef</span>
+              <span className={styles.badge}>Chef IQ</span>
             </div>
             <div className={styles.cardTitle}>{recipe.title}</div>
             <div className={styles.cardMeta}>{recipe.meta}</div>

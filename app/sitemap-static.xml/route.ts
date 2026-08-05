@@ -3,6 +3,7 @@
 // (re)submit either side independently in Search Console.
 
 import { getAllPostsMeta } from '../lib/blog';
+import { getResources, type ResourceSection } from '../lib/resources';
 import { SITE_ORIGIN } from '../lib/recipeSchema';
 
 export const revalidate = 3600;
@@ -72,10 +73,26 @@ export async function GET() {
     ),
   ];
 
+  // Learn + Research: same registry-derived pattern as the blog. Hub lastmod
+  // follows the freshest entry in its section.
+  const resourceEntries = (['learn', 'research', 'features'] as ResourceSection[]).flatMap((section) => {
+    const items = getResources(section);
+    const hubLastmod = items.reduce(
+      (max, r) => (r.dateModified > max ? r.dateModified : max),
+      '2026-08-05',
+    );
+    return [
+      urlEntry(`${SITE_ORIGIN}/${section}`, toIso(hubLastmod), 'weekly', '0.7'),
+      ...items.map((r) =>
+        urlEntry(`${SITE_ORIGIN}/${section}/${r.slug}`, toIso(r.dateModified), 'monthly', '0.6'),
+      ),
+    ];
+  });
+
   const body =
     '<?xml version="1.0" encoding="UTF-8"?>\n' +
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-    [...staticEntries, ...blogEntries].join('\n') +
+    [...staticEntries, ...blogEntries, ...resourceEntries].join('\n') +
     '\n</urlset>\n';
 
   return new Response(body, {

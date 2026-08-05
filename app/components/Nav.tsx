@@ -16,6 +16,8 @@ const LINKS = [
   { href: '/#how', label: 'How it works' },
   { href: '/#chatgpt', label: 'In ChatGPT' },
   { href: '/recipes', label: 'Recipes' },
+  { href: '/learn', label: 'Learn' },
+  { href: '/research', label: 'Research' },
   { href: '/method', label: 'Our method' },
 ];
 

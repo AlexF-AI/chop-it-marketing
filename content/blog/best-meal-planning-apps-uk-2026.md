@@ -31,7 +31,7 @@ Anyone can win a features checklist. These apps separate on five things that onl
 
 **The shopping list.** Four recipes each want an onion. A good list gives you three onions on one line. A bad one gives you "1 onion" four times and lets you do the arithmetic in the shop. I have written more about [how each app handles that merge](/blog/meal-planning-app-shopping-list-uk).
 
-**Pantry awareness.** You already own rice. An app that knows this writes a shorter list.
+**Pantry awareness.** You already own rice. An app that knows this writes a shorter list. The mechanics behind all three list jobs are explained in [how AI shopping lists work](/learn/how-ai-shopping-lists-work).
 
 **Planning the week.** A calendar you fill in by hand is not planning. Look for leftovers, repeats and a view of the whole week at once.
 
@@ -43,7 +43,7 @@ Anyone can win a features checklist. These apps separate on five things that onl
 
 This one is mine, so weigh it accordingly. I built it because a good dinner idea should not vanish when a chat window closes. Recipes arrive from everywhere now, and most apps only accept one or two of those routes. Chop it takes a website link, a photographed cookbook page, a social video or something you created in conversation, and turns each into a structured recipe in the same library. From there you plan the week, merge the ingredients into one list and cook from a clear method.
 
-It also runs [inside ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6a1c0dfa60b88191b3360153a1c6613c), where you can find or create a recipe, build a menu and open the result in the app.
+It also runs [inside ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6a1c0dfa60b88191b3360153a1c6613c), where you can find or create a recipe, build a menu and open the result in the app. A walkthrough of [every part of the app](/learn/what-is-chop-it) covers the rest: the Chef IQ catalogue, the Recipe Generator, collections and the pantry.
 
 **The honest limitation:** it launched in May 2026 and there is no Android app. The built-in catalogue is smaller than a publisher with decades of archive. If you use Android or want the biggest editorial recipe bank, buy something else.
 
