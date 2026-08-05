@@ -41,6 +41,27 @@ product-data statistic until the underlying figure covers at least a few
 hundred distinct users, and always state the n alongside the percentage.
 Re-check volumes quarterly with the same 90-day query.
 
+## Live now: reader survey on chop-it.com (started 5 August 2026)
+
+A three-question PostHog popover survey runs on the marketing site,
+project 180088, survey id 019fd3a5-9e1d-0000-affc-4a52e04804ec:
+
+  1. Have you ever asked an AI, like ChatGPT, for a recipe or a meal plan?
+  2. What happened to the last recipe an AI gave you?
+  3. How do you plan your weekly food shop? (with an open "other")
+
+Settings: 20-second delay before showing, one response per person, 90-day
+quiet period after seeing any survey, partial responses stored. No code
+changes were needed; it renders through the posthog-js SDK already on the
+site.
+
+BIAS CAVEAT, non-negotiable: respondents are chop-it.com visitors, a
+population already interested in AI cooking. Results are publishable only
+as "a survey of chop-it.com readers, n=X", never as UK consumer research.
+The same volume gate applies as for product data: no published percentage
+until n reaches a few hundred, always with n stated. This survey
+complements the commissioned panel; it does not replace it.
+
 ## AI Grocery Shopping Trends / ChatGPT Recipe Trends
 
 Same constraint. Either commissioned data or waiting for third-party
