@@ -22,6 +22,7 @@ export default function Footer() {
           <div className="footer-col-h mono">Product</div>
           <Link href="/#ai-chef">Chef IQ</Link>
           <Link href="/#chatgpt">Chop it in ChatGPT</Link>
+          <Link href="/features">Features</Link>
           <Link href="/recipes">Recipes</Link>
           {/* In-page navigation to the closing CTA block, not an install CTA.
               Labelled "Download" so it cannot be confused with the App Store

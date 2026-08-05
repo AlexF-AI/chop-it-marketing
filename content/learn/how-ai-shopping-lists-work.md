@@ -28,7 +28,7 @@ You own rice. An app that knows this writes a shorter list, and a shorter list i
 
 Pantry awareness ranges from a manual tick-list of staples through to photographing the shop itself. Chop it lets you photograph a veg box or a food shop and confirms what it recognised into your pantry, so the subtraction starts from what the kitchen holds. Other apps handle this differently or not at all; the comparison above covers who does what.
 
-The failure mode of most pantry features is drift: the record only changes when you edit it, so within a fortnight it describes a kitchen that no longer exists and the subtraction goes wrong. The fix is automatic management, which is how [Chop it's pantry](/learn/what-is-chop-it) works: shops you add go in, ingredients come off when you mark a meal cooked, each item carries a use-by life matched to what it is, and bulk corrections are one confirmed chat instruction rather than a tapping session.
+The failure mode of most pantry features is drift: the record only changes when you edit it, so within a fortnight it describes a kitchen that no longer exists and the subtraction goes wrong. The fix is automatic management, which is how [Chop it's pantry](/learn/what-is-chop-it) works: shops you add go in, ingredients come off when you mark a meal cooked, each item carries a use-by life matched to what it is, and bulk corrections are one confirmed chat instruction.
 
 ## Aisle sorting
 

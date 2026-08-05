@@ -81,7 +81,8 @@ export type CtaSurface =
   | 'footer'
   | 'recipe_page_inline'
   | 'recipe_page_footer'
-  | 'blog_footer';
+  | 'blog_footer'
+  | 'resource_footer';
 
 export type CtaClickedProps = {
   cta_location: CtaSurface;

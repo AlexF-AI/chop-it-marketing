@@ -24,7 +24,7 @@ The Chef IQ catalogue: ready-made recipes you can browse or ask for in plain lan
 
 ## Recipe Generator
 
-One-shot creation. Where New chat converses, the Generator takes your request and produces a finished recipe card in a single step: ingredients with real quantities, a method you can cook from, macros and the Weekly Diversity Score. Use it when you know what you want and need the recipe, not a discussion.
+One-shot creation. Where New chat converses, the Generator takes your request and produces a finished recipe card in a single step: ingredients with real quantities, a method you can cook from, macros and the [Weekly Diversity Score](/features/weekly-diversity-score). Use it when you know what you want and need the recipe, not a discussion.
 
 ## Collections
 
@@ -32,9 +32,9 @@ Recipes grouped into sets by the job they do, the same way the website's [collec
 
 ## Pantry
 
-What your kitchen holds: fridge, freezer and cupboards. The philosophy is automatic management, because a pantry you have to maintain by hand is a pantry you abandon by February. It updates itself as you add shops, photographed or bought. Ingredients come off it when you mark a meal cooked, and back on if you unmark it. Every item carries a use-by life matched to what it is, days for fish, a fortnight for hardy veg, and gets flagged to use before it turns rather than sitting as phantom spinach. For anything bulk, the chat takes one instruction: say "empty my fridge" and the app lists what would go, then clears it on your confirmation.
+What your kitchen holds: fridge, freezer and cupboards. The philosophy is [automatic management](/features/pantry): the record maintains itself from what you already do. It updates itself as you add shops, photographed or bought. Ingredients come off it when you mark a meal cooked, and back on if you unmark it. Every item carries a use-by life matched to what it is, days for fish, a fortnight for hardy veg, and gets flagged to use before it turns rather than sitting as phantom spinach. For anything bulk, the chat takes one instruction: say "empty my fridge" and the app lists what would go, then clears it on your confirmation.
 
-The pantry feeds the two features that depend on knowing what you own: recipe suggestions that start from your ingredients rather than a shopping trip, and the shorter shopping list below. The thinking behind pantry-first cooking is in [our food waste guide](/learn/can-ai-reduce-food-waste).
+The pantry feeds the two features that depend on knowing what you own: recipe suggestions that start from your ingredients rather than a shopping trip, and the shorter shopping list below. The [full pantry page](/features/pantry) covers the mechanics; the thinking behind pantry-first cooking is in [our food waste guide](/learn/can-ai-reduce-food-waste).
 
 ## Shop
 

@@ -75,7 +75,7 @@ export async function GET() {
 
   // Learn + Research: same registry-derived pattern as the blog. Hub lastmod
   // follows the freshest entry in its section.
-  const resourceEntries = (['learn', 'research'] as ResourceSection[]).flatMap((section) => {
+  const resourceEntries = (['learn', 'research', 'features'] as ResourceSection[]).flatMap((section) => {
     const items = getResources(section);
     const hubLastmod = items.reduce(
       (max, r) => (r.dateModified > max ? r.dateModified : max),

@@ -2,6 +2,8 @@
 
 *By [Alex Fahey](/author/alex-fahey), founder of Chop it. Last updated 5 August 2026.*
 
+**Definition.** AI food waste reduction means using AI planning tools to cut household food waste at its causes: planning weeks around what a kitchen already holds, tracking what needs using before it turns, and suggesting recipes for awkward leftover ingredients. It is prevention through planning, not a claim about the bin.
+
 It can help with the causes, and the useful question is which ones. Food gets wasted at home for reasons an app can reach, buying without a plan, forgetting what you own, having no idea for the half-cabbage, and for reasons it cannot, cooking too much and the family changing its mind. AI planning tools work on the first group.
 
 **The scale of it.** [WRAP](https://www.wrap.ngo/media-centre/press-releases/sunday-15-march-average-uk-household-four-will-have-already-wasted), the UK's waste-reduction body, puts household food waste at about £1,000 a year for an average family of four. UK homes throw away around 6 million tonnes of food a year, 4.4 million tonnes of it edible, worth £17 billion. The average person wastes the equivalent of three meals a week. Full figures with sources are on our [statistics page](/research/ai-cooking-statistics).

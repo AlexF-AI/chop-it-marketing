@@ -16,6 +16,8 @@ import remarkGfm from 'remark-gfm';
 import Breadcrumbs, { type Crumb } from '@/app/components/Breadcrumbs';
 import Footer from '@/app/components/Footer';
 import Nav from '@/app/components/Nav';
+import StoreLink from '@/app/components/home/StoreLink';
+import { appStoreUrl, CHATGPT_URL } from '@/app/lib/app-stores';
 import { ALEX_FAHEY } from '@/app/lib/authors';
 import { buildFaqJsonLd } from '@/app/lib/blogSchema';
 import {
@@ -44,6 +46,13 @@ export const SECTION_COPY: Record<
     lead: 'Sourced reference material on AI in home cooking. Every figure is cited, dated and traceable to the organisation that published it.',
     description:
       'Reference pages on AI in home cooking, built from cited research. Every statistic is sourced, dated and traceable to its publisher.',
+  },
+  features: {
+    label: 'Features',
+    kicker: '— FEATURES',
+    lead: 'The parts of Chop it that deserve a page of their own: what each one measures or manages, how it works, and where its limits sit.',
+    description:
+      'Canonical pages for Chop it features: the Weekly Diversity Score and the self-maintaining pantry, each explained with its limits stated.',
   },
 };
 
@@ -214,6 +223,36 @@ export function ResourceArticlePage({ resource }: { resource: ResourceMeta }) {
               </>
             ) : null}
           </div>
+          {resource.cta ? (
+            <aside className="blog-cta" aria-label={resource.cta.heading}>
+              <h2 className="blog-cta-h">{resource.cta.heading}</h2>
+              <p className="blog-cta-sub">{resource.cta.body}</p>
+              <div className="blog-cta-row">
+                {resource.cta.kind === 'chatgpt' ? (
+                  <StoreLink
+                    destination="chatgpt"
+                    href={CHATGPT_URL}
+                    surface="resource_footer"
+                    label={resource.cta.label}
+                    className="btn btn-ai"
+                  >
+                    {resource.cta.label}
+                  </StoreLink>
+                ) : (
+                  <StoreLink
+                    destination="app_store"
+                    href={appStoreUrl('resource_footer')}
+                    location="download_cta"
+                    surface="resource_footer"
+                    label={resource.cta.label}
+                    className="btn btn-ai"
+                  >
+                    {resource.cta.label}
+                  </StoreLink>
+                )}
+              </div>
+            </aside>
+          ) : null}
         </article>
       </main>
       <script

@@ -65,6 +65,19 @@ Gaps in the public research, stated plainly so this page does not imply more tha
 
 When credible research fills these gaps, this page will be updated and the date at the top will move.
 
+## Provenance
+
+Everything above, in one table. Where a publisher does not state a field, the cell says so rather than estimating.
+
+| Statistic | Publisher | Published | Geography | Sample size | Source |
+| --- | --- | --- | --- | --- | --- |
+| 63.8% used AI food tools (66.8% UK, 60.8% US, 74% of 18 to 24s) | Attest | Updated 24 June 2026 | UK and US | Not stated in article | [Attest](https://www.askattest.com/blog/research/ai-in-the-kitchen-the-future-of-food-or-recipe-for-disaster) |
+| 75.9% UK comfortable with AI recipe recommendations; 49.1% with automated shopping | Attest | Updated 24 June 2026 | UK and US | Not stated in article | [Attest](https://www.askattest.com/blog/research/ai-in-the-kitchen-the-future-of-food-or-recipe-for-disaster) |
+| 63% cook from scratch most days or more; 61% never used a recipe box | YouGov | Not stated in article | Great Britain | Not stated in article | [YouGov](https://yougov.com/en-gb/articles/51613-how-people-in-the-uk-prefer-to-cook-from-scratch-or-meal-kits) |
+| £1,000 wasted per household of four; 4.4m tonnes edible, £17bn | WRAP | Not stated on page | UK | National waste estimates, not a survey | [WRAP](https://www.wrap.ngo/media-centre/press-releases/sunday-15-march-average-uk-household-four-will-have-already-wasted) |
+
+All sources checked on 5 August 2026.
+
 ## Citing this page
 
 Quote the underlying source rather than us where you can: Attest for adoption and comfort, YouGov for UK cooking habits, WRAP for food waste. If you cite this compilation, it is maintained at chop-it.com/research/ai-cooking-statistics and the update date at the top reflects the last check of every figure.
