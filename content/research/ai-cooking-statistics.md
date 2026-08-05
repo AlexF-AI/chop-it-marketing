@@ -1,4 +1,4 @@
-# AI Cooking Statistics: What the Research Actually Shows
+# AI Cooking Statistics: What the Research Shows
 
 *Compiled by [Alex Fahey](/author/alex-fahey), founder of Chop it. Last updated 5 August 2026. Every figure below links to the organisation that published it, with the date we checked it. Nothing on this page is our own estimate.*
 
@@ -17,7 +17,7 @@ Consumer research platform Attest surveyed UK and US consumers on AI in food ([A
 | US consumers who have used AI food tools | 60.8% |
 | 18 to 24 year olds who have used AI food tools | 74% |
 
-UK adoption runs ahead of the US, and the youngest adults are the heaviest users. Attest does not publish the sample size in the article, which is worth knowing before you re-quote these figures.
+UK adoption runs ahead of the US, and the youngest adults are the heaviest users. Attest does not publish the sample size in the article, worth knowing before you re-quote these figures.
 
 ## What people are comfortable letting AI do
 
@@ -42,7 +42,7 @@ YouGov's research on UK cooking habits gives the baseline these tools arrive int
 - 15% say they hardly ever or never cook from scratch.
 - 61% have never used a recipe box of pre-portioned ingredients, and 71% have never subscribed to a recipe box service.
 
-The meal-kit figures matter for anyone comparing AI planning tools with kits: most UK households have never bought the incumbent alternative. The realistic comparison for an AI meal planner is not HelloFresh but a supermarket shop with no plan at all. We compare [the kits' actual per-portion costs here](/blog/hellofresh-alternatives-uk).
+The meal-kit figures matter for anyone comparing AI planning tools with kits: most UK households have never bought the incumbent alternative. The realistic comparison for an AI meal planner is not HelloFresh but a supermarket shop with no plan at all. We compare [the kits' per-portion costs here](/blog/hellofresh-alternatives-uk).
 
 ## Food waste, the problem planning attacks
 
@@ -60,7 +60,7 @@ Whether AI planning reduces that number for a given household is not yet establi
 Gaps in the public research, stated plainly so this page does not imply more than exists:
 
 - No independent study we can find measures whether AI meal planning reduces household food waste or grocery spend in practice.
-- Attest measures comfort and adoption, not sustained use. Nobody has published retention data for AI cooking tools.
+- Attest measured comfort and adoption, not sustained use. Nobody has published retention data for AI cooking tools.
 - The YouGov and Attest samples are separate surveys and cannot be combined into a single claim about the same people.
 
 When credible research fills these gaps, this page will be updated and the date at the top will move.

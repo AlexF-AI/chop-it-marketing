@@ -21,7 +21,7 @@ The comparison is slightly false, because Chop it runs inside ChatGPT rather tha
 
 ## Where ChatGPT alone wins
 
-Generation and adaptation, without qualification. Ask for a dinner from half a cabbage, three eggs and feta, and nothing matches it. Ask for the same dish cheaper, dairy-free or in one pan and it rewrites instantly. If your entire need is ideas on demand, ChatGPT alone is the right answer and it costs nothing. Our guide to [getting a full week out of it with no app at all](/blog/chatgpt-meal-planning) is genuinely enough for many people.
+Generation and adaptation, without qualification. Ask for a dinner from half a cabbage, three eggs and feta, and nothing matches it. Ask for the same dish cheaper, dairy-free or in one pan and it rewrites on the spot. If your entire need is ideas on demand, ChatGPT alone is the right answer and it costs nothing. Our guide to [getting a full week out of it with no app at all](/blog/chatgpt-meal-planning) covers many people's whole need.
 
 It is also everywhere, on any device, which Chop it is not: the app is iPhone-only today.
 
@@ -33,7 +33,7 @@ Chop it holds the state: the week as a plan you open, the list as [a structured 
 
 ## Using them together
 
-The intended pattern, and the honest reason this page exists: plan in ChatGPT exactly as you already do, with [Chop it running inside it](https://chatgpt.com/plugins/plugin_asdk_app_6a1c0dfa60b88191b3360153a1c6613c). The conversation stays the conversation. What changes is that the results become things: a week, a list, recipes you keep.
+The intended pattern, and the honest reason this page exists: plan in ChatGPT the way you already do, with [Chop it running inside it](https://chatgpt.com/plugins/plugin_asdk_app_6a1c0dfa60b88191b3360153a1c6613c). The conversation stays the conversation. What changes is that the results become things: a week, a list, recipes you keep.
 
 Current limits, stated rather than buried: signing in to your Chop it account inside ChatGPT is not live yet, so the handoff into the iPhone app is explicit. There is no Android app. AI features in the app run on credits, free to start, because the app pays for those AI calls itself.
 

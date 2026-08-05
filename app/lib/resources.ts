@@ -50,9 +50,9 @@ export const LEARN_RESOURCES: ResourceMeta[] = [
     dateModified: '2026-08-05',
     faq: [
       {
-        question: 'Can AI actually create a usable recipe?',
+        question: 'Can AI create a usable recipe?',
         answer:
-          'Yes. Large language models have read enough cooking text to produce recipes that follow sound technique for familiar dishes. The output is usually a workable starting point rather than a tested recipe, so check quantities and cooking times before you rely on them.',
+          'Yes. Large language models have read enough cooking text to produce recipes that follow sound technique for familiar dishes. Treat the output as a workable starting point rather than a tested recipe, and check quantities and cooking times before you rely on them.',
       },
       {
         question: 'What do AI recipes get wrong?',
@@ -94,7 +94,7 @@ export const LEARN_RESOURCES: ResourceMeta[] = [
     title: 'Can AI Reduce Food Waste at Home?',
     seoTitle: 'Can AI Reduce Food Waste at Home?',
     description:
-      'UK homes throw away food worth £17bn a year. Where planning actually cuts waste, what AI adds to it, and what no app can do about the bin.',
+      'UK homes throw away food worth £17bn a year. Where planning cuts waste, what AI adds to it, and what no app can do about the bin.',
     datePublished: '2026-08-05',
     dateModified: '2026-08-05',
     faq: [
@@ -104,7 +104,7 @@ export const LEARN_RESOURCES: ResourceMeta[] = [
           'WRAP puts it at around £1,000 a year for an average household of four, about £86 a month. Across the UK roughly 4.4 million tonnes of edible food worth £17 billion is thrown from homes each year.',
       },
       {
-        question: 'Does meal planning actually reduce food waste?',
+        question: 'Does meal planning reduce food waste?',
         answer:
           'Planning attacks the biggest cause, which is buying without a plan for using it. A planned week buys what the recipes need and no more. AI adds the reverse direction: starting the plan from what is already in the kitchen, so food gets cooked before it goes off rather than after.',
       },
@@ -165,7 +165,7 @@ export const RESEARCH_RESOURCES: ResourceMeta[] = [
   {
     slug: 'ai-cooking-statistics',
     section: 'research',
-    title: 'AI Cooking Statistics: What the Research Actually Shows',
+    title: 'AI Cooking Statistics: What the Research Shows',
     seoTitle: 'AI Cooking Statistics (UK, 2026)',
     description:
       'Sourced figures on AI in home cooking: 66.8% of Brits have used AI food tools, 75.9% would take AI recipe recommendations. Every number cited and dated.',

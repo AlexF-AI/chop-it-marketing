@@ -19,10 +19,27 @@ whatever direction they fall:
 - What stopped you (trust, effort, forgot, result was poor)?
 - Weekly food shop planning method (none / paper / notes app / dedicated app / AI).
 
-Also usable, and free: anonymised aggregate product data (share of Chop it
-recipes arriving from AI vs photo vs link vs social; most common pantry
-items; average planned dinners per week). Aggregate only, disclosed as
-product data, never presented as market research.
+Also usable, and free: anonymised aggregate product data. PostHog is the
+accurate source for this — the app tracks in the org's "Default project"
+(id 146925), separate from the marketing project (180088). The events that
+would feed research pages already exist:
+
+  canonical_import_validation_status   recipe imports (source split)
+  scan_recipe_opened                   cookbook/photo captures
+  gpt_plugin_request                   ChatGPT app usage
+  recipe_added_to_menu / menu_created  planning behaviour
+  pantry_item_added                    pantry usage
+  whisk_handoff_completed              shop handoffs
+
+VOLUME GATE, checked 5 August 2026 (90-day window): 22 sign-ups,
+114 people opening recipes, and single-digit user counts on most feature
+events (4 people importing, 3 creating menus, 1 using the GPT plugin).
+Publishing percentages from samples this size would be the exact
+fabricated-authority pattern the research section exists to avoid — "75%
+of Chop it menus" must never mean three of four people. Do not publish any
+product-data statistic until the underlying figure covers at least a few
+hundred distinct users, and always state the n alongside the percentage.
+Re-check volumes quarterly with the same 90-day query.
 
 ## AI Grocery Shopping Trends / ChatGPT Recipe Trends
 

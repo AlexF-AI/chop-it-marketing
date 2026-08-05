@@ -2,7 +2,7 @@
 
 *By [Alex Fahey](/author/alex-fahey), founder of Chop it. Last updated 5 August 2026.*
 
-An AI shopping list is built from your recipes rather than typed by you. The useful ones do three things: merge the same ingredient across recipes into one line, sort the result the way you walk the shop, and leave off what you already own. This guide explains how each works, because the difference between apps is almost entirely in how seriously they take these three steps.
+An AI shopping list is built from your recipes rather than typed by you. The useful ones do three things: merge the same ingredient across recipes into one line, sort the result the way you walk the shop, and leave off what you already own. This guide explains how each works, because the difference between apps is mostly in how seriously they take these three steps.
 
 **Definition.** A generated shopping list is produced automatically from the ingredients of the recipes you plan to cook, as opposed to a manual list you write yourself or a chat answer you copy out of a conversation.
 
@@ -10,7 +10,7 @@ An AI shopping list is built from your recipes rather than typed by you. The use
 
 Everything depends on how a recipe is stored. If a recipe holds "a splash of olive oil and the rice" as prose, no software can add it to anything. The apps that produce good lists parse every ingredient into three parts: a name, a quantity and a unit. 200, grams, rice.
 
-This is why a chat model on its own struggles with lists. It re-reads its own paragraphs each time rather than consulting a structured record, which is why ChatGPT will happily give you "1 onion" four times. Ask it explicitly to merge duplicates with totals and it usually manages; a structured app does not need asking, because for it the merge is arithmetic.
+This is why a chat model on its own struggles with lists. It re-reads its own paragraphs each time rather than consulting a structured record, which is why ChatGPT gives you "1 onion" four times. Ask it explicitly to merge duplicates with totals and it manages more often than not; a structured app does not need asking, because for it the merge is arithmetic.
 
 ## Step two: merging and unit conversion
 
@@ -24,15 +24,15 @@ When you evaluate any app, this is the thirty-second test: plan four recipes tha
 
 ## Step three: pantry subtraction
 
-You own rice. An app that knows this writes a shorter list, and a shorter list is the entire point.
+You own rice. An app that knows this writes a shorter list, and a shorter list is the point.
 
-Pantry awareness ranges from a manual tick-list of staples through to photographing your actual shop. Chop it lets you photograph a veg box or a food shop and confirms what it recognised into your pantry, so the subtraction starts from what is genuinely there. Other apps handle this differently or not at all; the comparison above covers who does what.
+Pantry awareness ranges from a manual tick-list of staples through to photographing the shop itself. Chop it lets you photograph a veg box or a food shop and confirms what it recognised into your pantry, so the subtraction starts from what the kitchen holds. Other apps handle this differently or not at all; the comparison above covers who does what.
 
-The honest limitation of every pantry feature: it only knows what you told it. Use half the rice and the app still thinks you have a full bag unless you tick it off. The good implementations make that correction take one tap at cooking time.
+The honest limitation of every pantry feature: the pantry only knows what you told it. Use half the rice and the app still thinks you have a full bag unless you tick it off. The good implementations make that correction take one tap at cooking time.
 
 ## Aisle sorting
 
-Minor sounding, real difference in the shop. A list in recipe order sends you from produce to dairy and back three times. Sorted by section, you walk the store once. Most decent apps do this; the better ones let you reorder sections to match your actual supermarket.
+Minor on paper, large in the shop. A list in recipe order sends you from produce to dairy and back three times. Sorted by section, you walk the store once. Most decent apps do this; the better ones let you reorder sections to match the supermarket you use.
 
 ## What this looks like in practice
 

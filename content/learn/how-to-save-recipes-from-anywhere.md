@@ -20,17 +20,17 @@ The alternative is typing the recipe out, which is why most people's cookbook re
 
 ## From TikTok, Instagram or YouTube
 
-The hardest source, and the one growing fastest. The recipe usually lives partly in the caption and partly in the video itself, and both vanish if the creator deletes or the platform changes.
+The hardest source, and the one growing fastest. The recipe lives partly in the caption and partly in the video itself, and both vanish if the creator deletes or the platform changes.
 
-Screenshots capture the caption and lose the method. Saving the video keeps it inside the platform's app, unsearchable next to your other recipes. The durable route is extraction: paste the link into a tool that parses what the ingredients and steps actually are, so the structured recipe survives whatever happens to the source. Chop it's "paste a link" route handles the major platforms.
+Screenshots capture the caption and lose the method. Saving the video keeps it inside the platform's app, unsearchable next to your other recipes. The durable route is extraction: paste the link into a tool that parses the ingredients and steps themselves, so the structured recipe survives whatever happens to the source. Chop it's "paste a link" route handles the major platforms.
 
 ## From another person
 
-The text from a friend with "that curry you liked" deserves better than the messages app. Paste it into whatever holds your collection, or photograph it if it arrived on paper. The recipes with the most sentimental value are reliably the ones stored most precariously.
+The text from a friend with "that curry you liked" deserves better than the messages app. Paste it into whatever holds your collection, or photograph it if it arrived on paper. The recipes with the most sentimental value are the ones stored most precariously.
 
 ## From an AI chat
 
-The newest source and the leakiest. A recipe ChatGPT wrote for you exists in a conversation that scrolls away, cannot be searched by ingredient, and is genuinely hard to find again three weeks later. We wrote about this failure mode in detail in [ChatGPT meal planning: what works and what does not](/blog/chatgpt-meal-planning).
+The newest source and the leakiest. A recipe ChatGPT wrote for you exists in a conversation that scrolls away, cannot be searched by ingredient, and is hard to find again three weeks later. We wrote about this failure mode in detail in [ChatGPT meal planning: what works and what does not](/blog/chatgpt-meal-planning).
 
 Two fixes. The manual one: copy anything worth keeping out of the chat immediately, into your recipe manager. The integrated one: use [Chop it inside ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6a1c0dfa60b88191b3360153a1c6613c), where a recipe you create in conversation can be opened in the app as a structured recipe, no retyping.
 

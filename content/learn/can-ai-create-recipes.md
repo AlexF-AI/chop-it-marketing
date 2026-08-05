@@ -25,12 +25,12 @@ Baking deserves separate caution. Baking is ratio-driven, and a plausible-lookin
 ## How to test a generated recipe safely
 
 1. Ask for the recipe with your real constraints in one message.
-2. Read it as an editor. Do the quantities look sane? Is any step missing, such as when the onions actually go in?
+2. Read it as an editor. Do the quantities look sane? Is any step missing, such as when the onions go in?
 3. Ask the model to double-check itself: "Are these quantities right for four portions?" It catches a surprising share of its own slips.
 4. Cook it once as written, noting what you changed. It is your recipe after that.
 
 ## Where the real problem starts
 
-Generation is the easy half. The hard half is that a good generated recipe lives in a chat log, and a chat log is where recipes go to disappear. If you cook something worth repeating, get it out of the conversation: our guide to [saving recipes from any source](/learn/how-to-save-recipes-from-anywhere) covers the practical routes, and [Chop it](/) exists largely because this step should not be a copy-and-paste job. It runs inside ChatGPT and saves what you create as a structured recipe you can plan, shop and cook from.
+Generation is the easy half. The hard half is that a good generated recipe lives in a chat log, and a chat log buries them. If you cook something worth repeating, get it out of the conversation: our guide to [saving recipes from any source](/learn/how-to-save-recipes-from-anywhere) covers the practical routes, and [Chop it](/) exists because this step should not be a copy-and-paste job. It runs inside ChatGPT and saves what you create as a structured recipe you can plan, shop and cook from.
 
 For the wider picture of planning whole weeks this way, see [ChatGPT meal planning: what works and what does not](/blog/chatgpt-meal-planning).
