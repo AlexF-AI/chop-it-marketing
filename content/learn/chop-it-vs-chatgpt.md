@@ -11,7 +11,7 @@ The comparison is slightly false, because Chop it runs inside ChatGPT rather tha
 | Invent a recipe from a request | Yes, best in class | Via ChatGPT, or AI Chef in the app |
 | Adapt a recipe to constraints | Yes, best in class | Yes, through the same conversation |
 | Remember your week on Thursday | No, it lives in a scrolled chat | Yes, the week is a persistent plan |
-| One merged shopping list across recipes | On request, unreliably | Yes, structured merge with totals |
+| One merged shopping list across recipes | On request, hit and miss | Yes, structured merge with totals |
 | Know what is in your cupboards | No | Yes, including photographed shops |
 | Keep recipes from cookbooks, websites and social | No | Yes, photo, link and social import |
 | Find a recipe you cooked in March | Search a chat history | Search a structured library |
