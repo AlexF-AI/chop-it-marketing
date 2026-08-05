@@ -40,6 +40,38 @@ export type ResourceMeta = {
 
 export const LEARN_RESOURCES: ResourceMeta[] = [
   {
+    slug: 'what-is-chop-it',
+    section: 'learn',
+    title: 'What Is Chop it? Every Part of the App, Explained',
+    seoTitle: 'What Is Chop it? The App, Explained',
+    description:
+      'Every part of the Chop it app, explained: the weekly plan, recipe library, Chef IQ catalogue, Recipe Generator, pantry, merged shopping list and ChatGPT.',
+    datePublished: '2026-08-05',
+    dateModified: '2026-08-05',
+    faq: [
+      {
+        question: 'Is Chop it free?',
+        answer:
+          'Free to start. AI features run on credits, because the app pays for those AI calls itself. Pro is £3.99 a month or £34.99 a year and adds 100 monthly credits, and one-off credit packs are available for people who dislike subscriptions.',
+      },
+      {
+        question: 'What are Chef IQ Recipes?',
+        answer:
+          'The catalogue built by Chop it’s AI chef: ready-made recipes you can browse or ask for in plain language. The same catalogue is public at chop-it.com/recipes, organised by cuisine and collection.',
+      },
+      {
+        question: 'What is the difference between New chat and the Recipe Generator?',
+        answer:
+          'New chat is a conversation: ideas, adaptation and planning, back and forth. The Recipe Generator is one-shot: it takes your request and returns a finished recipe card with quantities, method, macros and the diversity wheel in a single step.',
+      },
+      {
+        question: 'Does Chop it work on Android?',
+        answer:
+          'Not yet. The app is iPhone-only today. Chop it inside ChatGPT works on any device with ChatGPT, and shared week and recipe links open in any browser.',
+      },
+    ],
+  },
+  {
     slug: 'can-ai-create-recipes',
     section: 'learn',
     title: 'Can AI Create Recipes? What Works, What to Check',

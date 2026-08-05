@@ -49,4 +49,4 @@ The intended pattern: plan in ChatGPT the way you already do, with [Chop it runn
 
 Current limits, stated rather than buried: signing in to your Chop it account inside ChatGPT is not live yet, so the handoff into the iPhone app is explicit. There is no Android app. AI features in the app run on credits, free to start, because the app pays for those AI calls itself.
 
-For how Chop it compares with conventional planning apps rather than with ChatGPT, the [full UK app comparison](/blog/best-meal-planning-apps-uk-2026) covers ten of them with verified prices.
+For a tour of the app itself rather than the comparison, [every part of Chop it is explained here](/learn/what-is-chop-it). For how it compares with conventional planning apps rather than with ChatGPT, the [full UK app comparison](/blog/best-meal-planning-apps-uk-2026) covers ten of them with verified prices.
