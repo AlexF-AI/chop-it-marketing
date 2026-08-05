@@ -143,19 +143,19 @@ export const LEARN_RESOURCES: ResourceMeta[] = [
     title: 'Chop it vs ChatGPT: What Each Does Better',
     seoTitle: 'Chop it vs ChatGPT for Meal Planning',
     description:
-      'ChatGPT invents and adapts recipes better than any app. Chop it keeps them, plans the week and merges the shopping list. A factual comparison of the split.',
+      'ChatGPT creates the recipes; Chop it adds guardrails: staged menus tuned for plant variety, UK phrasing, recipe cards with macros and a diversity wheel.',
     datePublished: '2026-08-05',
     dateModified: '2026-08-05',
     faq: [
       {
         question: 'Is Chop it a replacement for ChatGPT?',
         answer:
-          'No, and it does not try to be. ChatGPT is better at generating and adapting recipes than any app. Chop it runs inside it and covers what a conversation cannot: a persistent week, a merged shopping list, a pantry, and a recipe library that includes sources other than AI.',
+          'No. ChatGPT creates Chop it’s recipes, so the two are additive rather than competitive. Chop it wraps the generation in guardrails: staged menus tuned to raise plant variety and keep fibre and protein high, UK phrasing and methods on every recipe, and structured recipe cards with macros and a diversity wheel. It also holds what a conversation cannot: the week, the merged list, the pantry and a library that takes recipes from sources other than AI.',
       },
       {
         question: 'Do I need both?',
         answer:
-          'If you already plan meals in ChatGPT and retype the results somewhere, the combination removes that step. If you only ever want one-off dinner ideas, ChatGPT alone is enough and it is free.',
+          'If you already plan meals in ChatGPT and retype the results somewhere, the combination removes that step and applies the guardrails on the way through. If you only ever want one-off dinner ideas, ChatGPT alone is enough and it is free.',
       },
     ],
   },
