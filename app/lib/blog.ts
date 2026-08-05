@@ -36,6 +36,30 @@ export type BlogPostMeta = {
 
 export const BLOG_POSTS: BlogPostMeta[] = [
   {
+    slug: 'hellofresh-alternatives-uk',
+    title: 'HelloFresh Alternatives UK: What the Kits Cost',
+    description:
+      'Gousto, HelloFresh and Mindful Chef cost £4.65 to £7.62 a portion at the standard rate. What that premium buys, and what does the same job for less.',
+    datePublished: '2026-08-05',
+    dateModified: '2026-08-05',
+  },
+  {
+    slug: 'chatgpt-meal-planning',
+    title: 'ChatGPT Meal Planning: What Works, What Does Not',
+    description:
+      'What ChatGPT is good at in the kitchen, where it fails on its own, and a five-step method for getting a usable weekly meal plan out of it for free.',
+    datePublished: '2026-08-05',
+    dateModified: '2026-08-05',
+  },
+  {
+    slug: 'meal-planning-app-shopping-list-uk',
+    title: 'Meal Planning Apps With a Shopping List (UK)',
+    description:
+      'Four recipes wanting onions should give you one line, not four. How Cherrypick, Mealime, Samsung Food and AnyList handle merging and aisle sorting.',
+    datePublished: '2026-08-05',
+    dateModified: '2026-08-05',
+  },
+  {
     slug: 'future-of-ai-cooking',
     title: 'The Future of AI Cooking: From Chat to Kitchen',
     description:
@@ -112,9 +136,9 @@ export const BLOG_POSTS: BlogPostMeta[] = [
     slug: 'best-meal-planning-apps-uk-2026',
     title: 'Best Meal Planning Apps in the UK for 2026',
     description:
-      'We compare Good Food, Paprika, Samsung Food, Mealime, AnyList, Mob and Chop it by the job you need done, from recipe discovery to keeping every recipe together.',
+      'Ten UK meal planning apps compared on price, shopping lists and pantry awareness, with every price checked on the UK App Store in August 2026.',
     datePublished: '2026-05-29',
-    dateModified: '2026-08-03',
+    dateModified: '2026-08-05',
   },
 ];
 
