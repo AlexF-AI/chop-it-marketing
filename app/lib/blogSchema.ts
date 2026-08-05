@@ -75,6 +75,33 @@ export const FAQ_BY_SLUG: Record<string, FaqEntry[]> = {
         'For generating ideas and adapting recipes to your constraints, it is better than every app I have compared. For keeping a plan, a list and a recipe collection across weeks, a purpose-built app wins, because those need storage and structure rather than generation. Plenty of people sensibly use both.',
     },
   ],
+  'hellofresh-alternatives-uk': [
+    {
+      question: 'What is the cheapest meal kit in the UK?',
+      answer:
+        'Of the three checked here, Gousto at £4.65 a portion on a two-person box, then HelloFresh at £5.50 a serving plus £4.99 shipping, then Mindful Chef at £7.62 a portion. All three advertise first-box prices around half that, which is not what you pay ongoing.',
+    },
+    {
+      question: 'Is HelloFresh cheaper than a supermarket shop?',
+      answer:
+        'Almost never on ingredient cost, because you are paying for the recipe selection, the delivery and the exact portioning on top of the food. It can work out cheaper than your current spending if you currently waste a lot or order takeaways you would replace. Price one of their recipes at your own supermarket to see your real gap.',
+    },
+    {
+      question: 'What can I use instead of HelloFresh?',
+      answer:
+        'A meal planning app plus your own supermarket shop covers the same two jobs, the deciding and the list, from free to about £60 a year. Gousto and Mindful Chef are the direct kit alternatives if you want the ingredients delivered.',
+    },
+    {
+      question: 'Do meal kits save money on food waste?',
+      answer:
+        'They can. Pre-portioned ingredients mean no half-used bunch of coriander going soft, which is a genuine saving for one or two-person households buying at supermarket pack sizes. Whether it covers a premium of several pounds a portion depends on how much you currently throw away.',
+    },
+    {
+      question: 'Can I cancel a meal kit after the discounted boxes?',
+      answer:
+        'All three run as rolling subscriptions you can pause or cancel, and the introductory offers are designed around you staying past them. If you are only after the cheap first box, note the date the standard rate starts.',
+    },
+  ],
   'meal-planning-app-shopping-list-uk': [
     {
       question: 'Which meal planning app has the best shopping list in the UK?',

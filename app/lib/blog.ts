@@ -36,6 +36,14 @@ export type BlogPostMeta = {
 
 export const BLOG_POSTS: BlogPostMeta[] = [
   {
+    slug: 'hellofresh-alternatives-uk',
+    title: 'HelloFresh Alternatives in the UK: What the Kits Cost, and When to Skip Them',
+    description:
+      'Gousto, HelloFresh and Mindful Chef cost £4.65 to £7.62 a portion at the standard rate. What that premium buys, and what covers the same two jobs for less.',
+    datePublished: '2026-08-05',
+    dateModified: '2026-08-05',
+  },
+  {
     slug: 'chatgpt-meal-planning',
     title: 'ChatGPT Meal Planning: What It Does Well, and Where It Falls Over',
     description:

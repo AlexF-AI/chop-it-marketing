@@ -137,7 +137,7 @@ Chop it runs inside ChatGPT to close exactly those gaps.
 
 If you arrived here thinking of Gousto, HelloFresh or Mindful Chef, those solve a related problem at a different price. A two-person Gousto box works out at £4.65 a portion, £46.49 an order, before delivery. HelloFresh is £5.50 a serving, so three meals for two people comes to £32.99 plus £4.99 shipping. Both advertise a much lower price on a first box, which is not the number you pay in week three, so compare on the standard rate.
 
-Kits take the deciding and the shopping off your hands, and you pay a premium per meal for that. The apps above take the deciding off your hands and leave you buying at supermarket prices, which is where most of the difference sits.
+Kits take the deciding and the shopping off your hands, and you pay a premium per meal for that. The apps above take the deciding off your hands and leave you buying at supermarket prices, which is where most of the difference sits. I have written a fuller comparison of [what the kits cost against a planned week](/blog/hellofresh-alternatives-uk), including Mindful Chef at £7.62 a portion.
 
 ## What actually separates them
 
