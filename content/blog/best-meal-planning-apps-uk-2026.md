@@ -31,7 +31,7 @@ Anyone can win a features checklist. These apps separate on five things that onl
 
 **The shopping list.** Four recipes each want an onion. A good list gives you three onions on one line. A bad one gives you "1 onion" four times and lets you do the arithmetic in the shop. I have written more about [how each app handles that merge](/blog/meal-planning-app-shopping-list-uk).
 
-**Pantry awareness.** You already own rice. An app that knows this writes a shorter list.
+**Pantry awareness.** You already own rice. An app that knows this writes a shorter list. The mechanics behind all three list jobs are explained in [how AI shopping lists work](/learn/how-ai-shopping-lists-work).
 
 **Planning the week.** A calendar you fill in by hand is not planning. Look for leftovers, repeats and a view of the whole week at once.
 

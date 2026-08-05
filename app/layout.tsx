@@ -97,7 +97,18 @@ const ORGANIZATION_JSONLD = {
   url: 'https://chop-it.com',
   logo: 'https://chop-it.com/logo.webp',
   description:
-    'Chop it is the home of AI cooking: one place to keep recipes, plan the week, build the shop and cook.',
+    'Chop it is an AI meal planning platform and recipe organiser: one place to keep recipes from any source, plan the week, build the shop and cook. It runs on iPhone and inside ChatGPT.',
+  // Entity reinforcement for knowledge graphs: the topics this organisation
+  // publishes on, matching the Learn and Research sections. Terms mirror the
+  // wording used across the site so the entity stays consistent.
+  knowsAbout: [
+    'AI meal planning',
+    'AI cooking',
+    'AI shopping lists',
+    'recipe organisation',
+    'ChatGPT for cooking',
+    'food waste reduction',
+  ],
   // The App Store listing is the strongest entity signal available: it ties
   // this Organization to the published app. Instagram + X are still omitted
   // because neither handle could be confirmed live (Instagram rate-limits

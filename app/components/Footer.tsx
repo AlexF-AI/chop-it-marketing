@@ -31,6 +31,11 @@ export default function Footer() {
         <div className="footer-col">
           <div className="footer-col-h mono">Company</div>
           <Link href="/blog">Blog</Link>
+          <Link href="/learn">Learn</Link>
+          <Link href="/research">Research</Link>
+          {/* Direct footer path to the cornerstone comparison, so the site's
+              highest-intent article is one click from every page. */}
+          <Link href="/blog/best-meal-planning-apps-uk-2026">App comparison</Link>
           <Link href="/method">Our method</Link>
           <a href="mailto:hello@chop-it.com">Contact</a>
           <a href="/support">Support</a>
