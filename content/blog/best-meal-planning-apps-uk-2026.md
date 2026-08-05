@@ -135,7 +135,9 @@ Chop it runs inside ChatGPT to close exactly those gaps.
 
 ## A note on meal kits
 
-If you arrived here thinking of Gousto, HelloFresh or Mindful Chef, those solve a related problem at a different price. A Gousto box for two people with two recipes is £46.49, which works out at £4.65 a portion before delivery. Kits take the deciding and the shopping off your hands, and you pay a premium per meal for that. The apps above take the deciding off your hands and leave you buying at supermarket prices, which is where most of the difference sits.
+If you arrived here thinking of Gousto, HelloFresh or Mindful Chef, those solve a related problem at a different price. A two-person Gousto box works out at £4.65 a portion, £46.49 an order, before delivery. HelloFresh is £5.50 a serving, so three meals for two people comes to £32.99 plus £4.99 shipping. Both advertise a much lower price on a first box, which is not the number you pay in week three, so compare on the standard rate.
+
+Kits take the deciding and the shopping off your hands, and you pay a premium per meal for that. The apps above take the deciding off your hands and leave you buying at supermarket prices, which is where most of the difference sits.
 
 ## What actually separates them
 
@@ -167,4 +169,4 @@ The cheapest paid tier here is Mealime at £2.99 a month. The cheapest annual co
 
 ---
 
-*Prices verified on 5 August 2026 from the UK App Store listings for [Chop it](https://apps.apple.com/gb/app/chop-it/id6762079343), [Mealime](https://apps.apple.com/gb/app/mealime-meal-plans-recipes/id1079999103), [Samsung Food](https://apps.apple.com/gb/app/samsung-food-meal-planning/id1133637674), [Paprika 3](https://apps.apple.com/gb/app/paprika-recipe-manager-3/id1303222868), [Plan to Eat](https://apps.apple.com/gb/app/plan-to-eat/id1215348056), [Good Food](https://apps.apple.com/gb/app/good-food-recipe-finder/id533785308), [Mob](https://apps.apple.com/gb/app/mob-meal-planner-and-recipes/id6670216494) and [ChatGPT](https://apps.apple.com/gb/app/chatgpt/id6448311069), and from in-app subscription screens for Cherrypick, AnyList and Eat This Much. Gousto pricing from [gousto.co.uk](https://www.gousto.co.uk/box-prices). Subscription prices change often, so check the current listing before you buy.*
+*Prices verified on 5 August 2026 from the UK App Store listings for [Chop it](https://apps.apple.com/gb/app/chop-it/id6762079343), [Mealime](https://apps.apple.com/gb/app/mealime-meal-plans-recipes/id1079999103), [Samsung Food](https://apps.apple.com/gb/app/samsung-food-meal-planning/id1133637674), [Paprika 3](https://apps.apple.com/gb/app/paprika-recipe-manager-3/id1303222868), [Plan to Eat](https://apps.apple.com/gb/app/plan-to-eat/id1215348056), [Good Food](https://apps.apple.com/gb/app/good-food-recipe-finder/id533785308), [Mob](https://apps.apple.com/gb/app/mob-meal-planner-and-recipes/id6670216494) and [ChatGPT](https://apps.apple.com/gb/app/chatgpt/id6448311069), and from in-app subscription screens for Cherrypick, AnyList, Eat This Much and Mob. Gousto pricing from [gousto.co.uk](https://www.gousto.co.uk/box-prices); HelloFresh pricing from its own checkout at [hellofresh.co.uk](https://www.hellofresh.co.uk/), at the standard rate rather than the introductory offer. Subscription prices change often, so check the current listing before you buy.*
