@@ -4,7 +4,7 @@ import Breadcrumbs, { type Crumb } from '@/app/components/Breadcrumbs';
 import Footer from '@/app/components/Footer';
 import Nav from '@/app/components/Nav';
 import StoreLink from '@/app/components/home/StoreLink';
-import { APP_STORE_URL, CHATGPT_URL } from '@/app/lib/app-stores';
+import { appStoreUrl, CHATGPT_URL } from '@/app/lib/app-stores';
 import { buildBreadcrumbJsonLd, serializeJsonLd, SITE_ORIGIN } from '@/app/lib/recipeSchema';
 
 const TITLE = 'How we build a Chop it recipe';
@@ -88,7 +88,6 @@ export default function MethodPage() {
             <StoreLink
               destination="chatgpt"
               href={CHATGPT_URL}
-              location="download_cta"
               surface="homepage_secondary"
               label="Use Chop it in ChatGPT"
               className="cta-solid"
@@ -97,7 +96,7 @@ export default function MethodPage() {
             </StoreLink>
             <StoreLink
               destination="app_store"
-              href={APP_STORE_URL}
+              href={appStoreUrl('homepage_secondary')}
               location="download_cta"
               surface="homepage_secondary"
               label="Get the iPhone app"

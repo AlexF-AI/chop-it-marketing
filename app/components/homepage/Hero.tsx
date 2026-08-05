@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import { APP_STORE_URL, CHATGPT_URL } from '@/app/lib/app-stores';
+import StoreLink from '@/app/components/home/StoreLink';
+import { appStoreUrl, CHATGPT_URL } from '@/app/lib/app-stores';
 import shared from './shared.module.css';
 import styles from './Hero.module.css';
 
@@ -20,12 +21,25 @@ export function Hero() {
         </p>
 
         <div className={`${shared.ctaRow} ${styles.ctaRow}`}>
-          <a href={APP_STORE_URL} className={`${shared.btn} ${shared.btnPrimary}`}>
+          <StoreLink
+            destination="app_store"
+            href={appStoreUrl('homepage_hero')}
+            location="hero"
+            surface="homepage_hero"
+            label="Get the iPhone app"
+            className={`${shared.btn} ${shared.btnPrimary}`}
+          >
             Get the iPhone app
-          </a>
-          <a href={CHATGPT_URL} className={`${shared.btn} ${shared.btnSecondary}`}>
+          </StoreLink>
+          <StoreLink
+            destination="chatgpt"
+            href={CHATGPT_URL}
+            surface="homepage_hero"
+            label="Use it free in ChatGPT"
+            className={`${shared.btn} ${shared.btnSecondary}`}
+          >
             Use it free in ChatGPT <span aria-hidden="true">→</span>
-          </a>
+          </StoreLink>
         </div>
 
         <div className={styles.status}>

@@ -1,5 +1,5 @@
 import StoreLink from './StoreLink';
-import { ANDROID_LIVE, APP_STORE_URL, CHATGPT_URL, PLAY_STORE_URL } from '@/app/lib/app-stores';
+import { ANDROID_LIVE, appStoreUrl, CHATGPT_URL, PLAY_STORE_URL } from '@/app/lib/app-stores';
 
 export default function Download() {
   return (
@@ -17,7 +17,7 @@ export default function Download() {
         <div className="download-row">
           <StoreLink
             destination="app_store"
-            href={APP_STORE_URL}
+            href={appStoreUrl('homepage_secondary')}
             location="download_cta"
             surface="homepage_secondary"
             label="App Store"
@@ -30,7 +30,6 @@ export default function Download() {
           <StoreLink
             destination="chatgpt"
             href={CHATGPT_URL}
-            location="download_cta"
             surface="homepage_secondary"
             label="ChatGPT plug-in"
             className="store-card"
@@ -39,7 +38,7 @@ export default function Download() {
             <span className="store-card-bot">ChatGPT</span>
           </StoreLink>
 
-          {ANDROID_LIVE ? (
+          {ANDROID_LIVE && PLAY_STORE_URL ? (
             <a className="store-card" href={PLAY_STORE_URL} rel="noopener noreferrer">
               <span className="store-card-top">Get it on</span>
               <span className="store-card-bot">Google Play</span>

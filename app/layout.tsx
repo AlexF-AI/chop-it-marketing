@@ -5,6 +5,14 @@ import './styles/globals.css';
 import CookieBanner from './components/CookieBanner';
 import MotionRoot from './components/MotionRoot';
 import NavTracker from './components/NavTracker';
+import { assertStoreUrlsValid } from './lib/app-stores';
+
+// Fail the build on a store-URL misconfiguration rather than shipping CTAs
+// that go nowhere. NEXT_PUBLIC_* values are inlined at build time, so this
+// module-scope call runs during `next build` and a bad value stops the
+// deploy — the class of defect that put href="#" in front of paid traffic
+// is invisible to lint and typecheck, because it lives in the environment.
+assertStoreUrlsValid();
 
 // Archivo carries headings and body copy; JetBrains Mono carries kickers,
 // meta rows and numerals. Both are wired to the CSS variables read by

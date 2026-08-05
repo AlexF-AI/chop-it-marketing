@@ -4,12 +4,8 @@
 // AI accent) + App Store secondary (outline). Rendered after the article
 // body in app/blog/[slug]/page.tsx — the markdown files stay CTA-free.
 
-import { APP_STORE_URL, CHATGPT_LIVE, CHATGPT_URL, IOS_LIVE } from '@/app/lib/app-stores';
-import {
-  trackAppStoreClick,
-  trackChatgptClick,
-  trackCtaClicked,
-} from '@/lib/posthog-events';
+import { appStoreUrl, CHATGPT_LIVE, CHATGPT_URL, IOS_LIVE } from '@/app/lib/app-stores';
+import { trackAppStoreClick, trackCtaClicked } from '@/lib/posthog-events';
 
 /** The dual button pair on its own — reused by the salads post outro. */
 export function BlogCTAButtons({ className = 'blog-cta-row' }: { className?: string }) {
@@ -23,7 +19,6 @@ export function BlogCTAButtons({ className = 'blog-cta-row' }: { className?: str
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => {
-              trackChatgptClick({ location: 'blog_cta' });
               trackCtaClicked({
                 cta_location: 'blog_footer',
                 cta_label: 'ChatGPT',
@@ -37,14 +32,14 @@ export function BlogCTAButtons({ className = 'blog-cta-row' }: { className?: str
         {IOS_LIVE && (
           <a
             className="btn btn-ghost"
-            href={APP_STORE_URL}
+            href={appStoreUrl('blog_footer')}
             rel="noopener noreferrer"
             onClick={() => {
               trackAppStoreClick({ location: 'blog_cta' });
               trackCtaClicked({
                 cta_location: 'blog_footer',
                 cta_label: 'App Store',
-                cta_destination: APP_STORE_URL,
+                cta_destination: appStoreUrl('blog_footer'),
               });
             }}
           >
