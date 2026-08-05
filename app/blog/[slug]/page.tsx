@@ -10,6 +10,12 @@ import Nav from '@/app/components/Nav';
 import SummerSaladsArticle from '@/app/components/SummerSaladsArticle';
 import { ALEX_FAHEY } from '@/app/lib/authors';
 import { BLOG_AUTHOR, getAllPostsMeta, getPostBody, getPostMeta } from '@/app/lib/blog';
+import {
+  APP_LIST_BY_SLUG,
+  buildAppItemListJsonLd,
+  buildFaqJsonLd,
+  FAQ_BY_SLUG,
+} from '@/app/lib/blogSchema';
 import { isoDuration } from '@/app/lib/iso';
 import { getMenuRecipesFull, type FullMenuRecipe } from '@/app/lib/menuRecipes';
 import { buildBreadcrumbJsonLd, serializeJsonLd, SITE_ORIGIN } from '@/app/lib/recipeSchema';
@@ -188,6 +194,13 @@ export default async function BlogArticlePage({
 
   const body = getPostBody(slug);
 
+  // Optional per-article schema. Only comparison articles carry these: the
+  // FAQ answers are duplicated from the visible copy (Google requires the
+  // answer text to appear on the page) and the ItemList mirrors the ranked
+  // order of the app sections.
+  const faq = FAQ_BY_SLUG[slug];
+  const listedApps = APP_LIST_BY_SLUG[slug];
+
   return (
     <>
       <Nav />
@@ -205,6 +218,22 @@ export default async function BlogArticlePage({
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleLd) }}
       />
+      {faq ? (
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(buildFaqJsonLd(faq)) }}
+        />
+      ) : null}
+      {listedApps ? (
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: serializeJsonLd(buildAppItemListJsonLd(url, post.title, listedApps)),
+          }}
+        />
+      ) : null}
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
