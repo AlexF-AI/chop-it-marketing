@@ -254,7 +254,7 @@ export const RESEARCH_RESOURCES: ResourceMeta[] = [
     description:
       'Sourced figures on AI in home cooking: 66.8% of Brits have used AI food tools, 75.9% would take AI recipe recommendations. Every number cited and dated.',
     datePublished: '2026-08-05',
-    dateModified: '2026-08-05',
+    dateModified: '2026-08-15',
     faq: [
       {
         question: 'How many people use AI for cooking?',
@@ -311,7 +311,7 @@ export const FEATURES_RESOURCES: ResourceMeta[] = [
     description:
       'How the pantry maintains itself: shops go in by photo, ingredients come off as meals are cooked, use-by life per ingredient, bulk edits by chat.',
     datePublished: '2026-08-05',
-    dateModified: '2026-08-05',
+    dateModified: '2026-08-15',
     faq: [
       {
         question: 'Do I have to keep the pantry up to date by hand?',

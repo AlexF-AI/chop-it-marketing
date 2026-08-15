@@ -4,6 +4,8 @@
 
 Pick four recipes for the week. A bolognese, a curry, a soup and a traybake. Three of them want an onion and one wants two. The list your app hands you should say "5 onions". Plenty of them say "1 onion", "1 onion", "1 onion", "2 onions" on four separate lines, and leave the adding up to you in aisle three.
 
+![The shopping list merge test: four recipes wanting onions shown as four separate text lines against a single merged line reading five onions](/blog/meal-planning-app-shopping-list-uk/shopping-list-merge-test.webp)
+
 That is the difference between a shopping list feature and a shopping list that works. Every app in this category claims one. They are not doing the same thing, and the gap only shows up once you are standing in a supermarket.
 
 Three jobs separate them, so I have gone through each of the main UK options against all three. If you want the wider comparison covering recipes, planning and price, that is in the [full guide to UK meal planning apps](/blog/best-meal-planning-apps-uk-2026).

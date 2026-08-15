@@ -19,7 +19,7 @@ import type { FullMenuRecipe } from '@/app/lib/menuRecipes';
 type Props = {
   recipes: FullMenuRecipe[];
   // On-site shared-menu page (/m/<code>) — the established "send the whole
-  // list to Chop It" journey the app handoff lives on.
+  // list to Chop it" journey the app handoff lives on.
   menuUrl: string;
 };
 
@@ -171,7 +171,7 @@ export default function SaladExplorer({ recipes, menuUrl }: Props) {
                   </div>
 
                   <a className="btn btn-primary salad-detail-cta" href={menuUrl}>
-                    Add the whole list to Chop It →
+                    Add the whole list to Chop it →
                   </a>
                 </div>
               </li>

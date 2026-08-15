@@ -18,6 +18,8 @@ Standard rates, taken from each checkout on 5 August 2026:
 | HelloFresh | 3 meals for 2 people | 6 | £32.99 + £4.99 shipping | £5.50 |
 | Mindful Chef | 4 recipes for 2 people | 8 | £60.95 | £7.62 |
 
+![Bar chart of UK meal kit prices per portion in August 2026: Gousto £4.65, HelloFresh £5.50 and Mindful Chef £7.62 at the standard rate, with each kit's roughly half-price first-box offer shown alongside](/blog/hellofresh-alternatives-uk/uk-meal-kit-price-per-portion.webp)
+
 Mindful Chef sits highest because it is a different proposition: smaller portions of higher-spec ingredients, no refined carbs, and per-recipe pricing rather than a flat box rate. Its own recipe pages price individually, so a Creamy Pomodoro Risotto for two comes to £13.80, or £6.90 a serving, while another recipe the same week costs more or less.
 
 ## The number on the page is not the number you pay

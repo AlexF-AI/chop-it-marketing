@@ -38,6 +38,8 @@ None of these are reasons to stop using it. They are reasons to use it deliberat
 
 This works on the free tier. It takes about ten minutes on a Sunday.
 
+![Five-step flow for planning a week of meals in ChatGPT: set constraints once, approve titles before methods, ask for a merged shopping list separately, move the plan out of the chat, and continue the same conversation next week](/blog/chatgpt-meal-planning/chatgpt-meal-planning-five-steps.webp)
+
 **Set the constraints once, in one message.** Most people ask too vaguely and then spend six messages correcting. Front-load it:
 
 > Plan 5 dinners for this week for 2 adults and a 6-year-old. Budget supermarket ingredients, nothing fancy. Two need to be ready in 25 minutes on weeknights. One should use up half a savoy cabbage and some feta. No fish, one vegetarian night. Give me the five titles first with a one-line description each, before any method.

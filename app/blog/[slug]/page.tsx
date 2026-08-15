@@ -6,6 +6,7 @@ import remarkGfm from 'remark-gfm';
 import BlogCTA from '@/app/components/BlogCTA';
 import Breadcrumbs, { type Crumb } from '@/app/components/Breadcrumbs';
 import Footer from '@/app/components/Footer';
+import MarkdownImage from '@/app/components/MarkdownImage';
 import Nav from '@/app/components/Nav';
 import SummerSaladsArticle from '@/app/components/SummerSaladsArticle';
 import { ALEX_FAHEY } from '@/app/lib/authors';
@@ -208,7 +209,9 @@ export default async function BlogArticlePage({
         <article className="blog-article">
           <Breadcrumbs crumbs={crumbs} />
           <div className="blog-article-body">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>{body}</ReactMarkdown>
+            <ReactMarkdown remarkPlugins={[remarkGfm]} components={{ img: MarkdownImage }}>
+              {body}
+            </ReactMarkdown>
           </div>
           <BlogCTA />
         </article>

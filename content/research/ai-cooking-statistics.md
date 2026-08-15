@@ -17,6 +17,8 @@ Consumer research platform Attest surveyed UK and US consumers on AI in food ([A
 | US consumers who have used AI food tools | 60.8% |
 | 18 to 24 year olds who have used AI food tools | 74% |
 
+![Bar chart of AI food tool adoption from Attest research: 63.8% of all consumers surveyed, 66.8% in the UK, 60.8% in the US and 74% of 18 to 24 year olds](/research/ai-cooking-statistics/ai-food-tool-adoption.webp)
+
 UK adoption runs ahead of the US, and the youngest adults are the heaviest users. Attest does not publish the sample size in the article, worth knowing before you re-quote these figures.
 
 ## What people are comfortable letting AI do

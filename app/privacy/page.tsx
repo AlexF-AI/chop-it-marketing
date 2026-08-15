@@ -3,9 +3,9 @@ import type { Metadata } from 'next';
 import LegalLayout from '../components/LegalLayout';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Chop It',
+  title: 'Privacy Policy | Chop it',
   description:
-    'How Chop It collects, uses, and protects your data under UK GDPR.',
+    'How Chop it collects, uses, and protects your data under UK GDPR.',
   alternates: { canonical: 'https://chop-it.com/privacy' },
   robots: { index: true, follow: true },
 };
@@ -14,8 +14,8 @@ export default function PrivacyPage() {
   return (
     <LegalLayout title="Privacy Policy" lastUpdated="31 May 2026">
       <p>
-        Chop It AI Ltd (&ldquo;Chop It&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;)
-        operates the Chop It mobile app and chop-it.com website (the
+        Chop It AI Ltd (&ldquo;Chop it&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;)
+        operates the Chop it mobile app and chop-it.com website (the
         &ldquo;Service&rdquo;). This policy explains what data we collect, why,
         and your rights under UK GDPR and the Data Protection Act 2018.
       </p>
@@ -118,10 +118,10 @@ export default function PrivacyPage() {
         personal data. We do not share it with advertisers.
       </p>
 
-      <h2>Using Chop It in ChatGPT and other AI assistants</h2>
+      <h2>Using Chop it in ChatGPT and other AI assistants</h2>
       <p>
-        You can use Chop It inside ChatGPT and similar AI assistants without a
-        Chop It account. When you do:
+        You can use Chop it inside ChatGPT and similar AI assistants without a
+        Chop it account. When you do:
       </p>
       <ul>
         <li>
@@ -146,7 +146,7 @@ export default function PrivacyPage() {
         </li>
       </ul>
       <p>
-        If you later link a Chop It account, the account data terms above
+        If you later link a Chop it account, the account data terms above
         apply.
       </p>
 
@@ -208,7 +208,7 @@ export default function PrivacyPage() {
 
       <h2>Children</h2>
       <p>
-        Chop It is not directed at children under 13. We do not knowingly
+        Chop it is not directed at children under 13. We do not knowingly
         collect data from children under 13. If you believe a child has
         provided us with personal data, email{' '}
         <a href="mailto:hello@chop-it.com">hello@chop-it.com</a> and we will

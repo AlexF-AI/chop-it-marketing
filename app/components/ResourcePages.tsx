@@ -15,6 +15,7 @@ import remarkGfm from 'remark-gfm';
 
 import Breadcrumbs, { type Crumb } from '@/app/components/Breadcrumbs';
 import Footer from '@/app/components/Footer';
+import MarkdownImage from '@/app/components/MarkdownImage';
 import Nav from '@/app/components/Nav';
 import StoreLink from '@/app/components/home/StoreLink';
 import { appStoreUrl, CHATGPT_URL } from '@/app/lib/app-stores';
@@ -208,7 +209,9 @@ export function ResourceArticlePage({ resource }: { resource: ResourceMeta }) {
         <article className="blog-article">
           <Breadcrumbs crumbs={crumbs} />
           <div className="blog-article-body">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>{body}</ReactMarkdown>
+            <ReactMarkdown remarkPlugins={[remarkGfm]} components={{ img: MarkdownImage }}>
+              {body}
+            </ReactMarkdown>
             {resource.faq && resource.faq.length > 0 ? (
               <>
                 <h2>Frequently asked questions</h2>

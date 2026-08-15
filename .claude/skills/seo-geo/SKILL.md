@@ -52,6 +52,35 @@ description: SEO and GEO rules for chop-it.com. Use when editing any
 - The ChatGPT app listing is the primary GEO asset; articles
   support it.
 
+## Entity sweep exception (learned 15 Aug 2026)
+- app/terms/page.tsx defines "Chop It" as the legal defined term for
+  Chop It AI Ltd ("England and Wales (\"Chop It\", \"we\"…)"). The
+  lowercase-i sweep never touches the terms page; everywhere else,
+  "Chop It AI Ltd" is preserved and product references become "Chop it".
+
+## Image pipeline (learned 15 Aug 2026)
+- Regenerate all graphics: npm run generate:blog-images
+  (one config: npm run generate:blog-images -- <name>).
+- Configs: scripts/blog-images/configs/<page>.mjs — data lives there and
+  must mirror the article table/figures exactly; staged-but-not-inserted
+  configs wait in scripts/blog-images/staged/ (see its README).
+- Style: scripts/blog-images/theme.mjs mirrors the OG card + dark tokens.
+  Chart series colours are #C75A80 / #B08A2E — deeper steps than the UI
+  accent tokens (#E4739A/#E0B54A), which FAIL the dataviz validator's
+  dark lightness band. Re-validate any new colour before use.
+- satori gotchas: every multi-child div needs display:flex (theme's h()
+  defaults it); Archivo has no ✓/✗ glyphs — use a coloured swatch plus
+  words; fonts load from scripts/fonts/*.ttf (text becomes paths, system
+  fonts are irrelevant).
+- Markdown ![alt](src) renders through app/components/MarkdownImage.tsx →
+  next/image with intrinsic dimensions (app/lib/imageDimensions.ts parses
+  png/jpeg/webp headers at build). Images must live under /public.
+- /public/screens originals run up to 442KB — never embed them directly
+  in articles; make a resized webp copy under the article's own dir
+  (sharp, width ≤720 for portrait) to stay inside the 150KB budget.
+- Inserting an image into a page is a body change: bump that page's
+  dateModified in the registry, same as any edit.
+
 ## Images
 - Owned assets only: Chop it screenshots + generated brand graphics.
   No competitor screenshots or third-party images.

@@ -127,7 +127,7 @@ export function appStoreUrl(surface: CtaSurface): string {
 // plan is confirmed, and "later" is still a claim. Opt in when it is.
 export const SHOW_ANDROID_NOTE = readFlag(process.env.NEXT_PUBLIC_SHOW_ANDROID_NOTE, false);
 
-// Chop It in ChatGPT — the Apps SDK app in the ChatGPT app directory
+// Chop it in ChatGPT — the Apps SDK app in the ChatGPT app directory
 // (replaces the old "Weekly Food Shop Planner" Custom GPT). Primary entry
 // surface for the ChatGPT-first positioning; the App Store remains the
 // download/monetisation destination. Env-overridable so we can swap the

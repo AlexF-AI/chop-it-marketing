@@ -16,6 +16,8 @@ Mark a meal cooked and its ingredients come off the pantry. Unmark it, because p
 
 Every item carries a use-by life matched to what it is, not a single flat timer. Fish is counted in a couple of days, raw meat in three, leafy herbs and soft fruit in four, fresh dairy in five, hardy vegetables in a fortnight, tins and dry goods in weeks. Items get flagged to use before they turn, and anything past its date is marked rather than silently deleted, so you decide what leaves.
 
+![Chart of the Chop it pantry shelf-life model: fish two days, raw meat three, leafy herbs and soft fruit four, fresh dairy five, hardy vegetables fourteen days, tins and dry goods six weeks or more](/features/pantry/pantry-shelf-life-model.webp)
+
 This is where the pantry meets [food waste](/learn/can-ai-reduce-food-waste): the flag arrives while the ingredient is still dinner, which is the only time a reminder is worth anything.
 
 ## Bulk changes are a sentence

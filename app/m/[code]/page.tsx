@@ -136,7 +136,7 @@ export async function generateMetadata({
 
   if (resolved.kind === 'menu') {
     const payload = resolved.payload;
-    const title = `${payload.collection.name} — A menu on Chop It`;
+    const title = `${payload.collection.name} — A menu on Chop it`;
     const recipeTitles = payload.recipes
       .map((r) => r.title)
       .filter((t): t is string => Boolean(t && t.trim()))
@@ -164,7 +164,7 @@ export async function generateMetadata({
   }
 
   const recipe = resolved.payload;
-  const title = `${recipe.title} — A recipe on Chop It`;
+  const title = `${recipe.title} — A recipe on Chop it`;
   const description = recipe.description ?? `${recipe.title}, shared from Chop it.`;
   const ogImage = recipe.image_url ?? `${SITE_ORIGIN}/opengraph-image`;
   return {
@@ -262,10 +262,10 @@ function MenuView({
           </p>
           <div className="share-menu-cta-row">
             <a className="btn btn-primary" href={deepLink} target="_blank" rel="noopener noreferrer">
-              Open in Chop It app
+              Open in Chop it app
             </a>
             <Link className="btn btn-ghost" href="/">
-              What is Chop It?
+              What is Chop it?
             </Link>
           </div>
         </div>
@@ -341,10 +341,10 @@ function RecipeView({
           ) : null}
           <div className="share-menu-cta-row">
             <a className="btn btn-primary" href={deepLink} target="_blank" rel="noopener noreferrer">
-              Open in Chop It app
+              Open in Chop it app
             </a>
             <Link className="btn btn-ghost" href="/">
-              What is Chop It?
+              What is Chop it?
             </Link>
           </div>
         </div>
@@ -395,14 +395,14 @@ function RecipeView({
 function ShareFooter({ deepLink, ctaLabel }: { deepLink: string; ctaLabel: string }) {
   return (
     <section className="share-menu-footer">
-      <h2 className="share-menu-footer-h">Built with Chop It.</h2>
+      <h2 className="share-menu-footer-h">Built with Chop it.</h2>
       <p className="share-menu-footer-sub">
         Chop it plans your week, writes the shop, and quietly nudges you toward more variety —
         without giving up the meals you love.
       </p>
       <div className="share-menu-cta-row">
         <a className="btn btn-primary" href={WAITLIST_URL} rel="noopener">
-          Try Chop It — it&rsquo;s free
+          Try Chop it — it&rsquo;s free
         </a>
         <a className="btn btn-ghost" href={deepLink} target="_blank" rel="noopener noreferrer">
           {ctaLabel}
