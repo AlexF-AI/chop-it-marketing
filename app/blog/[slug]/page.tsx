@@ -196,9 +196,8 @@ export default async function BlogArticlePage({
   const body = getPostBody(slug);
 
   // Optional per-article schema. Only comparison articles carry these: the
-  // FAQ answers are duplicated from the visible copy (Google requires the
-  // answer text to appear on the page) and the ItemList mirrors the ranked
-  // order of the app sections.
+  // FAQ answers mirror the visible copy to prevent contradictory machine-
+  // readable text, and the ItemList follows the order of the app sections.
   const faq = FAQ_BY_SLUG[slug];
   const listedApps = APP_LIST_BY_SLUG[slug];
 

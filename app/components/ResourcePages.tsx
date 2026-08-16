@@ -84,6 +84,7 @@ export function resourceArticleMetadata(section: ResourceSection, slug: string):
   if (!r) return { title: 'Not found · Chop it' };
   const url = `${SITE_ORIGIN}/${section}/${r.slug}`;
   const title = `${r.seoTitle} · Chop it`;
+  const image = r.image ? `${SITE_ORIGIN}${r.image}` : undefined;
   return {
     title,
     description: r.description,
@@ -97,8 +98,14 @@ export function resourceArticleMetadata(section: ResourceSection, slug: string):
       publishedTime: new Date(`${r.datePublished}T00:00:00Z`).toISOString(),
       modifiedTime: new Date(`${r.dateModified}T00:00:00Z`).toISOString(),
       authors: [ALEX_FAHEY.name],
+      images: image ? [{ url: image }] : undefined,
     },
-    twitter: { card: 'summary', title: r.seoTitle, description: r.description },
+    twitter: {
+      card: image ? 'summary_large_image' : 'summary',
+      title: r.seoTitle,
+      description: r.description,
+      images: image ? [image] : undefined,
+    },
   };
 }
 
@@ -200,6 +207,7 @@ export function ResourceArticlePage({ resource }: { resource: ResourceMeta }) {
       logo: { '@type': 'ImageObject', url: `${SITE_ORIGIN}/logo.webp` },
     },
     mainEntityOfPage: url,
+    ...(resource.image ? { image: `${SITE_ORIGIN}${resource.image}` } : {}),
   };
 
   return (

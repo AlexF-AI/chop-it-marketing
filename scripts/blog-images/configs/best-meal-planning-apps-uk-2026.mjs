@@ -83,7 +83,7 @@ function priceChart() {
         'div',
         { width: PANEL_W, display: 'flex' },
         a.oneTime
-          ? h('div', { fontSize: 22, color: THEME.muted, display: 'flex', alignItems: 'center', height: BAR_H }, 'pay once, keep forever')
+          ? h('div', { fontSize: 22, color: THEME.muted, display: 'flex', alignItems: 'center', height: BAR_H }, 'one-off iOS purchase')
           : bar(a.annual, MAX_ANNUAL, THEME.seriesB, a.annual === null ? '' : `£${a.annual.toFixed(2)}`),
       ),
     ),
@@ -112,7 +112,7 @@ function priceChart() {
 // Decision flowchart mirroring the article's intro verdicts, same order.
 const VERDICTS = [
   { want: 'The largest bank of reliable British recipes', app: 'Good Food' },
-  { want: 'To own your collection outright and never pay again', app: 'Paprika 3' },
+  { want: 'A one-off purchase instead of a subscription', app: 'Paprika 3' },
   { want: 'A free planner that writes the shopping list for you', app: 'Samsung Food' },
   { want: "Your basket priced at Sainsbury's, Tesco or Asda while you plan", app: 'Cherrypick' },
   { want: 'Four people in your house on the same list', app: 'AnyList' },

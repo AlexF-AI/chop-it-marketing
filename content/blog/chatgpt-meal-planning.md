@@ -1,6 +1,6 @@
 # ChatGPT Meal Planning: What It Does Well, and Where It Falls Over
 
-*By [Alex Fahey](/author/alex-fahey), founder of Chop it. Last updated 5 August 2026.*
+*By [Alex Fahey](/author/alex-fahey), founder of Chop it. Last updated 16 August 2026.*
 
 ChatGPT is now the first thing a lot of people open when they cannot face deciding what to cook. It is genuinely good at that job, better than most of the apps built for it. It is also missing two things that any meal plan needs to survive contact with a real week, and nobody selling you a meal planning app is going to explain the difference honestly.
 
@@ -16,21 +16,21 @@ I build one of the tools in this space, so read the last section with that in mi
 
 **Answering the question behind the question.** "What goes with lamb" gets you a useful answer. So does "I have people over on Saturday and one of them is vegetarian and I am not a confident cook." A search box cannot do anything with the second one.
 
-**Scaling and converting without fuss.** American cup measurements into grams, four portions into six, a roast timed backwards from when you want to eat. This is dull arithmetic that ChatGPT does correctly and instantly.
+**Scaling and converting without fuss.** American cup measurements into grams, four portions into six, a roast timed backwards from when you want to eat. ChatGPT usually handles this dull arithmetic quickly, although quantities and food-safety-critical timings are still worth checking.
 
 The free tier does all of the above. You do not need a subscription for meal planning, whatever anyone tells you.
 
 ## Where it stops working
 
-**It does not remember your week.** This is the big one. Plan five dinners on Sunday and by Wednesday that conversation is somewhere in your history, probably below three other chats. There is no week view, nothing to tick off, and no way to see Thursday without scrolling. Most people retype or give up. Memory features help a little with preferences and almost nothing with the specifics of a plan.
+**It does not reliably hold your week.** This is the big one. Plan five dinners on Sunday and by Wednesday that conversation is somewhere in your history, probably below three other chats. Memory can carry useful preferences across chats when it is enabled, but it is not a dependable record of the exact dinners and quantities you chose. There is no week view, nothing to tick off, and no way to see Thursday without scrolling.
 
-**It cannot hold a shopping list.** Ask for a combined list across five recipes and it will produce one, once. Then you remember you also need bin bags, and now you have a list in a chat window that you cannot tick items off in a shop with one hand while pushing a trolley. Add a sixth recipe on Tuesday and the list does not update. It generates a new one and you reconcile the two yourself.
+**It does not hold a usable shopping list.** Ask for a combined list across five recipes and it will produce one, once. Then you remember you also need bin bags, and now you have a list in a chat window that you cannot tick items off in a shop with one hand while pushing a trolley. Add a sixth recipe on Tuesday and the original list does not update as structured data. It generates a new answer and you reconcile the two yourself.
 
-**It does not know what is in your cupboards.** It will confidently put rice on your list every week. You own eleven bags of rice.
+**It does not maintain a pantry.** You can tell ChatGPT what is in your cupboards, but it does not keep a live stock record as ingredients are bought and used. Without that structure it will confidently put rice on your list every week. You own eleven bags of rice.
 
 **Quantities drift when you combine recipes.** Four recipes each needing an onion should give you four onions on one line. ChatGPT usually gets this right when you ask directly and sometimes does not, particularly across a longer conversation. It has no structured record of what a recipe contains, so it is re-reading its own prose. This merging problem is exactly what [shopping list features in apps exist to solve](/blog/meal-planning-app-shopping-list-uk), and it is where the difference shows up most clearly.
 
-**The recipe is gone when the chat is.** You cooked something excellent in March. Finding it again means remembering roughly when you asked and what words you used.
+**The recipe is buried in the chat history.** You cooked something excellent in March. Finding it again means remembering roughly when you asked and what words you used.
 
 None of these are reasons to stop using it. They are reasons to use it deliberately.
 
@@ -38,7 +38,7 @@ None of these are reasons to stop using it. They are reasons to use it deliberat
 
 This works on the free tier. It takes about ten minutes on a Sunday.
 
-![Five-step flow for planning a week of meals in ChatGPT: set constraints once, approve titles before methods, ask for a merged shopping list separately, move the plan out of the chat, and continue the same conversation next week](/blog/chatgpt-meal-planning/chatgpt-meal-planning-five-steps.webp)
+![Five-step method for making a weekly meal plan with ChatGPT](/blog/chatgpt-meal-planning/chatgpt-meal-planning-five-steps.webp)
 
 **Set the constraints once, in one message.** Most people ask too vaguely and then spend six messages correcting. Front-load it:
 

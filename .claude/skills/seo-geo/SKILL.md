@@ -1,91 +1,90 @@
 ---
 name: seo-geo
-description: SEO and GEO rules for chop-it.com. Use when editing any
-  article, page metadata, schema, or investigating ranking/traffic
-  changes. Covers editing invariants, GSC diagnostics, and AI-engine
-  (ChatGPT/Perplexity/AI Overviews) optimisation.
+description: Audit and improve chop-it.com SEO and visibility in generative search. Use when editing content, metadata, structured data, crawler access, internal links, images, or when diagnosing Search Console and AI-referral performance.
 ---
 
-# SEO + GEO for chop-it.com
+# SEO and generative search for chop-it.com
 
-## Editing invariants (never break without explicit approval)
-- Never change: title tag, H1, slug, canonical, datePublished.
-- Always when body changes: bump dateModified in app/lib/blog.ts
-  (it drives JSON-LD and sitemap lastmod).
-- FAQPage schema in app/lib/blogSchema.ts must mirror on-page FAQ
-  text exactly. Never remove on-page answers the schema references.
-- Never delete answer-shaped content (bolded Q&A, "Quick answers"
-  blocks, one-line verdicts). These are featured-snippet and
-  LLM-extraction targets. Restructure, don't remove.
-- H2s should carry query keywords, not editorial labels
-  ("Best free meal planning apps" beats "The apps").
-- Batch content edits into one PR per page = one recrawl.
+## Operating principles
 
-## Where things live
-- Body: content/blog/<slug>.md (no frontmatter)
-- Title/description/dates: app/lib/blog.ts BLOG_POSTS registry
-- FAQ + ItemList JSON-LD: app/lib/blogSchema.ts
-- Renderer + Article/Breadcrumb JSON-LD: app/blog/[slug]/page.tsx
-- OG images: app/blog/[slug]/opengraph-image.tsx
-- Sitemap: app/sitemap.xml -> sitemap-static.xml
+- Treat sound SEO as the basis of visibility in Google AI features. Do not invent separate "GEO hacks".
+- Optimise for a useful page first. Use answer-first copy, lists, tables or diagrams only when they help the reader.
+- Prefer first-hand evidence, dated checks, original comparisons and clearly attributed sources over commodity summaries.
+- Back factual recommendations with primary documentation. Label observations from Chop it data as observations, not universal rules.
 
-## Diagnosing ranking changes (learned 12-13 Aug 2026)
-- GSC "average position" is sitewide and impression-weighted.
-  Launching new URLs drops the average while impressions RISE,
-  with no page demoted. ALWAYS segment by page before reacting.
-- New URLs index at ~30-60 and settle over 2-4 weeks.
-- Content edits take 3-10 days to reprocess. Expect query-mix
-  churn after adding schema types.
-- Rollbacks create a third content identity; forward-fix instead.
-- Two days of data is never a trend.
+## Editing safeguards
 
-## GEO (generative engine optimisation)
-- robots.txt must allow: GPTBot, OAI-SearchBot, ClaudeBot,
-  PerplexityBot, Google-Extended. Check before anything else.
-- Verdicts as bolded one-liners, not prose paragraphs. LLMs and
-  snippets extract structure.
-- Answer FAQ questions in the first sentence.
-- Dated, sourced facts ("checked on the UK App Store, 5 Aug 2026")
-  make the page citable. Keep verification footers.
-- Entity consistency: the product is "Chop it" (lowercase i),
-  everywhere, every time.
-- The ChatGPT app listing is the primary GEO asset; articles
-  support it.
+- Preserve slugs, canonicals and `datePublished` unless an approved migration includes redirects and validation.
+- Change a title tag or H1 only when page-level query, intent or click-through evidence supports it. Record the baseline before changing either.
+- When body content changes, update `dateModified` in `app/lib/blog.ts` or `app/lib/resources.ts` and set the visible "Last updated" date to the same real date.
+- Keep research or price verification dates separate from the page's modification date.
+- Keep structured data representative of visible content. If FAQPage JSON-LD is retained, its questions and answers must match the rendered FAQ exactly.
+- Do not add FAQ markup for a promised ranking benefit. Google stopped showing FAQ rich results in May 2026.
+- Use specific, natural H2s that describe their sections. Do not force exact-match wording where it makes the page worse.
+- Group coherent changes for safe review. Pull request boundaries do not control how or when individual URLs are recrawled.
 
-## Entity sweep exception (learned 15 Aug 2026)
-- app/terms/page.tsx defines "Chop It" as the legal defined term for
-  Chop It AI Ltd ("England and Wales (\"Chop It\", \"we\"…)"). The
-  lowercase-i sweep never touches the terms page; everywhere else,
-  "Chop It AI Ltd" is preserved and product references become "Chop it".
+## Where content lives
 
-## Image pipeline (learned 15 Aug 2026)
-- Regenerate all graphics: npm run generate:blog-images
-  (one config: npm run generate:blog-images -- <name>).
-- Configs: scripts/blog-images/configs/<page>.mjs — data lives there and
-  must mirror the article table/figures exactly; staged-but-not-inserted
-  configs wait in scripts/blog-images/staged/ (see its README).
-- Style: scripts/blog-images/theme.mjs mirrors the OG card + dark tokens.
-  Chart series colours are #C75A80 / #B08A2E — deeper steps than the UI
-  accent tokens (#E4739A/#E0B54A), which FAIL the dataviz validator's
-  dark lightness band. Re-validate any new colour before use.
-- satori gotchas: every multi-child div needs display:flex (theme's h()
-  defaults it); Archivo has no ✓/✗ glyphs — use a coloured swatch plus
-  words; fonts load from scripts/fonts/*.ttf (text becomes paths, system
-  fonts are irrelevant).
-- Markdown ![alt](src) renders through app/components/MarkdownImage.tsx →
-  next/image with intrinsic dimensions (app/lib/imageDimensions.ts parses
-  png/jpeg/webp headers at build). Images must live under /public.
-- /public/screens originals run up to 442KB — never embed them directly
-  in articles; make a resized webp copy under the article's own dir
-  (sharp, width ≤720 for portrait) to stay inside the 150KB budget.
-- Inserting an image into a page is a body change: bump that page's
-  dateModified in the registry, same as any edit.
+- Blog body: `content/blog/<slug>.md`
+- Blog metadata and dates: `app/lib/blog.ts`
+- Resource body: `content/<section>/<slug>.md`
+- Resource metadata, dates and FAQs: `app/lib/resources.ts`
+- Blog FAQ and ItemList JSON-LD: `app/lib/blogSchema.ts`
+- Renderers and Article JSON-LD: `app/blog/[slug]/page.tsx` and `app/components/ResourcePages.tsx`
+- OG images: `app/blog/[slug]/opengraph-image.tsx`
+- Sitemap route: `app/sitemap.xml`, backed by `sitemap-static.xml`
 
-## Images
-- Owned assets only: Chop it screenshots + generated brand graphics.
-  No competitor screenshots or third-party images.
-- Generate charts/flowcharts from article data via the shared
-  OG-card styling; webp, max 1200px, <150KB, descriptive
-  kebab-case filenames, alt text naming the topic.
-- Every article: at least one image per major section on
-  comparison pages, one diagram minimum elsewhere.
+## Diagnose performance
+
+- Segment Search Console by page, query, country and device before drawing conclusions. Site-wide average position is impression-weighted and can move when the query or URL mix changes.
+- Compare useful windows, normally 28 days against the preceding 28 days and the prior year when available. Do not treat two days as a trend.
+- Record clicks, impressions, CTR, position, indexing state and conversions before material page changes.
+- Do not assume universal indexing or reprocessing times. Record the actual request, crawl and performance dates for this site.
+- Use Search Console's Generative AI performance report when the property has access. Also review PostHog landing-page conversions and referrals from AI products.
+- Prefer a forward correction when the current page is sound. Roll back only when evidence shows the change caused harm.
+
+## Crawler access
+
+- Keep the wildcard rule crawlable unless a real section needs blocking.
+- Distinguish search crawlers from training crawlers and user-triggered fetchers:
+  - Search: `OAI-SearchBot`, `Claude-SearchBot`, `PerplexityBot`
+  - Model development or product improvement: `GPTBot`, `ClaudeBot`, `Google-Extended`
+  - User-triggered fetchers: `ChatGPT-User`, `Claude-User`, `Perplexity-User`
+- Do not claim that allowing a training crawler improves search rankings or citations.
+- Check CDN and firewall behaviour as well as `robots.txt`; an allow rule cannot override an upstream block.
+
+## Content and entity quality
+
+- Put important claims in HTML text even when a chart or screenshot repeats them.
+- Answer genuine questions directly, then add evidence and limits. Do not split prose into artificial fragments for an imagined LLM parser.
+- Date volatile facts and link to the source used for verification.
+- Keep product limitations explicit. Do not claim live account, library or pantry access inside ChatGPT until it exists.
+- Write the product as "Chop it". Preserve "Chop It" only where `app/terms/page.tsx` defines the legal term for Chop It AI Ltd.
+- Treat the ChatGPT listing and the website as complementary discovery assets. Neither replaces the other.
+
+## Image pipeline
+
+- Regenerate all graphics with `npm run generate:blog-images` or one config with `npm run generate:blog-images -- <name>`.
+- Store active configs in `scripts/blog-images/configs/`; keep staged configs in `scripts/blog-images/staged/` until their pages are ready.
+- Keep chart data identical to the adjacent article text or table.
+- Use `scripts/blog-images/theme.mjs` and the validated chart colours `#C75A80` and `#B08A2E`.
+- Give every multi-child Satori `div` `display:flex`; the shared `h()` helper does this by default.
+- Use the bundled Archivo fonts. They do not contain tick or cross glyphs, so pair colour with written labels.
+- Put article images under `/public`. Markdown images render through `MarkdownImage` with intrinsic dimensions.
+- Resize portrait screenshots to no more than 720px wide before embedding. Keep generated WebP assets at no more than 1200px wide and below 150KB.
+
+## Image quality
+
+- Add an image only when it explains, proves or demonstrates something useful. Do not impose an image quota per article or section.
+- Use owned screenshots and generated brand graphics. Do not use competitor screenshots or unlicensed third-party images.
+- Keep filenames short and descriptive.
+- Write concise alt text for the image's purpose. Do not repeat an adjacent table or paragraph word for word, and do not use alt text as a keyword list.
+- Keep chart values and source caveats in nearby HTML text because text inside an image is not a substitute for accessible content.
+
+## Primary sources to re-check
+
+- Google generative-search guidance: https://developers.google.com/search/docs/fundamentals/ai-optimization-guide
+- Google Search documentation updates: https://developers.google.com/search/updates
+- OpenAI crawlers: https://developers.openai.com/api/docs/bots
+- Anthropic crawlers: https://support.anthropic.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler
+- Perplexity crawlers: https://docs.perplexity.ai/docs/resources/perplexity-crawlers

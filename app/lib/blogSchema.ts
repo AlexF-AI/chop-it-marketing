@@ -2,9 +2,10 @@
 //
 // The blog template emits BlogPosting + BreadcrumbList for every article.
 // A comparison article earns two more types, and both are keyed by slug here
-// rather than parsed out of the markdown: FAQ answers have to match the
-// visible page text exactly for Google to accept them, and deriving that from
-// rendered markdown would silently drift the moment someone edits a heading.
+// rather than parsed out of the markdown: FAQ answers mirror the visible page
+// text exactly, and deriving them from rendered markdown would silently drift
+// the moment someone edits a heading. Google stopped showing FAQ rich results
+// in May 2026, so FAQs are retained here for reader and machine clarity.
 //
 // Adding an article does not require an entry. Only articles that carry an
 // FAQ block or a ranked list need one.
@@ -35,7 +36,7 @@ export const FAQ_BY_SLUG: Record<string, FaqEntry[]> = {
     {
       question: 'Can I use ChatGPT for meal planning instead of an app?',
       answer:
-        'For coming up with ideas, yes, and the free tier is enough. It struggles with continuity: it will not remember the week you planned on Sunday, cannot hold a running shopping list, and does not know what is in your cupboards. Either accept some retyping or use something that keeps the output.',
+        'For coming up with ideas, yes, and the free tier is enough. ChatGPT can remember useful preferences when memory is enabled, but a weekly plan remains prose in a conversation rather than a structured week, running shopping list or pantry record. Either keep using the same chat and accept some manual organisation, or use something built to hold the output.',
     },
     {
       question: 'Which meal planning apps work on Android?',
@@ -45,7 +46,7 @@ export const FAQ_BY_SLUG: Record<string, FaqEntry[]> = {
     {
       question: 'How much should I expect to pay?',
       answer:
-        'The cheapest paid tier here is Mealime at £2.99 a month. The cheapest annual commitment is AnyList at £9.99. Paprika 3 costs £4.99 once and never again. At the other end, Eat This Much is £14.99 a month and Samsung Food is £59.99 a year. Most people should start on a free tier and only pay once they have used an app for a fortnight.',
+        'The cheapest paid tier here is Mealime at £2.99 a month. The cheapest annual commitment is AnyList at £9.99. Paprika 3 is a £4.99 one-off iOS purchase, with other platforms sold separately. At the other end, Eat This Much is £14.99 a month and Samsung Food is £59.99 a year. Most people should start on a free tier and only pay once they have used an app for a fortnight.',
     },
   ],
   'chatgpt-meal-planning': [

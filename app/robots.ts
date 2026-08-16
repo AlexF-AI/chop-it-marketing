@@ -1,30 +1,37 @@
 import type { MetadataRoute } from 'next';
 
-// Explicit allow-list for the crawlers that feed search and AI answers.
-// Every agent here gets full site access — /blog, /learn, /research and
-// /features are the pages we most want cited, so nothing is disallowed.
-// The wildcard rule keeps everyone else allowed too; the named rules exist
-// so an agent that looks for its own token finds an explicit allow rather
-// than inheriting the default.
-const AI_AND_SEARCH_CRAWLERS = [
-  'GPTBot',
+// The wildcard already permits crawling. These named rules make the policy
+// explicit and protect relevant AI agents if the wildcard policy is narrowed
+// later. They are grouped by purpose because training access is not the same
+// thing as eligibility for an AI search citation.
+const AI_SEARCH_CRAWLERS = [
   'OAI-SearchBot',
-  'ChatGPT-User',
-  'ClaudeBot',
-  'Claude-Web',
-  'anthropic-ai',
+  'Claude-SearchBot',
   'PerplexityBot',
+] as const;
+
+const AI_USER_FETCHERS = [
+  'ChatGPT-User',
+  'Claude-User',
   'Perplexity-User',
+] as const;
+
+const AI_MODEL_CRAWLERS = [
+  'GPTBot',
+  'ClaudeBot',
   'Google-Extended',
-  'Applebot-Extended',
-  'Bingbot',
-  'Googlebot',
+] as const;
+
+const EXPLICIT_AI_AGENTS = [
+  ...AI_SEARCH_CRAWLERS,
+  ...AI_USER_FETCHERS,
+  ...AI_MODEL_CRAWLERS,
 ] as const;
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      ...AI_AND_SEARCH_CRAWLERS.map((userAgent) => ({
+      ...EXPLICIT_AI_AGENTS.map((userAgent) => ({
         userAgent,
         allow: '/',
       })),

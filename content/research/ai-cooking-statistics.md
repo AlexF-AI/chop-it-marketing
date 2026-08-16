@@ -1,6 +1,6 @@
 # AI Cooking Statistics: What the Research Shows
 
-*Compiled by [Alex Fahey](/author/alex-fahey), founder of Chop it. Last updated 5 August 2026. Every figure below links to the organisation that published it, with the date we checked it. Nothing on this page is our own estimate.*
+*Compiled by [Alex Fahey](/author/alex-fahey), founder of Chop it. Last updated 16 August 2026. Every figure below links to the organisation that published it, with the date we checked it. Nothing on this page is our own estimate.*
 
 **Definition.** AI cooking covers the use of artificial intelligence tools, most commonly large language models such as ChatGPT, for food tasks at home: generating and adapting recipes, planning meals for a week, building shopping lists, and deciding what to cook from available ingredients.
 
@@ -17,7 +17,7 @@ Consumer research platform Attest surveyed UK and US consumers on AI in food ([A
 | US consumers who have used AI food tools | 60.8% |
 | 18 to 24 year olds who have used AI food tools | 74% |
 
-![Bar chart of AI food tool adoption from Attest research: 63.8% of all consumers surveyed, 66.8% in the UK, 60.8% in the US and 74% of 18 to 24 year olds](/research/ai-cooking-statistics/ai-food-tool-adoption.webp)
+![AI food-tool adoption percentages from Attest's 2026 survey](/research/ai-cooking-statistics/ai-food-tool-adoption.webp)
 
 UK adoption runs ahead of the US, and the youngest adults are the heaviest users. Attest does not publish the sample size in the article, worth knowing before you re-quote these figures.
 

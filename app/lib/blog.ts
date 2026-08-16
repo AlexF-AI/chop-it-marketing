@@ -41,7 +41,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
     description:
       'Gousto, HelloFresh and Mindful Chef cost £4.65 to £7.62 a portion at the standard rate. What that premium buys, and what does the same job for less.',
     datePublished: '2026-08-05',
-    dateModified: '2026-08-15',
+    dateModified: '2026-08-16',
   },
   {
     slug: 'chatgpt-meal-planning',
@@ -49,7 +49,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
     description:
       'What ChatGPT is good at in the kitchen, where it fails on its own, and a five-step method for getting a usable weekly meal plan out of it for free.',
     datePublished: '2026-08-05',
-    dateModified: '2026-08-15',
+    dateModified: '2026-08-16',
   },
   {
     slug: 'meal-planning-app-shopping-list-uk',
@@ -57,7 +57,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
     description:
       'Four recipes wanting onions should give you one line, not four. How Cherrypick, Mealime, Samsung Food and AnyList handle merging and aisle sorting.',
     datePublished: '2026-08-05',
-    dateModified: '2026-08-15',
+    dateModified: '2026-08-16',
   },
   {
     slug: 'future-of-ai-cooking',
@@ -138,7 +138,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
     description:
       'Ten UK meal planning apps compared on price, shopping lists and pantry awareness, with every price checked on the UK App Store in August 2026.',
     datePublished: '2026-05-29',
-    dateModified: '2026-08-15',
+    dateModified: '2026-08-16',
   },
 ];
 

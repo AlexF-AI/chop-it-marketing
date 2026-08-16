@@ -1,6 +1,5 @@
-// Graphic for /features/pantry. Use-by life per ingredient type, matching
-// the article's description of the shelf-life model (fish in a couple of
-// days through tins and dry goods in weeks).
+// Graphic for /features/pantry. These are default planning reminders rather
+// than food-safety guidance; packaging and labelled use-by dates take priority.
 
 import { THEME, card, h } from '../theme.mjs';
 
@@ -29,15 +28,15 @@ function shelfLifeChart() {
 
   return card({
     width: 1200,
-    kicker: 'Pantry shelf-life model',
-    title: 'Each ingredient carries a use-by life matched to what it is',
-    footer: 'Items are flagged to use before they turn, never silently deleted',
+    kicker: 'Pantry reminder model',
+    title: 'Default reminder windows by ingredient type',
+    footer: 'Planning defaults only · follow packaging and labelled use-by dates',
     body: rows,
   });
 }
 
 export default {
   outputs: [
-    { file: 'features/pantry/pantry-shelf-life-model.webp', width: 1200, height: 760, render: shelfLifeChart },
+    { file: 'features/pantry/pantry-reminder-windows.webp', width: 1200, height: 760, render: shelfLifeChart },
   ],
 };
