@@ -1,8 +1,10 @@
 # Meal Planning Apps With a Shopping List: Which UK Apps Actually Merge Your Ingredients
 
-*By [Alex Fahey](/author/alex-fahey), founder of Chop it. Last updated 5 August 2026. App prices checked on the UK App Store on 5 August 2026.*
+*By [Alex Fahey](/author/alex-fahey), founder of Chop it. Last updated 16 August 2026. App prices checked on the UK App Store on 5 August 2026.*
 
 Pick four recipes for the week. A bolognese, a curry, a soup and a traybake. Three of them want an onion and one wants two. The list your app hands you should say "5 onions". Plenty of them say "1 onion", "1 onion", "1 onion", "2 onions" on four separate lines, and leave the adding up to you in aisle three.
+
+![Four recipe ingredient lines merged into a single five-onion shopping-list entry](/blog/meal-planning-app-shopping-list-uk/shopping-list-merge-test.webp)
 
 That is the difference between a shopping list feature and a shopping list that works. Every app in this category claims one. They are not doing the same thing, and the gap only shows up once you are standing in a supermarket.
 
@@ -72,7 +74,7 @@ Two things to know before committing: there is no free tier after the 14-day tri
 
 ### Paprika 3
 
-Paprika builds a list from whatever recipes you have clipped, grouped into categories, and does it competently. The appeal is the payment model rather than the list: £4.99 once on iOS and you never pay again, which over three years undercuts everything else here.
+Paprika builds a list from whatever recipes you have clipped, grouped into categories, and does it competently. The appeal is the payment model rather than the list: £4.99 as a one-off iOS purchase, with other platforms sold separately, which over three years undercuts every subscription here.
 
 No pantry awareness, and no supermarket connection. It organises what you bring it.
 

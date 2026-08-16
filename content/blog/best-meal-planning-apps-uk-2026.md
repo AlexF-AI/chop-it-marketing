@@ -1,12 +1,21 @@
 # Best Meal Planning Apps in the UK for 2026
 
-*By [Alex Fahey](/author/alex-fahey), founder of Chop it. Last updated 5 August 2026. Every price below was checked on the UK App Store or inside the app on 5 August 2026.*
+*By [Alex Fahey](/author/alex-fahey), founder of Chop it. Last updated 16 August 2026. Every price below was checked on the UK App Store or inside the app on 5 August 2026.*
 
-Start with Good Food if you want the largest bank of reliable British recipes. Buy Paprika 3 if you want to own your collection outright and never pay again. Use Samsung Food if you want a free planner that writes the shopping list for you across phone, tablet and web. Pick Cherrypick if you shop at Sainsbury's, Tesco or Asda and want your basket priced while you plan. Choose AnyList if the real problem is that four people in your house need the same list. And if your recipes arrive from ChatGPT one day and a cookbook the next, that scattering is the problem I built Chop it to solve.
+**Quick verdicts**
 
-We built Chop It. The other nine were assessed from their App Store listings, current pricing pages and published user reviews; Chop It was scored against the same criteria. I have not lived inside every competitor for a month, and I am not going to write as though I had.
+- **Best for reliable British recipes:** Good Food.
+- **Best one-off purchase:** Paprika 3 on the platform you buy it for.
+- **Best free all-round planner:** Samsung Food.
+- **Best for a priced UK supermarket basket:** Cherrypick.
+- **Best shared household list:** AnyList.
+- **Best for recipes from ChatGPT, cookbooks, social video and the web:** Chop it.
 
-## The comparison
+![Decision guide for choosing a UK meal planning app by priority](/blog/best-meal-planning-apps-uk-2026/meal-planning-app-decision-guide.webp)
+
+We built Chop it. The other nine were assessed from their App Store listings, current pricing pages and published user reviews; Chop it was scored against the same criteria. I have not lived inside every competitor for a month, and I am not going to write as though I had.
+
+## The UK meal planning apps compared
 
 | App | Price (UK, Aug 2026) | Platforms | How the shopping list works | Pantry aware | UK supermarket fit | Free tier |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -21,15 +30,19 @@ We built Chop It. The other nine were assessed from their App Store listings, cu
 | Good Food | Free; Premium £4.49/mo or £24.99/yr | iOS, Android, web | Premium planner builds a list | No | British recipes throughout | Yes, browsing |
 | Mob | Free; Premium £6.99/mo or £39.99/yr | iOS, Android, web | Premium plans include a list | No | British recipes throughout | Yes, taster |
 
+![UK meal planning app monthly, annual and one-off prices in August 2026](/blog/best-meal-planning-apps-uk-2026/uk-meal-planning-app-prices-august-2026.webp)
+
 Ollie appears on most lists like this one. It is not available on the UK App Store, so it is not in the table. If you have read about it elsewhere and gone looking, that is why you could not find it.
 
-## How I judged them
+## How I compared the meal planning apps
 
 Anyone can win a features checklist. These apps separate on five things that only matter once you are three weeks in.
 
 **Getting recipes in.** A built-in catalogue is one route. Clipping from a website is another. Photographing a cookbook page, saving a TikTok, keeping something ChatGPT wrote for you: those are the routes most apps still ignore.
 
-**The shopping list.** Four recipes each want an onion. A good list gives you three onions on one line. A bad one gives you "1 onion" four times and lets you do the arithmetic in the shop. I have written more about [how each app handles that merge](/blog/meal-planning-app-shopping-list-uk).
+**The shopping list.** Four recipes each want an onion and you already have one. A good list gives you three onions on one line. A bad one gives you "1 onion" four times, ignores the pantry and leaves the arithmetic to you in the shop. I have written more about [how each app handles that merge](/blog/meal-planning-app-shopping-list-uk).
+
+![Four recipe lines merged into three onions after one pantry onion is subtracted](/blog/best-meal-planning-apps-uk-2026/shopping-list-ingredient-merge.webp)
 
 **Pantry awareness.** You already own rice. An app that knows this writes a shorter list. The mechanics behind all three list jobs are explained in [how AI shopping lists work](/learn/how-ai-shopping-lists-work).
 
@@ -37,13 +50,15 @@ Anyone can win a features checklist. These apps separate on five things that onl
 
 **Price and platform.** A one-off £4.99 and a £59.99 annual subscription are different commitments. So is Android support, or the lack of it.
 
-## The apps
+## The best meal planning apps, reviewed
 
 ### Chop it
 
 This one is mine, so weigh it accordingly. I built it because a good dinner idea should not vanish when a chat window closes. Recipes arrive from everywhere now, and most apps only accept one or two of those routes. Chop it takes a website link, a photographed cookbook page, a social video or something you created in conversation, and turns each into a structured recipe in the same library. From there you plan the week, merge the ingredients into one list and cook from a clear method.
 
 It also runs [inside ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6a1c0dfa60b88191b3360153a1c6613c), where you can find or create a recipe, build a menu and open the result in the app. A walkthrough of [every part of the app](/learn/what-is-chop-it) covers the rest: the Chef IQ catalogue, the Recipe Generator, collections and the pantry.
+
+![The Chop it weekly meal plan and merged shopping list](/blog/best-meal-planning-apps-uk-2026/chop-it-plan-the-week.webp)
 
 **The honest limitation:** it launched in May 2026 and there is no Android app. The built-in catalogue is smaller than a publisher with decades of archive. If you use Android or want the biggest editorial recipe bank, buy something else.
 
@@ -127,7 +142,7 @@ Worth taking seriously as a competitor to every app above, because for a lot of 
 
 What it does better than anything on this list: improvising. Tell it you have half a cabbage, some feta and forty minutes, and it will give you something plausible to cook. Ask for the same dinner made cheaper, or without dairy, or for a child who refuses anything green, and it adapts without a filter menu. The free tier is enough for this. No app here matches that range.
 
-What it cannot do on its own is hold anything. It forgets your week between sessions, cannot keep a shopping list you add to across days, and does not know what is in your cupboard. Ask it on Wednesday what you planned on Sunday and you will be retyping. That gap between generating a recipe and keeping one is [worth understanding properly](/blog/chatgpt-meal-planning) before you decide whether you need an app at all.
+ChatGPT can remember useful preferences when memory is enabled, but it is not a structured record of your week. A meal plan remains prose in a conversation: there is no dependable week view, persistent tickable list or pantry ledger. Ask on Wednesday what you planned on Sunday and it may help, but you should not rely on it reproducing the exact five dinners and quantities. That gap between generating a recipe and keeping one is [worth understanding properly](/blog/chatgpt-meal-planning) before you decide whether you need an app at all.
 
 Chop it runs inside ChatGPT to close exactly those gaps.
 
@@ -139,7 +154,7 @@ If you arrived here thinking of Gousto, HelloFresh or Mindful Chef, those solve 
 
 Kits take the deciding and the shopping off your hands, and you pay a premium per meal for that. The apps above take the deciding off your hands and leave you buying at supermarket prices, which is where most of the difference sits. I have written a fuller comparison of [what the kits cost against a planned week](/blog/hellofresh-alternatives-uk), including Mindful Chef at £7.62 a portion.
 
-## What actually separates them
+## How to choose a meal planning app
 
 Most comparisons rank these apps by the size of the built-in recipe catalogue. That made sense when a publisher decided what you cooked. It matters less now that good recipes reach you from a cookbook, a friend's text, a saved video and a chat window in the same week.
 
@@ -159,13 +174,13 @@ Yes, several. Samsung Food has the most capable free tier, covering saving, plan
 For a shared household list, AnyList. For a list that becomes an actual supermarket basket with prices, Cherrypick. For merging duplicate ingredients across several recipes into single lines, Chop it. Mealime and Plan to Eat both produce clean aisle-sorted lists from your plan.
 
 **Can I use ChatGPT for meal planning instead of an app?**
-For coming up with ideas, yes, and the free tier is enough. It struggles with continuity: it will not remember the week you planned on Sunday, cannot hold a running shopping list, and does not know what is in your cupboards. Either accept some retyping or use something that keeps the output.
+For coming up with ideas, yes, and the free tier is enough. ChatGPT can remember useful preferences when memory is enabled, but a weekly plan remains prose in a conversation rather than a structured week, running shopping list or pantry record. Either keep using the same chat and accept some manual organisation, or use something built to hold the output.
 
 **Which meal planning apps work on Android?**
 Mealime, Samsung Food, Paprika 3, Cherrypick, Plan to Eat, AnyList, Eat This Much, Good Food and Mob all have Android apps. Chop it is iPhone-only at the moment, though the ChatGPT app works on any device.
 
 **How much should I expect to pay?**
-The cheapest paid tier here is Mealime at £2.99 a month. The cheapest annual commitment is AnyList at £9.99. Paprika 3 costs £4.99 once and never again. At the other end, Eat This Much is £14.99 a month and Samsung Food is £59.99 a year. Most people should start on a free tier and only pay once they have used an app for a fortnight.
+The cheapest paid tier here is Mealime at £2.99 a month. The cheapest annual commitment is AnyList at £9.99. Paprika 3 is a £4.99 one-off iOS purchase, with other platforms sold separately. At the other end, Eat This Much is £14.99 a month and Samsung Food is £59.99 a year. Most people should start on a free tier and only pay once they have used an app for a fortnight.
 
 ---
 

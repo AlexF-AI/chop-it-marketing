@@ -9,10 +9,10 @@
 // the section split exists because the two carry different reader intent
 // and different nav entries, not because they differ technically.
 //
-// FAQ entries live here rather than being parsed from the markdown: Google
-// only accepts FAQPage markup whose answer text appears on the page, so the
-// same strings are rendered into the body AND serialized into the schema
-// from this one definition. One source, no drift.
+// FAQ entries live here rather than being parsed from the markdown. The same
+// strings are rendered into the body and serialized into the schema so every
+// consumer sees matching content. Google no longer shows FAQ rich results,
+// so the reader value of the visible FAQ is the reason to keep one.
 
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -48,8 +48,10 @@ export type ResourceMeta = {
   datePublished: string;
   /** ISO date (YYYY-MM-DD). Bump only on real content changes. */
   dateModified: string;
-  /** Rendered as an FAQ block AND FAQPage JSON-LD. Optional. */
+  /** Rendered as an FAQ block and mirrored in FAQPage JSON-LD. Optional. */
   faq?: FaqEntry[];
+  /** Root-relative representative image for social cards and Article JSON-LD. */
+  image?: string;
   /** Contextual end-of-article action. Omit on research pages. */
   cta?: ResourceCta;
 };
@@ -63,7 +65,7 @@ export const LEARN_RESOURCES: ResourceMeta[] = [
     description:
       'Every part of the Chop it app, explained: the weekly plan, recipe library, Chef IQ catalogue, Recipe Generator, pantry, merged shopping list and ChatGPT.',
     datePublished: '2026-08-05',
-    dateModified: '2026-08-05',
+    dateModified: '2026-08-16',
     faq: [
       {
         question: 'Is Chop it free?',
@@ -134,7 +136,7 @@ export const LEARN_RESOURCES: ResourceMeta[] = [
     description:
       'What separates a real generated shopping list from a text dump: structured ingredients, unit conversion, duplicate merging and pantry checks, explained.',
     datePublished: '2026-08-05',
-    dateModified: '2026-08-05',
+    dateModified: '2026-08-16',
     faq: [
       {
         question: 'How does an AI shopping list combine recipes?',
@@ -254,7 +256,8 @@ export const RESEARCH_RESOURCES: ResourceMeta[] = [
     description:
       'Sourced figures on AI in home cooking: 66.8% of Brits have used AI food tools, 75.9% would take AI recipe recommendations. Every number cited and dated.',
     datePublished: '2026-08-05',
-    dateModified: '2026-08-05',
+    dateModified: '2026-08-16',
+    image: '/research/ai-cooking-statistics/ai-food-tool-adoption.webp',
     faq: [
       {
         question: 'How many people use AI for cooking?',
@@ -309,9 +312,10 @@ export const FEATURES_RESOURCES: ResourceMeta[] = [
     title: 'The Chop it Pantry: Automatic Management, Explained',
     seoTitle: 'The Chop it Pantry, Explained',
     description:
-      'How the pantry maintains itself: shops go in by photo, ingredients come off as meals are cooked, use-by life per ingredient, bulk edits by chat.',
+      'How the Chop it pantry maintains itself: shops go in by photo, cooked ingredients come off, reminders flag what to use, and bulk edits happen by chat.',
     datePublished: '2026-08-05',
-    dateModified: '2026-08-05',
+    dateModified: '2026-08-16',
+    image: '/features/pantry/pantry-reminder-windows.webp',
     faq: [
       {
         question: 'Do I have to keep the pantry up to date by hand?',
@@ -321,7 +325,7 @@ export const FEATURES_RESOURCES: ResourceMeta[] = [
       {
         question: 'How does the pantry handle food going off?',
         answer:
-          'Every item carries a use-by life matched to what it is: days for fish and raw meat, longer for hardy vegetables, longer still for tins and dry goods. Items are flagged to use before they turn, and anything past its date is marked rather than silently deleted.',
+          'Each item gets a default planning reminder matched to its type. The app flags items before that reminder passes and marks overdue items rather than silently deleting them. These reminders are not food-safety dates; packaging instructions and labelled use-by dates always take precedence.',
       },
     ],
     cta: {

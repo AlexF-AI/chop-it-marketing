@@ -15,6 +15,7 @@ import remarkGfm from 'remark-gfm';
 
 import Breadcrumbs, { type Crumb } from '@/app/components/Breadcrumbs';
 import Footer from '@/app/components/Footer';
+import MarkdownImage from '@/app/components/MarkdownImage';
 import Nav from '@/app/components/Nav';
 import StoreLink from '@/app/components/home/StoreLink';
 import { appStoreUrl, CHATGPT_URL } from '@/app/lib/app-stores';
@@ -83,6 +84,7 @@ export function resourceArticleMetadata(section: ResourceSection, slug: string):
   if (!r) return { title: 'Not found · Chop it' };
   const url = `${SITE_ORIGIN}/${section}/${r.slug}`;
   const title = `${r.seoTitle} · Chop it`;
+  const image = r.image ? `${SITE_ORIGIN}${r.image}` : undefined;
   return {
     title,
     description: r.description,
@@ -96,8 +98,14 @@ export function resourceArticleMetadata(section: ResourceSection, slug: string):
       publishedTime: new Date(`${r.datePublished}T00:00:00Z`).toISOString(),
       modifiedTime: new Date(`${r.dateModified}T00:00:00Z`).toISOString(),
       authors: [ALEX_FAHEY.name],
+      images: image ? [{ url: image }] : undefined,
     },
-    twitter: { card: 'summary', title: r.seoTitle, description: r.description },
+    twitter: {
+      card: image ? 'summary_large_image' : 'summary',
+      title: r.seoTitle,
+      description: r.description,
+      images: image ? [image] : undefined,
+    },
   };
 }
 
@@ -199,6 +207,7 @@ export function ResourceArticlePage({ resource }: { resource: ResourceMeta }) {
       logo: { '@type': 'ImageObject', url: `${SITE_ORIGIN}/logo.webp` },
     },
     mainEntityOfPage: url,
+    ...(resource.image ? { image: `${SITE_ORIGIN}${resource.image}` } : {}),
   };
 
   return (
@@ -208,7 +217,9 @@ export function ResourceArticlePage({ resource }: { resource: ResourceMeta }) {
         <article className="blog-article">
           <Breadcrumbs crumbs={crumbs} />
           <div className="blog-article-body">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>{body}</ReactMarkdown>
+            <ReactMarkdown remarkPlugins={[remarkGfm]} components={{ img: MarkdownImage }}>
+              {body}
+            </ReactMarkdown>
             {resource.faq && resource.faq.length > 0 ? (
               <>
                 <h2>Frequently asked questions</h2>

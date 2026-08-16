@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 import LegalLayout from '../components/LegalLayout';
 
 export const metadata: Metadata = {
-  title: 'Account deletion | Chop It',
-  description: 'How to delete your Chop It account and associated data.',
+  title: 'Account deletion | Chop it',
+  description: 'How to delete your Chop it account and associated data.',
   alternates: { canonical: 'https://chop-it.com/data-deletion' },
   robots: { index: true, follow: true },
 };
@@ -14,7 +14,7 @@ export default function DataDeletionPage() {
     <LegalLayout title="How to delete your account" lastUpdated="18 May 2026">
       <h2>From within the app</h2>
       <ul>
-        <li>Open Chop It &rarr; Settings &rarr; Delete Account &rarr; Confirm</li>
+        <li>Open Chop it &rarr; Settings &rarr; Delete Account &rarr; Confirm</li>
         <li>
           Your account, recipes, meal plans, pantry, shopping lists, and
           personal identifiers are permanently removed.

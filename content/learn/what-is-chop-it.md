@@ -1,6 +1,6 @@
 # What Is Chop it? Every Part of the App, Explained
 
-*By [Alex Fahey](/author/alex-fahey), founder of Chop it. Last updated 5 August 2026.*
+*By [Alex Fahey](/author/alex-fahey), founder of Chop it. Last updated 16 August 2026.*
 
 Chop it is an AI meal planning app and recipe organiser for iPhone that also runs inside ChatGPT. The short version: recipes come in from anywhere, AI turns them into a planned week, and the week becomes one shopping list checked against what your kitchen already holds.
 
@@ -32,7 +32,7 @@ Recipes grouped into sets by the job they do, the same way the website's [collec
 
 ## Pantry
 
-What your kitchen holds: fridge, freezer and cupboards. The philosophy is [automatic management](/features/pantry): the record maintains itself from what you already do. It updates itself as you add shops, photographed or bought. Ingredients come off it when you mark a meal cooked, and back on if you unmark it. Every item carries a use-by life matched to what it is, days for fish, a fortnight for hardy veg, and gets flagged to use before it turns rather than sitting as phantom spinach. For anything bulk, the chat takes one instruction: say "empty my fridge" and the app lists what would go, then clears it on your confirmation.
+What your kitchen holds: fridge, freezer and cupboards. The philosophy is [automatic management](/features/pantry): the record maintains itself from what you already do. It updates itself as you add shops, photographed or bought. Ingredients come off it when you mark a meal cooked, and back on if you unmark it. Every item gets a default planning reminder matched to its type, from days for fish to a fortnight for hardy veg, and is flagged before it becomes phantom spinach. Packaging instructions and labelled use-by dates always take precedence. For anything bulk, the chat takes one instruction: say "empty my fridge" and the app lists what would go, then clears it on your confirmation.
 
 The pantry feeds the two features that depend on knowing what you own: recipe suggestions that start from your ingredients rather than a shopping trip, and the shorter shopping list below. The [full pantry page](/features/pantry) covers the mechanics; the thinking behind pantry-first cooking is in [our food waste guide](/learn/can-ai-reduce-food-waste).
 

@@ -1,6 +1,6 @@
 # How AI Shopping Lists Work: Merging, Sorting and Pantry Checks
 
-*By [Alex Fahey](/author/alex-fahey), founder of Chop it. Last updated 5 August 2026.*
+*By [Alex Fahey](/author/alex-fahey), founder of Chop it. Last updated 16 August 2026.*
 
 An AI shopping list is built from your recipes rather than typed by you. The useful ones do three things: merge the same ingredient across recipes into one line, sort the result the way you walk the shop, and leave off what you already own. This guide explains how each works, because the difference between apps is mostly in how seriously they take these three steps.
 
@@ -28,7 +28,7 @@ You own rice. An app that knows this writes a shorter list, and a shorter list i
 
 Pantry awareness ranges from a manual tick-list of staples through to photographing the shop itself. Chop it lets you photograph a veg box or a food shop and confirms what it recognised into your pantry, so the subtraction starts from what the kitchen holds. Other apps handle this differently or not at all; the comparison above covers who does what.
 
-The failure mode of most pantry features is drift: the record only changes when you edit it, so within a fortnight it describes a kitchen that no longer exists and the subtraction goes wrong. The fix is automatic management, which is how [Chop it's pantry](/learn/what-is-chop-it) works: shops you add go in, ingredients come off when you mark a meal cooked, each item carries a use-by life matched to what it is, and bulk corrections are one confirmed chat instruction.
+The failure mode of most pantry features is drift: the record only changes when you edit it, so within a fortnight it describes a kitchen that no longer exists and the subtraction goes wrong. The fix is automatic management, which is how [Chop it's pantry](/learn/what-is-chop-it) works: shops you add go in, ingredients come off when you mark a meal cooked, each item gets a planning reminder matched to its type, and bulk corrections are one confirmed chat instruction. Packaging instructions and labelled use-by dates always take precedence over those reminders.
 
 ## Aisle sorting
 

@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 import LegalLayout from '../components/LegalLayout';
 
 export const metadata: Metadata = {
-  title: 'Support | Chop It',
-  description: 'Get help with the Chop It app — contact us, common questions, billing, and account issues.',
+  title: 'Support | Chop it',
+  description: 'Get help with the Chop it app — contact us, common questions, billing, and account issues.',
   alternates: { canonical: 'https://chop-it.com/support' },
   robots: { index: true, follow: true },
 };
@@ -16,7 +16,7 @@ export default function SupportPage() {
       <p>
         Email <a href="mailto:hello@chop-it.com">hello@chop-it.com</a> and
         we&rsquo;ll get back to you within 2 business days. Include the email
-        address linked to your Chop It account so we can find you faster.
+        address linked to your Chop it account so we can find you faster.
       </p>
 
       <h2>Common questions</h2>
@@ -35,7 +35,7 @@ export default function SupportPage() {
       <p>
         Subscriptions are billed through your App Store account. To manage or
         cancel, open Settings on your device &rarr; your name &rarr;
-        Subscriptions &rarr; Chop It. Refunds are handled by Apple &mdash; you
+        Subscriptions &rarr; Chop it. Refunds are handled by Apple &mdash; you
         can request one at{' '}
         <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener noreferrer">
           reportaproblem.apple.com

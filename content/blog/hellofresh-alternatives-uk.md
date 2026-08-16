@@ -1,6 +1,6 @@
 # HelloFresh Alternatives in the UK: What the Kits Cost, and When to Skip Them
 
-*By [Alex Fahey](/author/alex-fahey), founder of Chop it. Last updated 5 August 2026. All kit prices were taken from each company's own checkout on 5 August 2026, at the standard rate rather than the introductory offer.*
+*By [Alex Fahey](/author/alex-fahey), founder of Chop it. Last updated 16 August 2026. All kit prices were taken from each company's own checkout on 5 August 2026, at the standard rate rather than the introductory offer.*
 
 A meal kit solves two problems in one purchase. It decides what you are eating, and it does the shopping. Those are the two jobs that actually stop people cooking on a Wednesday, so the kits earn their popularity honestly.
 
@@ -17,6 +17,8 @@ Standard rates, taken from each checkout on 5 August 2026:
 | Gousto | Two-person box | 10 | £46.49 | £4.65 |
 | HelloFresh | 3 meals for 2 people | 6 | £32.99 + £4.99 shipping | £5.50 |
 | Mindful Chef | 4 recipes for 2 people | 8 | £60.95 | £7.62 |
+
+![Standard and introductory UK meal kit prices per portion in August 2026](/blog/hellofresh-alternatives-uk/uk-meal-kit-price-per-portion.webp)
 
 Mindful Chef sits highest because it is a different proposition: smaller portions of higher-spec ingredients, no refined carbs, and per-recipe pricing rather than a flat box rate. Its own recipe pages price individually, so a Creamy Pomodoro Risotto for two comes to £13.80, or £6.90 a serving, while another recipe the same week costs more or less.
 
