@@ -96,6 +96,44 @@ export const LEARN_RESOURCES: ResourceMeta[] = [
     },
   },
   {
+    slug: 'mediterranean-diet-meal-plan',
+    section: 'learn',
+    title: 'Mediterranean Diet Meal Plan for a UK Week: Four Dinners and One Shopping List',
+    seoTitle: 'Mediterranean Diet Meal Plan (UK): 4 Dinners, 1 List',
+    description:
+      'A real four-dinner Mediterranean week from the Chop it library, with the plant count and fibre for every recipe, what the merged shopping list looks like, and how to plan it in two minutes.',
+    datePublished: '2026-09-06',
+    dateModified: '2026-09-06',
+    faq: [
+      {
+        question: 'Is the Mediterranean diet good for weight loss?',
+        answer:
+          'Studies of the pattern mostly measure heart health and mortality, not weight, and it is not a calorie target. Treat it as a way of eating that is easy to keep up. The practical lever for weight is cooking at home more often, which planning a week makes likely.',
+      },
+      {
+        question: 'Do I need to give up bread, pasta or cheese?',
+        answer:
+          'No. Pasta, bread and cheese are everyday foods across the Mediterranean. The pattern is about proportions: more vegetables and pulses on the plate, olive oil as the fat, cheese as seasoning. Chop it never swaps your orzo for a cauliflower version.',
+      },
+      {
+        question: 'How many plants should a week have?',
+        answer:
+          'The 30 plants a week idea is a useful prompt, not a rule. The four dinners in this plan contain 28 different plant foods between them by our count on 6 September 2026, because herbs, spices, pulses, grains and nuts all count; breakfasts and lunches take a normal week past 30 without trying.',
+      },
+      {
+        question: 'Is the Mediterranean diet expensive?',
+        answer:
+          'Tinned pulses, seasonal vegetables and olive oil are among the cheapest things in a British supermarket. Fish is the variable; one fish night a week keeps it manageable, and tinned tuna or sardines are the traditional budget route.',
+      },
+    ],
+    cta: {
+      heading: 'Plan a Mediterranean week in two minutes',
+      body: 'Pick four dinners, get one shopping list, and see the plant count before you shop.',
+      label: 'Get the iPhone app',
+      kind: 'app_store',
+    },
+  },
+  {
     slug: 'can-ai-create-recipes',
     section: 'learn',
     title: 'Can AI Create Recipes? What Works, What to Check',

@@ -1,5 +1,5 @@
 // Recipes sitemap: every /recipes/<slug> plus the curated
-// /recipes/collection/<segment> (11) and /recipes/cuisine/<slug> (17)
+// /recipes/collection/<segment> (12) and /recipes/cuisine/<slug> (17)
 // landings. The free-text /recipes/tag/<x> and /recipes/season/<x>
 // routes were retired (they returned 410 in middleware.ts) — they
 // emitted ~700 unnormalised URLs that flooded crawl budget against the

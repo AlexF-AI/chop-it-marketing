@@ -1,5 +1,6 @@
 import { supabase, supabaseConfigured } from './supabase';
 import { CUISINE_META, CUISINE_SLUGS } from './cuisines';
+import { segmentDbLabel } from './segments';
 
 export type Ingredient = {
   display: string;
@@ -232,18 +233,43 @@ export async function listCollectionRecipes(
   opts: { limit?: number } = {},
 ): Promise<RecipeListItem[]> {
   if (!supabase || !supabaseConfigured) return [];
+  const client = supabase;
   const limit = Math.max(1, Math.min(120, opts.limit ?? 60));
-  const { data, error } = await supabase
-    .from('recipes_published')
-    .select(LIST_COLUMNS)
-    .eq('seo_published', true)
-    .is('deleted_at', null)
-    .not('slug', 'is', null)
-    .contains('tags_json', { _catalog: { segments: [segmentSlug] } })
-    .order('display_priority', { ascending: false, nullsFirst: false })
-    .order('title', { ascending: true })
-    .limit(limit);
-  if (error || !data) return [];
+  const query = (segmentValue: string) =>
+    client
+      .from('recipes_published')
+      .select(LIST_COLUMNS)
+      .eq('seo_published', true)
+      .is('deleted_at', null)
+      .not('slug', 'is', null)
+      .contains('tags_json', { _catalog: { segments: [segmentValue] } })
+      .order('display_priority', { ascending: false, nullsFirst: false })
+      .order('title', { ascending: true })
+      .limit(limit);
+  // The library stores segments as labels ("Quick"); older rows or a future
+  // catalog pass may store the slug. Query both spellings, merge and dedupe
+  // by id so a mixed-data release never drops half the collection, then
+  // re-apply the display_priority / title ordering across the merged set.
+  const candidates = Array.from(new Set([segmentDbLabel(segmentSlug), segmentSlug]));
+  const results = await Promise.all(candidates.map((value) => query(value)));
+  if (results.some((result) => result.error)) return [];
+  const byId = new Map<string, Record<string, unknown>>();
+  for (const result of results) {
+    for (const row of (result.data ?? []) as Record<string, unknown>[]) {
+      const id = row.id as string;
+      if (!byId.has(id)) byId.set(id, row);
+    }
+  }
+  if (byId.size === 0) return [];
+  const priorityOf = (r: Record<string, unknown>) =>
+    typeof r.display_priority === 'number' ? (r.display_priority as number) : Number.NEGATIVE_INFINITY;
+  const data = Array.from(byId.values())
+    .sort((a, b) => {
+      const diff = priorityOf(b) - priorityOf(a);
+      if (diff !== 0) return diff;
+      return String(a.title ?? '').localeCompare(String(b.title ?? ''));
+    })
+    .slice(0, limit);
   return data.map((r) => {
     const timings = r.timings_json as Timings | null;
     return {
