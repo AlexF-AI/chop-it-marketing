@@ -1,5 +1,6 @@
 import { supabase, supabaseConfigured } from './supabase';
 import { CUISINE_META, CUISINE_SLUGS } from './cuisines';
+import { segmentDbLabel } from './segments';
 
 export type Ingredient = {
   display: string;
@@ -232,18 +233,32 @@ export async function listCollectionRecipes(
   opts: { limit?: number } = {},
 ): Promise<RecipeListItem[]> {
   if (!supabase || !supabaseConfigured) return [];
+  const client = supabase;
   const limit = Math.max(1, Math.min(120, opts.limit ?? 60));
-  const { data, error } = await supabase
-    .from('recipes_published')
-    .select(LIST_COLUMNS)
-    .eq('seo_published', true)
-    .is('deleted_at', null)
-    .not('slug', 'is', null)
-    .contains('tags_json', { _catalog: { segments: [segmentSlug] } })
-    .order('display_priority', { ascending: false, nullsFirst: false })
-    .order('title', { ascending: true })
-    .limit(limit);
-  if (error || !data) return [];
+  const query = (segmentValue: string) =>
+    client
+      .from('recipes_published')
+      .select(LIST_COLUMNS)
+      .eq('seo_published', true)
+      .is('deleted_at', null)
+      .not('slug', 'is', null)
+      .contains('tags_json', { _catalog: { segments: [segmentValue] } })
+      .order('display_priority', { ascending: false, nullsFirst: false })
+      .order('title', { ascending: true })
+      .limit(limit);
+  // The library stores segments as labels ("Quick"); older rows or a future
+  // catalog pass may store the slug. Query the label first, then the slug.
+  const candidates = Array.from(new Set([segmentDbLabel(segmentSlug), segmentSlug]));
+  let data: Record<string, unknown>[] | null = null;
+  for (const value of candidates) {
+    const result = await query(value);
+    if (result.error) return [];
+    if (result.data && result.data.length > 0) {
+      data = result.data as Record<string, unknown>[];
+      break;
+    }
+  }
+  if (!data) return [];
   return data.map((r) => {
     const timings = r.timings_json as Timings | null;
     return {

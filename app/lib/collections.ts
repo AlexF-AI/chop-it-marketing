@@ -8,6 +8,11 @@
 // search intent each page serves, while keeping the copy useful on-page.
 
 export const COLLECTION_META: Record<string, { name: string; intro: string }> = {
+  mediterranean: {
+    name: 'Mediterranean diet recipes',
+    intro:
+      'Mediterranean diet recipes for everyday dinners: olive oil, vegetables, beans and lentils, fish and chicken, feta and yoghurt, with real quantities and a plant count for every recipe. Curated for people eating the Mediterranean way at home in the UK.',
+  },
   bbq_szn: {
     name: 'BBQ recipes',
     intro:

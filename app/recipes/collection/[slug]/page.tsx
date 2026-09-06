@@ -1,4 +1,4 @@
-// Editorial collection landing pages. 11 SEO-indexable URLs at
+// Editorial collection landing pages. 12 SEO-indexable URLs at
 // /recipes/collection/<slug>, each rendering a hand-picked taxonomy
 // segment (tags_json._catalog.segments[…]) as a curated grid with useful,
 // search-led copy. Collections complement the fixed cuisine landings.
