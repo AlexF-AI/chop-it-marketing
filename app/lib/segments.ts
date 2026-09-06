@@ -5,9 +5,11 @@
 // against several "Quick weeknight + Healthy + Tray bake" buckets).
 // For the breadcrumb middle crumb and the "More from <segment>" footer
 // section we want a *single* primary segment per recipe, picked by the
-// priority order below. Curation rationale: bbq_szn is seasonal and the
-// most marketable surface; quick/comfort/healthy are the strongest
-// editorial tentpoles; the rest of the list trails into long-tail.
+// priority order below. Curation rationale: mediterranean is the
+// collection the site is built around; quick/comfort/healthy are the
+// strongest editorial tentpoles; the rest of the list trails into long-tail.
+// "BBQ & Picnics" (bbq_szn) was retired on 6 September 2026 along with the
+// seasonal framing; its rows were re-homed on all-year shelves.
 //
 // Returns null when the recipe carries no segments at all (very rare —
 // at the time of writing 0 of 1,024 published recipes lacked segments),
@@ -18,7 +20,6 @@
 import { COLLECTION_META } from './collections';
 
 export const SEGMENT_PRIORITY = [
-  'bbq_szn',
   'mediterranean',
   'quick',
   'comfort',
@@ -40,7 +41,6 @@ export type SegmentSlug = (typeof SEGMENT_PRIORITY)[number];
 // accepted on read; `segmentDbLabel` is the form to query the database
 // with. Checked 6 September 2026: every live recipe carries labels only.
 export const SEGMENT_LABELS: Record<SegmentSlug, string> = {
-  bbq_szn: 'BBQ & Picnics',
   mediterranean: 'Mediterranean',
   quick: 'Quick',
   comfort: 'Comfort',
