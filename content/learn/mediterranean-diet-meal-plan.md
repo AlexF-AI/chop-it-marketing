@@ -49,7 +49,7 @@ You will still have most of the cupboard line next week, so the second list is s
 3. Set the week live. The shopping list and the [Weekly Diversity Score](/features/weekly-diversity-score) update as you swap dinners.
 4. On Sunday the app reminds you to plan the next one, and shows how this week scored.
 
-The Sunday step matters more than any single recipe. In Chop it's own usage data, the people who keep cooking at home are the ones who set next week live before it starts.
+The Sunday step matters more than any single recipe. In Chop it's usage data, most people who set a week live come back to the app in later months, and most who never set one open the app once and stop.
 
 ## Common questions
 
