@@ -247,18 +247,29 @@ export async function listCollectionRecipes(
       .order('title', { ascending: true })
       .limit(limit);
   // The library stores segments as labels ("Quick"); older rows or a future
-  // catalog pass may store the slug. Query the label first, then the slug.
+  // catalog pass may store the slug. Query both spellings, merge and dedupe
+  // by id so a mixed-data release never drops half the collection, then
+  // re-apply the display_priority / title ordering across the merged set.
   const candidates = Array.from(new Set([segmentDbLabel(segmentSlug), segmentSlug]));
-  let data: Record<string, unknown>[] | null = null;
-  for (const value of candidates) {
-    const result = await query(value);
-    if (result.error) return [];
-    if (result.data && result.data.length > 0) {
-      data = result.data as Record<string, unknown>[];
-      break;
+  const results = await Promise.all(candidates.map((value) => query(value)));
+  if (results.some((result) => result.error)) return [];
+  const byId = new Map<string, Record<string, unknown>>();
+  for (const result of results) {
+    for (const row of (result.data ?? []) as Record<string, unknown>[]) {
+      const id = row.id as string;
+      if (!byId.has(id)) byId.set(id, row);
     }
   }
-  if (!data) return [];
+  if (byId.size === 0) return [];
+  const priorityOf = (r: Record<string, unknown>) =>
+    typeof r.display_priority === 'number' ? (r.display_priority as number) : Number.NEGATIVE_INFINITY;
+  const data = Array.from(byId.values())
+    .sort((a, b) => {
+      const diff = priorityOf(b) - priorityOf(a);
+      if (diff !== 0) return diff;
+      return String(a.title ?? '').localeCompare(String(b.title ?? ''));
+    })
+    .slice(0, limit);
   return data.map((r) => {
     const timings = r.timings_json as Timings | null;
     return {
