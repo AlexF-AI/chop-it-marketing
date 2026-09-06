@@ -108,22 +108,22 @@ export const LEARN_RESOURCES: ResourceMeta[] = [
       {
         question: 'Is the Mediterranean diet good for weight loss?',
         answer:
-          'Studies of the pattern mostly measure heart health and mortality, not weight, and it is not a calorie target. Treat it as a way of eating that is easy to keep up. The practical lever for weight is cooking at home more often, which planning a week makes likely.',
+          'The large studies of the pattern, PREDIMED included, measured heart health and mortality rather than weight, and the pattern sets no calorie target. Treat it as a way of eating you can keep up. If weight matters to you, the practical lever is the same as for any pattern: cook at home more often, and planning a week makes that likely.',
       },
       {
         question: 'Do I need to give up bread, pasta or cheese?',
         answer:
-          'No. Pasta, bread and cheese are everyday foods across the Mediterranean. The pattern is about proportions: more vegetables and pulses on the plate, olive oil as the fat, cheese as seasoning. Chop it never swaps your orzo for a cauliflower version.',
+          'No. Pasta, bread and cheese are everyday foods across the Mediterranean. The pattern is about proportions: more vegetables and pulses on the plate, olive oil as the fat, cheese as seasoning. Chop it does not swap your orzo for a cauliflower version.',
       },
       {
         question: 'How many plants should a week have?',
         answer:
-          'The 30 plants a week idea is a useful prompt, not a rule. The four dinners in this plan contain 28 different plant foods between them by our count on 6 September 2026, because herbs, spices, pulses, grains and nuts all count; breakfasts and lunches take a normal week past 30 without trying.',
+          'Treat 30 plants a week as a prompt. The four dinners in this plan contain 28 different plant foods between them by our count on 6 September 2026, because herbs, spices, pulses, grains and nuts all count. Breakfasts and lunches take a normal week past 30 without trying.',
       },
       {
         question: 'Is the Mediterranean diet expensive?',
         answer:
-          'Tinned pulses, seasonal vegetables and olive oil are among the cheapest things in a British supermarket. Fish is the variable; one fish night a week keeps it manageable, and tinned tuna or sardines are the traditional budget route.',
+          'Tinned pulses, seasonal vegetables and olive oil are among the cheapest things in a British supermarket. Fish is the variable. One fish night a week keeps it manageable, and tinned tuna or sardines are the traditional budget route.',
       },
     ],
     cta: {
