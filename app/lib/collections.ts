@@ -13,11 +13,6 @@ export const COLLECTION_META: Record<string, { name: string; intro: string }> = 
     intro:
       'Mediterranean diet recipes for everyday dinners: olive oil, vegetables, beans and lentils, fish and chicken, feta and yoghurt, with real quantities and a plant count for every recipe. Curated for people eating the Mediterranean way at home in the UK.',
   },
-  bbq_szn: {
-    name: 'BBQ recipes',
-    intro:
-      'Find BBQ recipes for a proper British summer, from charred chicken and smoky vegetables to burgers, skewers and easy sides for cooking outdoors.',
-  },
   quick: {
     name: 'Quick dinner recipes',
     intro:

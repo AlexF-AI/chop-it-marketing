@@ -15,6 +15,14 @@ const nextConfig = {
   // and PostHog stops splitting sessions across them. Path is preserved.
   async redirects() {
     return [
+      // The BBQ & Picnics collection was retired on 6 September 2026; its
+      // recipes now live on the all-year shelves. Send the old URL to the
+      // collections index rather than a topic it no longer matches.
+      {
+        source: '/recipes/collection/bbq_szn',
+        destination: '/recipes',
+        permanent: true,
+      },
       {
         source: '/:path*',
         has: [{ type: 'host', value: 'www.chop-it.com' }],
