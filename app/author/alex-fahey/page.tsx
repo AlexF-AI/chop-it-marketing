@@ -6,7 +6,8 @@ import Footer from '@/app/components/Footer';
 import Nav from '@/app/components/Nav';
 import { ALEX_FAHEY } from '@/app/lib/authors';
 import { getAllPostsMeta } from '@/app/lib/blog';
-import { buildBreadcrumbJsonLd, serializeJsonLd, SITE_ORIGIN } from '@/app/lib/recipeSchema';
+import { orgRef } from '@/app/lib/entity';
+import { buildBreadcrumbJsonLd, serializeJsonLd } from '@/app/lib/recipeSchema';
 
 export const metadata: Metadata = {
   title: 'Alex Fahey, Founder of Chop it',
@@ -47,11 +48,7 @@ export default function AlexFaheyAuthorPage() {
       name: ALEX_FAHEY.name,
       jobTitle: ALEX_FAHEY.jobTitle,
       url: ALEX_FAHEY.url,
-      worksFor: {
-        '@type': 'Organization',
-        name: 'Chop it',
-        url: SITE_ORIGIN,
-      },
+      worksFor: orgRef,
     },
   };
 
