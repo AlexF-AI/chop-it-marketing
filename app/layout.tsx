@@ -6,6 +6,7 @@ import CookieBanner from './components/CookieBanner';
 import MotionRoot from './components/MotionRoot';
 import NavTracker from './components/NavTracker';
 import { assertStoreUrlsValid } from './lib/app-stores';
+import { ORGANIZATION_JSONLD, WEBSITE_JSONLD } from './lib/entity';
 
 // Fail the build on a store-URL misconfiguration rather than shipping CTAs
 // that go nowhere. NEXT_PUBLIC_* values are inlined at build time, so this
@@ -88,48 +89,6 @@ export const metadata: Metadata = {
   verification: {
     google: 'kqSyATyhUHmcDShKvUNWK-Ntj3n9qrdB8omXiM6tft0',
   },
-};
-
-const ORGANIZATION_JSONLD = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'Chop it',
-  url: 'https://chop-it.com',
-  logo: 'https://chop-it.com/logo.webp',
-  description:
-    'Chop it is an AI meal planning platform and recipe organiser: one place to keep recipes from any source, plan the week, build the shop and cook. It runs on iPhone and inside ChatGPT.',
-  // Entity reinforcement for knowledge graphs: the topics this organisation
-  // publishes on, matching the Learn and Research sections. Terms mirror the
-  // wording used across the site so the entity stays consistent.
-  knowsAbout: [
-    'AI meal planning',
-    'AI cooking',
-    'AI shopping lists',
-    'recipe organisation',
-    'ChatGPT for cooking',
-    'food waste reduction',
-  ],
-  // The App Store listing is the strongest entity signal available: it ties
-  // this Organization to the published app. Instagram + X are still omitted
-  // because neither handle could be confirmed live (Instagram rate-limits
-  // unauthenticated requests, and x.com returns 200 for any path because it
-  // is a single-page app, so neither check proves a profile exists). A sameAs
-  // pointing at a profile that does not exist is worse than a shorter list.
-  sameAs: [
-    'https://chopit.app',
-    'https://apps.apple.com/gb/app/chop-it/id6762079343',
-    'https://www.tiktok.com/@chop_it',
-  ],
-};
-
-// Site identity. Google's sitelinks search box was retired, so this deliberately
-// omits the obsolete SearchAction markup that used to point at arbitrary ?q=
-// result pages.
-const WEBSITE_JSONLD = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: 'Chop it',
-  url: 'https://chop-it.com',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

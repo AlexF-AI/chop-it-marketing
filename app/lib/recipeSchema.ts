@@ -11,11 +11,15 @@
 // - recipeCuisine derives from tags_json.core[0] (positional convention).
 // - keywords derives from tags_json.core joined with commas.
 
+import { type EntityRef, orgRef, SITE_ORIGIN } from './entity';
 import { isoDuration, stripUndefined } from './iso';
 import type { Recipe } from './recipes';
 import { getRecipeSegments } from './segments';
 
-export const SITE_ORIGIN = 'https://chop-it.com';
+// Re-exported so existing importers (app/page.tsx, app/lib/authors.ts) keep
+// their path. The constant itself now lives in ./entity alongside the
+// organisation node it identifies.
+export { SITE_ORIGIN };
 
 // Map curated catalog segments → Google-recognised recipeCategory values.
 // Schema.org accepts free strings but Google's Rich Results parser
@@ -75,7 +79,7 @@ type RecipeLd = {
   url?: string;
   datePublished?: string;
   dateModified?: string;
-  author?: { '@type': 'Organization'; name: string; url: string };
+  author?: EntityRef;
   recipeYield?: string;
   recipeCategory?: string;
   recipeCuisine?: string;
@@ -149,7 +153,9 @@ export function buildRecipeJsonLd(recipe: Recipe): RecipeLd {
     // prefers both datePublished + dateModified for freshness signals.
     datePublished: new Date(recipe.published_at).toISOString(),
     dateModified: recipe.updated_at,
-    author: { '@type': 'Organization', name: 'Chop it', url: SITE_ORIGIN },
+    // Reference, not a fresh inline node: every recipe page repeating an
+    // anonymous Organization minted a separate entity per URL.
+    author: orgRef,
     recipeYield: recipe.servings != null ? `${recipe.servings} servings` : undefined,
     // recipeCategory used to read recipe.season (only "summer" was ever
     // published so it was almost always "summer", which isn't a Google-

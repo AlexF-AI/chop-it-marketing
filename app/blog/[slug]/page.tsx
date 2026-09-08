@@ -11,6 +11,7 @@ import Nav from '@/app/components/Nav';
 import SummerSaladsArticle from '@/app/components/SummerSaladsArticle';
 import { ALEX_FAHEY } from '@/app/lib/authors';
 import { BLOG_AUTHOR, getAllPostsMeta, getPostBody, getPostMeta } from '@/app/lib/blog';
+import { orgRef } from '@/app/lib/entity';
 import {
   APP_LIST_BY_SLUG,
   buildAppItemListJsonLd,
@@ -48,7 +49,7 @@ function buildSaladItemListJsonLd(
         '@type': 'Recipe',
         name: r.title,
         url: `${pageUrl}#salad-${r.id}`,
-        author: { '@type': 'Organization', name: BLOG_AUTHOR, url: SITE_ORIGIN },
+        author: orgRef,
       };
       if (r.image_url) recipe.image = [r.image_url];
       if (r.description) recipe.description = r.description;
@@ -135,19 +136,14 @@ export default async function BlogArticlePage({
     datePublished: new Date(`${post.datePublished}T00:00:00Z`).toISOString(),
     dateModified: new Date(`${post.dateModified}T00:00:00Z`).toISOString(),
     author: post.menuShareCode
-      ? { '@type': 'Organization', name: BLOG_AUTHOR, url: SITE_ORIGIN }
+      ? orgRef
       : {
           '@type': 'Person',
           '@id': `${ALEX_FAHEY.url}#person`,
           name: ALEX_FAHEY.name,
           url: ALEX_FAHEY.url,
         },
-    publisher: {
-      '@type': 'Organization',
-      name: BLOG_AUTHOR,
-      url: SITE_ORIGIN,
-      logo: { '@type': 'ImageObject', url: `${SITE_ORIGIN}/logo.webp` },
-    },
+    publisher: orgRef,
     mainEntityOfPage: url,
     image: `${url}/opengraph-image`,
   };

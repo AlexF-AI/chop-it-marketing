@@ -8,6 +8,7 @@ import RecipeProof from './components/homepage/RecipeProof';
 import { RecipeToDinner } from './components/homepage/RecipeToDinner';
 import { WhyChopIt } from './components/homepage/WhyChopIt';
 import { APP_STORE_URL } from './lib/app-stores';
+import { orgRef } from './lib/entity';
 import { serializeJsonLd, SITE_ORIGIN } from './lib/recipeSchema';
 
 export const revalidate = 3600;
@@ -39,11 +40,12 @@ const MOBILE_APP_JSONLD = {
   countriesSupported: 'GB',
   url: SITE_ORIGIN,
   downloadUrl: APP_STORE_URL,
-  author: {
-    '@type': 'Organization',
-    name: 'Chop It AI Ltd',
-    url: SITE_ORIGIN,
-  },
+  // Reference to the canonical Organization rather than a second inline
+  // node. This block used to name the company 'Chop It AI Ltd' while the
+  // site-wide node named it 'Chop it', which published the same company
+  // as two unrelated organisations. The legal name is now a `legalName`
+  // property on the one node.
+  author: orgRef,
   offers: {
     '@type': 'Offer',
     price: '0',

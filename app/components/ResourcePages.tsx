@@ -21,6 +21,7 @@ import StoreLink from '@/app/components/home/StoreLink';
 import { appStoreUrl, CHATGPT_URL } from '@/app/lib/app-stores';
 import { ALEX_FAHEY } from '@/app/lib/authors';
 import { buildFaqJsonLd } from '@/app/lib/blogSchema';
+import { orgRef } from '@/app/lib/entity';
 import {
   getResource,
   getResourceBody,
@@ -200,12 +201,7 @@ export function ResourceArticlePage({ resource }: { resource: ResourceMeta }) {
       name: ALEX_FAHEY.name,
       url: ALEX_FAHEY.url,
     },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Chop it',
-      url: SITE_ORIGIN,
-      logo: { '@type': 'ImageObject', url: `${SITE_ORIGIN}/logo.webp` },
-    },
+    publisher: orgRef,
     mainEntityOfPage: url,
     ...(resource.image ? { image: `${SITE_ORIGIN}${resource.image}` } : {}),
   };
