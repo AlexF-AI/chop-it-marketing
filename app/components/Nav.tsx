@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 
 import ThemeToggle from './ThemeToggle';
 import { appStoreUrl, CHATGPT_URL, IOS_LIVE } from '@/app/lib/app-stores';
-import { trackCtaClicked } from '@/lib/posthog-events';
+import { trackAppStoreClick, trackCtaClicked } from '@/lib/posthog-events';
 import styles from './Nav.module.css';
 
 // Homepage anchors are absolute (`/#why`) so they still resolve from
@@ -118,21 +118,34 @@ export default function Nav() {
     };
   }, [navOpen, closeNav]);
 
-  // One event per click. This used to fire `nav_cta_click` alongside
-  // `cta_clicked`, which doubled every nav CTA metric in PostHog.
+  // No `nav_cta_click` — that duplicated `cta_clicked` on the same click
+  // and doubled every nav CTA metric in PostHog.
   //
-  // Takes the label and href rather than deriving them from the surface,
-  // because each surface now carries two CTAs — the App Store pill and the
-  // ChatGPT link — and they have to stay distinguishable in PostHog.
+  // `app_store_click` is NOT a duplicate: it is the store funnel bucket
+  // that every other App Store CTA on the site fires (hero, blog, recipe,
+  // resource footers), and the two nav links were the only ones missing
+  // it — so the funnel silently under-counted the most-shown CTA on the
+  // site. Skipped when iOS is not live, because the href is then the
+  // /#download anchor and no store click happened, and skipped for the
+  // ChatGPT CTA, which is not a store click at all.
+  //
+  // `destination` and `label` are parameters rather than being derived
+  // from the surface, because each surface now carries two CTAs — the
+  // store pill and the ChatGPT link — and the two have to stay apart in
+  // PostHog.
   const trackNavCta = (
     surface: 'header_nav' | 'mobile_menu',
+    destination: 'app_store' | 'chatgpt',
     label: string,
-    destination: string,
+    href: string,
   ) => {
+    if (destination === 'app_store' && IOS_LIVE) {
+      trackAppStoreClick({ location: surface === 'header_nav' ? 'nav' : 'mobile_menu' });
+    }
     trackCtaClicked({
       cta_location: surface,
       cta_label: label,
-      cta_destination: destination,
+      cta_destination: href,
     });
   };
 
@@ -172,7 +185,10 @@ export default function Nav() {
             className="nav-ghost"
             href={CHATGPT_URL}
             rel="noopener noreferrer"
-            onClick={() => trackNavCta('header_nav', 'ChatGPT', CHATGPT_URL)}
+            data-cta-tracked="true"
+            onClick={() =>
+              trackNavCta('header_nav', 'chatgpt', 'ChatGPT', CHATGPT_URL)
+            }
           >
             ChatGPT
           </a>
@@ -180,7 +196,8 @@ export default function Nav() {
             className="nav-get"
             href={navHref}
             rel={IOS_LIVE ? 'noopener noreferrer' : undefined}
-            onClick={() => trackNavCta('header_nav', 'iOS app', navHref)}
+            data-cta-tracked="true"
+            onClick={() => trackNavCta('header_nav', 'app_store', 'iOS app', navHref)}
           >
             iOS app
           </a>
@@ -273,7 +290,10 @@ export default function Nav() {
               className={styles.cta}
               href={drawerHref}
               rel={IOS_LIVE ? 'noopener noreferrer' : undefined}
-              onClick={() => trackNavCta('mobile_menu', 'Get the app', drawerHref)}
+              data-cta-tracked="true"
+              onClick={() =>
+                trackNavCta('mobile_menu', 'app_store', 'Get the app', drawerHref)
+              }
             >
               Get the iPhone app
             </a>
@@ -281,8 +301,9 @@ export default function Nav() {
               className={styles.ctaSecondary}
               href={CHATGPT_URL}
               rel="noopener noreferrer"
+              data-cta-tracked="true"
               onClick={() =>
-                trackNavCta('mobile_menu', 'Use in ChatGPT', CHATGPT_URL)
+                trackNavCta('mobile_menu', 'chatgpt', 'Use in ChatGPT', CHATGPT_URL)
               }
             >
               Use it free in ChatGPT

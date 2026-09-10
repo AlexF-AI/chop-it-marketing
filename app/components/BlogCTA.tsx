@@ -18,11 +18,14 @@ export function BlogCTAButtons({ className = 'blog-cta-row' }: { className?: str
             href={CHATGPT_URL}
             target="_blank"
             rel="noopener noreferrer"
+            // See StoreLink: marks this anchor as reporting its own events,
+            // so the global listener does not fire a duplicate.
+            data-cta-tracked="true"
             onClick={() => {
               trackCtaClicked({
                 cta_location: 'blog_footer',
                 cta_label: 'ChatGPT',
-                cta_destination: CHATGPT_URL,
+                cta_destination: 'chatgpt_plugin',
               });
             }}
           >
@@ -34,6 +37,7 @@ export function BlogCTAButtons({ className = 'blog-cta-row' }: { className?: str
             className="btn btn-ghost"
             href={appStoreUrl('blog_footer')}
             rel="noopener noreferrer"
+            data-cta-tracked="true"
             onClick={() => {
               trackAppStoreClick({ location: 'blog_cta' });
               trackCtaClicked({
