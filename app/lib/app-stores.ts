@@ -60,6 +60,17 @@ export const APP_STORE_URL =
   'https://apps.apple.com/gb/app/chop-it/id6762079343';
 
 /**
+ * Our numeric App Store id, parsed out of whatever APP_STORE_URL resolves to
+ * rather than hardcoded, so an env override carries it automatically.
+ *
+ * This exists to tell OUR listing apart from someone else's. The cornerstone
+ * comparison article links to nine competitors' App Store pages, and the
+ * click-time campaign tagging in instrumentation-client.ts must not attach
+ * Chop it campaign tokens to them.
+ */
+export const APP_STORE_APP_ID: string | null = /\/id(\d+)\b/.exec(APP_STORE_URL)?.[1] ?? null;
+
+/**
  * null, not '#'. There is no Play listing yet, and a placeholder string is
  * indistinguishable from a real destination once it has been passed through
  * a few components — that is exactly how a CTA ends up reporting
