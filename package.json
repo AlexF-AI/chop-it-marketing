@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
+    "test": "node --test lib/**/*.test.ts",
     "generate:blog-images": "node scripts/generate-blog-images.mjs"
   },
   "dependencies": {

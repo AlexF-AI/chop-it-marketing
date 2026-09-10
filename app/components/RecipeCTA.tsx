@@ -46,6 +46,7 @@ export default function RecipeCTA({ recipeSlug, recipeTitle }: RecipeCTAProps = 
             href={appStoreUrl('recipe_page_footer')}
             rel="noopener noreferrer"
             aria-label="Download on the App Store"
+            data-cta-tracked="true"
             onClick={() => {
               trackAppStoreClick({
                 recipe_slug: recipeSlug,
@@ -77,6 +78,7 @@ export default function RecipeCTA({ recipeSlug, recipeTitle }: RecipeCTAProps = 
             href={playStoreUrl}
             rel="noopener noreferrer"
             aria-label="Get it on Google Play"
+            data-cta-tracked="true"
             onClick={() => {
               trackPlayStoreClick({
                 recipe_slug: recipeSlug,

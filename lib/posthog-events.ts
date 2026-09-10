@@ -12,6 +12,44 @@
 
 import posthog from 'posthog-js';
 
+import { getTrafficSource, type TrafficSource } from './traffic-source';
+
+// Capture options for anything fired from a click that then navigates.
+//
+// `send_instantly` is the part that does the work: without options, capture()
+// drops the event into the 3s batch queue, which a same-tab navigation can
+// beat. With it, the request goes straight to _send_retriable_request, and
+// posthog's fetch transport sets `keepalive: true` on POSTs under 64KB, so
+// the in-flight request survives the page teardown.
+//
+// `transport: 'sendBeacon'` is the documented way to ask for the beacon API
+// and is what the spec calls for, so it is stated here — but be aware it is
+// a NO-OP in posthog-js 1.373.5: capture() builds its requestOptions from
+// `_url`/`_batchKey` only and never forwards `transport` (posthog's own
+// $pageleave capture hits the same gap). Keep it; when upstream forwards the
+// option this starts working with no change here. Until then `keepalive` is
+// what actually gets the event out, which the network-tab evidence confirms.
+const BEFORE_NAVIGATION = { transport: 'sendBeacon', send_instantly: true } as const;
+
+/**
+ * Every CTA and outbound event carries the session's entry source, so a
+ * click can be attributed to the AI assistant that sent the visitor even
+ * though `utm_source` was gone after the first navigation.
+ *
+ * Stamped here rather than at the call sites: a call site that forgets it
+ * produces a silently unattributed click, and there is no way to tell that
+ * apart from a genuinely direct one after the fact.
+ */
+function captureBeforeNavigation(event: string, properties: Record<string, unknown>): void {
+  posthog.capture(
+    event,
+    { ...properties, traffic_source: getTrafficSource() },
+    BEFORE_NAVIGATION,
+  );
+}
+
+export type { TrafficSource };
+
 // Where on the site the CTA lives. Add to this union when adding a new
 // surface — the literal type forces every call site to be explicit and
 // keeps the dashboard groupings clean.
@@ -21,7 +59,10 @@ export type CtaLocation =
   | 'hero'
   | 'download_cta'
   | 'recipe_page'
-  | 'blog_cta';
+  | 'blog_cta'
+  // A bare App Store link inside a markdown article body, tagged and
+  // counted by the global listener rather than by a component.
+  | 'inline_article';
 
 export type StoreClickProps = {
   recipe_slug?: string;
@@ -51,7 +92,7 @@ export type RecipeViewProps = {
 };
 
 export function trackAppStoreClick(props: StoreClickProps): void {
-  posthog.capture('app_store_click', props);
+  captureBeforeNavigation('app_store_click', props);
 }
 
 export function trackPlayStoreClick(props: StoreClickProps): void {
@@ -66,6 +107,15 @@ export function trackRecipeView(props: RecipeViewProps): void {
 // alongside per-surface duplicates (`nav_cta_click`, `chatgpt_click`) that
 // doubled every CTA metric; those are gone. Anything measuring CTA volume
 // pivots on `cta_location` here.
+//
+// `chatgpt_click` stays gone. It was reconsidered when the ChatGPT funnel
+// went dark and rejected again for the same reason: it fires on the same
+// click as `cta_clicked` and would re-inflate every ChatGPT CTA ~2x, this
+// time breaking comparability across the AI Search dashboard's own history.
+// "ChatGPT click" is `cta_clicked where cta_destination = 'chatgpt_plugin'`.
+// The reason that filter returned nothing before this change was coverage,
+// not the event name: the nine inline plugin links in article bodies fired
+// nothing at all. The global listener now covers them.
 //
 // Closed enum: extend this union when adding a new surface; ad-hoc string
 // values are rejected at compile time so dashboards don't accumulate
@@ -82,16 +132,38 @@ export type CtaSurface =
   | 'recipe_page_inline'
   | 'recipe_page_footer'
   | 'blog_footer'
-  | 'resource_footer';
+  | 'resource_footer'
+  // Links inside markdown article bodies. These have no component to pass
+  // an explicit surface, so the global listener in instrumentation-client.ts
+  // derives one from the route and sends `page_path` for the exact article.
+  // NEVER pass an inline_* value to appStoreUrl(): those tokens are the
+  // build-time `ct=` campaign, and inline links are tagged at click time.
+  | 'inline_blog'
+  | 'inline_learn'
+  | 'inline_research'
+  | 'inline_features'
+  | 'inline_other';
+
+/**
+ * Stable destination tokens.
+ *
+ * `chatgpt_plugin` is a LITERAL, not the URL: every ChatGPT CTA used to send
+ * the full plugin URL as cta_destination, which meant the dashboard grouped
+ * on a 60-character string that changes whenever NEXT_PUBLIC_CHATGPT_URL is
+ * swapped. One token means one row.
+ */
+export type CtaDestination = 'chatgpt_plugin' | (string & {});
 
 export type CtaClickedProps = {
   cta_location: CtaSurface;
   cta_label: string;
-  cta_destination: string;
+  cta_destination: CtaDestination;
+  /** Set for inline article links; the article the link was in. */
+  page_path?: string;
 };
 
 export function trackCtaClicked(props: CtaClickedProps): void {
-  posthog.capture('cta_clicked', props);
+  captureBeforeNavigation('cta_clicked', props);
 }
 
 // Outbound link tracking — fired automatically by the global click listener
@@ -100,7 +172,7 @@ export function trackCtaClicked(props: CtaClickedProps): void {
 export type OutboundDestination = 'app' | 'tiktok' | 'instagram' | 'x' | 'twitter';
 
 export function trackOutboundToApp(props: { from_url: string; to_url: string }): void {
-  posthog.capture('outbound_to_app', props);
+  captureBeforeNavigation('outbound_to_app', props);
 }
 
 export function trackOutboundToSocial(props: {
