@@ -1,4 +1,5 @@
 import StoreLink from '@/app/components/home/StoreLink';
+import { SLOGAN } from '@/app/lib/brand';
 import { appStoreUrl, CHATGPT_URL, SHOW_ANDROID_NOTE } from '@/app/lib/app-stores';
 import shared from './shared.module.css';
 import styles from './FinalCTA.module.css';
@@ -7,13 +8,14 @@ export function FinalCTA() {
   return (
     <section id="download" className={shared.section}>
       <div className={shared.shellPadded}>
-        <div className={`${shared.eyebrow} ${styles.eyebrow}`}>Start this week</div>
+        <div className={`${shared.eyebrow} ${styles.eyebrow}`}>That&rsquo;s it</div>
         <h2 className={`${shared.h2} ${styles.h2}`}>
-          Take your next dinner out of the chat.
+          Just your food week, planned in minutes.
         </h2>
         <p className={`${shared.lede} ${styles.body}`}>
-          Use Chop it free in ChatGPT, or download the iPhone app to keep, plan,
-          shop and cook everything in one place.
+          No lists, no guesswork, no last-minute panic over &ldquo;what&rsquo;s
+          for dinner&rdquo;. Use Chop it free in ChatGPT, or download the iPhone
+          app to browse, plan, shop and cook in one place.
         </p>
 
         <div className={shared.ctaRow}>
@@ -41,6 +43,11 @@ export function FinalCTA() {
         {SHOW_ANDROID_NOTE ? (
           <div className={styles.androidNote}>Android coming later</div>
         ) : null}
+
+        {/* The sign-off closes the page the way the opening starts it. Its
+            own element rather than a line of the paragraph above, because
+            it is the brand line and reads as one. */}
+        <p className={styles.slogan}>{SLOGAN}</p>
       </div>
     </section>
   );

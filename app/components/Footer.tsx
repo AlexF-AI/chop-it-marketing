@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { FOOTER_TAG } from '@/app/lib/brand';
+
 export default function Footer() {
   return (
     <footer className="footer">
@@ -16,7 +18,7 @@ export default function Footer() {
             />
             Chop&nbsp;it
           </div>
-          <div className="footer-tag">The home of AI cooking.</div>
+          <div className="footer-tag">{FOOTER_TAG}</div>
         </div>
         <div className="footer-col">
           <div className="footer-col-h mono">Product</div>

@@ -15,12 +15,12 @@ export function InChatGPT() {
         <div>
           <div className={styles.eyebrow}>Chop it in ChatGPT</div>
           <h2 className={`${shared.h2} ${styles.h2}`}>
-            Keep using the AI you already use.
+            Chop it lives inside ChatGPT too.
           </h2>
           <p className={styles.body}>
-            Use Chop it free in ChatGPT to find or create recipes, build a week
-            and turn it into one shopping list. Open anything you want to keep
-            in the iPhone app.
+            Plan your week, find a dish or save a recipe without leaving the
+            chat. It is free to use, and anything you want to keep opens in the
+            iPhone app.
           </p>
           <StoreLink
             destination="chatgpt"

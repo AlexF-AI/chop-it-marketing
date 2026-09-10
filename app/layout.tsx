@@ -6,6 +6,7 @@ import CookieBanner from './components/CookieBanner';
 import MotionRoot from './components/MotionRoot';
 import NavTracker from './components/NavTracker';
 import { assertStoreUrlsValid } from './lib/app-stores';
+import { SITE_DESCRIPTION, SITE_TITLE } from './lib/brand';
 import { ORGANIZATION_JSONLD, WEBSITE_JSONLD } from './lib/entity';
 
 // Fail the build on a store-URL misconfiguration rather than shipping CTAs
@@ -47,18 +48,15 @@ export const viewport: Viewport = {
 // Kept inline and dependency-free for that reason.
 const THEME_INIT = `try{var t=localStorage.getItem('chopit-theme');if(t==='light'||t==='dark'){document.documentElement.dataset.theme=t}}catch(e){}`;
 
-const SITE_DESCRIPTION =
-  'The home of AI cooking for UK kitchens. Save recipes from ChatGPT, cookbooks, websites and social, then plan, shop and cook from one library.';
-
 export const metadata: Metadata = {
-  title: 'Chop it | The home of AI cooking',
+  title: SITE_TITLE,
   description: SITE_DESCRIPTION,
   metadataBase: new URL('https://chop-it.com'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'Chop it | The home of AI cooking',
+    title: SITE_TITLE,
     description: SITE_DESCRIPTION,
     url: 'https://chop-it.com',
     siteName: 'Chop it',
@@ -67,7 +65,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Chop it | The home of AI cooking',
+    title: SITE_TITLE,
     description: SITE_DESCRIPTION,
   },
   robots: {

@@ -8,7 +8,7 @@ export default function Hero() {
       <div>
         <div className="hero-flag">
           <span className="hero-dot" aria-hidden="true" />
-          <span className="eyebrow">The home of AI cooking</span>
+          <span className="eyebrow">Meal planning, minus the admin</span>
         </div>
         <h1 className="hero-h1">
           The new home for the recipes
