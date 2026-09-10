@@ -222,8 +222,32 @@ button { font-family: inherit; }
   background: var(--ink); color: var(--ground);
   border-radius: 4px;
   font-size: 15px; font-weight: 600;
+  /* Wrapped to two lines at 390px once the second CTA joined the bar. */
+  white-space: nowrap;
 }
 .nav-get:hover { color: var(--ground); filter: brightness(1.15); }
+/* Second nav CTA: the free ChatGPT path, outlined so the App Store pill
+   stays the single primary action in the bar. Both surfaces are live, so
+   both stay reachable from the bar at every width — see the ≤900px rules
+   below, which shorten the label and drop the theme toggle to make room
+   rather than hiding this button. */
+.nav-ghost {
+  display: flex; align-items: center;
+  height: 40px; padding: 0 16px;
+  border: 1px solid var(--line-2);
+  border-radius: 4px;
+  color: var(--ink);
+  font-size: 15px; font-weight: 600;
+  white-space: nowrap;
+}
+.nav-ghost:hover { color: var(--ink); border-color: var(--ink); background: var(--surface-2); }
+@media (max-width: 900px) {
+  /* The toggle is duplicated in the drawer under "Appearance", so the bar
+     can give its width to the second CTA. */
+  .nav-cta .theme-toggle { display: none; }
+  .nav-ghost { padding: 0 12px; font-size: 14px; min-height: 44px; }
+  .nav-get { padding: 0 14px; font-size: 14px; min-height: 44px; }
+}
 
 /* ---------- Buttons ---------- */
 .btn {
@@ -2253,4 +2277,17 @@ button { font-family: inherit; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-dot, .msg-dots span, .msg-caret, .msg { animation: none; }
+}
+
+/* Below ~400px the second CTA pushed the menu button off the right edge.
+   Everything in the bar gives up a few pixels rather than the ChatGPT CTA
+   being dropped, since the whole point of it is that both surfaces are
+   findable without opening the drawer. */
+@media (max-width: 400px) {
+  .nav-inner { gap: 8px; padding-left: 14px; padding-right: 14px; }
+  .nav-cta { gap: 6px; }
+  .wordmark { font-size: 16px; gap: 7px; }
+  .nav-inner > .wordmark .wordmark-logo { width: 22px; height: 22px; }
+  .nav-ghost { padding: 0 9px; font-size: 13px; }
+  .nav-get { padding: 0 11px; font-size: 13px; }
 }

@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import ThemeToggle from './ThemeToggle';
-import { appStoreUrl, IOS_LIVE } from '@/app/lib/app-stores';
+import { appStoreUrl, CHATGPT_URL, IOS_LIVE } from '@/app/lib/app-stores';
 import { trackCtaClicked } from '@/lib/posthog-events';
 import styles from './Nav.module.css';
 
@@ -120,11 +120,19 @@ export default function Nav() {
 
   // One event per click. This used to fire `nav_cta_click` alongside
   // `cta_clicked`, which doubled every nav CTA metric in PostHog.
-  const trackGetApp = (surface: 'header_nav' | 'mobile_menu') => {
+  //
+  // Takes the label and href rather than deriving them from the surface,
+  // because each surface now carries two CTAs — the App Store pill and the
+  // ChatGPT link — and they have to stay distinguishable in PostHog.
+  const trackNavCta = (
+    surface: 'header_nav' | 'mobile_menu',
+    label: string,
+    destination: string,
+  ) => {
     trackCtaClicked({
       cta_location: surface,
-      cta_label: 'Get the app',
-      cta_destination: surface === 'header_nav' ? navHref : drawerHref,
+      cta_label: label,
+      cta_destination: destination,
     });
   };
 
@@ -156,13 +164,25 @@ export default function Nav() {
         <div className="nav-spacer" />
         <div className="nav-cta">
           <ThemeToggle />
+          {/* Both surfaces are live, so both are reachable from the bar
+              rather than only the App Store. The ChatGPT link is the ghost
+              of the pair: it is the free path, and the paid install stays
+              the primary action. */}
+          <a
+            className="nav-ghost"
+            href={CHATGPT_URL}
+            rel="noopener noreferrer"
+            onClick={() => trackNavCta('header_nav', 'ChatGPT', CHATGPT_URL)}
+          >
+            ChatGPT
+          </a>
           <a
             className="nav-get"
             href={navHref}
             rel={IOS_LIVE ? 'noopener noreferrer' : undefined}
-            onClick={() => trackGetApp('header_nav')}
+            onClick={() => trackNavCta('header_nav', 'iOS app', navHref)}
           >
-            Get the app
+            iOS app
           </a>
           <button
             ref={menuButtonRef}
@@ -253,9 +273,19 @@ export default function Nav() {
               className={styles.cta}
               href={drawerHref}
               rel={IOS_LIVE ? 'noopener noreferrer' : undefined}
-              onClick={() => trackGetApp('mobile_menu')}
+              onClick={() => trackNavCta('mobile_menu', 'Get the app', drawerHref)}
             >
               Get the iPhone app
+            </a>
+            <a
+              className={styles.ctaSecondary}
+              href={CHATGPT_URL}
+              rel="noopener noreferrer"
+              onClick={() =>
+                trackNavCta('mobile_menu', 'Use in ChatGPT', CHATGPT_URL)
+              }
+            >
+              Use it free in ChatGPT
             </a>
           </div>
         </div>
