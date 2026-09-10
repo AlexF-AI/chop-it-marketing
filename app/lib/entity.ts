@@ -17,6 +17,8 @@
 // chopit.app codebase must emit for both domains to resolve to a single
 // entity — see docs/entity-alignment.md for the other half of this.
 
+import { ORG_DESCRIPTION, SLOGAN } from './brand';
+
 export const SITE_ORIGIN = 'https://chop-it.com';
 
 // The web app lives on its own domain and is the stronger brand signal of
@@ -63,16 +65,24 @@ export const ORGANIZATION_JSONLD = {
     '@type': 'ImageObject',
     url: `${SITE_ORIGIN}/logo.webp`,
   },
-  description:
-    'Chop it is an AI meal planning platform and recipe organiser: one place to keep recipes from any source, plan the week, build the shop and cook. It runs on iPhone and inside ChatGPT.',
+  description: ORG_DESCRIPTION,
+  // The brand line, as the Organization's own slogan property rather than
+  // buried in the description, so a knowledge panel can carry it.
+  slogan: SLOGAN,
   // Entity reinforcement for knowledge graphs: the topics this organisation
   // publishes on, matching the Learn and Research sections. Terms mirror the
   // wording used across the site so the entity stays consistent.
+  //
+  // Meal planning leads now that the site's positioning does. The AI terms
+  // stay because Learn and Research genuinely publish on them — they are a
+  // topic this organisation covers, no longer the thing it claims to be.
   knowsAbout: [
+    'meal planning',
+    'weekly meal plans',
+    'recipe organisation',
+    'shopping lists',
     'AI meal planning',
     'AI cooking',
-    'AI shopping lists',
-    'recipe organisation',
     'ChatGPT for cooking',
     'food waste reduction',
   ],

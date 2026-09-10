@@ -135,3 +135,23 @@
   color: var(--ground);
   filter: brightness(1.15);
 }
+
+/* The free path, under the install pill. Outlined rather than filled so the
+   drawer still has one primary action. */
+.ctaSecondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  margin-top: 10px;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.ctaSecondary:hover {
+  color: var(--ink);
+  background: var(--surface-2);
+}

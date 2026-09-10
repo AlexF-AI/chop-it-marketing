@@ -1,12 +1,12 @@
 import Footer from './components/Footer';
 import Nav from './components/Nav';
+import { BrowseTheWeek } from './components/homepage/BrowseTheWeek';
 import { FinalCTA } from './components/homepage/FinalCTA';
 import { Hero } from './components/homepage/Hero';
 import { InChatGPT } from './components/homepage/InChatGPT';
 import { OneLibrary } from './components/homepage/OneLibrary';
 import RecipeProof from './components/homepage/RecipeProof';
 import { RecipeToDinner } from './components/homepage/RecipeToDinner';
-import { WhyChopIt } from './components/homepage/WhyChopIt';
 import { APP_STORE_URL } from './lib/app-stores';
 import { orgRef } from './lib/entity';
 import { serializeJsonLd, SITE_ORIGIN } from './lib/recipeSchema';
@@ -64,7 +64,7 @@ export default function Page() {
       <Nav />
       <main>
         <Hero />
-        <WhyChopIt />
+        <BrowseTheWeek />
         <OneLibrary />
         <RecipeToDinner />
         <InChatGPT />

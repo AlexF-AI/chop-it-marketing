@@ -15,9 +15,11 @@ import { join } from 'node:path';
 
 import { ImageResponse } from 'next/og';
 
+import { SLOGAN } from '@/app/lib/brand';
+
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
-export const alt = 'Chop it: The home of AI cooking';
+export const alt = `Chop it: ${SLOGAN}`;
 
 // Locked pillar colours — the vivid dark-tile originals. The share card
 // stays a dark brand asset (logo.png has its neon glow baked onto solid
@@ -125,7 +127,7 @@ export default function OpenGraphImage() {
             letterSpacing: '-0.01em',
           }}
         >
-          The home of AI cooking.
+          {SLOGAN}
         </div>
       </div>
     ),

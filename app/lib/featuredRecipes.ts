@@ -110,8 +110,13 @@ export async function getFeaturedRecipes(): Promise<RecipeCard[]> {
  * The library size, and what the rest of the homepage already claims: the count
  * of non-deleted rows in `recipes_published`.
  *
- * `/recipes` browses the `seo_published` subset, which is eleven fewer (1,024
- * when checked). If the catalogue moves, this and RecipeRail's copy move
- * together.
+ * `/recipes` browses the `seo_published` subset, which is thirty-one fewer
+ * (1,291 when checked, September 2026). If the catalogue moves, this and
+ * RecipeRail's copy move together.
+ *
+ * The positioning copy deliberately does NOT use this figure — it says
+ * "over 1,000" (LIBRARY_SIZE in lib/brand.ts) so the homepage headline
+ * stays true between catalogue changes and this exact count only appears
+ * where it is checked.
  */
-export const RECIPE_COUNT = '1,035';
+export const RECIPE_COUNT = '1,322';

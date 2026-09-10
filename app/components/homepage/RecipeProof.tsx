@@ -17,11 +17,11 @@ export default async function RecipeProof() {
         </div>
         <div className={`${shared.split} ${shared.splitEnd} ${styles.intro}`}>
           <h2 className={shared.h2}>
-            Start with {RECIPE_COUNT} recipes. Add everything else.
+            All {RECIPE_COUNT} built to the same standard.
           </h2>
           <div className={styles.methodCopy}>
             <p className={shared.lede}>
-              Chef IQ built all {RECIPE_COUNT} to a nine-stage standard, from
+              Every dish you browse was built to a nine-stage standard, from
               the centre of the plate and its cuisine through umami,
               aromatics, plants, acid, texture and a fresh finish.
             </p>

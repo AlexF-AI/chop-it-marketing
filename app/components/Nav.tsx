@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import ThemeToggle from './ThemeToggle';
-import { appStoreUrl, IOS_LIVE } from '@/app/lib/app-stores';
+import { appStoreUrl, CHATGPT_URL, IOS_LIVE } from '@/app/lib/app-stores';
 import { trackAppStoreClick, trackCtaClicked } from '@/lib/posthog-events';
 import styles from './Nav.module.css';
 
@@ -126,15 +126,26 @@ export default function Nav() {
   // resource footers), and the two nav links were the only ones missing
   // it — so the funnel silently under-counted the most-shown CTA on the
   // site. Skipped when iOS is not live, because the href is then the
-  // /#download anchor and no store click happened.
-  const trackGetApp = (surface: 'header_nav' | 'mobile_menu') => {
-    if (IOS_LIVE) {
+  // /#download anchor and no store click happened, and skipped for the
+  // ChatGPT CTA, which is not a store click at all.
+  //
+  // `destination` and `label` are parameters rather than being derived
+  // from the surface, because each surface now carries two CTAs — the
+  // store pill and the ChatGPT link — and the two have to stay apart in
+  // PostHog.
+  const trackNavCta = (
+    surface: 'header_nav' | 'mobile_menu',
+    destination: 'app_store' | 'chatgpt',
+    label: string,
+    href: string,
+  ) => {
+    if (destination === 'app_store' && IOS_LIVE) {
       trackAppStoreClick({ location: surface === 'header_nav' ? 'nav' : 'mobile_menu' });
     }
     trackCtaClicked({
       cta_location: surface,
-      cta_label: 'Get the app',
-      cta_destination: surface === 'header_nav' ? navHref : drawerHref,
+      cta_label: label,
+      cta_destination: href,
     });
   };
 
@@ -166,14 +177,29 @@ export default function Nav() {
         <div className="nav-spacer" />
         <div className="nav-cta">
           <ThemeToggle />
+          {/* Both surfaces are live, so both are reachable from the bar
+              rather than only the App Store. The ChatGPT link is the ghost
+              of the pair: it is the free path, and the paid install stays
+              the primary action. */}
+          <a
+            className="nav-ghost"
+            href={CHATGPT_URL}
+            rel="noopener noreferrer"
+            data-cta-tracked="true"
+            onClick={() =>
+              trackNavCta('header_nav', 'chatgpt', 'ChatGPT', CHATGPT_URL)
+            }
+          >
+            ChatGPT
+          </a>
           <a
             className="nav-get"
             href={navHref}
             rel={IOS_LIVE ? 'noopener noreferrer' : undefined}
             data-cta-tracked="true"
-            onClick={() => trackGetApp('header_nav')}
+            onClick={() => trackNavCta('header_nav', 'app_store', 'iOS app', navHref)}
           >
-            Get the app
+            iOS app
           </a>
           <button
             ref={menuButtonRef}
@@ -265,9 +291,22 @@ export default function Nav() {
               href={drawerHref}
               rel={IOS_LIVE ? 'noopener noreferrer' : undefined}
               data-cta-tracked="true"
-              onClick={() => trackGetApp('mobile_menu')}
+              onClick={() =>
+                trackNavCta('mobile_menu', 'app_store', 'Get the app', drawerHref)
+              }
             >
               Get the iPhone app
+            </a>
+            <a
+              className={styles.ctaSecondary}
+              href={CHATGPT_URL}
+              rel="noopener noreferrer"
+              data-cta-tracked="true"
+              onClick={() =>
+                trackNavCta('mobile_menu', 'chatgpt', 'Use in ChatGPT', CHATGPT_URL)
+              }
+            >
+              Use it free in ChatGPT
             </a>
           </div>
         </div>

@@ -6,14 +6,19 @@
   margin-bottom: clamp(36px, 5vw, 60px);
 }
 
-.stats {
+/* Same three-across rule-bounded grid the stats block used, so the section
+   keeps its place in the page's vertical rhythm. */
+.steps {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   border-top: 1px solid var(--ink);
   border-bottom: 1px solid var(--line);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.stat {
+.step {
   padding: clamp(22px, 3vw, 34px) clamp(18px, 3vw, 34px);
   display: flex;
   flex-direction: column;
@@ -21,55 +26,59 @@
   border-left: 1px solid var(--line);
 }
 
-.stat:first-child {
+.step:first-child {
   border-left: 0;
 }
 
-.statValue {
-  font-size: clamp(42px, 6vw, 68px);
+.stepN {
+  font-family: var(--ff-mono);
+  font-weight: 500;
+  font-size: clamp(30px, 4vw, 44px);
   line-height: 0.95;
-  letter-spacing: -0.055em;
+  letter-spacing: -0.04em;
   color: var(--accent-text);
 }
 
-.statText {
+.stepLabel {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.stepText {
   font-size: 15px;
   line-height: 1.45;
   color: var(--ink-2);
-  max-width: 28ch;
+  max-width: 32ch;
 }
 
-.sources {
-  margin: 16px 0 0;
-  font-family: var(--ff-mono);
-  font-size: 10px;
+.browseLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  font-size: 15px;
   font-weight: 600;
-  line-height: 1.6;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-}
-
-.sources a {
   border-bottom: 1px solid var(--line);
+  padding-bottom: 2px;
 }
 
-.sources a:hover {
-  color: var(--ink);
+.browseLink:hover {
   border-bottom-color: var(--ink);
 }
 
 @media (max-width: 720px) {
-  .stats {
+  .steps {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .stat {
+  .step {
     border-left: 0;
     border-top: 1px solid var(--line);
   }
 
-  .stat:first-child {
+  .step:first-child {
     border-top: 0;
   }
 }

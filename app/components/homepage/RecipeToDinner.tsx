@@ -8,7 +8,7 @@ import styles from './RecipeToDinner.module.css';
 const FEATURES = [
   {
     label: 'Shop once',
-    text: 'Every ingredient becomes one list, combined by aisle and checked against what you already have. Send it to Whisk when you are ready to buy.',
+    text: 'Every ingredient becomes one list, combined by aisle and checked against what you already have. Send it to your basket through Whisk when you are ready to buy.',
     src: '/screens/shop-once.webp',
     alt: 'Chop it shopping list with ingredients from several recipes combined into one line each and grouped by supermarket aisle',
     caption: 'One list, combined by aisle',

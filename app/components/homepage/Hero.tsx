@@ -9,16 +9,25 @@ export function Hero() {
     <header id="top" className={styles.hero}>
       <div>
         <div className={`${shared.eyebrow} ${styles.eyebrow}`}>
-          The home of AI cooking, built for UK kitchens
+          Meal planning, minus the admin
         </div>
-        <h1 className={styles.h1}>
-          Everything you cook with AI, kept in one place.
-        </h1>
+
+        {/* The four words are the positioning, so they are the H1 rather
+            than an eyebrow above a functional headline. The keywords a
+            search result needs ("meal planning", "plan your food week")
+            carry in the title tag and the lede below instead. */}
+        <h1 className={styles.h1}>Food is art. Passion. Culture. Identity.</h1>
+
         <p className={styles.body}>
-          Save what ChatGPT creates alongside recipes from cookbooks, websites
-          and social. Plan the week, build one shopping list and cook it all
-          from the same library.
+          It&rsquo;s one of the great expressions of who we are, and it
+          shouldn&rsquo;t ever feel like a chore.
         </p>
+        <p className={styles.body}>
+          But in a world that moves fast, the weekly shop and meal planning have
+          become another line on overflowing to-do lists &mdash; another piece
+          of admin nobody has the energy to entertain after a long day.
+        </p>
+        <p className={styles.lead}>That&rsquo;s why we built Chop it.</p>
 
         <div className={`${shared.ctaRow} ${styles.ctaRow}`}>
           <StoreLink
@@ -52,11 +61,11 @@ export function Hero() {
 
       <div className={styles.viz}>
         <figure className={shared.figure}>
-          <figcaption className={shared.caption}>In ChatGPT</figcaption>
+          <figcaption className={shared.caption}>Pick your week</figcaption>
           <div className={`${shared.frame} ${styles.frame}`}>
             <Image
-              src="/screens/chatgpt-week.jpeg"
-              alt="Chop it in ChatGPT returning a five-dinner week"
+              src="/screens/plan-the-week.webp"
+              alt="Chop it showing four dinners picked as the week, with a Use this week button above them"
               fill
               priority
               sizes="(max-width: 900px) 92vw, (max-width: 1240px) 30vw, 360px"
@@ -64,22 +73,22 @@ export function Hero() {
             />
           </div>
           <div className={styles.shotCaption}>
-            “Chop it make me a balanced family friendly week for 5 meals”
+            Tap the dishes you want. That is the week done.
           </div>
         </figure>
 
         <div className={styles.connector}>
           <span className={styles.hair} />
-          <span className={styles.connectorLabel}>Open in Chop it</span>
+          <span className={styles.connectorLabel}>Then cook it</span>
           <span className={styles.hair} />
         </div>
 
         <figure className={shared.figure}>
-          <figcaption className={shared.caption}>In the app</figcaption>
+          <figcaption className={shared.caption}>Tonight</figcaption>
           <div className={`${shared.frame} ${styles.frame}`}>
             <Image
-              src="/screens/plan-the-week.webp"
-              alt="Chop it showing four dinners saved as a week"
+              src="/screens/this-week.jpeg"
+              alt="Tonight's dinner in Chop it, showing the dish photo, a 45 minute time, servings and a Cook now button"
               fill
               priority
               sizes="(max-width: 900px) 92vw, (max-width: 1240px) 30vw, 360px"
@@ -87,7 +96,7 @@ export function Hero() {
             />
           </div>
           <div className={styles.shotCaption}>
-            The week, saved and ready to cook.
+            No guesswork at 6pm. Dinner is already decided.
           </div>
         </figure>
       </div>
