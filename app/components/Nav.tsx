@@ -145,7 +145,12 @@ export default function Nav() {
     trackCtaClicked({
       cta_location: surface,
       cta_label: label,
-      cta_destination: href,
+      // A stable token, not the URL: the plugin URL is env-overridable
+      // and a 60-character string makes a poor dashboard grouping. Same
+      // rule as StoreLink — "ChatGPT click" is `cta_clicked where
+      // cta_destination = 'chatgpt_plugin'`, so a nav link sending the
+      // raw URL drops straight out of that funnel.
+      cta_destination: destination === 'chatgpt' ? 'chatgpt_plugin' : href,
     });
   };
 
