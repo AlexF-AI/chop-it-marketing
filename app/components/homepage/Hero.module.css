@@ -20,28 +20,37 @@
 
 /* Scrim.
  *
- * The design specifies a single bottom-up gradient to rgba(16,12,10,.9)
- * over the bottom 66%, on the stated condition that the photograph has "a
- * mid-to-dark subject in the lower third". That makes legibility a property
- * of the photo rather than of the page: measured against a bright overhead
- * shot, that gradient gave the headline 1.88:1 and the eyebrow 1.00:1,
- * against the 3:1 and 4.5:1 they need.
+ * The job is to make the type legible while leaving the dish visible, and
+ * the binding constraint is not the headline — it is the eyebrow, which is
+ * the palest element and sits highest, where the ramp is weakest.
  *
- * So the ramp is steeper and reaches its plateau under the text block
- * instead of only at the very bottom edge. It reads the same on a dark
- * photograph and holds a bright one, which means swapping the hero image
- * can no longer quietly break contrast. Verified at 390 / 768 / 1280 by
- * sampling the composited pixels behind the text.
+ * The first pass solved that by darkening everything, which buried the
+ * food. The lever that actually pays is type size, not scrim depth: at
+ * 19px the eyebrow is normal-size text needing 4.5:1, and at 25px it is
+ * large text needing 3:1. That nearly doubles the background luminance the
+ * page can carry (0.131 -> 0.222), which buys back most of the photograph.
+ *
+ * Worth recording, because the intuition points the wrong way: making the
+ * pink *more saturated* would need a darker scrim, not a lighter one.
+ * Relative luminance is ~72% green, and a vivid pink has almost none — a
+ * #FF4D8F eyebrow would allow a background luminance of only 0.062. The
+ * pinks here are therefore pushed toward pink in hue while staying high in
+ * luminance, which is what buys contrast.
+ *
+ * The text-shadow is belt-and-braces for real-world legibility over a busy
+ * photograph. It is deliberately not part of the compliance argument —
+ * WCAG measures against the background, so the numbers below are sampled
+ * from the composited pixels with the shadow present but not credited.
  */
 .scrim {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(16, 12, 10, 0.92) 0%,
-    rgba(16, 12, 10, 0.84) 44%,
-    rgba(16, 12, 10, 0.6) 60%,
-    rgba(16, 12, 10, 0.24) 77%,
+    rgba(16, 12, 10, 0.86) 0%,
+    rgba(16, 12, 10, 0.8) 42%,
+    rgba(16, 12, 10, 0.66) 62%,
+    rgba(16, 12, 10, 0.26) 80%,
     rgba(16, 12, 10, 0) 94%
   );
   pointer-events: none;
@@ -57,18 +66,21 @@
   padding: 0 var(--gutter);
 }
 
-/* The design names #F3C9D6 here. At 19px regular that is normal-size text
-   and needs 4.5:1, which it missed at phone width (4.07:1) because the
-   eyebrow sits higher up the scrim than the headline does. Lifted to
-   #FFD9E4 — visually the same pale pink line, and it clears 4.5:1 without
-   darkening the photograph any further. */
+/* The design names #F3C9D6 at 19px. Set at 25px instead: that crosses
+   WCAG's large-text threshold (24px regular), so it needs 3:1 rather than
+   4.5:1 — which is what lets the scrim above come back up off the food.
+   It also just reads better; a delicate italic serif at 19px over a
+   photograph was the hardest thing on the page to read.
+   #FFC2D6 is pinker than the #FFD9E4 it replaces while staying high in
+   luminance, for the reason noted on .scrim. */
 .eyebrow {
   font-family: var(--ff-display);
   font-style: italic;
-  font-size: 19px;
-  line-height: 1;
-  color: #FFD9E4;
-  margin-bottom: 6px;
+  font-size: 25px;
+  line-height: 1.05;
+  color: #FFC2D6;
+  margin-bottom: 4px;
+  text-shadow: 0 1px 12px rgba(16, 12, 10, 0.55);
 }
 
 .h1 {
@@ -80,12 +92,15 @@
   letter-spacing: -0.015em;
   color: #FBF7F0;
   text-wrap: pretty;
+  text-shadow: 0 1px 16px rgba(16, 12, 10, 0.5);
 }
 
-/* "Identity." is the payoff word, so it takes the italic and the pink. */
+/* "Identity." is the payoff word, so it takes the italic and the pink.
+   More vivid than the #F3A3BE it replaces — it can afford the saturation
+   because it sits on the bottom line, where the scrim is deepest. */
 .h1 em {
   font-style: italic;
-  color: #F3A3BE;
+  color: #FFA3C8;
 }
 
 /* ---- Intro ---- */
@@ -168,7 +183,7 @@
 @media (min-width: 768px) {
   .hero { height: clamp(420px, 52vw, 620px); }
   .h1 { font-size: clamp(56px, 6.4vw, 84px); }
-  .eyebrow { font-size: 22px; }
+  .eyebrow { font-size: 28px; }
   .heroText { bottom: 34px; }
   .intro { padding-top: 44px; }
   .body { font-size: 19px; }
