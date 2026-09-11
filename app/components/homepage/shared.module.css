@@ -24,8 +24,8 @@
 }
 
 .bandWarm { background: var(--paper-warm); }
-.bandRasp { background: var(--raspberry); color: var(--on-rasp); }
-.bandInk  { background: var(--band-ink); color: var(--paper); }
+.bandRasp { background: var(--band-rasp); color: var(--on-rasp); }
+.bandInk  { background: var(--band-ink); color: var(--on-ink); }
 
 .shell {
   max-width: var(--maxw);
@@ -86,7 +86,7 @@
 }
 
 .ledeOnRasp { color: var(--pink-body); }
-.ledeOnInk { color: #BDB5AC; }
+.ledeOnInk { color: var(--on-ink-muted); }
 
 /* A serif line that closes a section — the editorial equivalent of a
    sign-off, set larger than body but smaller than an h2. */
@@ -201,8 +201,8 @@
 
 /* On the raspberry band the primary inverts to white-on-raspberry and the
    secondary outlines in the pale pink. */
-.btnOnRasp { background: #fff; color: var(--raspberry-deep); }
-.btnOnRasp:hover { background: var(--pink-on-rasp); color: var(--raspberry-deep); }
+.btnOnRasp { background: #fff; color: var(--band-rasp-inset); }
+.btnOnRasp:hover { background: var(--pink-on-rasp); color: var(--band-rasp-inset); }
 
 .btnOutlineOnRasp {
   border: 1.5px solid var(--pink-on-rasp);
@@ -211,8 +211,10 @@
 .btnOutlineOnRasp:hover { background: rgba(255, 255, 255, 0.12); color: #fff; }
 
 /* On the ink band the primary is paper. */
-.btnOnInk { background: var(--paper); color: var(--ink); }
-.btnOnInk:hover { background: #fff; color: var(--ink); }
+/* Ground and label both fixed: the band is a flood in either theme, so a
+   themed --ink label inverts to near-white on near-white paper. */
+.btnOnInk { background: var(--on-ink); color: var(--band-ink); }
+.btnOnInk:hover { background: #fff; color: var(--band-ink); }
 
 .ctaStack {
   display: flex;

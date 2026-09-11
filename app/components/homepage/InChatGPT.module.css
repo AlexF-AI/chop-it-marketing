@@ -40,7 +40,7 @@
 .markSoon {
   width: 8px;
   height: 8px;
-  border: 1px solid #A9A29A;
+  border: 1px solid var(--on-ink-faint);
   flex: none;
 }
 
@@ -52,7 +52,7 @@
 }
 
 .statusLabelSoon {
-  color: #A9A29A;
+  color: var(--on-ink-faint);
 }
 
 .rows {
@@ -68,7 +68,7 @@
 }
 
 .rowSoon {
-  color: #A9A29A;
+  color: var(--on-ink-faint);
 }
 
 .pluginFrame {
@@ -89,7 +89,7 @@
   font-family: var(--ff-display);
   font-style: italic;
   font-size: 17px;
-  color: #A9A29A;
+  color: var(--on-ink-faint);
 }
 
 @media (min-width: 900px) {

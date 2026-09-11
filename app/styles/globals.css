@@ -79,6 +79,25 @@
 
   --photo-placeholder: #E2D9C8;
 
+  /* Raspberry as a FLOOD GROUND, distinct from raspberry as an accent.
+     The accent (#BD4D76) is too light to carry text: pure white is only
+     4.72:1 on it, so the pale pinks the design specifies for eyebrows and
+     body copy (#FFD3E0, #FFE2EB) come out at 3.49:1 and 3.86:1 against the
+     4.5:1 they need. One step deeper fixes every one of them at once and
+     still reads unmistakably as the brand raspberry.
+     --band-rasp-inset is the panel that sits *on* a raspberry band (the
+     share-link bar), which has to stay distinguishable from it. */
+  --band-rasp:       #A8305A;
+  --band-rasp-inset: #8E2A4C;
+
+  /* Text on the ink and raspberry floods. These are fixed in both themes:
+     the bands are floods, not themed surfaces, so a token that follows
+     --ground would invert out from under them. That is not hypothetical —
+     the ChatGPT band's body copy was #131110 on #0B0A09 in dark mode. */
+  --on-ink:       #F6F1E7;
+  --on-ink-muted: #BDB5AC;
+  --on-ink-faint: #9A938B;
+
   /* The ink band is a flood, not the page ground. It needs its own
      token because in dark mode the page is already near-black and an
      ink band set to --ink would vanish into it. */
@@ -112,7 +131,8 @@
   --amber:     #8F660A;
   --green:     #2F7A35;
   --purple:    #6C63C7;
-  --accent-secondary: var(--purple);
+  /* White on #7E74DD was 3.87:1; this fill carries button labels. */
+  --accent-secondary: #6A5FCB;
   color-scheme: light;
 }
 
@@ -264,8 +284,8 @@ button { font-family: inherit; }
   padding: 0 var(--gutter);
 }
 .ss-band-warm { background: var(--paper-warm); }
-.ss-band-rasp { background: var(--raspberry); color: var(--on-rasp); }
-.ss-band-ink  { background: var(--band-ink); color: var(--paper); }
+.ss-band-rasp { background: var(--band-rasp); color: var(--on-rasp); }
+.ss-band-ink  { background: var(--band-ink); color: var(--on-ink); }
 
 /* Buttons are the only rounded shape in the system. Everything else —
    images, cards, panels, inputs — stays square, and that mix is what reads
@@ -586,7 +606,7 @@ button { font-family: inherit; }
    against ink rather than following --ink-2 / --ink-3. */
 .footer {
   background: var(--band-ink);
-  color: #BDB5AC;
+  color: var(--on-ink-muted);
 }
 .footer-grid {
   display: grid;
@@ -595,7 +615,7 @@ button { font-family: inherit; }
   max-width: var(--maxw); margin: 0 auto;
   padding: clamp(32px, 5vw, 64px) var(--gutter) 24px;
 }
-.footer-brand .wordmark { font-size: 22px; gap: 10px; margin-bottom: 8px; color: var(--paper); }
+.footer-brand .wordmark { font-size: 22px; gap: 10px; margin-bottom: 8px; color: var(--on-ink); }
 .footer-tag {
   font-family: var(--ff-display);
   font-style: italic;
@@ -606,10 +626,10 @@ button { font-family: inherit; }
 }
 .footer-col { display: flex; flex-direction: column; gap: 9px; }
 .footer-col-h {
-  font-size: 12px; font-weight: 700; color: var(--ink-faint);
+  font-size: 12px; font-weight: 700; color: var(--on-ink-faint);
   letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 2px;
 }
-.footer-col a { color: #BDB5AC; font-size: 15px; transition: color 150ms ease; }
+.footer-col a { color: var(--on-ink-muted); font-size: 15px; transition: color 150ms ease; }
 .footer-col a:hover { color: var(--pink-on-ink); }
 /* Non-clickable "coming soon" placeholders — match the nav/footer link look
    but carry no destination (features not built yet). */
@@ -629,7 +649,7 @@ button { font-family: inherit; }
   padding: 16px var(--gutter) 28px;
   border-top: 1px solid var(--line-ink);
   display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between;
-  font-size: 13px; font-weight: 400; color: var(--ink-faint);
+  font-size: 13px; font-weight: 400; color: var(--on-ink-faint);
   letter-spacing: 0; text-transform: none;
 }
 
@@ -1735,7 +1755,7 @@ button { font-family: inherit; }
 
 /* The closing band. Full-bleed raspberry, so it breaks the 680px measure. */
 .share-menu-footer {
-  background: var(--raspberry);
+  background: var(--band-rasp);
   color: var(--on-rasp);
   margin: 12px calc(50% - 50vw) 0;
   padding: 32px calc(50vw - 50% + var(--gutter)) 36px;
@@ -1837,7 +1857,7 @@ button { font-family: inherit; }
   text-wrap: pretty;
 }
 .share-recipe-steps-list li::marker {
-  color: var(--raspberry);
+  color: var(--raspberry-ink);
   font-family: var(--ff-display);
   font-size: 20px;
 }
@@ -2505,7 +2525,7 @@ button { font-family: inherit; }
    size .stage-rule carries in the rows below. */
 .stage-head-rule { grid-column: 3; }
 /* Serif numerals, as everywhere else in the system. */
-.stage-n { font-family: var(--ff-display); font-weight: 400; font-size: 22px; line-height: 1; color: var(--raspberry); }
+.stage-n { font-family: var(--ff-display); font-weight: 400; font-size: 22px; line-height: 1; color: var(--raspberry-ink); }
 .stage-name { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
 .stage-rule { font-size: 16px; line-height: 1.5; color: var(--ink-body); }
 .method-aside {

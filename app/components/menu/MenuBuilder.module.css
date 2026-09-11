@@ -162,9 +162,11 @@
   width: 30px;
   height: 30px;
   border-radius: 15px;
-  border: 1.5px solid #CFC4AF;
+  border: 1.5px solid var(--line);
   background: transparent;
-  color: #8E7F6A;
+  /* Themed, not a fixed brown: the glyph carries the picked/not-picked
+     state, so it has to clear 4.5:1 on the card in both themes. */
+  color: var(--ink-muted);
   font-size: 15px;
   font-weight: 700;
   line-height: 1;
@@ -244,7 +246,9 @@
 .pickN {
   font-family: var(--ff-display);
   font-size: 22px;
-  color: var(--raspberry);
+  /* Raspberry as text takes --raspberry-ink, per the design's own rule:
+     #BD4D76 on paper is 4.16:1, under the 4.5:1 this size needs. */
+  color: var(--raspberry-ink);
   line-height: 1;
   flex: none;
 }
@@ -320,9 +324,12 @@
 
 .generate:hover:not(:disabled) { background: var(--raspberry-deep); }
 
+/* Disabled controls are exempt from the contrast minimum, but this is
+   the page's primary action and the reader has to be able to see what
+   it says to know what to do next. #8E7F6A on --line was 2.6:1. */
 .generate:disabled {
   background: var(--line);
-  color: #8E7F6A;
+  color: var(--ink-muted);
   cursor: default;
 }
 
@@ -337,7 +344,7 @@
 /* ---- Result ---- */
 
 .result {
-  background: var(--raspberry);
+  background: var(--band-rasp);
   color: var(--on-rasp);
 }
 
@@ -359,7 +366,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  background: var(--raspberry-deep);
+  background: var(--band-rasp-inset);
   padding: 14px 16px;
   margin-bottom: 12px;
 }

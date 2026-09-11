@@ -209,7 +209,7 @@
 */
 
 .cuisineBand {
-  background: var(--raspberry);
+  background: var(--band-rasp);
   color: var(--on-rasp);
   padding: 32px 0 34px;
 }
@@ -246,13 +246,13 @@
   justify-content: space-between;
   gap: 8px;
   padding: 14px 12px;
-  background: var(--raspberry);
+  background: var(--band-rasp);
   color: #fff;
   height: 100%;
   transition: background-color 150ms ease;
 }
 
-.cuisineCard:hover { background: var(--raspberry-deep); color: #fff; }
+.cuisineCard:hover { background: var(--band-rasp-inset); color: #fff; }
 
 .cuisineName {
   font-family: var(--ff-display);
