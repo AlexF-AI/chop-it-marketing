@@ -7,17 +7,10 @@
    aliases at the bottom of the token block so the recipe, blog and legal
    pages inherit both themes without a rewrite.
 
-   Theme resolution: light is the default, full stop. Dark applies only
-   under [data-theme="dark"], which the nav toggle writes on <html> and
-   persists; the inline script in app/layout.tsx replays that choice before
-   first paint. The site deliberately does NOT follow the OS via
-   prefers-color-scheme — it used to, which meant a visitor on a dark
-   phone met the dark site without ever asking for it, and the design is
-   built on paper. Dark ships and is a click away for anyone who wants it.
-
-   Because of that, three things have to agree, and did not when this was
-   a media query: this block, ThemeToggle's idea of the current theme, and
-   the address-bar colour in layout.tsx.
+   Theme resolution: no [data-theme] attribute follows the OS via
+   prefers-color-scheme; the nav toggle writes data-theme="light|dark" on
+   <html> and persists it, and the inline script in app/layout.tsx replays
+   that choice before first paint.
    ========================================================================== */
 
 :root {
@@ -141,6 +134,45 @@
   /* White on #7E74DD was 3.87:1; this fill carries button labels. */
   --accent-secondary: #6A5FCB;
   color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground:    #131110;
+    --surface:   #1C1917;
+    --surface-2: #232020;
+    --ink:       #F7F4EE;
+    --ink-2:     #A9A29A;
+    --ink-3:     #9A938B;
+    --ink-2-inv: #5C574F;
+    --accent-inv: #8E3A52;
+    --line-inv:   #E4E0D9;
+    --line:      #302B27;
+    --line-2:    #262220;
+    --accent:      #E4739A;
+    --accent-text: #E4739A;
+    --accent-on:   #26141A;
+    --accent-wash: #2A171D;
+    --protein:   #E4739A;
+    --fibre:     #E0B54A;
+    --plants:    #9BB06A;
+    --hatch: repeating-linear-gradient(45deg, #211E1C 0 7px, #191614 7px 14px);
+    --amber:     #E0B54A;
+    --green:     #9BB06A;
+    --purple:    #7E74DD;
+    /* ---- Sunday Supplement, dark ----
+     The named aliases follow --ground / --surface / --accent-text
+     automatically. These four cannot: the raspberry flood must stay the
+     deep brand tone (white on #E4739A fails 4.5:1), and the ink band has
+     to sit below the page ground rather than level with it. */
+    --ink-body:   #D8D2C9;
+    --raspberry:      #BD4D76;
+    --raspberry-deep: #8E3A52;
+    --raspberry-pale: #5A3442;
+    --photo-placeholder: #2A2522;
+    --band-ink:   #0B0A09;
+    color-scheme: dark;
+  }
 }
 
 :root[data-theme="dark"] {

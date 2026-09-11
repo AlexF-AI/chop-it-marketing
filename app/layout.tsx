@@ -41,16 +41,13 @@ const instrumentSerif = Instrument_Serif({
   display: 'swap',
 });
 
-// Pinned to paper, because the page is: light is the default regardless of
-// the OS scheme (see the theme note at the top of globals.css). A
-// prefers-color-scheme pair here would put a dark address bar above a light
-// page for anyone on a dark phone, which is what it used to do.
-//
-// A visitor who picks dark keeps a paper-coloured bar until the next load.
-// Repainting it live needs a client effect writing <meta name="theme-color">,
-// which is not worth a hydration-time DOM write for one strip of chrome.
+// Both themes ship, so the mobile address bar follows whichever one the
+// visitor lands in rather than being pinned to the light background.
 export const viewport: Viewport = {
-  themeColor: '#f6f1e7',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#f6f1e7' },
+    { media: '(prefers-color-scheme: dark)', color: '#131110' },
+  ],
   colorScheme: 'light dark',
 };
 
