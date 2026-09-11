@@ -9,7 +9,7 @@ export function Hero() {
     <header id="top" className={styles.hero}>
       <div>
         <div className={`${shared.eyebrow} ${styles.eyebrow}`}>
-          Meal planning, minus the admin
+          Before you shop it, Chop it
         </div>
 
         {/* The four words are the positioning, so they are the H1 rather
@@ -24,8 +24,8 @@ export function Hero() {
         </p>
         <p className={styles.body}>
           But in a world that moves fast, the weekly shop and meal planning have
-          become another line on overflowing to-do lists &mdash; another piece
-          of admin nobody has the energy to entertain after a long day.
+          become another line on overflowing to-do lists. Just another piece of
+          admin nobody has the energy to entertain after a long day.
         </p>
         <p className={styles.lead}>That&rsquo;s why we built Chop it.</p>
 
