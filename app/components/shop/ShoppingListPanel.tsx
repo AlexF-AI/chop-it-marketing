@@ -3,15 +3,17 @@
 import { useMemo, useState } from 'react';
 
 import type { ShoppingLine, ShoppingList } from '@/app/lib/shoppingList';
-import styles from './RecipeToDinner.module.css';
+import styles from './ShoppingListPanel.module.css';
 
 /**
  * The combined shop, as the app shows it.
  *
- * This is the real merge of the four dinners above (lib/shoppingList.ts)
- * grouped into the app's own aisles, laid out the way the app's shopping
- * list is: aisle cards with a done-count, a round tick per line, and the
- * Combined / By recipe switch.
+ * A real merge (lib/shoppingList.ts) grouped into the app's own aisles,
+ * laid out the way the app's shopping list is: aisle cards with a
+ * done-count, a round tick per line, and the Combined / By recipe switch.
+ *
+ * Two surfaces render it: the homepage's week, and the /menu builder's
+ * live shop for whatever you have picked.
  *
  * Ticking works. Lines the catalogue flags as cupboard staples start
  * ticked, which is what the app does with anything your pantry says you

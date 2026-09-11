@@ -51,8 +51,17 @@
   text-wrap: pretty;
 }
 
-.browseLink {
+/* Two ways out of the band: the catalogue, and the builder. Wrapping
+   rather than shrinking, so neither is cramped at phone width. */
+.browseLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 28px;
   margin-top: 22px;
+}
+
+.browseLink {
+  margin-top: 0;
 }
 
 @media (min-width: 768px) {

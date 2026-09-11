@@ -16,6 +16,10 @@ const LINKS = [
   { href: '/#how', label: 'How it works' },
   { href: '/#chatgpt', label: 'In ChatGPT' },
   { href: '/recipes', label: 'Recipes' },
+  // Next to Recipes because that is the order you use them in: browse the
+  // catalogue, then build a week out of it. It was reachable only from the
+  // footer, which is no way to find the site's one interactive tool.
+  { href: '/menu', label: 'Build a menu' },
   { href: '/learn', label: 'Learn' },
   { href: '/research', label: 'Research' },
   { href: '/method', label: 'Our method' },

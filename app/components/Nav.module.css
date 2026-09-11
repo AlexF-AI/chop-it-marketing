@@ -38,7 +38,7 @@
 }
 
 /* Matches the breakpoint at which globals.css drops `.nav-links`. */
-@media (max-width: 720px) {
+@media (max-width: 880px) {
   .menuButton {
     display: flex;
   }

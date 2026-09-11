@@ -433,6 +433,12 @@ button { font-family: inherit; }
   width: 34px; height: 34px;
 }
 .nav-links { display: flex; gap: 24px; font-size: 15px; color: var(--ink-body); margin-left: 8px; }
+/* The bar carries seven links, a wordmark, a theme toggle and two CTAs.
+   Measured, that stops fitting at about 845px — below which the CTAs were
+   pushed off the right edge rather than wrapping. The drawer renders the
+   same links plus Get the app, so nothing is lost by handing over earlier.
+   Keep this in step with the .menuButton breakpoint in Nav.module.css. */
+@media (max-width: 880px) { .nav-links { display: none; } }
 .nav-links a { transition: color 150ms ease; }
 .nav-links a:hover { color: var(--raspberry-ink); }
 .nav-links a[aria-current='page'] { color: var(--ink); font-weight: 600; }
@@ -736,7 +742,6 @@ button { font-family: inherit; }
   .what-grid { grid-template-columns: 1fr; }
   .recipes-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .hero-stats { flex-direction: column; gap: 16px; }
-  .nav-links { display: none; }
   .score-x-band-row { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr; }
 
@@ -2542,7 +2547,6 @@ button { font-family: inherit; }
   .composer { height: 560px; }
 }
 @media (max-width: 720px) {
-  .nav-links { display: none; }
   .capture-cell:first-child { padding-left: 22px; }
   .capture-cell:last-child { padding-right: 22px; }
   .stage-row { grid-template-columns: 28px minmax(0, 1fr); gap: 14px; }

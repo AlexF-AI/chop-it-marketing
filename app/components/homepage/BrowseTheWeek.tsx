@@ -62,12 +62,22 @@ export function BrowseTheWeek() {
           ))}
         </ol>
 
-        <Link
-          href="/recipes"
-          className={`${shared.link} ${shared.linkOnRasp} ${styles.browseLink}`}
-        >
-          Browse the recipes <span aria-hidden="true">→</span>
-        </Link>
+        <div className={styles.browseLinks}>
+          <Link
+            href="/recipes"
+            className={`${shared.link} ${shared.linkOnRasp} ${styles.browseLink}`}
+          >
+            Browse the recipes <span aria-hidden="true">→</span>
+          </Link>
+          {/* The three steps above describe building a week; this is where
+              you can actually do it, without the app. */}
+          <Link
+            href="/menu"
+            className={`${shared.link} ${shared.linkOnRasp} ${styles.browseLink}`}
+          >
+            Build one now <span aria-hidden="true">→</span>
+          </Link>
+        </div>
       </div>
     </section>
   );

@@ -343,6 +343,62 @@
 
 /* ---- Result ---- */
 
+/* ---- The shop your picks add up to ---- */
+
+/* Sits between the picker and the share link, because that is the order the
+   promise is made in: pick the dishes, see the shop, send the link. On a
+   warm ground so it reads as a result rather than as more of the picker. */
+.shop {
+  background: var(--paper-warm);
+  border-top: 1px solid var(--line);
+}
+
+.shopHead {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 28px var(--gutter) 0;
+}
+
+.shopH2 {
+  margin: 6px 0 8px;
+  font-family: var(--ff-display);
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+}
+
+.shopLede {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--ink-body);
+  max-width: 56ch;
+  text-wrap: pretty;
+}
+
+.shopPanel {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 18px var(--gutter) 30px;
+}
+
+/* While a new list is on the way the old one stays put and dims, rather
+   than the panel collapsing and shunting the page around under the
+   reader. */
+.shopPanel[aria-busy='true'] {
+  opacity: 0.55;
+  transition: opacity 120ms ease;
+}
+
+@media (min-width: 768px) {
+  .shopH2 { font-size: 38px; }
+  /* The list is one column of text; a full-width panel on a wide screen
+     would stretch every line across the viewport. */
+  .shopPanel > * { max-width: 680px; }
+}
+
 .result {
   background: var(--band-rasp);
   color: var(--on-rasp);

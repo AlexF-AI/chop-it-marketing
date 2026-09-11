@@ -5,6 +5,8 @@ import Image from 'next/image';
 
 import type { MenuCuisineChip, PickableRecipe } from '@/app/lib/menuBuilder';
 import { MAX_MENU_RECIPES } from '@/app/lib/menuBuilder';
+import type { Shop } from '@/app/lib/shopFromRecipes';
+import ShoppingListPanel from '@/app/components/shop/ShoppingListPanel';
 import { trackMenuLinkCreated } from '@/lib/posthog-events';
 import shared from '@/app/components/homepage/shared.module.css';
 import styles from './MenuBuilder.module.css';
@@ -21,6 +23,8 @@ type MenuBuilderProps = {
 
 const DEFAULT_NAME = "This week's dinners";
 const COPIED_RESET_MS = 2000;
+/** Long enough that picking three dishes quickly is one request, not three. */
+const SHOP_DEBOUNCE_MS = 400;
 
 export default function MenuBuilder({
   initialRecipes,
@@ -37,6 +41,8 @@ export default function MenuBuilder({
   const [copied, setCopied] = useState(false);
   const [minting, setMinting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [shop, setShop] = useState<Shop | null>(null);
+  const [shopLoading, setShopLoading] = useState(false);
 
   /**
    * Every recipe the visitor has seen, not just the current filter.
@@ -112,6 +118,55 @@ export default function MenuBuilder({
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [selected, pool],
   );
+
+  /**
+   * The shop for whatever is picked.
+   *
+   * Debounced, because picking four dinners is four state changes in a few
+   * seconds and each one would otherwise be a round trip. Responses are
+   * sequenced: a slow one for two dishes must not land after a fast one for
+   * three and leave the panel a dish behind.
+   */
+  const shopRequest = useRef(0);
+  useEffect(() => {
+    if (selected.length === 0) {
+      shopRequest.current += 1;
+      setShop(null);
+      setShopLoading(false);
+      return;
+    }
+
+    const id = (shopRequest.current += 1);
+    const controller = new AbortController();
+    setShopLoading(true);
+
+    const timer = setTimeout(async () => {
+      try {
+        const response = await fetch('/api/menu/shop', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ recipeIds: selected }),
+          signal: controller.signal,
+        });
+        if (!response.ok) throw new Error(String(response.status));
+        const data = (await response.json()) as { shop?: Shop | null };
+        if (id !== shopRequest.current) return;
+        setShop(data.shop ?? null);
+      } catch {
+        // A failed shop is not worth an error banner — the picks and the
+        // link still work, and the panel simply keeps its last good state
+        // until the next change succeeds.
+        if (id === shopRequest.current) setShop(null);
+      } finally {
+        if (id === shopRequest.current) setShopLoading(false);
+      }
+    }, SHOP_DEBOUNCE_MS);
+
+    return () => {
+      clearTimeout(timer);
+      controller.abort();
+    };
+  }, [selected]);
 
   const generate = useCallback(async () => {
     if (selected.length === 0 || minting) return;
@@ -336,6 +391,29 @@ export default function MenuBuilder({
           </div>
         </section>
       </div>
+
+      {selected.length > 0 ? (
+        <section className={styles.shop} aria-label="Your shop">
+          <div className={styles.shopHead}>
+            <div className={shared.eyebrow}>And here is the shop</div>
+            <h2 className={styles.shopH2}>
+              {shop
+                ? `${shop.combined.totalIngredientLines} ingredient lines, ${shop.combined.totalShoppingLines} things to buy.`
+                : 'Working out the shop\u2026'}
+            </h2>
+            <p className={styles.shopLede}>
+              Every ingredient in the dishes above, merged and grouped by
+              aisle. This is the list the link opens in Chop it.
+            </p>
+          </div>
+
+          {shop ? (
+            <div className={styles.shopPanel} aria-busy={shopLoading}>
+              <ShoppingListPanel list={shop.combined} perRecipe={shop.perRecipe} />
+            </div>
+          ) : null}
+        </section>
+      ) : null}
 
       {code ? (
         <section className={styles.result} aria-label="Your share link">

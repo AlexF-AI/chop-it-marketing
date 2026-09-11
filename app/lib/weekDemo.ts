@@ -11,11 +11,12 @@
 import { supabase, supabaseConfigured } from './supabase';
 import { bySlugOrder, WEEK_SLUGS } from './theWeek';
 import {
-  buildShoppingList,
-  type CanonicalIngredient,
-  type ShoppingList,
-  type SourceIngredient,
-} from './shoppingList';
+  buildShop,
+  loadCatalogue,
+  toSourceRecipes,
+  type RawIngredient,
+} from './shopFromRecipes';
+import type { ShoppingList } from './shoppingList';
 
 /** How many dinners the demo week holds. */
 export const WEEK_SIZE = WEEK_SLUGS.length;
@@ -62,20 +63,6 @@ export type WeekDemo = {
   perRecipe: { title: string; list: ShoppingList }[];
 };
 
-type RawIngredient = {
-  canonical_id?: number | null;
-  canonical_name?: string | null;
-  name_uk?: string | null;
-  name?: string | null;
-  display?: string | null;
-  rawText?: string | null;
-  qty?: number | null;
-  quantity?: number | null;
-  unit?: string | null;
-  optional?: boolean | null;
-  section?: string | null;
-};
-
 type RawStep = { text?: string | null } | string;
 
 type Row = {
@@ -98,21 +85,6 @@ type Row = {
 // type level to shape the result, and gives up on an expression.
 const COLUMNS =
   'id, slug, title, image_url, servings, timings_json, ingredients_json, method_steps_json, nutrition_kcal, nutrition_protein_g, nutrition_carbs_g, nutrition_fat_g, nutrition_fibre_g';
-
-function toSourceIngredient(raw: RawIngredient): SourceIngredient {
-  return {
-    canonicalId: typeof raw.canonical_id === 'number' ? raw.canonical_id : null,
-    canonicalName: raw.canonical_name ?? null,
-    name: raw.name_uk ?? raw.name ?? null,
-    display: raw.display ?? raw.rawText ?? null,
-    // Published rows carry both `qty` and `quantity`; they agree, and `qty`
-    // is the one the app writes first.
-    qty: typeof raw.qty === 'number' ? raw.qty : typeof raw.quantity === 'number' ? raw.quantity : null,
-    unit: raw.unit ?? null,
-    optional: raw.optional === true,
-    section: raw.section ?? null,
-  };
-}
 
 function stepText(raw: RawStep): string | null {
   if (typeof raw === 'string') return raw.trim() || null;
@@ -149,50 +121,8 @@ export async function getWeekDemo(): Promise<WeekDemo | null> {
   const rows = bySlugOrder(data as Row[]);
 
   // Ingredient objects for the merge, kept alongside the display lines.
-  const perRecipe = rows.map((r) => ({
-    title: r.title ?? '',
-    ingredients: (Array.isArray(r.ingredients_json) ? r.ingredients_json : []).map(
-      toSourceIngredient,
-    ),
-  }));
-
-  const ids = Array.from(
-    new Set(
-      perRecipe
-        .flatMap((r) => r.ingredients)
-        .map((i) => i.canonicalId)
-        .filter((id): id is number => id !== null),
-    ),
-  );
-
-  const catalogue = new Map<number, CanonicalIngredient>();
-  if (ids.length > 0) {
-    const { data: cat, error: catError } = await supabase.rpc('get_ingredient_catalogue', {
-      p_ids: ids,
-    });
-    if (catError) {
-      // The list still builds without the catalogue — ingredients merge on
-      // their canonical id regardless, they just lose their section and the
-      // pantry-staple flag. Worth a log, not worth failing the page.
-      console.error('[weekDemo] catalogue lookup failed', catError.message);
-    } else if (Array.isArray(cat)) {
-      for (const row of cat as {
-        id: number;
-        name_uk: string | null;
-        plural: string | null;
-        category: string | null;
-        pantry_staple: boolean | null;
-      }[]) {
-        catalogue.set(row.id, {
-          id: row.id,
-          name: row.name_uk ?? '',
-          plural: row.plural ?? null,
-          category: row.category ?? null,
-          pantryStaple: row.pantry_staple === true,
-        });
-      }
-    }
-  }
+  const sources = toSourceRecipes(rows);
+  const catalogue = await loadCatalogue(sources);
 
   const recipes: WeekRecipe[] = rows
     .map((r): WeekRecipe | null => {
@@ -232,12 +162,8 @@ export async function getWeekDemo(): Promise<WeekDemo | null> {
 
   if (recipes.length === 0) return null;
 
-  return {
-    recipes,
-    shoppingList: buildShoppingList(perRecipe, catalogue),
-    perRecipe: perRecipe.map((r) => ({
-      title: r.title,
-      list: buildShoppingList([r], catalogue),
-    })),
-  };
+  // The catalogue is passed in rather than re-read: this function already
+  // loaded it for the recipe card's pantry marks.
+  const shop = await buildShop(sources, catalogue);
+  return { recipes, shoppingList: shop.combined, perRecipe: shop.perRecipe };
 }

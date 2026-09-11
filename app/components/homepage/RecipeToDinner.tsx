@@ -19,7 +19,7 @@ import Link from 'next/link';
 
 import { getWeekDemo } from '@/app/lib/weekDemo';
 import RecipeCardPanel from './RecipeCardPanel';
-import ShoppingListPanel from './ShoppingListPanel';
+import ShoppingListPanel from '@/app/components/shop/ShoppingListPanel';
 import shared from './shared.module.css';
 import styles from './RecipeToDinner.module.css';
 
