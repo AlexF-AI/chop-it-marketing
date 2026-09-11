@@ -142,7 +142,15 @@ export type CtaSurface =
   | 'inline_learn'
   | 'inline_research'
   | 'inline_features'
-  | 'inline_other';
+  | 'inline_other'
+  // The "Use it in your browser" CTA for the web app, which is a third
+  // destination alongside the App Store and ChatGPT rather than a variant
+  // of either. Its own surfaces so the PWA path is separable in the
+  // dashboard from the install and ChatGPT paths that sit beside it in the
+  // same block. Like the inline_* values these are NEVER passed to
+  // appStoreUrl(): there is no App Store campaign for a web-app click.
+  | 'homepage_pwa'
+  | 'blog_pwa';
 
 /**
  * Stable destination tokens.
@@ -151,8 +159,12 @@ export type CtaSurface =
  * the full plugin URL as cta_destination, which meant the dashboard grouped
  * on a 60-character string that changes whenever NEXT_PUBLIC_CHATGPT_URL is
  * swapped. One token means one row.
+ *
+ * `pwa` is the web app at chopit.app, for the same reason: the href carries
+ * utm params rewritten at click time by buildAppUrl(), so the URL is
+ * different on every click and useless as a grouping key.
  */
-export type CtaDestination = 'chatgpt_plugin' | (string & {});
+export type CtaDestination = 'chatgpt_plugin' | 'pwa' | (string & {});
 
 export type CtaClickedProps = {
   cta_location: CtaSurface;

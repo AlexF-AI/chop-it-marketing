@@ -199,11 +199,11 @@ export function getTrafficSource(): TrafficSource {
 /**
  * Appends chop-it.com attribution params to an outbound chopit.app URL.
  *
- * NOT WIRED TO ANY LINK YET — deliberately. The only chopit.app links on
- * the site today are the deep links on the /m/<code> share pages, and share
- * traffic does not arrive from AI answers, so tagging them would add noise
- * and no signal. This ships now, tested, so the cornerstone CTA block can
- * use it the day it lands.
+ * Wired in instrumentation-client.ts, for chopit.app links that carry a
+ * `data-cta-surface` marker — today the "Use it in your browser" CTAs in the
+ * homepage closing block and the blog footer. The /m/<code> share-page deep
+ * links deliberately do NOT get tagged: share traffic does not arrive from
+ * AI answers, so tagging it would add noise and no signal.
  *
  * Existing query params and the hash fragment are preserved. A URL that
  * already carries ANY utm param is returned untouched: something upstream
