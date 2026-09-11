@@ -33,7 +33,7 @@ export function BrowseTheWeek() {
       className={`${shared.sectionBand} ${shared.bandRasp}`}
     >
       <div className={shared.shell}>
-        <div className={`${shared.eyebrow} ${styles.eyebrow}`}>
+        <div className={`${shared.eyebrow} ${shared.eyebrowOnRasp}`}>
           Browse, pick, shop
         </div>
 
@@ -43,7 +43,7 @@ export function BrowseTheWeek() {
         <h2 className={`${shared.h2} ${shared.h2OnRasp}`}>
           Pick from {LIBRARY_SIZE} dishes.
         </h2>
-        <p className={`${shared.lede} ${styles.lede}`}>
+        <p className={`${shared.lede} ${shared.ledeOnRasp} ${styles.lede}`}>
           Browse instantly with photos, prep times and step-by-step
           instructions, pick your favourites for the week, and add them
           straight to your basket. No blank page, no scrolling through

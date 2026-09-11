@@ -17,7 +17,7 @@ export function InChatGPT() {
       <div className={shared.shell}>
         <div className={styles.inner}>
           <div>
-            <div className={`${shared.eyebrow} ${styles.eyebrow}`}>
+            <div className={`${shared.eyebrow} ${shared.eyebrowOnInk}`}>
               Chop it in ChatGPT
             </div>
             <h2 className={`${shared.h2} ${shared.h2OnInk}`}>

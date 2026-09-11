@@ -2,12 +2,9 @@
  * the product in one section. Everything below it only expands on this.
  */
 
-.eyebrow {
-  color: var(--pink-on-rasp);
-}
-
+/* Colour comes from shared.eyebrowOnRasp / shared.ledeOnRasp, which sit in
+   the same file as the base rules they override. Only spacing lives here. */
 .lede {
-  color: var(--pink-body);
   margin-bottom: 26px;
 }
 

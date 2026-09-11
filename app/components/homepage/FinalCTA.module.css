@@ -1,11 +1,8 @@
 /* The closing raspberry band. Three ways in, then the sign-off. */
 
-.eyebrow {
-  color: var(--pink-on-rasp);
-}
-
+/* Colour comes from shared.eyebrowOnRasp / shared.ledeOnRasp — see the note
+   in BrowseTheWeek.module.css. Only spacing lives here. */
 .body {
-  color: var(--pink-body);
   margin-bottom: 26px;
 }
 

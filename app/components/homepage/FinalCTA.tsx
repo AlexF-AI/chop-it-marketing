@@ -12,11 +12,11 @@ export function FinalCTA() {
       className={`${shared.sectionBand} ${shared.bandRasp}`}
     >
       <div className={shared.shell}>
-        <div className={`${shared.eyebrow} ${styles.eyebrow}`}>That&rsquo;s it</div>
+        <div className={`${shared.eyebrow} ${shared.eyebrowOnRasp}`}>That&rsquo;s it</div>
         <h2 className={`${shared.h2} ${shared.h2OnRasp}`}>
           Just your food week, planned in minutes.
         </h2>
-        <p className={`${shared.lede} ${styles.body}`}>
+        <p className={`${shared.lede} ${shared.ledeOnRasp} ${styles.body}`}>
           No lists, no guesswork, no last-minute panic over &ldquo;what&rsquo;s
           for dinner&rdquo;. Open Chop it in your browser, use it free in
           ChatGPT, or download the iPhone app to browse, plan, shop and cook in
