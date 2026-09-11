@@ -2,7 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import RecipeRail from '@/app/components/RecipeRail';
-import { getFeaturedRecipes, RECIPE_COUNT } from '@/app/lib/featuredRecipes';
+import { LIBRARY_SIZE, LIBRARY_SIZE_CAP } from '@/app/lib/brand';
+import { getFeaturedRecipes } from '@/app/lib/featuredRecipes';
 import shared from './shared.module.css';
 import styles from './RecipeProof.module.css';
 
@@ -16,7 +17,7 @@ export default async function RecipeProof() {
       <div className={shared.shell}>
         <div className={shared.eyebrow}>Ready before you add a thing</div>
         <h2 className={shared.h2}>
-          All {RECIPE_COUNT} built to the same standard.
+          {LIBRARY_SIZE_CAP} recipes, built to one standard.
         </h2>
         <div className={styles.copy}>
           <p className={shared.lede}>
@@ -54,7 +55,7 @@ export default async function RecipeProof() {
 
       <div className={styles.tail}>
         <Link href="/recipes" className={`${shared.link} ${shared.linkPlain}`}>
-          Browse all {RECIPE_COUNT} recipes <span aria-hidden="true">→</span>
+          Browse {LIBRARY_SIZE} recipes <span aria-hidden="true">→</span>
         </Link>
 
         <figure className={styles.founder}>

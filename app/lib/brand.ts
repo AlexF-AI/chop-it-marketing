@@ -11,24 +11,30 @@
  *
  * - The product is always "Chop it", never "Chop It" — the capitalised
  *   form belongs only to the legal entity in app/terms/page.tsx.
- * - The library size is a rounded floor ("over 1,000"), never a precise
- *   count. The precise count lives in RECIPE_COUNT in featuredRecipes.ts
- *   and moves with the catalogue; a rounded floor in the positioning copy
- *   stays true between catalogue changes.
+ * - The library size is always the rounded floor ("over 1,000"), never a
+ *   precise count. A precise count goes stale the moment the catalogue
+ *   moves and then has to be hunted down across the site; the floor stays
+ *   true. Nothing on the site states an exact recipe total.
  */
 
 /** The sign-off. Ends the homepage and carries the brand on its own. */
 export const SLOGAN = 'Before you shop it, Chop it.';
 
 /**
- * How big the browsable catalogue is, in copy.
+ * How big the browsable catalogue is, in copy. The only form the site
+ * uses — see the copy rules above.
  *
- * Deliberately a floor, not a count: the catalogue is 1,322 published
- * recipes (1,291 of them browsable on /recipes) as of September 2026, so
- * "thousands" would overstate it while "over 1,000" stays true as the
- * catalogue grows.
+ * Deliberately a floor, not a count: "thousands" would overstate the
+ * catalogue, while "over 1,000" stays true as it grows.
  */
 export const LIBRARY_SIZE = 'over 1,000';
+
+/**
+ * The same figure for the start of a sentence or a headline. Two
+ * constants rather than capitalising at the use site, so a search for
+ * either finds every place the library size is claimed.
+ */
+export const LIBRARY_SIZE_CAP = 'Over 1,000';
 
 /**
  * The meta description, shared by the page description, Open Graph and

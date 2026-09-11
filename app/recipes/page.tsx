@@ -4,13 +4,17 @@ import Link from 'next/link';
 import Footer from '@/app/components/Footer';
 import Nav from '@/app/components/Nav';
 import RecipeGrid from '@/app/components/RecipeGrid';
+import { LIBRARY_SIZE } from '@/app/lib/brand';
 import { CUISINE_COUNTS, CUISINE_META, CUISINE_SLUGS } from '@/app/lib/cuisines';
 import {
-  countPublishedRecipes,
-  getDistinctCostBands,
   getDistinctCuisines,
   listPublishedRecipes,
+  parseProteinFilter,
+  parseTimeFilter,
+  PROTEIN_FILTERS,
   searchPublicRecipes,
+  timeBounds,
+  TIME_FILTERS,
 } from '@/app/lib/recipes';
 import { serializeJsonLd, SITE_ORIGIN } from '@/app/lib/recipeSchema';
 import shared from '@/app/components/homepage/shared.module.css';
@@ -46,7 +50,10 @@ type SearchParams = {
   page?: string;
   season?: string;
   cuisine?: string;
-  cost?: string;
+  /** A TIME_FILTERS id: 30m, 45m, 60m+. */
+  time?: string;
+  /** A PROTEIN_FILTERS id: chicken, beef, … */
+  protein?: string;
 };
 
 // Anything beyond the canonical /recipes view is noindex,follow: pagination,
@@ -55,7 +62,7 @@ type SearchParams = {
 function isCanonicalHubView(sp: SearchParams): boolean {
   const page = Number.parseInt(sp.page ?? '1', 10) || 1;
   if (page > 1) return false;
-  if (sp.season || sp.cuisine || sp.cost) return false;
+  if (sp.season || sp.cuisine || sp.time || sp.protein) return false;
   return true;
 }
 
@@ -156,15 +163,24 @@ export default async function RecipesHubPage({
   const searchMode = q.length > 0;
   const season = searchMode ? undefined : sp.season || undefined;
   const cuisine = searchMode ? undefined : sp.cuisine || undefined;
-  const costBand = searchMode ? undefined : sp.cost || undefined;
+  // Unknown values are dropped rather than passed through, so a hand-typed
+  // ?protein=unicorn falls back to the unfiltered hub instead of an empty
+  // grid that looks like the catalogue is broken.
+  const time = searchMode ? undefined : parseTimeFilter(sp.time);
+  const protein = searchMode ? undefined : parseProteinFilter(sp.protein);
 
-  const [total, listResult, cuisines, costBands] = await Promise.all([
-    countPublishedRecipes(),
+  const [listResult, cuisines] = await Promise.all([
     searchMode
       ? searchPublicRecipes(q, { page, perPage: PER_PAGE })
-      : listPublishedRecipes({ page, perPage: PER_PAGE, season, cuisine, costBand }),
+      : listPublishedRecipes({
+          page,
+          perPage: PER_PAGE,
+          season,
+          cuisine,
+          protein,
+          ...timeBounds(time),
+        }),
     getDistinctCuisines(),
-    getDistinctCostBands(),
   ]);
   const { items, total: resultTotal } = listResult;
 
@@ -172,16 +188,19 @@ export default async function RecipesHubPage({
   // Search mode cannot — the RPC returns no total — so it reports only
   // whether another page exists. See searchPublicRecipes.
   const hasMore = listResult.hasMore;
+  // resultTotal, not the catalogue total: with a cuisine, time or protein
+  // chip on, "Page 1 of 54" would be counting pages the filter does not
+  // have. listPublishedRecipes counts the filtered set.
   const totalPages = searchMode
     ? null
-    : Math.max(1, Math.ceil(total / PER_PAGE));
+    : Math.max(1, Math.ceil(resultTotal / PER_PAGE));
   const filteredTotal = items.length;
 
   const buildHref = (overrides: Partial<SearchParams>) => {
     const qs = new URLSearchParams();
     const merged: Partial<SearchParams> = searchMode
       ? { q, page: page > 1 ? String(page) : undefined, ...overrides }
-      : { season, cuisine, cost: costBand, ...overrides };
+      : { season, cuisine, time, protein, ...overrides };
     for (const [k, v] of Object.entries(merged)) {
       if (v) qs.set(k, v);
     }
@@ -207,7 +226,7 @@ export default async function RecipesHubPage({
               ? `${hasMore ? `${resultTotal}+` : resultTotal} ${
                   resultTotal === 1 ? 'recipe' : 'recipes'
                 } matching "${q}".`
-              : `Browse ${total.toLocaleString('en-GB')} dinner recipes with metric quantities, familiar ingredient names and clear methods.`}
+              : `Browse ${LIBRARY_SIZE} dinner recipes with metric quantities, familiar ingredient names and clear methods.`}
           </p>
         </div>
 
@@ -268,33 +287,53 @@ export default async function RecipesHubPage({
                 </ul>
               </>
             )}
-            {costBands.length > 0 && (
-              <>
-                <div className={styles.filterLabel}>Cost</div>
-                <ul className={styles.chipRow}>
-                  <li>
-                    <Link
-                      className={`${styles.chip} ${costBand ? '' : styles.chipOn}`}
-                      aria-current={costBand ? undefined : 'true'}
-                      href={buildHref({ cost: undefined, page: undefined })}
-                    >
-                      All
-                    </Link>
-                  </li>
-                  {costBands.map((c) => (
-                    <li key={c}>
-                      <Link
-                        className={`${styles.chip} ${costBand === c ? styles.chipOn : ''}`}
-                        aria-current={costBand === c ? 'true' : undefined}
-                        href={buildHref({ cost: c, page: undefined })}
-                      >
-                        {c}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </>
-            )}
+            <div className={styles.filterLabel}>Time</div>
+            <ul className={styles.chipRow}>
+              <li>
+                <Link
+                  className={`${styles.chip} ${time ? '' : styles.chipOn}`}
+                  aria-current={time ? undefined : 'true'}
+                  href={buildHref({ time: undefined, page: undefined })}
+                >
+                  Any
+                </Link>
+              </li>
+              {TIME_FILTERS.map((t) => (
+                <li key={t.id}>
+                  <Link
+                    className={`${styles.chip} ${time === t.id ? styles.chipOn : ''}`}
+                    aria-current={time === t.id ? 'true' : undefined}
+                    href={buildHref({ time: t.id, page: undefined })}
+                  >
+                    {t.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            <div className={styles.filterLabel}>Protein</div>
+            <ul className={styles.chipRow}>
+              <li>
+                <Link
+                  className={`${styles.chip} ${protein ? '' : styles.chipOn}`}
+                  aria-current={protein ? undefined : 'true'}
+                  href={buildHref({ protein: undefined, page: undefined })}
+                >
+                  Any
+                </Link>
+              </li>
+              {PROTEIN_FILTERS.map((pr) => (
+                <li key={pr.id}>
+                  <Link
+                    className={`${styles.chip} ${protein === pr.id ? styles.chipOn : ''}`}
+                    aria-current={protein === pr.id ? 'true' : undefined}
+                    href={buildHref({ protein: pr.id, page: undefined })}
+                  >
+                    {pr.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </nav>
         )}
 
@@ -335,7 +374,7 @@ export default async function RecipesHubPage({
             </span>
           </nav>
         )}
-        {!searchMode && filteredTotal === 0 && (season || cuisine || costBand) && (
+        {!searchMode && filteredTotal === 0 && (season || cuisine || time || protein) && (
           <p className={styles.note}>
             No recipes match these filters yet.{' '}
             <Link href="/recipes" className={shared.link}>

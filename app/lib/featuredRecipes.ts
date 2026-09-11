@@ -1,7 +1,12 @@
 import { supabase, supabaseConfigured } from './supabase';
+import { bySlugOrder, WEEK_SLUGS } from './theWeek';
 
 /**
  * The homepage recipe rail.
+ *
+ * These are the four dinners of the demo week (app/lib/theWeek.ts), so the
+ * dishes you browse here are the ones the shopping list below is built
+ * from and the one Cook Mode opens.
  *
  * Same source as `components/home/RecipeRail.tsx`, with two differences:
  *
@@ -32,37 +37,37 @@ type Row = {
  * Shown when Supabase is not configured (preview builds, local checkouts
  * without env vars) so the rail never renders empty.
  *
- * These are real rows read from `recipes_published` — the four the design
- * package named as having checked data, all carrying `display_priority: 95`.
+ * These are real rows read from `recipes_published` — the same four slugs
+ * as WEEK_SLUGS, in the same order, checked September 2026.
  */
 const FALLBACK: RecipeCard[] = [
   {
-    title: 'Seared Salmon with Mango Salsa and Lime',
-    meta: '45 min · 40g protein',
-    href: '/recipes/seared-salmon-with-mango-salsa-and-lime',
+    title: 'Chicken Marbella',
+    meta: '65 min · 53g protein',
+    href: '/recipes/chicken-marbella',
     imageUrl:
-      'https://imagedelivery.net/67vDR3QPrkqq3a2SIhwzVg/4de8f514-81d8-4879-fa40-acce4f455f00/full',
+      'https://imagedelivery.net/67vDR3QPrkqq3a2SIhwzVg/426f9a27-fff2-4d56-85e0-c7cfa32ada00/full',
   },
   {
     title: 'Charred Sweetcorn and Black Bean Tacos',
-    meta: '45 min · 38g protein',
+    meta: '45 min · 24g protein',
     href: '/recipes/charred-sweetcorn-and-black-bean-tacos',
     imageUrl:
       'https://imagedelivery.net/67vDR3QPrkqq3a2SIhwzVg/ae71ee99-5ca3-48c0-30a3-59a46ef1fb00/full',
   },
   {
-    title: 'Thai Beef Salad with Crunchy Vegetables',
-    meta: '35 min · 32g protein',
-    href: '/recipes/thai-beef-salad-with-crunchy-vegetables',
+    title: 'Chargrilled Chicken with Chimichurri and Butter Bean Salad',
+    meta: '40 min · 30g protein',
+    href: '/recipes/chargrilled-chicken-with-chimichurri-and-butter-bean-salad',
     imageUrl:
-      'https://imagedelivery.net/67vDR3QPrkqq3a2SIhwzVg/57b9bfa3-7ab0-4a60-1651-e7d21fcf7700/full',
+      'https://imagedelivery.net/67vDR3QPrkqq3a2SIhwzVg/3095326a-c414-4eea-389d-580cf813a900/full',
   },
   {
-    title: 'One-Pan Orzo with Roasted Peppers, Olives and Feta',
-    meta: '45 min · 21g protein',
-    href: '/recipes/one-pan-orzo-with-roasted-peppers-olives-and-feta',
+    title: 'Burrata with Grilled Peaches, Prosciutto and Basil',
+    meta: '35 min · 13g protein',
+    href: '/recipes/burrata-with-grilled-peaches-prosciutto-and-basil',
     imageUrl:
-      'https://imagedelivery.net/67vDR3QPrkqq3a2SIhwzVg/3133a9f7-6593-4c75-8b5f-f45a46352b00/full',
+      'https://imagedelivery.net/67vDR3QPrkqq3a2SIhwzVg/73ab14bb-362b-4d1c-6ee6-5adb0b0aa300/full',
   },
 ];
 
@@ -85,38 +90,21 @@ export async function getFeaturedRecipes(): Promise<RecipeCard[]> {
   const { data, error } = await supabase
     .from('recipes_published')
     .select('slug, title, image_url, timings_json, nutrition_protein_g')
+    .in('slug', WEEK_SLUGS as unknown as string[])
     .eq('seo_published', true)
     .is('deleted_at', null)
     .not('image_url', 'is', null)
-    .not('slug', 'is', null)
-    .order('display_priority', { ascending: false, nullsFirst: false })
-    .order('title', { ascending: true })
-    .limit(4);
+    .not('slug', 'is', null);
 
   if (error || !data || data.length === 0) {
     if (error) console.warn('[RecipeProof] query error, using fallback:', error.message);
     return FALLBACK;
   }
 
-  return (data as Row[]).map((row) => ({
+  return bySlugOrder(data as Row[]).map((row) => ({
     title: row.title,
     meta: metaFor(row),
     href: `/recipes/${row.slug}`,
     imageUrl: row.image_url,
   }));
 }
-
-/**
- * The library size, and what the rest of the homepage already claims: the count
- * of non-deleted rows in `recipes_published`.
- *
- * `/recipes` browses the `seo_published` subset, which is thirty-one fewer
- * (1,291 when checked, September 2026). If the catalogue moves, this and
- * RecipeRail's copy move together.
- *
- * The positioning copy deliberately does NOT use this figure — it says
- * "over 1,000" (LIBRARY_SIZE in lib/brand.ts) so the homepage headline
- * stays true between catalogue changes and this exact count only appears
- * where it is checked.
- */
-export const RECIPE_COUNT = '1,322';

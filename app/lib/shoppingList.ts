@@ -10,10 +10,17 @@
 // crushed" are known to be the same thing; and `ingredients_canonical`
 // carries a category and a `pantry_staple` flag, which is what lets the
 // list group itself and set aside what is probably already in the cupboard.
+// The aisles are the app's own — see lib/shopAisles.ts.
+
+// Imported with its extension so `npm test` can run this module under
+// Node's type-stripping loader, with no bundler in the way.
+import { aisleLabel, shopAisle, SHOP_AISLES, type ShopAisle } from './shopAisles.ts';
 
 export type CanonicalIngredient = {
   id: number;
   name: string;
+  /** "chicken thighs" for "chicken thigh". May be absent. */
+  plural: string | null;
   category: string | null;
   pantryStaple: boolean;
 };
@@ -43,6 +50,13 @@ export type ShoppingLine = {
   name: string;
   /** "460 g", "60 g + 1 tbsp", or '' when nothing was quantified. */
   amount: string;
+  /**
+   * The amount's parts, one per unit. Two or more means the quantities
+   * could not be added (see formatAmount), which changes how the line is
+   * laid out — "6 cloves + 6 Garlic" reads like a typo, so a line like
+   * that puts its amount after the name instead.
+   */
+  amountParts: string[];
   /** Titles of the recipes that wanted it, de-duplicated, in order. */
   fromRecipes: string[];
   /** Ingredient lines that collapsed into this one. */
@@ -53,7 +67,7 @@ export type ShoppingLine = {
 };
 
 export type ShoppingSection = {
-  category: string;
+  aisle: ShopAisle;
   label: string;
   lines: ShoppingLine[];
 };
@@ -67,24 +81,6 @@ export type ShoppingList = {
   /** Lines flagged as probably already in the cupboard. */
   pantryStapleLines: number;
 };
-
-/**
- * Section labels.
- *
- * Deliberately named for what the category actually contains rather than
- * for a supermarket's aisles: `protein` holds halloumi, edamame and labneh
- * as well as meat and fish, and `veg` holds fruit and pickles, so "Meat and
- * fish" or "Vegetables" would both be wrong. Order is the order a list is
- * usually shopped in.
- */
-const SECTIONS: { category: string; label: string }[] = [
-  { category: 'veg', label: 'Fruit and veg' },
-  { category: 'protein', label: 'Protein' },
-  { category: 'carb', label: 'Carbs and grains' },
-  { category: 'fat', label: 'Dairy, oils and nuts' },
-  { category: 'flavour', label: 'Flavour and cupboard' },
-  { category: 'other', label: 'Everything else' },
-];
 
 /** Trailing prep notes are for the recipe, not the shop. */
 function tidyName(input: string): string {
@@ -115,13 +111,34 @@ function formatQty(value: number): string {
  * line reads "60 g + 1 tbsp" rather than inventing a conversion. Unitless
  * counts (3 garlic cloves) sum among themselves.
  */
-function formatAmount(byUnit: Map<string, number>): string {
+function amountParts(byUnit: Map<string, number>): string[] {
   const parts: string[] = [];
   for (const [unit, qty] of byUnit) {
     if (!Number.isFinite(qty) || qty <= 0) continue;
     parts.push(unit === '' ? formatQty(qty) : `${formatQty(qty)} ${unit}`);
   }
-  return parts.join(' + ');
+  return parts;
+}
+
+/**
+ * Singular or plural, the way the app writes a list line.
+ *
+ * "20 Chicken thigh" reads like a bug. The plural is used only when the
+ * whole amount is a bare count above one: "3 Lemons", but "300 g Chicken
+ * thigh" and "8 slices Prosciutto" stay singular, because those are a
+ * weight and a portion of one thing rather than a number of things. It
+ * also keeps garlic honest — its plural is "garlic bulbs", and a line
+ * reading "6 cloves" is not asking for bulbs.
+ */
+function displayName(
+  name: string,
+  plural: string | null,
+  byUnit: Map<string, number>,
+): string {
+  if (!plural || byUnit.size !== 1) return name;
+  const count = byUnit.get('');
+  if (count === undefined || count <= 1) return name;
+  return tidyName(plural);
 }
 
 export function buildShoppingList(
@@ -131,7 +148,8 @@ export function buildShoppingList(
   type Bucket = {
     key: string;
     name: string;
-    category: string;
+    plural: string | null;
+    aisle: ShopAisle;
     pantryStaple: boolean;
     byUnit: Map<string, number>;
     /** A line with no parseable quantity still has to appear. */
@@ -168,7 +186,8 @@ export function buildShoppingList(
         bucket = {
           key,
           name: tidyName(rawName),
-          category: canonical?.category ?? 'other',
+          plural: canonical?.plural ?? null,
+          aisle: shopAisle(rawName, canonical?.category ?? null),
           pantryStaple: canonical?.pantryStaple ?? false,
           byUnit: new Map(),
           hasUnquantified: false,
@@ -196,8 +215,9 @@ export function buildShoppingList(
 
   const lines: ShoppingLine[] = [...buckets.values()].map((b) => ({
     key: b.key,
-    name: b.name,
-    amount: formatAmount(b.byUnit),
+    name: displayName(b.name, b.plural, b.byUnit),
+    amount: amountParts(b.byUnit).join(' + '),
+    amountParts: amountParts(b.byUnit),
     fromRecipes: b.fromRecipes,
     mergedFrom: b.mergedFrom,
     pantryStaple: b.pantryStaple,
@@ -205,12 +225,14 @@ export function buildShoppingList(
   }));
 
   const sections: ShoppingSection[] = [];
-  for (const { category, label } of SECTIONS) {
+  for (const { id } of SHOP_AISLES) {
     const inSection = lines
-      .filter((l) => l.key && categoryOf(buckets, l.key) === category)
+      .filter((l) => buckets.get(l.key)?.aisle === id)
       // Most-shared first — the merged lines are the point of the list.
       .sort((a, b) => b.mergedFrom - a.mergedFrom || a.name.localeCompare(b.name));
-    if (inSection.length > 0) sections.push({ category, label, lines: inSection });
+    if (inSection.length > 0) {
+      sections.push({ aisle: id, label: aisleLabel(id), lines: inSection });
+    }
   }
 
   return {
@@ -219,8 +241,4 @@ export function buildShoppingList(
     totalShoppingLines: lines.length,
     pantryStapleLines: lines.filter((l) => l.pantryStaple).length,
   };
-
-  function categoryOf(all: Map<string, Bucket>, key: string): string {
-    return all.get(key)?.category ?? 'other';
-  }
 }

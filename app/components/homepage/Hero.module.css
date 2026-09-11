@@ -6,9 +6,16 @@
  * magazine cover rather than a hero card.
  */
 
+/* Taller than the 320px the design names, and the extra 80px is doing work
+   rather than decoration: the photograph is a square, so at phone width it
+   is the box height that chooses the crop. At 320px the headline sits over
+   the white rice, which is the brightest thing in the frame and the one
+   place pink type cannot hold. At 400px the same text sits over the curry.
+   Contrast bought by moving the type onto a darker part of the picture
+   costs the picture nothing, unlike contrast bought with a scrim. */
 .hero {
   position: relative;
-  height: 320px;
+  height: 400px;
   background: var(--photo-placeholder);
   overflow: hidden;
 }
@@ -21,39 +28,83 @@
 /* Scrim.
  *
  * The job is to make the type legible while leaving the dish visible, and
- * the binding constraint is not the headline — it is the eyebrow, which is
- * the palest element and sits highest, where the ramp is weakest.
+ * the two pull against each other harder than they look. Relative
+ * luminance is ~72% green, and a vivid pink has almost none, so a *more*
+ * saturated pink needs a *darker* background, not a lighter one: the
+ * #FFC2D6 this replaces tolerated a background luminance of 0.18, and the
+ * #FF9FC0 below tolerates 0.13.
  *
- * The first pass solved that by darkening everything, which buried the
- * food. The lever that actually pays is type size, not scrim depth: at
- * 19px the eyebrow is normal-size text needing 4.5:1, and at 25px it is
- * large text needing 3:1. That nearly doubles the background luminance the
- * page can carry (0.131 -> 0.222), which buys back most of the photograph.
+ * Two things pay for that and still give the photograph back:
  *
- * Worth recording, because the intuition points the wrong way: making the
- * pink *more saturated* would need a darker scrim, not a lighter one.
- * Relative luminance is ~72% green, and a vivid pink has almost none — a
- * #FF4D8F eyebrow would allow a background luminance of only 0.062. The
- * pinks here are therefore pushed toward pink in hue while staying high in
- * luminance, which is what buys contrast.
+ * 1. Type size. At 19px the eyebrow is body text needing 4.5:1; at 25px it
+ *    is large text needing 3:1. That nearly doubles the background
+ *    luminance the page can carry.
+ * 2. Putting the shade only where the type is. A full-height ramp dark
+ *    enough for the eyebrow crushes the whole frame, and the type sits in
+ *    one corner of it. So the scrim is two light ramps that multiply — one
+ *    bottom-up, one left-to-right — which is deep in the corner the
+ *    headline occupies and near nothing in the opposite one. Measured at
+ *    1280px the headline has 8.6:1 while the cucumber, the curry and the
+ *    top of the bowl are untouched.
  *
  * The text-shadow is belt-and-braces for real-world legibility over a busy
  * photograph. It is deliberately not part of the compliance argument —
- * WCAG measures against the background, so the numbers below are sampled
- * from the composited pixels with the shadow present but not credited.
+ * WCAG measures against the background, so the numbers are sampled from
+ * the composited pixels with the shadow present but not credited.
  */
 .scrim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(16, 12, 10, 0.86) 0%,
-    rgba(16, 12, 10, 0.8) 42%,
-    rgba(16, 12, 10, 0.66) 62%,
-    rgba(16, 12, 10, 0.26) 80%,
-    rgba(16, 12, 10, 0) 94%
-  );
+  background:
+    linear-gradient(
+      to right,
+      rgba(14, 10, 9, 0.74) 0%,
+      rgba(14, 10, 9, 0.64) 22%,
+      rgba(14, 10, 9, 0.36) 42%,
+      rgba(14, 10, 9, 0.1) 58%,
+      rgba(14, 10, 9, 0) 72%
+    ),
+    linear-gradient(
+      to top,
+      rgba(14, 10, 9, 0.56) 0%,
+      rgba(14, 10, 9, 0.44) 34%,
+      rgba(14, 10, 9, 0.24) 56%,
+      rgba(14, 10, 9, 0.05) 74%,
+      rgba(14, 10, 9, 0) 86%
+    );
   pointer-events: none;
+}
+
+/* Phone carries its own scrim.
+ *
+ * The square photograph is almost entirely visible at 390px, so the type
+ * runs right across the dish rather than sitting beside it — the eyebrow
+ * alone crosses rice, panko and curry. The desktop scrim leans on the left
+ * edge, which is no use when the line reaches 80% of the way across, so
+ * here the weight moves into the bottom-up ramp and the left wash is
+ * lighter. The top half of the frame, which has no type over it, keeps
+ * nearly all of its light either way.
+ */
+@media (max-width: 767px) {
+  .scrim {
+    background:
+      linear-gradient(
+        to right,
+        rgba(14, 10, 9, 0.4) 0%,
+        rgba(14, 10, 9, 0.36) 34%,
+        rgba(14, 10, 9, 0.26) 62%,
+        rgba(14, 10, 9, 0.16) 84%,
+        rgba(14, 10, 9, 0.12) 100%
+      ),
+      linear-gradient(
+        to top,
+        rgba(14, 10, 9, 0.66) 0%,
+        rgba(14, 10, 9, 0.58) 30%,
+        rgba(14, 10, 9, 0.46) 52%,
+        rgba(14, 10, 9, 0.16) 72%,
+        rgba(14, 10, 9, 0) 86%
+      );
+  }
 }
 
 .heroText {
@@ -71,16 +122,16 @@
    4.5:1 — which is what lets the scrim above come back up off the food.
    It also just reads better; a delicate italic serif at 19px over a
    photograph was the hardest thing on the page to read.
-   #FFC2D6 is pinker than the #FFD9E4 it replaces while staying high in
-   luminance, for the reason noted on .scrim. */
+   The pink is the hot one, not a tint of it — see .scrim for what that
+   costs and how the ellipse pays for it. */
 .eyebrow {
   font-family: var(--ff-display);
   font-style: italic;
   font-size: 25px;
   line-height: 1.05;
-  color: #FFC2D6;
-  margin-bottom: 4px;
-  text-shadow: 0 1px 12px rgba(16, 12, 10, 0.55);
+  color: var(--pink-hot);
+  margin-bottom: 5px;
+  text-shadow: 0 1px 10px rgba(14, 10, 9, 0.7);
 }
 
 .h1 {
@@ -90,17 +141,20 @@
   font-size: clamp(40px, 13.3vw, 52px);
   line-height: 0.96;
   letter-spacing: -0.015em;
-  color: #FBF7F0;
+  /* Plain white rather than the warm off-white: it is the brightest thing
+     the palette has, and every point of luminance here is scrim depth the
+     photograph gets to keep. */
+  color: #FFFFFF;
   text-wrap: pretty;
-  text-shadow: 0 1px 16px rgba(16, 12, 10, 0.5);
+  text-shadow: 0 1px 14px rgba(14, 10, 9, 0.6);
 }
 
-/* "Identity." is the payoff word, so it takes the italic and the pink.
-   More vivid than the #F3A3BE it replaces — it can afford the saturation
-   because it sits on the bottom line, where the scrim is deepest. */
+/* "Identity." is the payoff word, so it takes the italic and the strongest
+   pink on the page. It can afford that saturation because it sits on the
+   bottom line, in the deepest part of the ellipse. */
 .h1 em {
   font-style: italic;
-  color: #FFA3C8;
+  color: #FF7FAE;
 }
 
 /* ---- Intro ---- */

@@ -163,9 +163,14 @@ export async function getPublishedRecipeBySlug(slug: string): Promise<Recipe | n
 
 export type ListFilter = {
   season?: string;
-  costBand?: string;
   cuisine?: string;
   tag?: string;
+  /** Total time at or under this many minutes. */
+  maxMinutes?: number;
+  /** Total time at or over this many minutes. */
+  minMinutes?: number;
+  /** One of PROTEIN_FILTERS; matched against `protein_types[]`. */
+  protein?: string;
   page?: number;
   perPage?: number;
 };
@@ -196,7 +201,15 @@ export async function listPublishedRecipes(
     .not('slug', 'is', null);
 
   if (filter.season) q = q.eq('season', filter.season);
-  if (filter.costBand) q = q.eq('cost_band', filter.costBand);
+  // `timings_json->total_minutes` keeps the value as jsonb rather than
+  // casting it to text, so these compare as numbers. `->>` would compare
+  // the strings and put "9" after "100".
+  if (filter.maxMinutes) q = q.lte('timings_json->total_minutes', filter.maxMinutes);
+  if (filter.minMinutes) q = q.gte('timings_json->total_minutes', filter.minMinutes);
+  // Passed as a JSON string, not an array: supabase-js renders an array
+  // argument in PostgREST's `{a,b}` form, which is for a Postgres array
+  // column. `protein_types` is jsonb, so it needs `["chicken"]`.
+  if (filter.protein) q = q.contains('protein_types', JSON.stringify([filter.protein]));
   if (filter.cuisine) {
     const slug = cuisineSlug(filter.cuisine);
     if (!slug) return { items: [], total: 0, hasMore: false };
@@ -464,16 +477,62 @@ export async function getDistinctCuisines(): Promise<string[]> {
 // it uses the same tags_json._catalog.cuisines[] memberships as the
 // curated /recipes/cuisine/[slug] landings.
 
-export async function getDistinctCostBands(): Promise<string[]> {
-  if (!supabase || !supabaseConfigured) return [];
-  const { data, error } = await supabase
-    .from('recipes_published')
-    .select('cost_band')
-    .eq('seo_published', true)
-    .is('deleted_at', null)
-    .not('cost_band', 'is', null);
-  if (error || !data) return [];
-  return Array.from(new Set(data.map((r) => r.cost_band as string))).sort();
+/**
+ * The /recipes time and protein chips.
+ *
+ * These are the app's own filters, with the app's thresholds and labels
+ * (shared/recipeFilters.ts and shared/searchBrowseFilters.ts in the app
+ * repo), so a filter you learn on the marketing site is the filter you
+ * get in the product. The hub used to offer a cost filter, which the app
+ * has never had.
+ *
+ * `protein_types` is a fixed ten-value vocabulary written at publish
+ * time, and every value has published recipes, so the chips are listed
+ * rather than discovered — a distinct-values query would mean scanning
+ * the whole catalogue on every revalidate to learn what we already know.
+ */
+export const TIME_FILTERS = [
+  { id: '30m', label: '30m', maxMinutes: 30 },
+  { id: '45m', label: '45m', maxMinutes: 45 },
+  { id: '60m+', label: '60m+', minMinutes: 60 },
+] as const;
+
+export type TimeFilterId = (typeof TIME_FILTERS)[number]['id'];
+
+export const PROTEIN_FILTERS = [
+  { id: 'chicken', label: 'Chicken' },
+  { id: 'beef', label: 'Beef' },
+  { id: 'pork', label: 'Pork' },
+  { id: 'lamb', label: 'Lamb' },
+  { id: 'fish', label: 'Fish' },
+  { id: 'seafood', label: 'Seafood' },
+  { id: 'tofu', label: 'Tofu' },
+  { id: 'halloumi', label: 'Halloumi' },
+  { id: 'beans', label: 'Beans' },
+  { id: 'lentils', label: 'Lentils' },
+] as const;
+
+export type ProteinFilterId = (typeof PROTEIN_FILTERS)[number]['id'];
+
+/** Narrow a query-string value to a known chip, or undefined. */
+export function parseTimeFilter(value: string | undefined): TimeFilterId | undefined {
+  return TIME_FILTERS.find((t) => t.id === value)?.id;
+}
+
+export function parseProteinFilter(value: string | undefined): ProteinFilterId | undefined {
+  return PROTEIN_FILTERS.find((p) => p.id === value)?.id;
+}
+
+/** The minute bounds a time chip stands for. */
+export function timeBounds(id: TimeFilterId | undefined): {
+  maxMinutes?: number;
+  minMinutes?: number;
+} {
+  const chip = TIME_FILTERS.find((t) => t.id === id);
+  if (!chip) return {};
+  return 'maxMinutes' in chip
+    ? { maxMinutes: chip.maxMinutes }
+    : { minMinutes: chip.minMinutes };
 }
 
 // One-shot fetch for the recipes sitemap. Returns each canonical slug, its

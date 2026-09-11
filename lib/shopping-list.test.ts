@@ -16,13 +16,16 @@ import {
   type SourceIngredient,
   type SourceRecipe,
 } from '../app/lib/shoppingList.ts';
+import { shopAisle } from '../app/lib/shopAisles.ts';
 
 const CATALOGUE = new Map<number, CanonicalIngredient>([
-  [62, { id: 62, name: 'onion', category: 'veg', pantryStaple: false }],
-  [65, { id: 65, name: 'garlic', category: 'veg', pantryStaple: true }],
-  [178, { id: 178, name: 'plain flour', category: 'carb', pantryStaple: true }],
-  [2, { id: 2, name: 'chicken thigh', category: 'protein', pantryStaple: false }],
-  [220, { id: 220, name: 'butter', category: 'fat', pantryStaple: false }],
+  [62, { id: 62, name: 'onion', plural: 'onions', category: 'veg', pantryStaple: false }],
+  // Garlic's plural is "garlic bulbs", which is why a line measured in
+  // cloves must not take it.
+  [65, { id: 65, name: 'garlic', plural: 'garlic bulbs', category: 'veg', pantryStaple: true }],
+  [178, { id: 178, name: 'plain flour', plural: null, category: 'carb', pantryStaple: true }],
+  [2, { id: 2, name: 'chicken thigh', plural: 'chicken thighs', category: 'protein', pantryStaple: false }],
+  [220, { id: 220, name: 'butter', plural: null, category: 'fat', pantryStaple: false }],
 ]);
 
 function ing(partial: Partial<SourceIngredient>): SourceIngredient {
@@ -51,7 +54,8 @@ describe('buildShoppingList', () => {
       { title: 'Orzo', ingredients: [ing({ canonicalId: 62, qty: 1 })] },
     ];
     const list = buildShoppingList(recipes, CATALOGUE);
-    const onion = lineNamed(list, 'Onion');
+    // Four of them, so the line says "Onions".
+    const onion = lineNamed(list, 'Onions');
 
     assert.ok(onion, 'expected one onion line');
     assert.equal(onion.amount, '4');
@@ -140,7 +144,7 @@ describe('buildShoppingList', () => {
       ],
       CATALOGUE,
     );
-    assert.equal(lineNamed(bothOptional, 'Onion')?.optional, true);
+    assert.equal(lineNamed(bothOptional, 'Onions')?.optional, true);
 
     const mixed = buildShoppingList(
       [
@@ -150,7 +154,7 @@ describe('buildShoppingList', () => {
       CATALOGUE,
     );
     assert.equal(
-      lineNamed(mixed, 'Onion')?.optional,
+      lineNamed(mixed, 'Onions')?.optional,
       false,
       'an ingredient a recipe genuinely needs is not optional',
     );
@@ -166,7 +170,7 @@ describe('buildShoppingList', () => {
       ],
       CATALOGUE,
     );
-    assert.equal(lineNamed(list, 'Garlic')?.pantryStaple, true);
+    assert.equal(lineNamed(list, 'Garlic bulbs')?.pantryStaple, true);
     assert.equal(lineNamed(list, 'Onion')?.pantryStaple, false);
     assert.equal(list.pantryStapleLines, 1);
   });
@@ -184,13 +188,47 @@ describe('buildShoppingList', () => {
     assert.ok(lineNamed(list, 'Katsuobushi'), 'a different name stays its own line');
   });
 
-  it('files anything with no known category under "Everything else"', () => {
+  it('files an ingredient with no canonical entry under Pantry', () => {
+    // No canonical id means no category either, so neither the name rules
+    // nor the category fallback can place it. It still has to be bought.
     const list = buildShoppingList(
       [{ title: 'A', ingredients: [ing({ name: 'Yuzu kosho' })] }],
       CATALOGUE,
     );
     const section = list.sections.find((s) => s.lines.some((l) => l.name === 'Yuzu kosho'));
-    assert.equal(section?.label, 'Everything else');
+    assert.equal(section?.label, 'Pantry');
+  });
+
+  it('pluralises a bare count and leaves a measured line singular', () => {
+    const counted = buildShoppingList(
+      [
+        { title: 'A', ingredients: [ing({ canonicalId: 2, qty: 12 })] },
+        { title: 'B', ingredients: [ing({ canonicalId: 2, qty: 8 })] },
+      ],
+      CATALOGUE,
+    );
+    assert.ok(lineNamed(counted, 'Chicken thighs'), '"20 Chicken thigh" reads like a bug');
+
+    // A weight is one quantity of a thing, not a number of things — the
+    // app writes "300g Chicken Thigh" too.
+    const weighed = buildShoppingList(
+      [{ title: 'A', ingredients: [ing({ canonicalId: 2, qty: 300, unit: 'g' })] }],
+      CATALOGUE,
+    );
+    assert.ok(lineNamed(weighed, 'Chicken thigh'), 'a weighed line stays singular');
+
+    // Garlic's plural is "garlic bulbs", and a line measured in cloves is
+    // not asking for bulbs.
+    const cloves = buildShoppingList(
+      [
+        { title: 'A', ingredients: [ing({ canonicalId: 65, qty: 6, unit: 'cloves' })] },
+        { title: 'B', ingredients: [ing({ canonicalId: 65, qty: 6 })] },
+      ],
+      CATALOGUE,
+    );
+    const garlic = lineNamed(cloves, 'Garlic');
+    assert.ok(garlic, 'a line with two units keeps the singular name');
+    assert.deepEqual(garlic.amountParts, ['6 cloves', '6']);
   });
 
   it('drops prep notes from the shopping name but keeps the ingredient', () => {
@@ -201,7 +239,7 @@ describe('buildShoppingList', () => {
     assert.ok(lineNamed(list, 'Cucumber'), 'the shop wants a cucumber, not the knife work');
   });
 
-  it('orders sections as a list is shopped and puts shared lines first', () => {
+  it('orders sections by aisle and puts shared lines first', () => {
     const list = buildShoppingList(
       [
         {
@@ -216,14 +254,37 @@ describe('buildShoppingList', () => {
       ],
       CATALOGUE,
     );
+    // SHOP_AISLES order: vegetables come before baking.
     assert.deepEqual(
-      list.sections.map((s) => s.category),
-      ['veg', 'carb'],
+      list.sections.map((s) => s.aisle),
+      ['vegetables', 'baking'],
+    );
+    assert.deepEqual(
+      list.sections.map((s) => s.label),
+      ['Vegetables', 'Baking'],
     );
     // Garlic is wanted by both recipes, so it leads its section.
     assert.deepEqual(
       list.sections[0].lines.map((l) => l.name),
-      ['Garlic', 'Onion'],
+      ['Garlic bulbs', 'Onion'],
+    );
+  });
+
+  it('splits one canonical category across the aisles it is bought in', () => {
+    // `protein` holds both of these, but nobody buys burrata at the meat
+    // counter. This is the whole reason shopAisle reads the name first.
+    const list = buildShoppingList(
+      [
+        {
+          title: 'A',
+          ingredients: [ing({ canonicalId: 2, qty: 4 }), ing({ canonicalId: 220, qty: 30, unit: 'g' })],
+        },
+      ],
+      CATALOGUE,
+    );
+    assert.deepEqual(
+      list.sections.map((s) => s.label),
+      ['Meat & Fish', 'Dairy & Eggs'],
     );
   });
 
@@ -232,5 +293,52 @@ describe('buildShoppingList', () => {
     assert.deepEqual(list.sections, []);
     assert.equal(list.totalIngredientLines, 0);
     assert.equal(list.totalShoppingLines, 0);
+  });
+});
+
+describe('shopAisle', () => {
+  // Each of these is a rule that only earns its place by being wrong
+  // without it — the classifier is ordered, and this is the order.
+  const cases: [string, string | null, string][] = [
+    ['chicken thigh', 'protein', 'meat_and_fish'],
+    ['fresh burrata', 'protein', 'dairy_and_eggs'],
+    // "chicken stock" is not shopped at the meat counter.
+    ['chicken stock', 'flavour', 'pantry'],
+    // "butter beans" must not read as butter.
+    ['butter beans', 'protein', 'tinned_and_jarred'],
+    ['butter', 'fat', 'dairy_and_eggs'],
+    // Olives are jarred; olive oil is not.
+    ['olive', 'veg', 'tinned_and_jarred'],
+    ['extra virgin olive oil', 'fat', 'oils_and_vinegars'],
+    // Vinegar beats wine, so the wine rule does not claim it.
+    ['red wine vinegar', 'flavour', 'oils_and_vinegars'],
+    ['white wine', 'flavour', 'pantry'],
+    // Dried leaves are a cupboard spice; fresh ones are a herb.
+    ['bay leaf', 'flavour', 'spices_and_seasoning'],
+    ['ground coriander', 'flavour', 'spices_and_seasoning'],
+    ['coriander', 'flavour', 'herbs'],
+    ['chilli flakes', 'flavour', 'spices_and_seasoning'],
+    ['red chilli', 'veg', 'vegetables'],
+    // Cherry tomatoes are not fruit, whatever a botanist says.
+    ['cherry tomato', 'veg', 'vegetables'],
+    ['peach', 'veg', 'fruit'],
+    // Grains are checked before baking, so this is not flour.
+    ['flour tortilla', 'carb', 'pasta_and_grains'],
+    ['caster sugar', 'carb', 'baking'],
+    ['dijon mustard', 'flavour', 'sauces'],
+  ];
+
+  for (const [name, category, expected] of cases) {
+    it(`puts ${name} in ${expected}`, () => {
+      assert.equal(shopAisle(name, category), expected);
+    });
+  }
+
+  it('falls back to the canonical category for an unknown name', () => {
+    assert.equal(shopAisle('szechuan peppercorn blend', 'flavour'), 'spices_and_seasoning');
+  });
+
+  it('falls back to the cupboard when there is no category either', () => {
+    assert.equal(shopAisle('something nobody has heard of', null), 'pantry');
   });
 });
