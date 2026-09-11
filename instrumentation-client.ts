@@ -45,6 +45,7 @@ import {
 } from '@/lib/posthog-events';
 import {
   appStoreCampaignUrl,
+  buildAppUrl,
   captureEntrySource,
   forgetEntrySource,
   getTrafficSource,
@@ -210,24 +211,48 @@ if (typeof window !== 'undefined') {
 
       // 3. chopit.app passthrough — rewrite then capture.
       //
-      // buildAppUrl() (utm pass-through) is deliberately NOT wired here yet:
-      // the only chopit.app links on the site are the /m/<code> share-page
-      // deep links, and share traffic does not arrive from AI answers.
+      // Two kinds of chopit.app link reach this branch and they are NOT
+      // treated alike:
+      //
+      //   - A "Use it in your browser" CTA, marked with data-cta-surface.
+      //     This is a real CTA competing with the App Store and ChatGPT
+      //     buttons beside it, so it gets buildAppUrl()'s utm attribution
+      //     and fires cta_clicked like they do.
+      //   - The /m/<code> share-page deep links, which carry no marker.
+      //     Share traffic does not arrive from AI answers, so tagging it
+      //     adds noise and no signal, and firing cta_clicked for it would
+      //     put share opens in the CTA funnel. These keep exactly the
+      //     behaviour they had: phid only, outbound_to_app only.
       if (CHOPIT_APP_RE.test(href)) {
+        const ctaSurface = link.dataset.ctaSurface as CtaSurface | undefined;
+
         try {
+          // buildAppUrl returns the href untouched if it already carries any
+          // utm param, so a link that claimed attribution upstream is safe.
+          const tagged = ctaSurface
+            ? buildAppUrl(href, { source: trafficSource, ctaLocation: ctaSurface })
+            : href;
+          const url = new URL(tagged);
           const distinctId =
             typeof posthog.get_distinct_id === 'function' ? posthog.get_distinct_id() : null;
-          if (distinctId) {
-            const url = new URL(href);
-            url.searchParams.set('phid', distinctId);
-            link.href = url.toString();
-          }
+          if (distinctId) url.searchParams.set('phid', distinctId);
+          const next = url.toString();
+          if (next !== href) link.href = next;
         } catch {
           // Malformed URL — leave the href alone, still fire the event so
           // we can measure CTR even when rewriting failed.
         }
         try {
           trackOutboundToApp({ from_url: pagePath, to_url: link.href });
+          if (ctaSurface) {
+            // A stable token, not link.href: the href now carries utm params
+            // rewritten per click, so it is useless as a grouping key.
+            trackCtaClicked({
+              cta_location: ctaSurface,
+              cta_label: inlineLabel(link),
+              cta_destination: 'pwa',
+            });
+          }
         } catch {
           /* ignore — tracking never blocks navigation */
         }

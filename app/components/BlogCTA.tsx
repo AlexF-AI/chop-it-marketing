@@ -5,6 +5,7 @@
 // body in app/blog/[slug]/page.tsx — the markdown files stay CTA-free.
 
 import { appStoreUrl, CHATGPT_LIVE, CHATGPT_URL, IOS_LIVE } from '@/app/lib/app-stores';
+import { WEB_APP_ORIGIN } from '@/app/lib/entity';
 import { trackAppStoreClick, trackCtaClicked } from '@/lib/posthog-events';
 
 /** The dual button pair on its own — reused by the salads post outro. */
@@ -50,6 +51,20 @@ export function BlogCTAButtons({ className = 'blog-cta-row' }: { className?: str
             Get the iPhone app
           </a>
         )}
+        {/* Ungated by IOS_LIVE / CHATGPT_LIVE individually — the web app
+            needs neither a store listing nor a ChatGPT account — though the
+            early return above still hides the whole row if both switches are
+            off, since the surrounding copy promises those two paths. See
+            FinalCTA for why this is a plain anchor the global listener owns
+            rather than a tracked one. */}
+        <a
+          className="btn btn-ghost"
+          href={WEB_APP_ORIGIN}
+          rel="noopener noreferrer"
+          data-cta-surface="blog_pwa"
+        >
+          Use it in your browser
+        </a>
     </div>
   );
 }
@@ -61,8 +76,8 @@ export default function BlogCTA() {
       <h2 className="blog-cta-h">Keep the good ideas</h2>
       <p className="blog-cta-sub">
         Create or find a recipe with Chop it in ChatGPT, then open anything you want to keep in
-        the iPhone app alongside recipes from cookbooks, websites and social. Plan the week, build
-        one shopping list and cook from the same library.
+        your browser or the iPhone app, alongside recipes from cookbooks, websites and social.
+        Plan the week, build one shopping list and cook from the same library.
       </p>
       <BlogCTAButtons />
     </aside>
