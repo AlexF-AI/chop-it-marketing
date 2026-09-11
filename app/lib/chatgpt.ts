@@ -37,7 +37,7 @@ export type PluginShot = {
  * `AUTH_LIVE` must stay false — there is nothing to render in its place.
  */
 const PLUGIN_SHOT_UNAUTHED: PluginShot = {
-  src: '/screens/chatgpt-shopping-list.jpeg',
+  src: '/screens/chatgpt-week.jpeg',
   alt: 'Chop it in ChatGPT combining the week into one shopping list',
   width: 1179,
   height: 1568,

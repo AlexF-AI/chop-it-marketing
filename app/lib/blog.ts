@@ -32,11 +32,24 @@ export type BlogPostMeta = {
    * markdown file, so getPostBody() is never called for it.
    */
   menuShareCode?: string;
+  /**
+   * Short label for the square badge on the article hero. Editorial, not a
+   * taxonomy: nothing routes off it and there is no category index. Omit it
+   * and the badge simply isn't rendered.
+   */
+  category?: string;
+  /**
+   * Hero photograph. Optional, and currently unset everywhere — no article
+   * photography has been shot. Without one the hero falls back to a
+   * typographic plate on ink, which carries the same badge and headline.
+   */
+  heroImage?: { src: string; alt: string };
 };
 
 export const BLOG_POSTS: BlogPostMeta[] = [
   {
     slug: 'hellofresh-alternatives-uk',
+    category: 'Comparison',
     title: 'HelloFresh Alternatives UK: What the Kits Cost',
     description:
       'Gousto, HelloFresh and Mindful Chef cost £4.65 to £7.62 a portion at the standard rate. What that premium buys, and what does the same job for less.',
@@ -45,6 +58,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
   },
   {
     slug: 'chatgpt-meal-planning',
+    category: 'Guide',
     title: 'ChatGPT Meal Planning: What Works, What Does Not',
     description:
       'What ChatGPT is good at in the kitchen, where it fails on its own, and a five-step method for getting a usable weekly meal plan out of it for free.',
@@ -53,6 +67,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
   },
   {
     slug: 'meal-planning-app-shopping-list-uk',
+    category: 'Comparison',
     title: 'Meal Planning Apps With a Shopping List (UK)',
     description:
       'Four recipes wanting onions should give you one line, not four. How Cherrypick, Mealime, Samsung Food and AnyList handle merging and aisle sorting.',
@@ -61,6 +76,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
   },
   {
     slug: 'future-of-ai-cooking',
+    category: 'Perspective',
     title: 'The Future of AI Cooking: From Chat to Kitchen',
     description:
       'AI can generate dinner ideas in seconds. The future is making those recipes persistent, structured and useful from chat through planning, shopping and cooking.',
@@ -69,6 +85,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
   },
   {
     slug: 'what-to-cook-with-a-veg-box',
+    category: 'Guide',
     title: 'What to Cook With a Veg Box (Without Wasting Half of It)',
     description:
       'Photograph your veg box, turn its contents into a pantry, and plan meals that use the fragile produce first. A practical way to waste less of every delivery.',
@@ -77,6 +94,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
   },
   {
     slug: 'future-of-meal-prep-ai-customisation',
+    category: 'Perspective',
     title: 'The Future of Meal Prep: AI as the Customisation Layer',
     description:
       "AI meal planning turns a household's changing constraints into recipes, a practical weekly menu and one shopping list. Here is the customisation layer.",
@@ -85,6 +103,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
   },
   {
     slug: 'easy-summer-salads-this-weeks-dinners',
+    category: 'Recipes',
     title: '49 Easy Summer Salads to Cook This Week',
     description:
       'A full week of easy summer salads that hold their own as dinner, each with ingredients and method, plus a one-tap shopping list for the whole lot in Chop it.',
@@ -94,6 +113,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
   },
   {
     slug: 'how-to-meal-plan-for-the-week',
+    category: 'Guide',
     title: 'How to Meal Plan for the Week (A System That Sticks)',
     description:
       'A meal-planning method that survives a real week: pick 4–5 dinners, write one merged shopping list, shop once. Plus how to keep the habit going.',
@@ -102,6 +122,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
   },
   {
     slug: 'how-to-reduce-food-waste-at-home',
+    category: 'Guide',
     title: 'How to Reduce Food Waste at Home (UK Guide)',
     description:
       'UK households throw away food worth £17bn a year. These practical habits make ingredients easier to use before they reach the bin.',
@@ -110,6 +131,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
   },
   {
     slug: 'how-much-fibre-do-you-need-a-day',
+    category: 'Nutrition',
     title: 'How Much Fibre Do You Need a Day? (And How to Eat It)',
     description:
       'The UK target is 30g of fibre a day, yet 96% of adults fall short. These simple swaps help close the gap without counting every gram.',
@@ -118,6 +140,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
   },
   {
     slug: 'why-chatgpt-changes-home-cooking-and-grocery-shopping',
+    category: 'Perspective',
     title: 'How ChatGPT Will Change Cooking and Grocery Shopping',
     description:
       'ChatGPT can plan meals and draft a grocery list. The useful future connects that conversation to reliable recipes, one library and the weekly shop.',
@@ -126,6 +149,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
   },
   {
     slug: 'how-to-eat-30-plants-a-week',
+    category: 'Nutrition',
     title: 'How to Eat 30 Plants a Week (and What Counts)',
     description:
       "What the 30-plants-a-week gut-health rule means, what counts (herbs, spices, nuts and coffee all do), and how to hit it without a spreadsheet.",
@@ -134,6 +158,7 @@ export const BLOG_POSTS: BlogPostMeta[] = [
   },
   {
     slug: 'best-meal-planning-apps-uk-2026',
+    category: 'Comparison',
     title: 'Best Meal Planning Apps in the UK for 2026',
     description:
       'Ten UK meal planning apps compared on price, shopping lists and pantry awareness, with every price checked on the UK App Store in August 2026.',

@@ -1,0 +1,440 @@
+/* Blog post — the Sunday Supplement article template.
+ *
+ * The measure caps at 680px and centres; the coloured plates and bands
+ * break out of it and run full-bleed, which is what gives the page its
+ * magazine rhythm rather than one long column.
+ */
+
+.measure {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* ---- Hero ----
+   A photograph where one exists; a typographic plate where one doesn't.
+   Both carry the badge and the h1, so the page reads the same either way.
+*/
+
+.hero {
+  position: relative;
+  min-height: 230px;
+  display: flex;
+  align-items: flex-end;
+  background: var(--band-ink);
+  overflow: hidden;
+}
+
+.heroImg {
+  object-fit: cover;
+}
+
+.heroScrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(16, 12, 10, 0.86), rgba(16, 12, 10, 0.05));
+  pointer-events: none;
+}
+
+.heroInner {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 28px var(--gutter) 22px;
+}
+
+/* Square, unlike the chips: this is a label, not a control. */
+.badge {
+  display: inline-block;
+  background: var(--raspberry);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 9px;
+  margin-bottom: 12px;
+}
+
+.h1 {
+  margin: 0;
+  font-family: var(--ff-display);
+  font-weight: 400;
+  font-size: clamp(34px, 10.3vw, 40px);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: #FBF7F0;
+  text-wrap: pretty;
+}
+
+/* ---- Byline ---- */
+
+.byline {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 0 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.bylineMark {
+  flex: none;
+  transform: rotate(-12deg);
+}
+
+.bylineText {
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--ink-muted);
+}
+
+.bylineAuthor {
+  color: var(--raspberry-ink);
+  font-weight: 600;
+}
+
+.bylineAuthor:hover {
+  color: var(--raspberry-deep);
+}
+
+.readingTime {
+  flex: none;
+  font-family: var(--ff-display);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--raspberry-ink);
+}
+
+/* ---- Short answer plate ----
+   The AEO block. High in the DOM, and marked up so an extractor can lift
+   the answer without the label coming with it.
+*/
+
+.shortAnswer {
+  background: var(--raspberry);
+  color: #fff;
+  padding: 20px 18px 22px;
+  margin: 22px 0;
+}
+
+.shortAnswerLabel {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pink-on-rasp);
+  margin-bottom: 8px;
+}
+
+.shortAnswerText {
+  margin: 0;
+  font-family: var(--ff-display);
+  font-size: 23px;
+  line-height: 1.2;
+  text-wrap: pretty;
+}
+
+/* ---- Contents ----
+   Bracketed by 2px ink rules, which is the heaviest rule in the system and
+   is reserved for this and the pull quote.
+*/
+
+.contents {
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  padding: 16px 0;
+  margin: 22px 0;
+}
+
+.contentsLabel {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 12px;
+}
+
+.contentsList {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contentsItem {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.contentsN {
+  font-family: var(--ff-display);
+  font-size: 17px;
+  color: var(--raspberry);
+  flex: none;
+}
+
+.contentsLink {
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 150ms ease;
+}
+
+.contentsLink:hover {
+  color: var(--raspberry-ink);
+}
+
+/* ---- Body ----
+   Every element the markdown can emit, styled once. Nothing here is per
+   post; the article's shape comes from the markdown.
+*/
+
+.body {
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--ink-body);
+  padding-bottom: 8px;
+}
+
+.body p {
+  margin: 0 0 20px;
+  text-wrap: pretty;
+}
+
+.body h2 {
+  font-family: var(--ff-display);
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 34px 0 14px;
+  text-wrap: pretty;
+  /* Anchor targets have to clear the sticky nav and its progress bar. */
+  scroll-margin-top: 92px;
+}
+
+.body h3 {
+  font-family: var(--ff-sans);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 26px 0 10px;
+  scroll-margin-top: 92px;
+}
+
+.body ul,
+.body ol {
+  margin: 0 0 20px;
+  padding-left: 22px;
+}
+
+.body li {
+  margin-bottom: 9px;
+  text-wrap: pretty;
+}
+
+.body a {
+  color: var(--raspberry-ink);
+  font-weight: 500;
+  border-bottom: 1.5px solid var(--raspberry-pale);
+  transition: border-color 150ms ease;
+}
+
+.body a:hover {
+  border-bottom-color: var(--raspberry);
+}
+
+.body strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* Pull quote. The 2px ink rules bracket it the way they bracket the
+   contents block — the two heaviest marks on the page, used sparingly. */
+.body blockquote {
+  margin: 28px 0;
+  padding: 24px 0;
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  font-family: var(--ff-display);
+  font-size: 27px;
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.body blockquote p {
+  margin: 0;
+}
+
+.body blockquote p + p {
+  margin-top: 12px;
+}
+
+/* A markdown rule is a section break, set as space rather than a line —
+   the coloured plates already do the dividing. */
+.body hr {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 30px 0;
+}
+
+.body img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 24px 0;
+}
+
+.body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 22px;
+  font-size: 15px;
+}
+
+.body th,
+.body td {
+  text-align: left;
+  padding: 11px 10px 11px 0;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.body th {
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* Tables are the one thing allowed to scroll sideways. */
+.tableScroll {
+  overflow-x: auto;
+  margin: 0 0 22px;
+}
+
+/* ---- FAQ band ---- */
+
+.faqBand {
+  background: var(--paper-warm);
+  padding: 30px 0 34px;
+  margin-top: 30px;
+}
+
+.faqInner {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.faqH {
+  margin: 0 0 6px;
+  font-family: var(--ff-display);
+  font-weight: 400;
+  font-size: clamp(30px, 8.7vw, 34px);
+  line-height: 1.02;
+  text-wrap: pretty;
+}
+
+.faqList {
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.faqItem {
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+}
+
+.faqList .faqItem:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.faqQ {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  text-wrap: pretty;
+}
+
+.faqA {
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--ink-body);
+  text-wrap: pretty;
+}
+
+/* ---- Keep reading ---- */
+
+.keepReading {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 30px var(--gutter) 40px;
+}
+
+.keepReadingH {
+  margin: 0 0 14px;
+  font-family: var(--ff-display);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--raspberry-ink);
+}
+
+.keepReadingList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.keepReadingItem {
+  border-top: 1px solid var(--line);
+}
+
+.keepReadingList .keepReadingItem:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.keepReadingLink {
+  display: block;
+  padding: 14px 0;
+}
+
+.keepReadingTitle {
+  font-family: var(--ff-display);
+  font-size: 22px;
+  line-height: 1.1;
+  text-wrap: pretty;
+  transition: color 150ms ease;
+}
+
+.keepReadingLink:hover .keepReadingTitle {
+  color: var(--raspberry-ink);
+}
+
+.keepReadingDesc {
+  margin-top: 4px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--ink-muted);
+  text-wrap: pretty;
+}
+
+@media (min-width: 768px) {
+  .hero { min-height: 340px; }
+  .h1 { font-size: clamp(44px, 4.6vw, 58px); }
+  .shortAnswerText { font-size: 27px; }
+  .body { font-size: 19px; }
+  .body h2 { font-size: 40px; }
+  .body blockquote { font-size: 32px; }
+}

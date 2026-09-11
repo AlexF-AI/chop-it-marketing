@@ -1,0 +1,280 @@
+/* The /recipes hub.
+ *
+ * Paper down to the pagination, then the raspberry "browse by cuisine"
+ * band closes the page — the same alternation the homepage runs.
+ */
+
+.head {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 12px var(--gutter) 24px;
+}
+
+.h1 {
+  margin: 0 0 14px;
+  font-family: var(--ff-display);
+  font-weight: 400;
+  font-size: clamp(38px, 11.8vw, 46px);
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  text-wrap: pretty;
+}
+
+.lede {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--ink-body);
+  max-width: 62ch;
+  text-wrap: pretty;
+}
+
+.body {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* ---- Search ----
+   One border box shared by the field and the submit, so the raspberry block
+   is flush against the input with no gap and no radius. */
+
+.search {
+  display: flex;
+  align-items: stretch;
+  border: 1.5px solid var(--line);
+  background: var(--paper-card);
+  margin-bottom: 18px;
+}
+
+.searchLabel {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.searchInput {
+  flex: 1;
+  min-width: 0;
+  height: 54px;
+  padding: 0 16px;
+  border: none;
+  background: none;
+  font-family: var(--ff-sans);
+  font-size: 16px;
+  color: var(--ink);
+  outline: none;
+}
+
+.searchInput:focus-visible {
+  outline: 2px solid var(--raspberry);
+  outline-offset: -2px;
+}
+
+.searchSubmit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 54px;
+  padding: 0 20px;
+  border: none;
+  background: var(--raspberry);
+  color: #fff;
+  font-family: var(--ff-sans);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+
+.searchSubmit:hover { background: var(--raspberry-deep); }
+
+/* ---- Filter chips ----
+   The rows break the gutter and scroll, so a long cuisine list never wraps
+   into a wall of pills. */
+
+.filters {
+  margin-bottom: 22px;
+}
+
+.filterLabel {
+  padding: 0 0 10px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.chipRow {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  /* Negative margin + matching padding: the row scrolls edge to edge while
+     the first chip still lines up with the text column. */
+  margin: 0 calc(var(--gutter) * -1) 16px;
+  padding: 0 var(--gutter);
+  scroll-padding-left: var(--gutter);
+  scroll-padding-right: var(--gutter);
+  list-style: none;
+}
+
+.chipRow::-webkit-scrollbar { display: none; }
+
+.chipRow > li { flex: none; }
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  height: 38px;
+  padding: 0 16px;
+  border-radius: 19px;
+  border: 1.5px solid var(--line);
+  color: var(--ink-body);
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  text-transform: capitalize;
+  transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+.chip:hover {
+  color: var(--raspberry-ink);
+  border-color: var(--raspberry);
+}
+
+.chipOn {
+  border-color: var(--raspberry);
+  background: var(--raspberry);
+  color: #fff;
+}
+
+.chipOn:hover { background: var(--raspberry-deep); border-color: var(--raspberry-deep); color: #fff; }
+
+/* ---- Pagination ---- */
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 26px 0 30px;
+}
+
+.pageOf {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink-faint);
+}
+
+.pageLinks {
+  display: flex;
+  gap: 10px;
+}
+
+/* Square, unlike every other button — pagination is navigation chrome, and
+   the design keeps the pill shape for actions. */
+.pageLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 18px;
+  border: 1.5px solid var(--raspberry);
+  color: var(--raspberry-ink);
+  font-size: 15px;
+  font-weight: 600;
+  transition: background-color 150ms ease;
+}
+
+.pageLink:hover { background: var(--raspberry-tint); color: var(--raspberry-ink); }
+
+.note {
+  padding: 16px 0 24px;
+  color: var(--ink-muted);
+  font-size: 16px;
+}
+
+/* ---- Browse by cuisine ----
+   The 2px grid gap over a translucent white ground is what draws the rules:
+   there are no borders on the cells at all, only the ground showing through.
+*/
+
+.cuisineBand {
+  background: var(--raspberry);
+  color: var(--on-rasp);
+  padding: 32px 0 34px;
+}
+
+.cuisineInner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.cuisineH {
+  margin: 0 0 22px;
+  font-family: var(--ff-display);
+  font-weight: 400;
+  font-size: clamp(34px, 10.2vw, 40px);
+  line-height: 1;
+  color: #fff;
+  text-wrap: pretty;
+}
+
+.cuisineGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.35);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cuisineCard {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 14px 12px;
+  background: var(--raspberry);
+  color: #fff;
+  height: 100%;
+  transition: background-color 150ms ease;
+}
+
+.cuisineCard:hover { background: var(--raspberry-deep); color: #fff; }
+
+.cuisineName {
+  font-family: var(--ff-display);
+  font-size: 21px;
+  line-height: 1.1;
+}
+
+.cuisineCount {
+  font-size: 13px;
+  color: var(--pink-on-rasp);
+  flex: none;
+}
+
+@media (min-width: 768px) {
+  .h1 { font-size: clamp(52px, 5.2vw, 66px); }
+  .lede { font-size: 18px; }
+  .head { padding: 24px var(--gutter) 32px; }
+  .cuisineBand { padding: 64px 0 68px; }
+  .cuisineH { font-size: clamp(44px, 4.4vw, 56px); }
+  .cuisineGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1040px) {
+  .cuisineGrid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}

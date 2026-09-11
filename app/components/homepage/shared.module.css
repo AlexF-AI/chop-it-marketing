@@ -7,11 +7,25 @@
  * keeps both sets intact.
  *
  * Tokens, fonts and --maxw come from globals.css — nothing is redefined.
+ *
+ * The Sunday Supplement system replaces hairline-divided sections on one
+ * cream ground with alternating solid bands. A section therefore carries its
+ * own ground and its own vertical padding, and `.section` no longer draws a
+ * rule — two adjacent grounds are the divider.
  */
 
 .section {
-  border-top: 1px solid var(--line);
+  padding: 30px 0 34px;
 }
+
+/* Coloured bands take the higher end of the padding scale. */
+.sectionBand {
+  padding: 34px 0 36px;
+}
+
+.bandWarm { background: var(--paper-warm); }
+.bandRasp { background: var(--raspberry); color: var(--on-rasp); }
+.bandInk  { background: var(--band-ink); color: var(--paper); }
 
 .shell {
   max-width: var(--maxw);
@@ -22,82 +36,78 @@
 .shellPadded {
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: clamp(52px, 7vw, 100px) var(--gutter);
+  padding: 30px var(--gutter) 34px;
 }
 
-/* Mono microlabel: eyebrows, statuses, captions, data. Never below 10px, and
-   only ever all-caps. */
+/* Serif italic eyebrow. This one change — replacing the uppercase mono
+   kicker — does most of the work separating this identity from the old
+   site, so it is the first thing every section renders. */
 .eyebrow {
-  font-family: var(--ff-mono);
-  font-weight: 600;
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-3);
+  font-family: var(--ff-display);
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--raspberry-ink);
+  margin-bottom: 10px;
 }
 
-.caption {
-  font-family: var(--ff-mono);
-  font-weight: 600;
-  font-size: 10px;
-  letter-spacing: 0.16em;
+.eyebrowOnInk { color: var(--pink-on-ink); }
+.eyebrowOnRasp { color: var(--pink-on-rasp); }
+
+/* The surviving microlabel: uppercase Archivo 700 on wide tracking, only
+   ever used for small section labels inside coloured blocks. */
+.microLabel {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--ink-3);
 }
 
 .h2 {
-  font-size: clamp(30px, 5vw, 48px);
-  font-weight: 700;
-  line-height: 1.06;
-  letter-spacing: -0.03em;
-  margin: 0;
+  font-family: var(--ff-display);
+  font-weight: 400;
+  font-size: clamp(34px, 10.8vw, 44px);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  margin: 0 0 14px;
+  text-wrap: pretty;
 }
+
+.h2OnRasp { color: #fff; }
+.h2OnInk { color: #FBF7F0; }
 
 .lede {
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.5;
-  color: var(--ink-2);
-  max-width: 56ch;
-  margin: 0;
+  color: var(--ink-body);
+  max-width: 62ch;
+  margin: 0 0 24px;
+  text-wrap: pretty;
 }
 
-/* Headline left, supporting paragraph right. Every split shape lives here so
-   the ≤1000px stack is guaranteed to win on source order. */
-.split {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(24px, 4vw, 64px);
+.ledeOnRasp { color: var(--pink-body); }
+.ledeOnInk { color: #BDB5AC; }
+
+/* A serif line that closes a section — the editorial equivalent of a
+   sign-off, set larger than body but smaller than an h2. */
+.closer {
+  font-family: var(--ff-display);
+  font-size: 25px;
+  line-height: 1.2;
+  margin: 22px 0 0;
+  text-wrap: pretty;
 }
 
-.splitEnd {
-  align-items: end;
-}
-
-.splitStart {
-  align-items: start;
-}
-
-/* One library: sources column against the taller app-thread figure. */
-.splitLibrary {
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-  gap: clamp(24px, 4vw, 56px);
-  align-items: start;
-}
-
-/* ChatGPT band: copy column slightly wider than the screenshot column. */
-.splitChatgpt {
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-  gap: clamp(32px, 5vw, 72px);
-  align-items: start;
-}
-
-/* A framed product screenshot: hairline, radius 4, native crop preserved. */
-.frame {
+/* Square by rule. Images, cards, panels and inputs never round; only
+   buttons and chips do. */
+.media {
   position: relative;
-  border: 1px solid var(--line);
-  border-radius: 4px;
   overflow: hidden;
-  background: var(--surface-2);
+  background: var(--photo-placeholder);
+}
+
+.mediaImg {
+  object-fit: cover;
 }
 
 .figure {
@@ -107,78 +117,153 @@
   margin: 0;
 }
 
-/* Horizontal rails: own scroller, hidden scrollbar, snapped to the page
-   gutter rather than flush to the scrollport edge. */
+/* Horizontal rails break the page gutter: the row scrolls edge to edge
+   while the first card still lines up with the text column above it. */
 .rail {
+  display: flex;
+  gap: 14px;
+  /* Rails are marked up as lists so the card count is announced. */
+  list-style: none;
+  margin: 0;
+  overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
   scroll-padding-left: var(--gutter);
   scroll-padding-right: var(--gutter);
+  padding: 24px var(--gutter) 4px;
 }
 
-.rail::-webkit-scrollbar {
-  display: none;
+.rail::-webkit-scrollbar { display: none; }
+
+.rail > * {
+  flex: none;
+  scroll-snap-align: start;
 }
 
+/* Numbered/lettered stacked rows, bracketed by rules top and bottom. */
+.rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  border-top: 1px solid var(--line);
+  padding: 16px 0;
+}
+
+.rows > .row:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+/* On a raspberry ground the rules go translucent white instead. */
+.rowOnRasp {
+  border-top-color: rgba(255, 255, 255, 0.35);
+}
+
+.rows > .rowOnRasp:last-child {
+  border-bottom-color: rgba(255, 255, 255, 0.35);
+}
+
+.rowOnInk {
+  border-top-color: var(--line-ink);
+}
+
+.rows > .rowOnInk:last-child {
+  border-bottom-color: var(--line-ink);
+}
+
+/* Buttons: the only rounded shape in the system. */
 .btn {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  height: 52px;
-  border-radius: 4px;
-  font-size: 16px;
+  justify-content: center;
+  gap: 8px;
+  height: 56px;
+  padding: 0 24px;
+  border-radius: 28px;
+  font-size: 17px;
   font-weight: 600;
+  text-align: center;
+  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
 }
 
-.btnPrimary {
-  padding: 0 26px;
-  background: var(--ink);
-  color: var(--ground);
-}
-
-.btnPrimary:hover {
-  color: var(--ground);
-  opacity: 0.88;
-}
+.btnPrimary { background: var(--raspberry); color: #fff; }
+.btnPrimary:hover { background: var(--raspberry-deep); color: #fff; }
 
 .btnSecondary {
-  gap: 8px;
-  padding: 0 24px;
-  border: 1px solid var(--ink);
-  color: var(--ink);
+  border: 1.5px solid var(--raspberry);
+  color: var(--raspberry-ink);
 }
+.btnSecondary:hover { background: var(--raspberry-tint); color: var(--raspberry-ink); }
 
-.btnSecondary:hover {
-  color: var(--ink);
-  background: var(--surface-2);
+/* On the raspberry band the primary inverts to white-on-raspberry and the
+   secondary outlines in the pale pink. */
+.btnOnRasp { background: #fff; color: var(--raspberry-deep); }
+.btnOnRasp:hover { background: var(--pink-on-rasp); color: var(--raspberry-deep); }
+
+.btnOutlineOnRasp {
+  border: 1.5px solid var(--pink-on-rasp);
+  color: #fff;
 }
+.btnOutlineOnRasp:hover { background: rgba(255, 255, 255, 0.12); color: #fff; }
 
-.ctaRow {
+/* On the ink band the primary is paper. */
+.btnOnInk { background: var(--paper); color: var(--ink); }
+.btnOnInk:hover { background: #fff; color: var(--ink); }
+
+.ctaStack {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+  flex-direction: column;
+  gap: 10px;
 }
 
+/* Ruled text link, raspberry voice. */
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--raspberry-ink);
+  border-bottom: 1.5px solid var(--raspberry-pale);
+  padding-bottom: 2px;
+  transition: border-color 150ms ease;
+}
+.link:hover { color: var(--raspberry-ink); border-bottom-color: var(--raspberry); }
+
+.linkPlain {
+  color: var(--ink);
+  border-bottom-color: var(--line);
+}
+.linkPlain:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+.linkOnRasp {
+  color: #fff;
+  border-bottom-color: rgba(255, 255, 255, 0.6);
+}
+.linkOnRasp:hover { color: #fff; border-bottom-color: #fff; }
+
+/* The one named animation in the system. */
 @keyframes pulse {
   0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.3;
-  }
+  100% { opacity: 1; }
+  50% { opacity: 0.3; }
 }
 
-@media (max-width: 1000px) {
-  .split,
-  .splitLibrary,
-  .splitChatgpt {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-@media (max-width: 560px) {
-  .ctaRow > a {
-    width: 100%;
-    justify-content: center;
-  }
+/* ---- Desktop ----
+   Unspecified by the design package (every mock is drawn at 390pt), so
+   these are the implementer's call, following the "Responsive" notes: the
+   content column caps and centres while the coloured bands stay
+   full-bleed, and stacked lists go two-up once there is room. */
+@media (min-width: 768px) {
+  .section { padding: 56px 0 60px; }
+  .sectionBand { padding: 64px 0 68px; }
+  .shellPadded { padding: 56px var(--gutter) 60px; }
+  .h2 { font-size: clamp(44px, 4.6vw, 58px); }
+  .lede { font-size: 18px; }
+  .eyebrow { font-size: 22px; }
+  .closer { font-size: 30px; }
 }

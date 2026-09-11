@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Archivo, JetBrains_Mono } from 'next/font/google';
+import { Archivo, Instrument_Serif } from 'next/font/google';
 import './styles/globals.css';
 
 import CookieBanner from './components/CookieBanner';
@@ -16,9 +16,14 @@ import { ORGANIZATION_JSONLD, WEBSITE_JSONLD } from './lib/entity';
 // is invisible to lint and typecheck, because it lives in the environment.
 assertStoreUrlsValid();
 
-// Archivo carries headings and body copy; JetBrains Mono carries kickers,
-// meta rows and numerals. Both are wired to the CSS variables read by
-// --ff-display / --ff-sans / --ff-mono in globals.css.
+// Instrument Serif carries the display voice — every h1/h2, the italic
+// eyebrows, step numerals and pull quotes. Archivo carries body copy, UI,
+// buttons and metadata. Both are wired to the CSS variables read by
+// --ff-display / --ff-sans in globals.css.
+//
+// JetBrains Mono is gone: the serif italic eyebrow replaced the uppercase
+// mono kicker everywhere, and the one surviving microlabel is uppercase
+// Archivo 700. Dropping it removes a whole font request from every page.
 const archivo = Archivo({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
@@ -26,10 +31,13 @@ const archivo = Archivo({
   display: 'swap',
 });
 
-const jetbrainsMono = JetBrains_Mono({
+// Instrument Serif ships a single weight (400) in roman and italic, which
+// is the whole face — there is no 500/600 to ask for.
+const instrumentSerif = Instrument_Serif({
   subsets: ['latin'],
-  weight: ['400', '500'],
-  variable: '--font-jetbrains-mono',
+  weight: '400',
+  style: ['normal', 'italic'],
+  variable: '--font-instrument-serif',
   display: 'swap',
 });
 
@@ -37,7 +45,7 @@ const jetbrainsMono = JetBrains_Mono({
 // visitor lands in rather than being pinned to the light background.
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#faf8f4' },
+    { media: '(prefers-color-scheme: light)', color: '#f6f1e7' },
     { media: '(prefers-color-scheme: dark)', color: '#131110' },
   ],
   colorScheme: 'light dark',
@@ -93,7 +101,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en-GB"
-      className={`${archivo.variable} ${jetbrainsMono.variable}`}
+      className={`${archivo.variable} ${instrumentSerif.variable}`}
       suppressHydrationWarning
     >
       <head>

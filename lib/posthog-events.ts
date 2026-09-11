@@ -262,6 +262,28 @@ export function trackDemoSearchSubmitted(props: { query_length: number }): void 
   posthog.capture('demo_search_submitted', props);
 }
 
+/* --------------------------------------------------------------------------
+   Menu builder (/menu)
+   -------------------------------------------------------------------------- */
+
+export type MenuLinkCreatedProps = {
+  /** The minted /m/<code> code, so a share can be traced to its page views. */
+  share_code: string;
+  recipe_count: number;
+};
+
+/**
+ * Fired when a visitor successfully mints a share link.
+ *
+ * This is the conversion event for the builder — the acquisition loop is
+ * "someone builds a menu, sends it, the recipient lands on /m/<code>" — so
+ * the code is on the payload deliberately: it is what joins this event to
+ * the pageviews on the share page it produced.
+ */
+export function trackMenuLinkCreated(props: MenuLinkCreatedProps): void {
+  posthog.capture('menu_link_created', props);
+}
+
 /**
  * Sets the Person profile for an identified waitlist member. Called on
  * successful submission. Combined with the `identified_only` person

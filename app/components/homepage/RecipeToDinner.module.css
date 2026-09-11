@@ -1,123 +1,62 @@
-.eyebrow {
-  margin-bottom: 20px;
-}
+/* "One shop. One place to cook." — two 4:5 app screens, each introduced by
+ * a lower-case roman numeral. The numerals are the only place in the system
+ * where a figure is set in roman rather than arabic; they mark a sequence
+ * of two rather than a ranked list.
+ */
 
-.h2 {
-  max-width: 18ch;
-  margin-bottom: clamp(36px, 5vw, 56px);
-}
-
-.features {
-  border-top: 1px solid var(--line);
-}
-
-.feature {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 2px minmax(0, 1fr);
-  gap: 18px;
-  align-items: start;
-  text-align: left;
-  background: none;
-  border: none;
-  border-bottom: 1px solid var(--line);
-  padding: 20px 0;
-  cursor: pointer;
-}
-
-/* The accent marks the selected feature and nothing else in this section. */
-.featureRule {
-  align-self: stretch;
-  background: transparent;
-}
-
-.featureActive .featureRule {
-  background: var(--accent);
-}
-
-.featureCopy {
+.steps {
   display: flex;
   flex-direction: column;
-  gap: 9px;
-}
-
-.featureLabel {
-  font-family: var(--ff-mono);
-  font-weight: 600;
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-}
-
-.featureActive .featureLabel {
-  color: var(--accent-text);
-}
-
-.featureText {
-  font-size: 16px;
-  line-height: 1.5;
-  color: var(--ink-2);
-}
-
-.featureActive .featureText {
-  color: var(--ink);
-}
-
-/* All three screens are stacked in one grid cell rather than toggled with
-   display:none. Only the selected one paints, so it looks the same, but the
-   other two keep a layout box — which is what lets their lazy images load with
-   the section instead of leaving an empty frame on the first tab click. */
-.screens {
-  display: grid;
-  width: min(100%, 440px);
-  justify-self: center;
-}
-
-.screen,
-.screenActive {
-  grid-area: 1 / 1;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin: 0;
-}
-
-/* Also takes them out of the accessibility tree. */
-.screen {
-  visibility: hidden;
-}
-
-.frame {
-  aspect-ratio: 9 / 16;
+  gap: 22px;
 }
 
 .shot {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  max-width: 100%;
+  overflow: hidden;
+  background: var(--photo-placeholder);
+}
+
+.shotImg {
   object-fit: cover;
   object-position: top;
 }
 
-/* One screen stays large on desktop; on mobile all three become a manual snap
-   rail. Keep the rail inside the page gutters so the first screen can never
-   sit beyond the left edge on narrow iPhones. No autoplay. */
-@media (max-width: 900px) {
-  .screens {
-    display: flex;
-    width: 100%;
-    min-width: 0;
-    justify-self: stretch;
-    overflow-x: auto;
-    gap: 12px;
-    scroll-snap-type: x mandatory;
-    scroll-padding-inline: 0;
-    margin: 0;
-    padding: 0;
-  }
+.copy {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 12px;
+}
 
-  .screen,
-  .screenActive {
-    visibility: visible;
-    flex: 0 0 100%;
-    scroll-snap-align: start;
+.numeral {
+  font-family: var(--ff-display);
+  font-size: 26px;
+  line-height: 1;
+  color: var(--raspberry);
+  flex: none;
+}
+
+.label {
+  font-size: 19px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.text {
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--ink-body);
+  text-wrap: pretty;
+}
+
+@media (min-width: 768px) {
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 40px;
+    align-items: start;
   }
+  .numeral { font-size: 30px; }
 }

@@ -1,168 +1,162 @@
-/* The opening runs to three paragraphs, so the copy column takes a little
-   more room than the 5/7 it held when the hero was a headline and one
-   sentence. The two product frames still fit at 6.5 columns. */
+/* Hero: a full-bleed photograph with the headline set into its lower left,
+ * then the intro and CTA stack on paper beneath it.
+ *
+ * The photo runs edge to edge with no gutter — it is the one element on the
+ * page that ignores the 20px page margin, which is what makes it read as a
+ * magazine cover rather than a hero card.
+ */
+
 .hero {
+  position: relative;
+  height: 320px;
+  background: var(--photo-placeholder);
+  overflow: hidden;
+}
+
+.heroImg {
+  object-fit: cover;
+  object-position: center 46%;
+}
+
+/* Scrim over the bottom two-thirds. The headline needs a mid-to-dark
+   subject under it to hold 4.5:1, which is a photography brief as much as
+   a CSS one — see the note on .heroImg's source in Hero.tsx. */
+.scrim {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 66%;
+  background: linear-gradient(to top, rgba(16, 12, 10, 0.9), rgba(16, 12, 10, 0));
+  pointer-events: none;
+}
+
+.heroText {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 20px;
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: clamp(36px, 5vw, 68px) var(--gutter) clamp(52px, 7vw, 96px);
-  display: grid;
-  grid-template-columns: minmax(0, 5.5fr) minmax(0, 6.5fr);
-  gap: clamp(32px, 4.5vw, 72px);
-  align-items: center;
+  padding: 0 var(--gutter);
 }
 
-/* The hero eyebrow carries the brand line, not a section label, so it does
-   not take the shared microlabel treatment: 11px mono at 0.16em tracking in
-   --ink-3 is legible as a caption but hard work as a line you are meant to
-   read. Larger, tighter and at full ink weight. */
 .eyebrow {
-  margin-bottom: 22px;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: var(--ink);
+  font-family: var(--ff-display);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1;
+  color: #F3C9D6;
+  margin-bottom: 6px;
 }
 
-@media (max-width: 560px) {
-  .eyebrow {
-    font-size: 13px;
-    letter-spacing: 0.08em;
-  }
-}
-
-/* Four short sentences rather than one long clause, so the type can run
-   larger than the old headline without wrapping into five lines. */
 .h1 {
-  font-size: clamp(38px, 7.2vw, 62px);
-  font-weight: 700;
-  line-height: 1.03;
-  letter-spacing: -0.035em;
-  margin-bottom: 24px;
-  text-wrap: balance;
+  margin: 0;
+  font-family: var(--ff-display);
+  font-weight: 400;
+  font-size: clamp(40px, 13.3vw, 52px);
+  line-height: 0.96;
+  letter-spacing: -0.015em;
+  color: #FBF7F0;
+  text-wrap: pretty;
+}
+
+/* "Identity." is the payoff word, so it takes the italic and the pink. */
+.h1 em {
+  font-style: italic;
+  color: #F3A3BE;
+}
+
+/* ---- Intro ---- */
+
+.intro {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 26px var(--gutter) 0;
 }
 
 .body {
+  margin: 0 0 16px;
   font-size: 18px;
-  line-height: 1.55;
-  color: var(--ink-2);
-  max-width: 52ch;
-  margin: 0 0 18px;
+  line-height: 1.5;
+  color: var(--ink-body);
+  max-width: 62ch;
+  text-wrap: pretty;
 }
 
-/* "That's why we built Chop it." — the turn from the problem to the
-   product. Full ink weight so it reads as a statement, not a third
-   paragraph of setup. */
-.lead {
-  font-size: 19px;
-  line-height: 1.45;
-  font-weight: 600;
-  color: var(--ink);
-  max-width: 52ch;
-  margin: 0 0 30px;
+/* The payoff line, flagged by the cleaver mark tipped off-axis. The
+   rotation is decorative — the mark is empty-alt and aria-hidden. */
+.payoff {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 22px;
 }
 
-.ctaRow {
-  margin-bottom: 20px;
+.payoffMark {
+  flex: none;
+  transform: rotate(-12deg);
+}
+
+.payoffText {
+  margin: 0;
+  font-family: var(--ff-display);
+  font-size: 27px;
+  line-height: 1.1;
+  text-wrap: pretty;
+}
+
+.ctaBlock {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--gutter) 30px;
 }
 
 .status {
   display: flex;
   align-items: center;
   gap: 9px;
+  padding-top: 6px;
 }
 
 .statusDot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--raspberry);
   animation: pulse 2.4s ease-in-out infinite;
   flex: none;
 }
 
+@keyframes pulse {
+  0%,
+  100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .statusDot { animation: none; }
+}
+
 .statusLabel {
-  font-family: var(--ff-mono);
-  font-weight: 600;
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-2);
-}
-
-/* Two flat surfaces with the handoff running between them — no device mock-ups. */
-.viz {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 48px minmax(0, 1fr);
-  align-items: stretch;
-}
-
-.frame {
-  /* Both captures are genuinely tall product states. A 9:16 frame preserves
-     the request, most of the generated week and all four app meals. */
-  aspect-ratio: 9 / 16;
-}
-
-.shot {
-  object-fit: cover;
-  object-position: top;
-}
-
-.shotCaption {
   font-size: 14px;
-  line-height: 1.45;
-  color: var(--ink-2);
+  font-weight: 500;
+  color: var(--ink-muted);
 }
 
-.connector {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  padding: 34px 0;
-}
-
-.hair {
-  flex: 1;
-  width: 1px;
-  background: var(--line);
-}
-
-.connectorLabel {
-  writing-mode: vertical-rl;
-  font-family: var(--ff-mono);
-  font-weight: 600;
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-  white-space: nowrap;
-}
-
-/* Copy first, then the two product surfaces stacked. */
-@media (max-width: 1000px) {
-  .hero {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 40px;
-  }
-}
-
-@media (max-width: 640px) {
-  .viz {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .connector {
+@media (min-width: 768px) {
+  .hero { height: clamp(420px, 52vw, 620px); }
+  .h1 { font-size: clamp(56px, 6.4vw, 84px); }
+  .eyebrow { font-size: 22px; }
+  .heroText { bottom: 34px; }
+  .intro { padding-top: 44px; }
+  .body { font-size: 19px; }
+  .payoffText { font-size: 34px; }
+  /* Two buttons side by side once the column is wide enough that a full
+     stack would leave a long gap under the intro. */
+  .ctaBlock .ctaRow {
     flex-direction: row;
-    padding: 16px 0;
-    gap: 14px;
+    flex-wrap: wrap;
   }
-
-  .hair {
-    width: auto;
-    height: 1px;
-  }
-
-  .connectorLabel {
-    writing-mode: horizontal-tb;
-  }
+  .ctaBlock .ctaRow > * { min-width: 260px; flex: 0 1 auto; }
 }

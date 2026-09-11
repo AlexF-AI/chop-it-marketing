@@ -1,18 +1,15 @@
 // Server component. Shared grid used by the hub + every taxonomy page
-// (cuisine / season / tag). Reuses the existing .recipes-grid + .recipe-card
-// styles from globals.css so it inherits the homepage's 2-col mobile /
-// 3-col tablet / 4-col desktop layout.
+// (cuisine / season / tag).
+//
+// The card is a 4:5 photograph with the title and one meta line under it.
+// The cost dot the old card carried is gone: the design gives the meta line
+// to time and protein, which is what a reader picking dinner is comparing.
 
 import Image from 'next/image';
 import Link from 'next/link';
 
 import type { RecipeListItem } from '@/app/lib/recipes';
-
-const COST_DOT_COLOR: Record<string, string> = {
-  low: 'var(--green)',
-  mid: 'var(--amber)',
-  high: 'var(--pink)',
-};
+import styles from './RecipeGrid.module.css';
 
 function formatTotalTime(minutes: number | null | undefined): string | null {
   if (minutes == null || minutes <= 0) return null;
@@ -22,50 +19,47 @@ function formatTotalTime(minutes: number | null | undefined): string | null {
   return m === 0 ? `${h} h` : `${h} h ${m} min`;
 }
 
+function formatMeta(recipe: RecipeListItem): string {
+  const bits: string[] = [];
+  const time = formatTotalTime(recipe.total_minutes);
+  if (time) bits.push(time);
+  if (typeof recipe.protein_g === 'number' && recipe.protein_g > 0) {
+    bits.push(`${Math.round(recipe.protein_g)}g protein`);
+  }
+  return bits.join(' · ');
+}
+
 export default function RecipeGrid({ items }: { items: RecipeListItem[] }) {
   if (items.length === 0) {
-    return (
-      <p className="recipe-grid-empty muted">
-        No recipes here yet. Check back soon.
-      </p>
-    );
+    return <p className={styles.empty}>No recipes here yet. Check back soon.</p>;
   }
+
   return (
-    <div className="recipes-grid">
-      {items.map((r) => {
-        const time = formatTotalTime(r.total_minutes);
-        const dot = r.cost_band ? COST_DOT_COLOR[r.cost_band] : null;
+    <ul className={styles.grid}>
+      {items.map((r, index) => {
+        const meta = formatMeta(r);
         return (
-          <Link key={r.id} className="recipe-card" href={`/recipes/${r.slug}`}>
-            <div className="recipe-image">
-              {r.image_url && (
-                <Image
-                  src={r.image_url}
-                  alt={r.title}
-                  width={600}
-                  height={600}
-                  sizes="(max-width: 640px) 50vw, (max-width: 1100px) 33vw, 25vw"
-                />
-              )}
-            </div>
-            <div className="recipe-meta">
-              <div className="recipe-name">{r.title}</div>
-              {(time || dot) && (
-                <div className="recipe-card-bottom mono">
-                  {time && <span>{time}</span>}
-                  {dot && (
-                    <span
-                      className="cost-dot"
-                      aria-label={`${r.cost_band} cost`}
-                      style={{ background: dot }}
-                    />
-                  )}
-                </div>
-              )}
-            </div>
-          </Link>
+          <li key={r.id}>
+            <Link className={styles.card} href={`/recipes/${r.slug}`}>
+              <div className={styles.image}>
+                {r.image_url && (
+                  <Image
+                    src={r.image_url}
+                    alt=""
+                    fill
+                    // The first row is above the fold on every width, so it
+                    // loads eagerly; the rest wait.
+                    loading={index < 4 ? 'eager' : 'lazy'}
+                    sizes="(max-width: 600px) 50vw, (max-width: 900px) 33vw, 25vw"
+                  />
+                )}
+              </div>
+              <div className={styles.title}>{r.title}</div>
+              {meta ? <div className={styles.meta}>{meta}</div> : null}
+            </Link>
+          </li>
         );
       })}
-    </div>
+    </ul>
   );
 }

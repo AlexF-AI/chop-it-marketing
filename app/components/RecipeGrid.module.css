@@ -1,0 +1,66 @@
+/* Recipe cards, shared by the hub and every taxonomy page.
+ *
+ * Two columns at phone width, widening to three and four. The image is a
+ * 4:5 crop with square corners — no card chrome, no border, no radius: the
+ * photograph is the card, and the type sits underneath it.
+ */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  display: block;
+}
+
+.image {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--photo-placeholder);
+}
+
+.image img {
+  object-fit: cover;
+}
+
+.title {
+  margin-top: 9px;
+  font-family: var(--ff-display);
+  font-size: 20px;
+  line-height: 1.08;
+  color: var(--ink);
+  text-wrap: pretty;
+  transition: color 150ms ease;
+}
+
+.card:hover .title {
+  color: var(--raspberry-ink);
+}
+
+.meta {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--ink-muted);
+}
+
+.empty {
+  margin: 0;
+  padding: 24px 0;
+  font-size: 16px;
+  color: var(--ink-muted);
+}
+
+@media (min-width: 600px) {
+  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px 18px; }
+  .title { font-size: 21px; }
+}
+
+@media (min-width: 900px) {
+  .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}

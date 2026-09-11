@@ -1,126 +1,82 @@
-/* An ink band so the ChatGPT surface feels native and the middle of the page
-   changes pace. In dark mode ink and ground swap, so the band inverts with the
-   rest of the page and the `-inv` greys keep it legible either way. */
-.section {
-  background: var(--ink);
-  color: var(--ground);
-}
-
-.inner {
-  max-width: var(--maxw);
-  margin: 0 auto;
-  padding: clamp(56px, 8vw, 112px) var(--gutter);
-}
+/* "Chop it lives inside ChatGPT too." — the one ink band on the homepage.
+ *
+ * Text colours here are fixed against ink rather than reading --ink-2 and
+ * friends: the band is a flood in both themes, so a themed token would
+ * invert out from under it.
+ */
 
 .eyebrow {
-  font-family: var(--ff-mono);
-  font-weight: 600;
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--accent-inv);
-  margin-bottom: 20px;
-}
-
-.h2 {
-  margin-bottom: 22px;
-}
-
-.body {
-  font-size: 17px;
-  line-height: 1.5;
-  color: var(--ink-2-inv);
-  max-width: 54ch;
-  margin-bottom: 30px;
+  color: var(--pink-on-ink);
 }
 
 .cta {
-  display: inline-flex;
-  align-items: center;
-  height: 52px;
-  padding: 0 26px;
-  background: var(--ground);
-  color: var(--ink);
-  border-radius: 4px;
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: clamp(32px, 4vw, 48px);
-}
-
-.cta:hover {
-  color: var(--ink);
-  opacity: 0.88;
+  margin-bottom: 30px;
 }
 
 .statusBlocks {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  margin-bottom: 28px;
 }
 
 .statusHeader {
   display: flex;
   align-items: center;
   gap: 9px;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
-/* Filled square = shipped. Outlined square = not yet. */
+/* Square markers, 8px. Solid for what ships today, outlined for what
+   doesn't — the same distinction the row colour makes, doubled up so it
+   doesn't rest on colour alone. */
 .markLive {
   width: 8px;
   height: 8px;
-  background: var(--accent-inv);
+  background: var(--pink-hot);
   flex: none;
 }
 
 .markSoon {
   width: 8px;
   height: 8px;
-  border: 1px solid var(--ink-2-inv);
+  border: 1px solid #A9A29A;
   flex: none;
 }
 
 .statusLabel {
-  font-family: var(--ff-mono);
-  font-weight: 600;
-  font-size: 11px;
-  letter-spacing: 0.16em;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
 .statusLabelSoon {
-  color: var(--ink-2-inv);
+  color: #A9A29A;
 }
 
 .rows {
-  border-top: 1px solid var(--line-inv);
+  border-top: 1px solid var(--line-ink);
 }
 
 .row {
   padding: 11px 0;
-  border-bottom: 1px solid var(--line-inv);
+  border-bottom: 1px solid var(--line-ink);
   font-size: 16px;
   line-height: 1.45;
+  text-wrap: pretty;
 }
 
 .rowSoon {
-  color: var(--ink-2-inv);
-}
-
-.shots {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(20px, 3vw, 32px);
+  color: #A9A29A;
 }
 
 .pluginFrame {
   position: relative;
-  border: 1px solid var(--line-inv);
-  border-radius: 4px;
+  aspect-ratio: 3 / 4;
+  max-width: 100%;
   overflow: hidden;
   background: #0f0d0c;
-  aspect-ratio: 3 / 4;
-  display: flex;
 }
 
 .pluginShot {
@@ -129,16 +85,27 @@
 }
 
 .shotCaption {
-  font-family: var(--ff-mono);
-  font-weight: 600;
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-2-inv);
+  margin-top: 10px;
+  font-family: var(--ff-display);
+  font-style: italic;
+  font-size: 17px;
+  color: #A9A29A;
 }
 
-@media (max-width: 640px) {
-  .statusBlocks {
-    grid-template-columns: minmax(0, 1fr);
+@media (min-width: 900px) {
+  /* Copy column against the screenshot, which is the shape the section has
+     at desktop on the live site and which the 3:4 shot suits. */
+  .inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: clamp(32px, 5vw, 72px);
+    align-items: start;
   }
+  .statusBlocks {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px;
+  }
+  .shots { position: sticky; top: 96px; }
+  .row { font-size: 17px; }
 }

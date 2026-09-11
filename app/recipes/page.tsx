@@ -13,10 +13,33 @@ import {
   searchPublicRecipes,
 } from '@/app/lib/recipes';
 import { serializeJsonLd, SITE_ORIGIN } from '@/app/lib/recipeSchema';
+import shared from '@/app/components/homepage/shared.module.css';
+import styles from './RecipesHub.module.css';
 
 export const revalidate = 3600;
 
 const PER_PAGE = 24;
+
+// The cuisine band's headline spells its number out ("Seventeen kitchens"),
+// which reads better than a numeral at 40px serif. Derived from
+// CUISINE_SLUGS rather than typed, so adding an eighteenth cuisine can't
+// leave the heading lying; anything outside this range falls back to the
+// numeral rather than inventing a word.
+const NUMBER_WORDS: Record<number, string> = {
+  12: 'Twelve',
+  13: 'Thirteen',
+  14: 'Fourteen',
+  15: 'Fifteen',
+  16: 'Sixteen',
+  17: 'Seventeen',
+  18: 'Eighteen',
+  19: 'Nineteen',
+  20: 'Twenty',
+};
+
+function spellCount(n: number): string {
+  return NUMBER_WORDS[n] ?? String(n);
+}
 
 type SearchParams = {
   q?: string;
@@ -145,10 +168,13 @@ export default async function RecipesHubPage({
   ]);
   const { items, total: resultTotal } = listResult;
 
-  const totalPages = Math.max(
-    1,
-    Math.ceil((searchMode ? resultTotal : total) / PER_PAGE),
-  );
+  // Browse mode has an exact count from the table, so it can say "of N".
+  // Search mode cannot — the RPC returns no total — so it reports only
+  // whether another page exists. See searchPublicRecipes.
+  const hasMore = listResult.hasMore;
+  const totalPages = searchMode
+    ? null
+    : Math.max(1, Math.ceil(total / PER_PAGE));
   const filteredTotal = items.length;
 
   const buildHref = (overrides: Partial<SearchParams>) => {
@@ -170,150 +196,187 @@ export default async function RecipesHubPage({
     <>
       <Nav />
       <main>
-      <section className="section recipes-hub">
-        <div className="section-head">
-          <div className="kicker mono">— EVERY RECIPE</div>
-          <h1 className="h-editorial">
+      <section>
+        <div className={styles.head}>
+          <div className={shared.eyebrow}>Every recipe</div>
+          <h1 className={styles.h1}>
             {searchMode ? `Recipes matching "${q}"` : 'Recipes for UK kitchens'}
           </h1>
-          <p className="lead">
+          <p className={styles.lede}>
             {searchMode
-              ? `${resultTotal} ${resultTotal === 1 ? 'recipe' : 'recipes'} matching "${q}".`
-              : `Browse ${total} dinner recipes with metric quantities, familiar ingredient names and clear methods.`}
+              ? `${hasMore ? `${resultTotal}+` : resultTotal} ${
+                  resultTotal === 1 ? 'recipe' : 'recipes'
+                } matching "${q}".`
+              : `Browse ${total.toLocaleString('en-GB')} dinner recipes with metric quantities, familiar ingredient names and clear methods.`}
           </p>
         </div>
 
+        <div className={styles.body}>
         <form
-          className="recipe-search mono"
+          className={styles.search}
           method="GET"
           action="/recipes"
           role="search"
         >
-          <label className="recipe-search-label" htmlFor="recipe-search-q">
+          <label className={styles.searchLabel} htmlFor="recipe-search-q">
             Search recipes
           </label>
           <input
             id="recipe-search-q"
-            className="recipe-search-input"
+            className={styles.searchInput}
             type="search"
             name="q"
             placeholder="Search by recipe title…"
             defaultValue={q}
             autoComplete="off"
           />
-          <button type="submit" className="recipe-search-submit">
+          <button type="submit" className={styles.searchSubmit}>
             Search
           </button>
         </form>
 
+        {/* Chip rows rather than a wrapped filter bar: a scroller keeps
+            seventeen cuisines to one line at phone width. Both rows are
+            links, not buttons, so a filtered view stays shareable and
+            works with JS off. */}
         {!searchMode && (
-          <nav className="recipe-filters mono" aria-label="Filter recipes">
+          <nav className={styles.filters} aria-label="Filter recipes">
             {cuisines.length > 0 && (
-              <div className="filter-group">
-                <span className="filter-k">Cuisine</span>
-                <Link
-                  className={cuisine ? 'filter-opt' : 'filter-opt on'}
-                  href={buildHref({ cuisine: undefined, page: undefined })}
-                >
-                  All
-                </Link>
-                {cuisines.map((c) => (
-                  <Link
-                    key={c}
-                    className={cuisine === c ? 'filter-opt on' : 'filter-opt'}
-                    href={buildHref({ cuisine: c, page: undefined })}
-                  >
-                    {c}
-                  </Link>
-                ))}
-              </div>
+              <>
+                <div className={styles.filterLabel}>Cuisine</div>
+                <ul className={styles.chipRow}>
+                  <li>
+                    <Link
+                      className={`${styles.chip} ${cuisine ? '' : styles.chipOn}`}
+                      aria-current={cuisine ? undefined : 'true'}
+                      href={buildHref({ cuisine: undefined, page: undefined })}
+                    >
+                      All
+                    </Link>
+                  </li>
+                  {cuisines.map((c) => (
+                    <li key={c}>
+                      <Link
+                        className={`${styles.chip} ${cuisine === c ? styles.chipOn : ''}`}
+                        aria-current={cuisine === c ? 'true' : undefined}
+                        href={buildHref({ cuisine: c, page: undefined })}
+                      >
+                        {c}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
             )}
             {costBands.length > 0 && (
-              <div className="filter-group">
-                <span className="filter-k">Cost</span>
-                <Link
-                  className={costBand ? 'filter-opt' : 'filter-opt on'}
-                  href={buildHref({ cost: undefined, page: undefined })}
-                >
-                  All
-                </Link>
-                {costBands.map((c) => (
-                  <Link
-                    key={c}
-                    className={costBand === c ? 'filter-opt on' : 'filter-opt'}
-                    href={buildHref({ cost: c, page: undefined })}
-                  >
-                    {c}
-                  </Link>
-                ))}
-              </div>
+              <>
+                <div className={styles.filterLabel}>Cost</div>
+                <ul className={styles.chipRow}>
+                  <li>
+                    <Link
+                      className={`${styles.chip} ${costBand ? '' : styles.chipOn}`}
+                      aria-current={costBand ? undefined : 'true'}
+                      href={buildHref({ cost: undefined, page: undefined })}
+                    >
+                      All
+                    </Link>
+                  </li>
+                  {costBands.map((c) => (
+                    <li key={c}>
+                      <Link
+                        className={`${styles.chip} ${costBand === c ? styles.chipOn : ''}`}
+                        aria-current={costBand === c ? 'true' : undefined}
+                        href={buildHref({ cost: c, page: undefined })}
+                      >
+                        {c}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
             )}
           </nav>
         )}
 
         {searchMode && filteredTotal === 0 ? (
-          <p className="recipe-grid-empty muted">
+          <p className={styles.note}>
             No recipes match &ldquo;{q}&rdquo;. Try browsing{' '}
-            <Link href="/recipes">all recipes</Link>.
+            <Link href="/recipes" className={shared.link}>
+              all recipes
+            </Link>
+            .
           </p>
         ) : (
           <RecipeGrid items={items} />
         )}
 
-        {totalPages > 1 && filteredTotal > 0 && (
-          <nav className="recipe-pagination mono" aria-label="Pagination">
-            {page > 1 && (
-              <Link
-                className="filter-opt"
-                href={buildHref({ page: page > 2 ? String(page - 1) : undefined })}
-              >
-                ← Prev
-              </Link>
-            )}
-            <span className="filter-k">
-              Page {page} of {totalPages}
+        {filteredTotal > 0 && (page > 1 || hasMore) && (
+          <nav className={styles.pagination} aria-label="Pagination">
+            <span className={styles.pageOf}>
+              {totalPages ? `Page ${page} of ${totalPages}` : `Page ${page}`}
             </span>
-            {page < totalPages && (
-              <Link className="filter-opt" href={buildHref({ page: String(page + 1) })}>
-                Next →
-              </Link>
-            )}
+            <span className={styles.pageLinks}>
+              {page > 1 && (
+                <Link
+                  className={styles.pageLink}
+                  href={buildHref({ page: page > 2 ? String(page - 1) : undefined })}
+                >
+                  <span aria-hidden="true">←</span> Prev
+                </Link>
+              )}
+              {hasMore && (
+                <Link
+                  className={styles.pageLink}
+                  href={buildHref({ page: String(page + 1) })}
+                >
+                  Next <span aria-hidden="true">→</span>
+                </Link>
+              )}
+            </span>
           </nav>
         )}
         {!searchMode && filteredTotal === 0 && (season || cuisine || costBand) && (
-          <p className="muted">
+          <p className={styles.note}>
             No recipes match these filters yet.{' '}
-            <Link href="/recipes" className="filter-opt">
+            <Link href="/recipes" className={shared.link}>
               Reset
             </Link>
           </p>
         )}
+        </div>
 
         {/* Browse by cuisine — 17 curated cuisine landings. Sorted by
             recipe count desc so the biggest cuisines lead. Only rendered
             in browse mode (out of search results context). */}
         {!searchMode && (
-          <section className="cuisine-browse" aria-labelledby="cuisine-browse-h">
-            <div className="cuisine-browse-head">
-              <div className="kicker mono">— BROWSE BY CUISINE</div>
-              <h2 id="cuisine-browse-h" className="cuisine-browse-h">
+          <section className={styles.cuisineBand} aria-labelledby="cuisine-browse-h">
+            <div className={styles.cuisineInner}>
+              <div className={`${shared.eyebrow} ${shared.eyebrowOnRasp}`}>
                 Browse by cuisine
+              </div>
+              <h2 id="cuisine-browse-h" className={styles.cuisineH}>
+                {spellCount(CUISINE_SLUGS.length)} kitchens, one library.
               </h2>
+              <ul className={styles.cuisineGrid}>
+                {[...CUISINE_SLUGS]
+                  .sort((a, b) => (CUISINE_COUNTS[b] ?? 0) - (CUISINE_COUNTS[a] ?? 0))
+                  .map((slug) => (
+                    <li key={slug}>
+                      <Link
+                        href={`/recipes/cuisine/${slug}`}
+                        className={styles.cuisineCard}
+                      >
+                        <span className={styles.cuisineName}>
+                          {CUISINE_META[slug].name}
+                        </span>
+                        <span className={styles.cuisineCount}>
+                          {CUISINE_COUNTS[slug]}
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+              </ul>
             </div>
-            <ul className="cuisine-grid">
-              {[...CUISINE_SLUGS]
-                .sort((a, b) => (CUISINE_COUNTS[b] ?? 0) - (CUISINE_COUNTS[a] ?? 0))
-                .map((slug) => (
-                  <li key={slug} className="cuisine-card-li">
-                    <Link href={`/recipes/cuisine/${slug}`} className="cuisine-card">
-                      <span className="cuisine-card-name">{CUISINE_META[slug].name}</span>
-                      <span className="cuisine-card-count mono">
-                        {CUISINE_COUNTS[slug]}
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-            </ul>
           </section>
         )}
       </section>

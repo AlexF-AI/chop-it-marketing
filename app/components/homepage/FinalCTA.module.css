@@ -1,35 +1,39 @@
-.eyebrow {
-  margin-bottom: 20px;
-}
+/* The closing raspberry band. Three ways in, then the sign-off. */
 
-.h2 {
-  max-width: 20ch;
-  margin-bottom: 22px;
+.eyebrow {
+  color: var(--pink-on-rasp);
 }
 
 .body {
-  margin-bottom: 30px;
+  color: var(--pink-body);
+  margin-bottom: 26px;
 }
 
 .androidNote {
-  font-family: var(--ff-mono);
-  font-weight: 600;
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-  margin-top: 18px;
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--pink-on-rasp);
 }
 
-/* The sign-off. Sized between the h2 and the body so it reads as the last
-   word on the page rather than a caption under the CTAs, and given the top
-   rule so it sits apart from the buttons. */
+/* The sign-off, bracketed off from the buttons by a rule. Serif, and the
+   largest non-heading line on the page — it is the brand line. */
 .slogan {
-  margin: clamp(36px, 5vw, 56px) 0 0;
-  padding-top: clamp(24px, 3vw, 32px);
-  border-top: 1px solid var(--line);
-  font-size: clamp(22px, 3.2vw, 30px);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.03em;
+  margin: 30px 0 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  font-family: var(--ff-display);
+  font-size: 34px;
+  line-height: 1.05;
+  color: #fff;
+  text-wrap: pretty;
+}
+
+@media (min-width: 768px) {
+  .slogan { font-size: 44px; }
+  /* Three buttons in a row once they fit; stacked below that. */
+  .ctaStack {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .ctaStack > * { flex: 1 1 240px; }
 }

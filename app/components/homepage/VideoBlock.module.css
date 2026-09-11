@@ -1,0 +1,78 @@
+/* "Watch it work" — a 16:9 block sized for a YouTube embed, shown as a
+ * click-to-load facade so the page never ships YouTube's player JS to a
+ * visitor who doesn't press play.
+ */
+
+.frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  max-width: 100%;
+  background: var(--band-ink);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The poster sits back so the play button reads as the subject. */
+.poster {
+  object-fit: cover;
+  object-position: top;
+  opacity: 0.55;
+}
+
+.play {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 62px;
+  height: 62px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--raspberry);
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+
+.play:hover {
+  background: var(--raspberry-deep);
+}
+
+/* CSS triangle, nudged right so it sits optically centred in the circle. */
+.playIcon {
+  display: block;
+  width: 0;
+  height: 0;
+  margin-left: 4px;
+  border-left: 19px solid #fff;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+}
+
+.iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.caption {
+  margin-top: 10px;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--ink-muted);
+  text-wrap: pretty;
+}
+
+.duration {
+  color: var(--raspberry-ink);
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .frame { max-width: 860px; }
+  .caption { font-size: 16px; }
+}

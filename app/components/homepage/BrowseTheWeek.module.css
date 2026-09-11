@@ -1,84 +1,80 @@
+/* "Pick from over 1,000 dishes" — the first coloured band on the page, and
+ * the product in one section. Everything below it only expands on this.
+ */
+
 .eyebrow {
-  margin-bottom: 20px;
+  color: var(--pink-on-rasp);
 }
 
-.split {
-  margin-bottom: clamp(36px, 5vw, 60px);
+.lede {
+  color: var(--pink-body);
+  margin-bottom: 26px;
 }
 
-/* Same three-across rule-bounded grid the stats block used, so the section
-   keeps its place in the page's vertical rhythm. */
 .steps {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  border-top: 1px solid var(--ink);
-  border-bottom: 1px solid var(--line);
+  list-style: none;
   margin: 0;
   padding: 0;
-  list-style: none;
 }
 
+/* auto 1fr: the numeral column sizes to the serif figure, the copy takes
+   the rest. The rules between rows are translucent white, not --line. */
 .step {
-  padding: clamp(22px, 3vw, 34px) clamp(18px, 3vw, 34px);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  border-left: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 14px;
+  padding: 16px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
 }
 
-.step:first-child {
-  border-left: 0;
+.steps .step:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
 }
 
 .stepN {
-  font-family: var(--ff-mono);
-  font-weight: 500;
-  font-size: clamp(30px, 4vw, 44px);
-  line-height: 0.95;
-  letter-spacing: -0.04em;
-  color: var(--accent-text);
+  font-family: var(--ff-display);
+  font-size: 34px;
+  line-height: 0.9;
+  color: var(--pink-numeral);
 }
 
 .stepLabel {
+  display: block;
   font-size: 17px;
   font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
+  color: #fff;
+  margin-bottom: 4px;
 }
 
 .stepText {
+  display: block;
   font-size: 15px;
   line-height: 1.45;
-  color: var(--ink-2);
-  max-width: 32ch;
+  color: var(--pink-body);
+  text-wrap: pretty;
 }
 
 .browseLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 24px;
-  font-size: 15px;
-  font-weight: 600;
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 2px;
+  margin-top: 22px;
 }
 
-.browseLink:hover {
-  border-bottom-color: var(--ink);
-}
-
-@media (max-width: 720px) {
+@media (min-width: 768px) {
+  .stepN { font-size: 44px; }
+  .stepLabel { font-size: 19px; }
+  .stepText { font-size: 16px; }
+  /* Two-up once there is room, per the responsive note. The rules still
+     bracket the block, so the pair reads as one ruled table. */
   .steps {
-    grid-template-columns: minmax(0, 1fr);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 40px;
   }
+  .steps .step:nth-last-child(-n + 2) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  }
+}
 
-  .step {
-    border-left: 0;
-    border-top: 1px solid var(--line);
-  }
-
-  .step:first-child {
-    border-top: 0;
-  }
+@media (min-width: 1040px) {
+  .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .steps .step { border-bottom: 1px solid rgba(255, 255, 255, 0.35); }
 }

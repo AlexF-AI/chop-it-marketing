@@ -7,10 +7,13 @@ import styles from './FinalCTA.module.css';
 
 export function FinalCTA() {
   return (
-    <section id="download" className={shared.section}>
-      <div className={shared.shellPadded}>
+    <section
+      id="download"
+      className={`${shared.sectionBand} ${shared.bandRasp}`}
+    >
+      <div className={shared.shell}>
         <div className={`${shared.eyebrow} ${styles.eyebrow}`}>That&rsquo;s it</div>
-        <h2 className={`${shared.h2} ${styles.h2}`}>
+        <h2 className={`${shared.h2} ${shared.h2OnRasp}`}>
           Just your food week, planned in minutes.
         </h2>
         <p className={`${shared.lede} ${styles.body}`}>
@@ -20,14 +23,14 @@ export function FinalCTA() {
           one place.
         </p>
 
-        <div className={shared.ctaRow}>
+        <div className={`${shared.ctaStack} ${styles.ctaStack}`}>
           <StoreLink
             destination="app_store"
             href={appStoreUrl('homepage_secondary')}
             location="download_cta"
             surface="homepage_secondary"
             label="Get the iPhone app"
-            className={`${shared.btn} ${shared.btnPrimary}`}
+            className={`${shared.btn} ${shared.btnOnRasp}`}
           >
             Get the iPhone app
           </StoreLink>
@@ -36,7 +39,7 @@ export function FinalCTA() {
             href={CHATGPT_URL}
             surface="homepage_secondary"
             label="Use it free in ChatGPT"
-            className={`${shared.btn} ${shared.btnSecondary}`}
+            className={`${shared.btn} ${shared.btnOutlineOnRasp}`}
           >
             Use it free in ChatGPT <span aria-hidden="true">→</span>
           </StoreLink>
@@ -48,7 +51,7 @@ export function FinalCTA() {
               than a share-page deep link, and it carries no
               data-cta-tracked, since the listener fires the event here. */}
           <a
-            className={`${shared.btn} ${shared.btnSecondary}`}
+            className={`${shared.btn} ${shared.btnOutlineOnRasp}`}
             href={WEB_APP_ORIGIN}
             rel="noopener noreferrer"
             data-cta-surface="homepage_pwa"

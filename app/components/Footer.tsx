@@ -12,8 +12,8 @@ export default function Footer() {
             <Image
               src="/logo.webp"
               alt=""
-              width={36}
-              height={36}
+              width={34}
+              height={34}
               className="wordmark-logo wordmark-logo-lg"
             />
             Chop&nbsp;it
@@ -26,6 +26,7 @@ export default function Footer() {
           <Link href="/#chatgpt">Chop it in ChatGPT</Link>
           <Link href="/features">Features</Link>
           <Link href="/recipes">Recipes</Link>
+          <Link href="/menu">Build a menu</Link>
           {/* In-page navigation to the closing CTA block, not an install CTA.
               Labelled "Download" so it cannot be confused with the App Store
               CTAs (also labelled "Get the app") in analytics. */}
@@ -54,8 +55,8 @@ export default function Footer() {
         </div>
       </div>
       <div className="footer-base">
-        <span className="mono">© 2026 Chop It AI Ltd · chop-it.com</span>
-        <span className="mono">Made for UK kitchens</span>
+        <span>© 2026 Chop It AI Ltd · chop-it.com</span>
+        <span>Made for UK kitchens</span>
       </div>
     </footer>
   );

@@ -1,9 +1,15 @@
+import { isValidElement, type ReactNode } from 'react';
+
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
+import Image from 'next/image';
+import Link from 'next/link';
+
 import BlogCTA from '@/app/components/BlogCTA';
+import ReadingProgress from '@/app/components/ReadingProgress';
 import Breadcrumbs, { type Crumb } from '@/app/components/Breadcrumbs';
 import Footer from '@/app/components/Footer';
 import MarkdownImage from '@/app/components/MarkdownImage';
@@ -21,6 +27,8 @@ import {
 import { isoDuration } from '@/app/lib/iso';
 import { getMenuRecipesFull, type FullMenuRecipe } from '@/app/lib/menuRecipes';
 import { buildBreadcrumbJsonLd, serializeJsonLd, SITE_ORIGIN } from '@/app/lib/recipeSchema';
+import { headingSlug, parseArticle } from '@/app/lib/blogArticle';
+import styles from './BlogArticle.module.css';
 
 // Articles are file-backed (content/blog/<slug>.md) except menu-backed posts,
 // which read from Supabase at build. Prerender every known slug and reject
@@ -68,6 +76,24 @@ function buildSaladItemListJsonLd(
       return { '@type': 'ListItem', position: idx + 1, item: recipe };
     }),
   };
+}
+
+/**
+ * Flattens a ReactMarkdown heading's children back to plain text.
+ *
+ * The heading id has to match the slug the contents list links to, and that
+ * slug is computed from the raw markdown — so a heading carrying inline
+ * emphasis or a link arrives here as an element tree rather than a string,
+ * and has to be walked back to text before hashing.
+ */
+function childrenToText(node: ReactNode): string {
+  if (node == null || typeof node === 'boolean') return '';
+  if (typeof node === 'string' || typeof node === 'number') return String(node);
+  if (Array.isArray(node)) return node.map(childrenToText).join('');
+  if (isValidElement(node)) {
+    return childrenToText((node.props as { children?: ReactNode }).children);
+  }
+  return '';
 }
 
 export function generateStaticParams() {
@@ -189,26 +215,175 @@ export default async function BlogArticlePage({
     );
   }
 
-  const body = getPostBody(slug);
+  const raw = getPostBody(slug);
+  const article = parseArticle(raw);
 
   // Optional per-article schema. Only comparison articles carry these: the
   // FAQ answers mirror the visible copy to prevent contradictory machine-
   // readable text, and the ItemList follows the order of the app sections.
-  const faq = FAQ_BY_SLUG[slug];
+  //
+  // Two FAQ sources exist and only one may be emitted, or the page ships two
+  // competing FAQPage nodes: the curated FAQ_BY_SLUG entries win where they
+  // exist, and the "Quick answers" list the parser lifted out of the body is
+  // the fallback. Whichever is chosen is both rendered AND described, so the
+  // visible copy and the structured data can never disagree.
+  const faq = FAQ_BY_SLUG[slug] ?? (article.faqs.length > 0 ? article.faqs : undefined);
   const listedApps = APP_LIST_BY_SLUG[slug];
+
+  const dateLabel = new Date(`${post.dateModified}T00:00:00Z`).toLocaleDateString(
+    'en-GB',
+    { day: 'numeric', month: 'long', year: 'numeric' },
+  );
+
+  // Three more to read, newest first, never this one.
+  const keepReading = getAllPostsMeta()
+    .filter((p) => p.slug !== post.slug)
+    .slice(0, 3);
 
   return (
     <>
       <Nav />
+      <ReadingProgress />
       <main>
-        <article className="blog-article">
-          <Breadcrumbs crumbs={crumbs} />
-          <div className="blog-article-body">
-            <ReactMarkdown remarkPlugins={[remarkGfm]} components={{ img: MarkdownImage }}>
-              {body}
-            </ReactMarkdown>
+        <article>
+          <header className={styles.hero}>
+            {post.heroImage ? (
+              <>
+                <Image
+                  src={post.heroImage.src}
+                  alt={post.heroImage.alt}
+                  fill
+                  priority
+                  sizes="100vw"
+                  className={styles.heroImg}
+                />
+                <div className={styles.heroScrim} aria-hidden="true" />
+              </>
+            ) : null}
+            <div className={styles.heroInner}>
+              {post.category ? (
+                <div className={styles.badge}>{post.category}</div>
+              ) : null}
+              <h1 className={styles.h1}>{post.title}</h1>
+            </div>
+          </header>
+
+          <div className={styles.measure}>
+            <Breadcrumbs crumbs={crumbs} />
+
+            <div className={styles.byline}>
+              <Image
+                src="/logo.webp"
+                alt=""
+                width={34}
+                height={34}
+                aria-hidden="true"
+                className={styles.bylineMark}
+              />
+              <div className={styles.bylineText}>
+                By{' '}
+                <Link href={ALEX_FAHEY.url} className={styles.bylineAuthor}>
+                  {ALEX_FAHEY.name}
+                </Link>
+                , founder of Chop it.
+                <br />
+                Last updated {dateLabel}.
+              </div>
+              <div className={styles.readingTime}>
+                {article.readingMinutes} min read
+              </div>
+            </div>
+
+            {article.shortAnswer ? (
+              <div className={styles.shortAnswer}>
+                <div className={styles.shortAnswerLabel}>Short answer</div>
+                <p className={styles.shortAnswerText}>{article.shortAnswer}</p>
+              </div>
+            ) : null}
+
+            {article.contents.length > 1 ? (
+              <nav className={styles.contents} aria-label="On this page">
+                <div className={styles.contentsLabel}>On this page</div>
+                <ol className={styles.contentsList}>
+                  {article.contents.map((entry, index) => (
+                    <li key={entry.id} className={styles.contentsItem}>
+                      <span className={styles.contentsN} aria-hidden="true">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                      <a href={`#${entry.id}`} className={styles.contentsLink}>
+                        {entry.text}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+            ) : null}
+
+            <div className={styles.body}>
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                components={{
+                  img: MarkdownImage,
+                  // The contents links point at these, so the ids have to
+                  // match headingSlug exactly rather than whatever the
+                  // renderer would default to.
+                  h2: ({ children }) => (
+                    <h2 id={headingSlug(childrenToText(children))}>{children}</h2>
+                  ),
+                  h3: ({ children }) => (
+                    <h3 id={headingSlug(childrenToText(children))}>{children}</h3>
+                  ),
+                  // A wide comparison table is the one thing allowed to
+                  // scroll sideways; the page body never does.
+                  table: ({ children }) => (
+                    <div className={styles.tableScroll}>
+                      <table>{children}</table>
+                    </div>
+                  ),
+                }}
+              >
+                {article.body}
+              </ReactMarkdown>
+            </div>
           </div>
+
+          {faq && faq.length > 0 ? (
+            <section className={styles.faqBand} aria-labelledby="faq-h">
+              <div className={styles.faqInner}>
+                <h2 id="faq-h" className={styles.faqH}>
+                  Quick answers
+                </h2>
+                <ul className={styles.faqList}>
+                  {faq.map((entry) => (
+                    <li key={entry.question} className={styles.faqItem}>
+                      <div className={styles.faqQ}>{entry.question}</div>
+                      <div className={styles.faqA}>{entry.answer}</div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+          ) : null}
+
           <BlogCTA />
+
+          {keepReading.length > 0 ? (
+            <section className={styles.keepReading} aria-labelledby="keep-reading-h">
+              <h2 id="keep-reading-h" className={styles.keepReadingH}>
+                Keep reading
+              </h2>
+              <ul className={styles.keepReadingList}>
+                {keepReading.map((p) => (
+                  <li key={p.slug} className={styles.keepReadingItem}>
+                    <Link href={`/blog/${p.slug}`} className={styles.keepReadingLink}>
+                      <div className={styles.keepReadingTitle}>{p.title}</div>
+                      <div className={styles.keepReadingDesc}>{p.description}</div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
         </article>
       </main>
       <script

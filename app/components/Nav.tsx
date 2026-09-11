@@ -214,20 +214,8 @@ export default function Nav() {
             aria-expanded={navOpen}
             onClick={() => setNavOpen(true)}
           >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-              aria-hidden="true"
-            >
-              <line x1="3" y1="7" x2="21" y2="7" />
-              <line x1="3" y1="12" x2="21" y2="12" />
-              <line x1="3" y1="17" x2="21" y2="17" />
-            </svg>
+            <span className={styles.menuBar} aria-hidden="true" />
+            <span className={styles.menuBar} aria-hidden="true" />
           </button>
         </div>
       </div>

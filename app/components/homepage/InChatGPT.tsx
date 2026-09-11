@@ -10,86 +10,93 @@ export function InChatGPT() {
     chatgptSection;
 
   return (
-    <section id="chatgpt" className={styles.section}>
-      <div className={`${shared.split} ${shared.splitChatgpt} ${styles.inner}`}>
-        <div>
-          <div className={styles.eyebrow}>Chop it in ChatGPT</div>
-          <h2 className={`${shared.h2} ${styles.h2}`}>
-            Chop it lives inside ChatGPT too.
-          </h2>
-          <p className={styles.body}>
-            Plan your week, find a dish or save a recipe without leaving the
-            chat. It is free to use, and anything you want to keep opens in the
-            iPhone app.
-          </p>
-          <StoreLink
-            destination="chatgpt"
-            href={CHATGPT_URL}
-            surface="homepage_chatgpt_panel"
-            label="Use Chop it in ChatGPT"
-            className={styles.cta}
-          >
-            Use Chop it in ChatGPT
-          </StoreLink>
-
-          <div className={styles.statusBlocks}>
-            <div>
-              <div className={styles.statusHeader}>
-                <span className={styles.markLive} />
-                <span className={styles.statusLabel}>Live now</span>
-              </div>
-              <div className={styles.rows}>
-                {liveNow.map((text) => (
-                  <div key={text} className={styles.row}>
-                    {text}
-                  </div>
-                ))}
-              </div>
+    <section
+      id="chatgpt"
+      className={`${shared.sectionBand} ${shared.bandInk}`}
+    >
+      <div className={shared.shell}>
+        <div className={styles.inner}>
+          <div>
+            <div className={`${shared.eyebrow} ${styles.eyebrow}`}>
+              Chop it in ChatGPT
             </div>
+            <h2 className={`${shared.h2} ${shared.h2OnInk}`}>
+              Chop it lives inside ChatGPT too.
+            </h2>
+            <p className={`${shared.lede} ${shared.ledeOnInk}`}>
+              Plan your week, find a dish or save a recipe without leaving the
+              chat. It is free to use, and anything you want to keep opens in
+              the iPhone app.
+            </p>
+            <StoreLink
+              destination="chatgpt"
+              href={CHATGPT_URL}
+              surface="homepage_chatgpt_panel"
+              label="Use Chop it in ChatGPT"
+              className={`${shared.btn} ${shared.btnOnInk} ${styles.cta}`}
+            >
+              Use Chop it in ChatGPT
+            </StoreLink>
 
-            {showComingSoon ? (
+            <div className={styles.statusBlocks}>
               <div>
                 <div className={styles.statusHeader}>
-                  <span className={styles.markSoon} />
-                  <span
-                    className={`${styles.statusLabel} ${styles.statusLabelSoon}`}
-                  >
-                    Coming soon
-                  </span>
+                  <span className={styles.markLive} />
+                  <span className={styles.statusLabel}>Live now</span>
                 </div>
                 <div className={styles.rows}>
-                  {comingSoon.map((text) => (
-                    <div
-                      key={text}
-                      className={`${styles.row} ${styles.rowSoon}`}
-                    >
+                  {liveNow.map((text) => (
+                    <div key={text} className={styles.row}>
                       {text}
                     </div>
                   ))}
                 </div>
               </div>
+
+              {showComingSoon ? (
+                <div>
+                  <div className={styles.statusHeader}>
+                    <span className={styles.markSoon} />
+                    <span
+                      className={`${styles.statusLabel} ${styles.statusLabelSoon}`}
+                    >
+                      Coming soon
+                    </span>
+                  </div>
+                  <div className={styles.rows}>
+                    {comingSoon.map((text) => (
+                      <div
+                        key={text}
+                        className={`${styles.row} ${styles.rowSoon}`}
+                      >
+                        {text}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+            </div>
+          </div>
+
+          <div className={styles.shots}>
+            {pluginShot ? (
+              <figure className={shared.figure}>
+                <div className={styles.pluginFrame}>
+                  <Image
+                    src={pluginShot.src}
+                    alt={pluginShot.alt}
+                    fill
+                    loading="lazy"
+                    sizes="(max-width: 900px) 100vw, 42vw"
+                    className={styles.pluginShot}
+                  />
+                </div>
+                <figcaption className={styles.shotCaption}>
+                  {pluginCaption}
+                </figcaption>
+              </figure>
             ) : null}
           </div>
-        </div>
-
-        <div className={styles.shots}>
-          {pluginShot ? (
-            <figure className={shared.figure}>
-              <div className={styles.pluginFrame}>
-                <Image
-                  src={pluginShot.src}
-                  alt={pluginShot.alt}
-                  fill
-                  loading="lazy"
-                  sizes="(max-width: 1000px) 92vw, 42vw"
-                  className={styles.pluginShot}
-                />
-              </div>
-              <figcaption className={styles.shotCaption}>
-                {pluginCaption}
-              </figcaption>
-            </figure>
-          ) : null}
         </div>
       </div>
     </section>
