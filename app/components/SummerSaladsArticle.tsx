@@ -29,7 +29,7 @@ export default function SummerSaladsArticle({ recipes, menuUrl, dateModified }: 
   return (
     <article className="salad-article">
       <header className="salad-hero">
-        <div className="kicker mono">— THIS WEEK&rsquo;S DINNERS 👇</div>
+        <div className="kicker">This week&rsquo;s dinners</div>
         <h1 className="salad-hero-h">{recipes.length} easy summer salads to cook this week</h1>
         <p className="salad-hero-lead">
           Salads that hold their own as dinner rather than sitting beside the

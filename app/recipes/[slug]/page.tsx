@@ -8,7 +8,7 @@ import BackLink from '@/app/components/BackLink';
 import Footer from '@/app/components/Footer';
 import Nav from '@/app/components/Nav';
 import RecipeCTA from '@/app/components/RecipeCTA';
-import RecipeGrid from '@/app/components/RecipeGrid';
+import RecipeRail from '@/app/components/RecipeRail';
 import RecipeViewTracker from '@/app/components/RecipeViewTracker';
 import {
   getPublishedRecipeBySlug,
@@ -311,7 +311,23 @@ export default async function RecipePage({
                 </Link>
               )}
             </div>
-            <RecipeGrid items={relatedRecipes} />
+            {/* A rail, not a grid: four cards at the foot of a long page
+                are a browsable tail, and the rail is the shape the design
+                gives that everywhere else. */}
+            <RecipeRail
+              label={relatedHeading}
+              items={relatedRecipes.map((r) => ({
+                href: `/recipes/${r.slug}`,
+                title: r.title,
+                meta: [
+                  r.total_minutes ? `${r.total_minutes} min` : null,
+                  r.protein_g ? `${Math.round(r.protein_g)}g protein` : null,
+                ]
+                  .filter(Boolean)
+                  .join(' · '),
+                imageUrl: r.image_url,
+              }))}
+            />
           </section>
         )}
 

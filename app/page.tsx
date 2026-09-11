@@ -6,7 +6,8 @@ import { Hero } from './components/homepage/Hero';
 import { InChatGPT } from './components/homepage/InChatGPT';
 import { OneLibrary } from './components/homepage/OneLibrary';
 import RecipeProof from './components/homepage/RecipeProof';
-import { RecipeToDinner } from './components/homepage/RecipeToDinner';
+import RecipeToDinner from './components/homepage/RecipeToDinner';
+import { VideoBlock } from './components/homepage/VideoBlock';
 import { APP_STORE_URL } from './lib/app-stores';
 import { orgRef } from './lib/entity';
 import { serializeJsonLd, SITE_ORIGIN } from './lib/recipeSchema';
@@ -65,6 +66,7 @@ export default function Page() {
       <main>
         <Hero />
         <BrowseTheWeek />
+        <VideoBlock />
         <OneLibrary />
         <RecipeToDinner />
         <InChatGPT />

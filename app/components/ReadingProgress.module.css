@@ -1,0 +1,18 @@
+/* Sits directly beneath the sticky nav, so it needs the same stacking
+ * context and one less z-index than the nav's drawer. */
+
+.track {
+  position: sticky;
+  /* The nav is 62-ish px tall and sticks at 0; this rides just under it. */
+  top: 61px;
+  z-index: 29;
+  height: 3px;
+  background: var(--photo-placeholder);
+}
+
+.fill {
+  height: 100%;
+  background: var(--raspberry);
+  /* No transition: the width is already updated once per frame, and easing
+     it would make the bar lag the scroll it is reporting. */
+}

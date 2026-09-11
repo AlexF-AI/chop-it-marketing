@@ -38,64 +38,47 @@ const SOURCES = [
 
 export function OneLibrary() {
   return (
-    <section id="ai-chef" className={shared.section}>
-      <div className={shared.shellPadded}>
-        <div className={`${shared.eyebrow} ${styles.eyebrow}`}>Your recipes too</div>
+    <section
+      id="ai-chef"
+      className={`${shared.sectionBand} ${shared.bandWarm}`}
+    >
+      <div className={shared.shell}>
+        <div className={shared.eyebrow}>Your recipes too</div>
 
-        <div className={`${shared.split} ${shared.splitEnd} ${styles.intro}`}>
-          <h2 className={shared.h2}>
-            The recipes you already love, alongside ours.
-          </h2>
-          <p className={shared.lede}>
-            Save the recipes you love from anywhere online, or snap them
-            straight from a cookbook, and they sit alongside our dishes, ready
-            to plan. Recreate a restaurant dish, or scan a food shop into your
-            pantry. Chop it turns every one into metric quantities, clear
-            ingredients and a method you can actually follow.
-          </p>
-        </div>
+        <h2 className={shared.h2}>
+          The recipes you already love, alongside ours.
+        </h2>
+        <p className={shared.lede}>
+          Save the recipes you love from anywhere online, or snap them
+          straight from a cookbook, and they sit alongside our dishes, ready
+          to plan. Recreate a restaurant dish, or scan a food shop into your
+          pantry. Chop it turns every one into metric quantities, clear
+          ingredients and a method you can actually follow.
+        </p>
 
-        <div className={`${shared.split} ${shared.splitLibrary}`}>
-          <div className={styles.sources}>
-            {SOURCES.map((source) => (
-              <div key={source.label} className={styles.source}>
-                <div className={styles.sourceThumb}>
-                  <Image
-                    src={source.src}
-                    alt=""
-                    fill
-                    loading="lazy"
-                    sizes="96px"
-                    className={styles.sourceThumbImage}
-                    style={{ objectPosition: source.objectPosition }}
-                  />
-                </div>
-                <div className={styles.sourceCopy}>
-                  <span className={styles.sourceLabel}>{source.label}</span>
-                  <span className={styles.sourceText}>{source.text}</span>
-                </div>
+        <div className={styles.sources}>
+          {SOURCES.map((source) => (
+            <div key={source.label} className={styles.source}>
+              <div className={styles.sourceThumb}>
+                <Image
+                  src={source.src}
+                  alt=""
+                  fill
+                  loading="lazy"
+                  sizes="72px"
+                  className={styles.sourceThumbImage}
+                  style={{ objectPosition: source.objectPosition }}
+                />
               </div>
-            ))}
-          </div>
-
-          <figure className={shared.figure}>
-            <div className={`${shared.frame} ${styles.frame}`}>
-              <Image
-                src="/screens/app-thread.webp"
-                alt="Chef IQ finding recipes from a plain-language request"
-                fill
-                loading="lazy"
-                sizes="(max-width: 1000px) 92vw, 44vw"
-                className={styles.shot}
-              />
+              <div className={styles.sourceCopy}>
+                <span className={styles.sourceLabel}>{source.label}</span>
+                <span className={styles.sourceText}>{source.text}</span>
+              </div>
             </div>
-            <figcaption className={shared.caption}>
-              One library, asked in plain words
-            </figcaption>
-          </figure>
+          ))}
         </div>
 
-        <p className={styles.closing}>
+        <p className={shared.closer}>
           Everything becomes searchable, plannable and ready to shop.
         </p>
       </div>

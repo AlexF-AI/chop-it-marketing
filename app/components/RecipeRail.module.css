@@ -1,0 +1,104 @@
+/* Horizontal recipe rail.
+ *
+ * The row breaks the page gutter: it scrolls edge to edge, while the first
+ * card's left edge still lines up with the copy above it. That is what the
+ * matching padding and scroll-padding do — the padding places the cards,
+ * the scroll-padding keeps a snapped card off the screen edge.
+ */
+
+.rail {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  /* --rail-gutter lets a parent that already applies the page gutter zero
+     this out, so the rail scrolls inside that container instead of breaking
+     out of it. The homepage leaves it at the default and breaks the gutter;
+     the recipe page's article column sets it to 0. */
+  scroll-padding-left: var(--rail-gutter, var(--gutter));
+  scroll-padding-right: var(--rail-gutter, var(--gutter));
+  padding: 24px var(--rail-gutter, var(--gutter)) 4px;
+  list-style: none;
+  margin: 0;
+}
+
+.rail::-webkit-scrollbar { display: none; }
+
+.rail > li {
+  flex: none;
+  scroll-snap-align: start;
+}
+
+/* Block, not inline: the width below is the whole point of the card and an
+   inline <a> would ignore it. */
+.card {
+  display: block;
+  width: 230px;
+}
+
+.image {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--photo-placeholder);
+}
+
+.image img {
+  object-fit: cover;
+}
+
+/* Square badge on a rounded-button page: a label, not an action. */
+.badge {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  background: var(--raspberry);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+}
+
+.title {
+  margin-top: 10px;
+  font-family: var(--ff-display);
+  font-size: 22px;
+  line-height: 1.1;
+  color: var(--ink);
+  text-wrap: pretty;
+  transition: color 150ms ease;
+}
+
+.card:hover .title {
+  color: var(--raspberry-ink);
+}
+
+.meta {
+  margin-top: 5px;
+  font-size: 14px;
+  color: var(--ink-muted);
+}
+
+@media (min-width: 768px) {
+  .card { width: 280px; }
+  .title { font-size: 24px; }
+}
+
+/* Four 280px cards plus gaps and gutters fit from about here, so the rail
+   stops being a rail. */
+@media (min-width: 1100px) {
+  .rail {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    overflow-x: visible;
+    max-width: var(--maxw);
+    margin: 0 auto;
+  }
+  .card { width: auto; }
+}

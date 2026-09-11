@@ -5,7 +5,6 @@ import Footer from '@/app/components/Footer';
 import Nav from '@/app/components/Nav';
 import StoreLink from '@/app/components/home/StoreLink';
 import { appStoreUrl, CHATGPT_URL } from '@/app/lib/app-stores';
-import { RECIPE_COUNT } from '@/app/lib/featuredRecipes';
 import { buildBreadcrumbJsonLd, serializeJsonLd, SITE_ORIGIN } from '@/app/lib/recipeSchema';
 
 const TITLE = 'How we build a Chop it recipe';
@@ -50,8 +49,8 @@ export default function MethodPage() {
       <main className="method">
         <Breadcrumbs crumbs={crumbs} />
         <div className="method-intro">
-          <div className="eyebrow" style={{ marginBottom: 22 }}>
-            — The standard
+          <div className="eyebrow" style={{ marginBottom: 14 }}>
+            The standard
           </div>
           <h1 className="method-h1">{TITLE}</h1>
           <p className="method-lede">
@@ -59,7 +58,7 @@ export default function MethodPage() {
             lift it. We write every Chop it recipe to a nine-stage standard so that balance lands
             on the page before you cook it. Two plants carry each savoury dish at full weight,
             which is how the average reaches 5.6 plants and 34g of protein a serving. We have not
-            cooked all {RECIPE_COUNT} ourselves and will not pretend we have. Chop it counts plants, fibre
+            cooked every one of them ourselves and will not pretend we have. Chop it counts plants, fibre
             and protein across your week rather than one dinner, so judge it on the seven days.
           </p>
         </div>

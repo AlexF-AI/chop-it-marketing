@@ -28,38 +28,56 @@ const STEPS = [
 
 export function BrowseTheWeek() {
   return (
-    <section id="browse" className={shared.section}>
-      <div className={shared.shellPadded}>
-        <div className={`${shared.eyebrow} ${styles.eyebrow}`}>
+    <section
+      id="browse"
+      className={`${shared.sectionBand} ${shared.bandRasp}`}
+    >
+      <div className={shared.shell}>
+        <div className={`${shared.eyebrow} ${shared.eyebrowOnRasp}`}>
           Browse, pick, shop
         </div>
 
-        <div className={`${shared.split} ${shared.splitEnd} ${styles.split}`}>
-          {/* LIBRARY_SIZE is lower case for mid-sentence use, so the
-              headline is phrased to put it after a word rather than at the
-              start of the sentence. */}
-          <h2 className={shared.h2}>Pick from {LIBRARY_SIZE} dishes.</h2>
-          <p className={shared.lede}>
-            Browse instantly with photos, prep times and step-by-step
-            instructions, pick your favourites for the week, and add them
-            straight to your basket. No blank page, no scrolling through
-            recipes that turn out to be four paragraphs of preamble.
-          </p>
-        </div>
+        {/* LIBRARY_SIZE is lower case for mid-sentence use, so the
+            headline is phrased to put it after a word rather than at the
+            start of the sentence. */}
+        <h2 className={`${shared.h2} ${shared.h2OnRasp}`}>
+          Pick from {LIBRARY_SIZE} dishes.
+        </h2>
+        <p className={`${shared.lede} ${shared.ledeOnRasp} ${styles.lede}`}>
+          Browse instantly with photos, prep times and step-by-step
+          instructions, pick your favourites for the week, and add them
+          straight to your basket. No blank page, no scrolling through
+          recipes that turn out to be four paragraphs of preamble.
+        </p>
 
         <ol className={styles.steps}>
           {STEPS.map((step) => (
             <li key={step.n} className={styles.step}>
               <span className={styles.stepN}>{step.n}</span>
-              <span className={styles.stepLabel}>{step.label}</span>
-              <span className={styles.stepText}>{step.text}</span>
+              <div>
+                <span className={styles.stepLabel}>{step.label}</span>
+                <span className={styles.stepText}>{step.text}</span>
+              </div>
             </li>
           ))}
         </ol>
 
-        <Link href="/recipes" className={styles.browseLink}>
-          Browse the recipes <span aria-hidden="true">→</span>
-        </Link>
+        <div className={styles.browseLinks}>
+          <Link
+            href="/recipes"
+            className={`${shared.link} ${shared.linkOnRasp} ${styles.browseLink}`}
+          >
+            Browse the recipes <span aria-hidden="true">→</span>
+          </Link>
+          {/* The three steps above describe building a week; this is where
+              you can actually do it, without the app. */}
+          <Link
+            href="/menu"
+            className={`${shared.link} ${shared.linkOnRasp} ${styles.browseLink}`}
+          >
+            Build one now <span aria-hidden="true">→</span>
+          </Link>
+        </div>
       </div>
     </section>
   );

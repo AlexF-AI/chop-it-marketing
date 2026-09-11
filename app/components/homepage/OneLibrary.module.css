@@ -1,35 +1,33 @@
-.eyebrow {
-  margin-bottom: 20px;
-}
-
-.intro {
-  margin-bottom: clamp(36px, 5vw, 56px);
-}
+/* "The recipes you already love, alongside ours." — a paper-warm band of
+ * ruled source rows. Each row is a 72px square crop of the app screen that
+ * does that job, so the list doubles as a product tour.
+ */
 
 .sources {
+  display: flex;
+  flex-direction: column;
+}
+
+.source {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 0;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  padding: 14px 0;
   border-top: 1px solid var(--line);
 }
 
-/* A cropped source object beside the line it proves. No stock icons. */
-.source {
-  display: grid;
-  grid-template-columns: 96px minmax(0, 1fr);
-  gap: 18px;
-  align-items: center;
-  padding: 18px 0;
+.sources .source:last-child {
   border-bottom: 1px solid var(--line);
 }
 
+/* Square crop, square corners — the rule the whole system runs on. */
 .sourceThumb {
   position: relative;
+  min-width: 0;
   aspect-ratio: 1;
-  border: 1px solid var(--line);
-  border-radius: 2px;
   overflow: hidden;
-  background: var(--surface-2);
+  background: var(--photo-placeholder);
 }
 
 .sourceThumbImage {
@@ -37,42 +35,36 @@
 }
 
 .sourceCopy {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
+  display: block;
+  min-width: 0;
 }
 
 .sourceLabel {
-  font-family: var(--ff-mono);
+  display: block;
+  font-size: 17px;
   font-weight: 600;
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  margin-bottom: 3px;
 }
 
 .sourceText {
-  font-size: 16px;
-  line-height: 1.45;
-  color: var(--ink-2);
+  display: block;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--ink-muted);
+  text-wrap: pretty;
 }
 
-.frame {
-  aspect-ratio: 9 / 16;
-  width: min(100%, 460px);
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.shot {
-  object-fit: cover;
-  object-position: top;
-}
-
-.closing {
-  font-size: 17px;
-  line-height: 1.5;
-  margin-top: clamp(28px, 4vw, 44px);
-  padding-top: 20px;
-  border-top: 1px solid var(--line);
-  max-width: 56ch;
+@media (min-width: 768px) {
+  /* Two-up, keeping the ruled-table reading: every row still draws its own
+     top rule, and the final pair closes the block. */
+  .sources {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 40px;
+  }
+  .sources .source:nth-last-child(-n + 2) {
+    border-bottom: 1px solid var(--line);
+  }
+  .sourceLabel { font-size: 18px; }
+  .sourceText { font-size: 16px; }
 }

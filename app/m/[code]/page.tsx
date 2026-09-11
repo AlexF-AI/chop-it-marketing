@@ -279,8 +279,11 @@ function MenuView({
                 <MenuCardLink recipe={r} code={payload.share_code}>
                   {r.image_url ? (
                     // Unoptimised on purpose — see file header.
+                    // alt="" on purpose: the card's own title element sits
+                    // directly below and names the dish, so alt text here
+                    // makes a screen reader announce it twice.
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img src={r.image_url} alt={r.title ?? ''} loading="lazy" className="share-menu-card-img" />
+                    <img src={r.image_url} alt="" loading="lazy" className="share-menu-card-img" />
                   ) : (
                     <div className="share-menu-card-img share-menu-card-img-fallback" aria-hidden />
                   )}

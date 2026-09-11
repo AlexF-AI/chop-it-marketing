@@ -1,123 +1,349 @@
-.eyebrow {
-  margin-bottom: 20px;
-}
+/* "One shop. One place to cook." — the two claims, working.
+ *
+ * These panels used to be two app screenshots. They are now the real thing
+ * built from published recipes: the shopping list is the actual merge of
+ * the four dinners above it, and the recipe card holds a real method,
+ * ingredients and macros. So they are styled as product surfaces — a header
+ * strip, aisle cards, round ticks, segmented tabs — rather than as
+ * marketing cards. The shapes follow the app; the palette and type stay the
+ * site's.
+ */
 
-.h2 {
-  max-width: 18ch;
-  margin-bottom: clamp(36px, 5vw, 56px);
-}
-
-.features {
-  border-top: 1px solid var(--line);
-}
-
-.feature {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 2px minmax(0, 1fr);
-  gap: 18px;
-  align-items: start;
-  text-align: left;
-  background: none;
-  border: none;
-  border-bottom: 1px solid var(--line);
-  padding: 20px 0;
-  cursor: pointer;
-}
-
-/* The accent marks the selected feature and nothing else in this section. */
-.featureRule {
-  align-self: stretch;
-  background: transparent;
-}
-
-.featureActive .featureRule {
-  background: var(--accent);
-}
-
-.featureCopy {
+.steps {
   display: flex;
   flex-direction: column;
-  gap: 9px;
+  gap: 30px;
 }
 
-.featureLabel {
-  font-family: var(--ff-mono);
+.copy {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.numeral {
+  font-family: var(--ff-display);
+  font-size: 26px;
+  line-height: 1;
+  color: var(--raspberry-ink);
+  flex: none;
+}
+
+.label {
+  font-size: 19px;
   font-weight: 600;
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-3);
+  margin-bottom: 5px;
 }
 
-.featureActive .featureLabel {
-  color: var(--accent-text);
-}
-
-.featureText {
+.text {
   font-size: 16px;
-  line-height: 1.5;
-  color: var(--ink-2);
+  line-height: 1.45;
+  color: var(--ink-body);
+  text-wrap: pretty;
 }
 
-.featureActive .featureText {
+/* ---- Shared panel chrome ---- */
+
+.panel {
+  background: var(--paper-card);
+  border: 1.5px solid var(--line);
+  display: flex;
+  flex-direction: column;
+}
+
+.panelHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--line);
+  background: var(--paper-warm);
+}
+
+.panelTitle {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.panelMeta {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--raspberry-ink);
+  text-align: right;
+}
+
+/* ---- Recipe card ---- */
+
+.cardHero {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  max-width: 100%;
+  background: var(--photo-placeholder);
+  overflow: hidden;
+}
+
+.cardHeroImg {
+  object-fit: cover;
+}
+
+/* The app's Chef IQ mark, top left of the photo. */
+.iqBadge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 26px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: var(--raspberry);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.cardHead {
+  padding: 16px 16px 0;
+}
+
+/* Sans, not the display serif: this is a product surface, and the app sets
+   its recipe titles in the UI face. */
+.cardTitle {
+  margin: 0;
+  font-family: var(--ff-sans);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+}
+
+.cardMeta {
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.cardActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line-2);
+}
+
+.cardPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 38px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1.5px solid var(--line);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  background: none;
+}
+
+.cardPillLink {
+  border-color: var(--raspberry);
+  color: var(--raspberry-ink);
+  text-decoration: none;
+  transition: background-color 150ms ease;
+}
+
+.cardPillLink:hover {
+  background: var(--raspberry-tint);
+}
+
+/* Method / Ingredients / Macros. */
+.tabs {
+  display: flex;
+  gap: 4px;
+  margin: 14px 16px 0;
+  padding: 4px;
+  border-radius: 12px;
+  background: var(--paper-warm);
+  border: 1px solid var(--line-2);
+}
+
+.tab {
+  flex: 1;
+  min-height: 38px;
+  border: none;
+  border-radius: 9px;
+  background: none;
+  font-family: var(--ff-sans);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.tab:hover {
   color: var(--ink);
 }
 
-/* All three screens are stacked in one grid cell rather than toggled with
-   display:none. Only the selected one paints, so it looks the same, but the
-   other two keep a layout box — which is what lets their lazy images load with
-   the section instead of leaving an empty frame on the first tab click. */
-.screens {
-  display: grid;
-  width: min(100%, 440px);
-  justify-self: center;
+.tabOn,
+.tabOn:hover {
+  background: var(--paper-card);
+  color: var(--ink);
+  font-weight: 700;
+  box-shadow: 0 1px 2px rgba(20, 18, 15, 0.08);
 }
 
-.screen,
-.screenActive {
-  grid-area: 1 / 1;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.cardBody {
+  padding: 16px;
+  /* Marbella's method and its seventeen ingredients both overrun a card;
+     the panel scrolls rather than setting the height of the section. */
+  max-height: 360px;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+}
+
+.cardBodyLabel {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 6px;
+}
+
+.steps2 {
   margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-/* Also takes them out of the accessibility tree. */
-.screen {
-  visibility: hidden;
+.step2 {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-top: 1px solid var(--line-2);
 }
 
-.frame {
-  aspect-ratio: 9 / 16;
+.step2:first-child {
+  border-top: none;
+  padding-top: 6px;
 }
 
-.shot {
-  object-fit: cover;
-  object-position: top;
+.stepN2 {
+  flex: none;
+  font-family: var(--ff-display);
+  font-size: 20px;
+  line-height: 1.1;
+  color: var(--raspberry-ink);
 }
 
-/* One screen stays large on desktop; on mobile all three become a manual snap
-   rail. Keep the rail inside the page gutters so the first screen can never
-   sit beyond the left edge on narrow iPhones. No autoplay. */
-@media (max-width: 900px) {
-  .screens {
-    display: flex;
-    width: 100%;
-    min-width: 0;
-    justify-self: stretch;
-    overflow-x: auto;
-    gap: 12px;
-    scroll-snap-type: x mandatory;
-    scroll-padding-inline: 0;
-    margin: 0;
-    padding: 0;
+.stepText2 {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-body);
+  text-wrap: pretty;
+}
+
+.ingredients {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ingredient {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 11px 0;
+  border-top: 1px solid var(--line-2);
+}
+
+.ingredient:first-child {
+  border-top: none;
+  padding-top: 5px;
+}
+
+.ingredientText {
+  flex: 1;
+  min-width: 0;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+/* Sits with the ingredient, not in a column of its own — it qualifies the
+   line. The app uses a cupboard glyph here. */
+.ingredientMark {
+  flex: none;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+
+.macros {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+  gap: 8px;
+}
+
+.macro {
+  border: 1px solid var(--line-2);
+  border-radius: 12px;
+  background: var(--paper-warm);
+  padding: 12px 10px;
+  text-align: center;
+}
+
+.macroLabel {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.macroValue {
+  margin: 6px 0 0;
+  font-family: var(--ff-display);
+  font-size: 24px;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.macroNote {
+  margin: 12px 0 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--ink-muted);
+  text-wrap: pretty;
+}
+
+@media (min-width: 768px) {
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 40px;
+    align-items: start;
   }
-
-  .screen,
-  .screenActive {
-    visibility: visible;
-    flex: 0 0 100%;
-    scroll-snap-align: start;
-  }
+  .numeral { font-size: 30px; }
+  .cardTitle { font-size: 28px; }
+  .cardBody { max-height: 400px; }
 }

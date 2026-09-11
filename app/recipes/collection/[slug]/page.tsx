@@ -102,7 +102,7 @@ export default async function CollectionPage({
       <section className="section recipes-hub">
         <Breadcrumbs crumbs={crumbs} />
         <div className="section-head">
-          <div className="kicker mono">— COLLECTION</div>
+          <div className="kicker">Collection</div>
           <h1 className="h-editorial">{meta.name}</h1>
           <p className="lead intro">{meta.intro}</p>
         </div>

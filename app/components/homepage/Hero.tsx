@@ -1,23 +1,58 @@
 import Image from 'next/image';
 import StoreLink from '@/app/components/home/StoreLink';
 import { appStoreUrl, CHATGPT_URL } from '@/app/lib/app-stores';
+import { SLOGAN } from '@/app/lib/brand';
 import shared from './shared.module.css';
 import styles from './Hero.module.css';
 
+/**
+ * The hero photograph: the Crispy Chicken Katsu Curry with Pickled Cucumber
+ * shot from the recipe library, copied in rather than read from its recipe
+ * row so the homepage can't change because someone re-shot a recipe.
+ *
+ * It is a 1024px square, so the wide desktop hero crops it to a band and
+ * scales it up. That is fine at phone and tablet width and soft on a large
+ * display — worth re-exporting wider from the original if one exists.
+ *
+ * Swapping it means replacing this one constant, plus `object-position` on
+ * `.heroImg` if the new crop puts its subject somewhere else.
+ */
+const HERO_PHOTO = '/hero/hero-chicken-katsu.webp';
+
 export function Hero() {
   return (
-    <header id="top" className={styles.hero}>
-      <div>
-        <div className={`${shared.eyebrow} ${styles.eyebrow}`}>
-          Before you shop it, Chop it
+    <>
+      <header id="top" className={styles.hero}>
+        <Image
+          src={HERO_PHOTO}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className={styles.heroImg}
+        />
+        <div className={styles.scrim} aria-hidden="true" />
+        <div className={styles.heroText}>
+          {/* The slogan runs above the H1 rather than under it: the
+              headline is the positioning, and the slogan is the brand
+              line that frames it. */}
+          <div className={styles.eyebrow}>{SLOGAN.replace(/\.$/, '')}</div>
+
+          {/* The four words are the positioning, so they are the H1 rather
+              than an eyebrow above a functional headline. The keywords a
+              search result needs ("meal planning", "plan your food week")
+              carry in the title tag and the lede below instead. */}
+          <h1 className={styles.h1}>
+            Food is art.
+            <br />
+            Passion. Culture.
+            <br />
+            <em>Identity.</em>
+          </h1>
         </div>
+      </header>
 
-        {/* The four words are the positioning, so they are the H1 rather
-            than an eyebrow above a functional headline. The keywords a
-            search result needs ("meal planning", "plan your food week")
-            carry in the title tag and the lede below instead. */}
-        <h1 className={styles.h1}>Food is art. Passion. Culture. Identity.</h1>
-
+      <div className={styles.intro}>
         <p className={styles.body}>
           It&rsquo;s one of the great expressions of who we are, and it
           shouldn&rsquo;t ever feel like a chore.
@@ -27,9 +62,21 @@ export function Hero() {
           become another line on overflowing to-do lists. Just another piece of
           admin nobody has the energy to entertain after a long day.
         </p>
-        <p className={styles.lead}>That&rsquo;s why we built Chop it.</p>
+        <div className={styles.payoff}>
+          <Image
+            src="/logo.webp"
+            alt=""
+            width={30}
+            height={30}
+            aria-hidden="true"
+            className={styles.payoffMark}
+          />
+          <p className={styles.payoffText}>That&rsquo;s why we built Chop it.</p>
+        </div>
+      </div>
 
-        <div className={`${shared.ctaRow} ${styles.ctaRow}`}>
+      <div className={styles.ctaBlock}>
+        <div className={`${shared.ctaStack} ${styles.ctaRow}`}>
           <StoreLink
             destination="app_store"
             href={appStoreUrl('homepage_hero')}
@@ -58,48 +105,6 @@ export function Hero() {
           </span>
         </div>
       </div>
-
-      <div className={styles.viz}>
-        <figure className={shared.figure}>
-          <figcaption className={shared.caption}>Pick your week</figcaption>
-          <div className={`${shared.frame} ${styles.frame}`}>
-            <Image
-              src="/screens/plan-the-week.webp"
-              alt="Chop it showing four dinners picked as the week, with a Use this week button above them"
-              fill
-              priority
-              sizes="(max-width: 900px) 92vw, (max-width: 1240px) 30vw, 360px"
-              className={styles.shot}
-            />
-          </div>
-          <div className={styles.shotCaption}>
-            Tap the dishes you want. That is the week done.
-          </div>
-        </figure>
-
-        <div className={styles.connector}>
-          <span className={styles.hair} />
-          <span className={styles.connectorLabel}>Then cook it</span>
-          <span className={styles.hair} />
-        </div>
-
-        <figure className={shared.figure}>
-          <figcaption className={shared.caption}>Tonight</figcaption>
-          <div className={`${shared.frame} ${styles.frame}`}>
-            <Image
-              src="/screens/this-week.jpeg"
-              alt="Tonight's dinner in Chop it, showing the dish photo, a 45 minute time, servings and a Cook now button"
-              fill
-              priority
-              sizes="(max-width: 900px) 92vw, (max-width: 1240px) 30vw, 360px"
-              className={styles.shot}
-            />
-          </div>
-          <div className={styles.shotCaption}>
-            No guesswork at 6pm. Dinner is already decided.
-          </div>
-        </figure>
-      </div>
-    </header>
+    </>
   );
 }

@@ -37,21 +37,21 @@ export const SECTION_COPY: Record<
 > = {
   learn: {
     label: 'Learn',
-    kicker: '— LEARN',
+    kicker: 'Learn',
     lead: 'Plain answers to the questions people actually ask about cooking and planning with AI. Each guide works on its own, with or without the app.',
     description:
       'Plain-English guides to AI cooking: creating recipes, shopping lists, food waste and saving recipes from any source. Useful with or without Chop it.',
   },
   research: {
     label: 'Research',
-    kicker: '— RESEARCH',
+    kicker: 'Research',
     lead: 'Sourced reference material on AI in home cooking. Every figure is cited, dated and traceable to the organisation that published it.',
     description:
       'Reference pages on AI in home cooking, built from cited research. Every statistic is sourced, dated and traceable to its publisher.',
   },
   features: {
     label: 'Features',
-    kicker: '— FEATURES',
+    kicker: 'Features',
     lead: 'The parts of Chop it that deserve a page of their own: what each one measures or manages, how it works, and where its limits sit.',
     description:
       'Canonical pages for Chop it features: the Weekly Diversity Score and the self-maintaining pantry, each explained with its limits stated.',
@@ -141,7 +141,7 @@ export function ResourceIndexPage({ section }: { section: ResourceSection }) {
         <section className="section blog-index">
           <Breadcrumbs crumbs={crumbs} />
           <div className="section-head">
-            <div className="kicker mono">{copy.kicker}</div>
+            <div className="kicker">{copy.kicker}</div>
             <h1 className="h-editorial">{copy.label}</h1>
             <p className="lead">{copy.lead}</p>
           </div>

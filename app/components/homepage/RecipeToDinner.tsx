@@ -1,89 +1,91 @@
-'use client';
+// "One shop. One place to cook." — the two claims, demonstrated.
+//
+// Both panels used to be app screenshots. They are now built from
+// published recipes at build time: the shopping list is the real merge of
+// the four dinners (see lib/shoppingList.ts), grouped into the app's own
+// aisles, and the recipe card is a real published recipe with its real
+// method, ingredients and macros. Nothing here is mocked, which is the
+// point — the section claims the product combines a week into one list and
+// gives you one place to cook from, and now it shows both happening on the
+// actual catalogue.
+//
+// When the data is unavailable (Supabase unconfigured, or unreachable at
+// build time) the section still renders its copy and drops only the two
+// panels. The headings and claims are true either way; vanishing a whole
+// homepage section on a failed query would be a worse failure than showing
+// it without its demonstration.
 
-import { useState } from 'react';
-import Image from 'next/image';
+import Link from 'next/link';
+
+import { getWeekDemo } from '@/app/lib/weekDemo';
+import RecipeCardPanel from './RecipeCardPanel';
+import ShoppingListPanel from '@/app/components/shop/ShoppingListPanel';
 import shared from './shared.module.css';
 import styles from './RecipeToDinner.module.css';
 
-const FEATURES = [
-  {
-    label: 'Shop once',
-    text: 'Every ingredient becomes one list, combined by aisle and checked against what you already have. Send it to your basket through Whisk when you are ready to buy.',
-    src: '/screens/shop-once.webp',
-    alt: 'Chop it shopping list with ingredients from several recipes combined into one line each and grouped by supermarket aisle',
-    caption: 'One list, combined by aisle',
-  },
-  {
-    label: 'Cook from the same place',
-    text: 'Open each meal in Cook Mode for clear ingredients, steps and timers. Tick meals off as the week moves.',
-    src: '/screens/cook-mode.webp',
-    alt: 'Chop it Cook Mode part way through a recipe, showing the current step alongside its ingredients and a timer',
-    caption: 'Cook Mode, step 3 of 9',
-  },
-];
+export const revalidate = 3600;
 
-export function RecipeToDinner() {
-  const [active, setActive] = useState(0);
+export default async function RecipeToDinner() {
+  const demo = await getWeekDemo();
+  const recipes = demo?.recipes ?? [];
+  const shoppingList = demo?.shoppingList ?? null;
+
+  // The first dinner of the week (app/lib/theWeek.ts), so the card opens on
+  // the dish the rail above leads with.
+  const cardRecipe = recipes[0] ?? null;
 
   return (
     <section id="how" className={shared.section}>
-      <div className={shared.shellPadded}>
-        <div className={`${shared.eyebrow} ${styles.eyebrow}`}>From plan to dinner</div>
-        <h2 className={`${shared.h2} ${styles.h2}`}>
-          One shop. One place to cook.
-        </h2>
+      <div className={shared.shell}>
+        <div className={shared.eyebrow}>From plan to dinner</div>
+        <h2 className={shared.h2}>One shop. One place to cook.</h2>
+        <p className={shared.lede}>
+          {shoppingList
+            ? `Both panels below are live. The list is the real combined shop for the ${recipes.length} dinners above, and the card is the recipe you would cook from.`
+            : 'Pick the week, and the shop writes itself.'}
+        </p>
 
-        <div className={`${shared.split} ${shared.splitStart}`}>
-          <div className={styles.features}>
-            {FEATURES.map((feature, index) => {
-              const isActive = index === active;
-              return (
-                <button
-                  key={feature.label}
-                  type="button"
-                  onClick={() => setActive(index)}
-                  aria-pressed={isActive}
-                  className={`${styles.feature} ${
-                    isActive ? styles.featureActive : ''
-                  }`}
-                >
-                  <span className={styles.featureRule} />
-                  <span className={styles.featureCopy}>
-                    <span className={styles.featureLabel}>{feature.label}</span>
-                    <span className={styles.featureText}>{feature.text}</span>
-                  </span>
-                </button>
-              );
-            })}
+        <div className={styles.steps}>
+          <div>
+            {shoppingList ? (
+              <ShoppingListPanel list={shoppingList} perRecipe={demo?.perRecipe ?? []} />
+            ) : null}
+
+            <div className={styles.copy}>
+              <span className={styles.numeral} aria-hidden="true">
+                i
+              </span>
+              <div>
+                <div className={styles.label}>Shop once</div>
+                <div className={styles.text}>
+                  Every ingredient becomes one list, grouped by aisle and
+                  checked against what you already have. Send it to your basket
+                  through Whisk when you are ready to buy.
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div className={`${shared.rail} ${styles.screens}`}>
-            {FEATURES.map((feature, index) => (
-              <figure
-                key={feature.label}
-                className={
-                  index === active ? styles.screenActive : styles.screen
-                }
-              >
-                <div className={`${shared.frame} ${styles.frame}`}>
-                  <Image
-                    src={feature.src}
-                    // Described rather than left decorative: the figcaption
-                    // below labels the screen ("Cook Mode, step 3 of 9") but
-                    // does not say what is on it, and these are the two
-                    // screenshots carrying the product claim in this section.
-                    // Matches how Hero and InChatGPT already treat their
-                    // phone frames.
-                    alt={feature.alt}
-                    fill
-                    loading="lazy"
-                    sizes="(max-width: 1000px) 88vw, 44vw"
-                    className={styles.shot}
-                  />
+          <div>
+            {cardRecipe ? <RecipeCardPanel recipe={cardRecipe} /> : null}
+
+            <div className={styles.copy}>
+              <span className={styles.numeral} aria-hidden="true">
+                ii
+              </span>
+              <div>
+                <div className={styles.label}>Cook from the same place</div>
+                <div className={styles.text}>
+                  Open each meal for its method, ingredients and macros in one
+                  card, and tick meals off as the week moves.{' '}
+                  {cardRecipe ? (
+                    <Link href={`/recipes/${cardRecipe.slug}`} className={shared.link}>
+                      See the full recipe
+                    </Link>
+                  ) : null}
                 </div>
-                <figcaption className={shared.caption}>{feature.caption}</figcaption>
-              </figure>
-            ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

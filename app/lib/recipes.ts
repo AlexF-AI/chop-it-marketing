@@ -52,6 +52,13 @@ export type RecipeListItem = {
   season: string | null;
   cost_band: string | null;
   total_minutes: number | null;
+  /**
+   * Protein per serving, for the card's `45 min · 40g protein` meta line.
+   * Null where the source can't supply it — the two RPC-backed listings
+   * (cuisine pages, search) don't return nutrition, and the card simply
+   * drops the clause rather than rendering a gap.
+   */
+  protein_g: number | null;
   updated_at: string;
 };
 
@@ -59,7 +66,7 @@ const RECIPE_COLUMNS =
   'id, slug, title, hero_description, image_url, season, cost_band, display_priority, servings, ingredients_json, method_steps_json, timings_json, tags_json, nutrition_kcal, nutrition_protein_g, nutrition_fibre_g, nutrition_carbs_g, nutrition_fat_g, nutrition_source, published_at, updated_at';
 
 const LIST_COLUMNS =
-  'id, slug, title, image_url, season, cost_band, display_priority, timings_json, updated_at';
+  'id, slug, title, image_url, season, cost_band, display_priority, timings_json, nutrition_protein_g, updated_at';
 
 // --- Legacy id-based helpers (kept so the old /recipes/[id] redirect can
 // resolve the slug from the URL it was hit with).
@@ -156,9 +163,14 @@ export async function getPublishedRecipeBySlug(slug: string): Promise<Recipe | n
 
 export type ListFilter = {
   season?: string;
-  costBand?: string;
   cuisine?: string;
   tag?: string;
+  /** Total time at or under this many minutes. */
+  maxMinutes?: number;
+  /** Total time at or over this many minutes. */
+  minMinutes?: number;
+  /** One of PROTEIN_FILTERS; matched against `protein_types[]`. */
+  protein?: string;
   page?: number;
   perPage?: number;
 };
@@ -174,8 +186,8 @@ function cuisineSlug(value: string): string | null {
 
 export async function listPublishedRecipes(
   filter: ListFilter = {},
-): Promise<{ items: RecipeListItem[]; total: number }> {
-  if (!supabase || !supabaseConfigured) return { items: [], total: 0 };
+): Promise<{ items: RecipeListItem[]; total: number; hasMore: boolean }> {
+  if (!supabase || !supabaseConfigured) return { items: [], total: 0, hasMore: false };
   const page = Math.max(1, filter.page ?? 1);
   const perPage = Math.max(1, Math.min(48, filter.perPage ?? 24));
   const from = (page - 1) * perPage;
@@ -189,10 +201,18 @@ export async function listPublishedRecipes(
     .not('slug', 'is', null);
 
   if (filter.season) q = q.eq('season', filter.season);
-  if (filter.costBand) q = q.eq('cost_band', filter.costBand);
+  // `timings_json->total_minutes` keeps the value as jsonb rather than
+  // casting it to text, so these compare as numbers. `->>` would compare
+  // the strings and put "9" after "100".
+  if (filter.maxMinutes) q = q.lte('timings_json->total_minutes', filter.maxMinutes);
+  if (filter.minMinutes) q = q.gte('timings_json->total_minutes', filter.minMinutes);
+  // Passed as a JSON string, not an array: supabase-js renders an array
+  // argument in PostgREST's `{a,b}` form, which is for a Postgres array
+  // column. `protein_types` is jsonb, so it needs `["chicken"]`.
+  if (filter.protein) q = q.contains('protein_types', JSON.stringify([filter.protein]));
   if (filter.cuisine) {
     const slug = cuisineSlug(filter.cuisine);
-    if (!slug) return { items: [], total: 0 };
+    if (!slug) return { items: [], total: 0, hasMore: false };
     q = q.contains('tags_json', { _catalog: { cuisines: [slug] } });
   }
   if (filter.tag) {
@@ -204,7 +224,7 @@ export async function listPublishedRecipes(
     .range(from, to);
 
   const { data, error, count } = await q;
-  if (error || !data) return { items: [], total: 0 };
+  if (error || !data) return { items: [], total: 0, hasMore: false };
 
   const items: RecipeListItem[] = data.map((r) => {
     const timings = r.timings_json as Timings | null;
@@ -216,10 +236,12 @@ export async function listPublishedRecipes(
       season: (r.season as string | null) ?? null,
       cost_band: (r.cost_band as string | null) ?? null,
       total_minutes: timings?.total_minutes ?? null,
+      protein_g: (r.nutrition_protein_g as number | null) ?? null,
       updated_at: r.updated_at as string,
     };
   });
-  return { items, total: count ?? items.length };
+  const total = count ?? items.length;
+  return { items, total, hasMore: to + 1 < total };
 }
 
 // Recipes in a curated segment (tags_json._catalog.segments[]). Used by
@@ -280,6 +302,7 @@ export async function listCollectionRecipes(
       season: (r.season as string | null) ?? null,
       cost_band: (r.cost_band as string | null) ?? null,
       total_minutes: timings?.total_minutes ?? null,
+      protein_g: (r.nutrition_protein_g as number | null) ?? null,
       updated_at: r.updated_at as string,
     };
   });
@@ -331,6 +354,7 @@ export async function listCuisineRecipes(
         // so the RecipeGrid card just doesn't render those chips.
         season: null,
         cost_band: null,
+        protein_g: null,
         total_minutes: r.total_minutes ?? null,
         updated_at: new Date().toISOString(),
       });
@@ -350,47 +374,62 @@ export async function listCuisineRecipes(
 export async function searchPublicRecipes(
   query: string,
   opts: { page?: number; perPage?: number } = {},
-): Promise<{ items: RecipeListItem[]; total: number }> {
-  if (!supabase || !supabaseConfigured) return { items: [], total: 0 };
+): Promise<{ items: RecipeListItem[]; total: number; hasMore: boolean }> {
+  if (!supabase || !supabaseConfigured) return { items: [], total: 0, hasMore: false };
   const trimmed = query.trim();
-  if (!trimmed) return { items: [], total: 0 };
+  if (!trimmed) return { items: [], total: 0, hasMore: false };
 
   const page = Math.max(1, opts.page ?? 1);
   const perPage = Math.max(1, Math.min(48, opts.perPage ?? 24));
   const offset = (page - 1) * perPage;
 
+  // Over-fetch by one to learn whether there is a next page.
+  //
+  // This used to read `total_count` off row[0], but search_public_recipes
+  // has never returned that column — its result type is
+  // (id, slug, title, image_url, total_minutes, servings, segments,
+  // cuisines, protein_types, finishing_touch, rank). The read was always
+  // undefined, `total` always fell back to the page length, and the hub
+  // therefore computed exactly one page for every search: the Next link
+  // never rendered and results past the 24th were unreachable.
+  //
+  // The RPC offers no count at all, so an exact total is not available for
+  // search. One extra row is: it answers "is there a next page", which is
+  // what the pagination actually needs. The hub drops the "of N" in search
+  // mode rather than printing a total it cannot know.
   const { data, error } = await supabase.rpc('search_public_recipes', {
     p_query: trimmed,
-    p_limit: perPage,
+    p_limit: perPage + 1,
     p_offset: offset,
   });
   if (error || !Array.isArray(data) || data.length === 0) {
-    return { items: [], total: 0 };
+    return { items: [], total: 0, hasMore: false };
   }
 
   type Row = {
     id: string;
-    title: string;
     slug: string;
+    title: string;
     image_url: string | null;
     total_minutes: number | null;
     servings: number | null;
-    plant_count: number | null;
-    match_score: number | null;
-    total_count: number | null;
   };
   const rows = data as Row[];
-  const items: RecipeListItem[] = rows.map((r) => ({
+  const hasMore = rows.length > perPage;
+  const items: RecipeListItem[] = rows.slice(0, perPage).map((r) => ({
     id: r.id,
     slug: r.slug,
     title: r.title,
     image_url: r.image_url ?? null,
     season: null,
     cost_band: null,
+    protein_g: null,
     total_minutes: r.total_minutes ?? null,
     updated_at: '',
   }));
-  return { items, total: rows[0]?.total_count ?? items.length };
+  // `total` is what this page can honestly report: everything up to and
+  // including the rows in hand.
+  return { items, total: offset + items.length, hasMore };
 }
 
 // URL-safe character set for tag/cuisine paths. Tags containing spaces or
@@ -438,16 +477,62 @@ export async function getDistinctCuisines(): Promise<string[]> {
 // it uses the same tags_json._catalog.cuisines[] memberships as the
 // curated /recipes/cuisine/[slug] landings.
 
-export async function getDistinctCostBands(): Promise<string[]> {
-  if (!supabase || !supabaseConfigured) return [];
-  const { data, error } = await supabase
-    .from('recipes_published')
-    .select('cost_band')
-    .eq('seo_published', true)
-    .is('deleted_at', null)
-    .not('cost_band', 'is', null);
-  if (error || !data) return [];
-  return Array.from(new Set(data.map((r) => r.cost_band as string))).sort();
+/**
+ * The /recipes time and protein chips.
+ *
+ * These are the app's own filters, with the app's thresholds and labels
+ * (shared/recipeFilters.ts and shared/searchBrowseFilters.ts in the app
+ * repo), so a filter you learn on the marketing site is the filter you
+ * get in the product. The hub used to offer a cost filter, which the app
+ * has never had.
+ *
+ * `protein_types` is a fixed ten-value vocabulary written at publish
+ * time, and every value has published recipes, so the chips are listed
+ * rather than discovered — a distinct-values query would mean scanning
+ * the whole catalogue on every revalidate to learn what we already know.
+ */
+export const TIME_FILTERS = [
+  { id: '30m', label: '30m', maxMinutes: 30 },
+  { id: '45m', label: '45m', maxMinutes: 45 },
+  { id: '60m+', label: '60m+', minMinutes: 60 },
+] as const;
+
+export type TimeFilterId = (typeof TIME_FILTERS)[number]['id'];
+
+export const PROTEIN_FILTERS = [
+  { id: 'chicken', label: 'Chicken' },
+  { id: 'beef', label: 'Beef' },
+  { id: 'pork', label: 'Pork' },
+  { id: 'lamb', label: 'Lamb' },
+  { id: 'fish', label: 'Fish' },
+  { id: 'seafood', label: 'Seafood' },
+  { id: 'tofu', label: 'Tofu' },
+  { id: 'halloumi', label: 'Halloumi' },
+  { id: 'beans', label: 'Beans' },
+  { id: 'lentils', label: 'Lentils' },
+] as const;
+
+export type ProteinFilterId = (typeof PROTEIN_FILTERS)[number]['id'];
+
+/** Narrow a query-string value to a known chip, or undefined. */
+export function parseTimeFilter(value: string | undefined): TimeFilterId | undefined {
+  return TIME_FILTERS.find((t) => t.id === value)?.id;
+}
+
+export function parseProteinFilter(value: string | undefined): ProteinFilterId | undefined {
+  return PROTEIN_FILTERS.find((p) => p.id === value)?.id;
+}
+
+/** The minute bounds a time chip stands for. */
+export function timeBounds(id: TimeFilterId | undefined): {
+  maxMinutes?: number;
+  minMinutes?: number;
+} {
+  const chip = TIME_FILTERS.find((t) => t.id === id);
+  if (!chip) return {};
+  return 'maxMinutes' in chip
+    ? { maxMinutes: chip.maxMinutes }
+    : { minMinutes: chip.minMinutes };
 }
 
 // One-shot fetch for the recipes sitemap. Returns each canonical slug, its

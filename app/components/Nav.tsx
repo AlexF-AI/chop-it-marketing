@@ -16,6 +16,10 @@ const LINKS = [
   { href: '/#how', label: 'How it works' },
   { href: '/#chatgpt', label: 'In ChatGPT' },
   { href: '/recipes', label: 'Recipes' },
+  // Next to Recipes because that is the order you use them in: browse the
+  // catalogue, then build a week out of it. It was reachable only from the
+  // footer, which is no way to find the site's one interactive tool.
+  { href: '/menu', label: 'Build a menu' },
   { href: '/learn', label: 'Learn' },
   { href: '/research', label: 'Research' },
   { href: '/method', label: 'Our method' },
@@ -214,20 +218,8 @@ export default function Nav() {
             aria-expanded={navOpen}
             onClick={() => setNavOpen(true)}
           >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-              aria-hidden="true"
-            >
-              <line x1="3" y1="7" x2="21" y2="7" />
-              <line x1="3" y1="12" x2="21" y2="12" />
-              <line x1="3" y1="17" x2="21" y2="17" />
-            </svg>
+            <span className={styles.menuBar} aria-hidden="true" />
+            <span className={styles.menuBar} aria-hidden="true" />
           </button>
         </div>
       </div>

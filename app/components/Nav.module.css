@@ -6,26 +6,39 @@
  * left-drawer spec and shared by every route.
  */
 
+/* Two bars, not three, and no border box — the design treats the menu
+   affordance as a mark rather than a button. The 44px tap target comes
+   from the padding, so the bars themselves stay 20x2 with a 4px gap. */
 .menuButton {
   display: none;
-  width: 48px;
-  height: 48px;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  gap: 4px;
+  padding: 8px 4px;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
   background: none;
-  border: 1px solid var(--line);
-  border-radius: 4px;
+  border: none;
   cursor: pointer;
   color: var(--ink);
   flex: none;
 }
 
-.menuButton:hover {
-  border-color: var(--ink-3);
+.menuBar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: currentColor;
+  transition: background-color 150ms ease;
+}
+
+.menuButton:hover .menuBar {
+  background: var(--raspberry);
 }
 
 /* Matches the breakpoint at which globals.css drops `.nav-links`. */
-@media (max-width: 720px) {
+@media (max-width: 880px) {
   .menuButton {
     display: flex;
   }

@@ -104,24 +104,31 @@ export const CUISINE_META: Record<string, CuisineMeta> = {
 // section surfaces the biggest sections first. Values are the production
 // counts returned by search_public_recipes(p_cuisines := ARRAY[slug])
 // at PR time — used only for ordering + the optional count badge.
+// Live counts, re-checked against the database on 11 September 2026 with
+// both `search_public_recipes(p_cuisines := [slug])` and a direct
+// `tags_json @> {_catalog:{cuisines:[slug]}}` count over live seo_published
+// rows — the two agree exactly. The previous figures had drifted a long way
+// (British 335 -> 380, Italian 152 -> 217, Greek 37 -> 64), and they are
+// rendered to visitors on the /recipes cuisine band, so a stale number here
+// is a wrong number on the page.
 export const CUISINE_COUNTS: Record<string, number> = {
-  british: 335,
-  italian: 152,
-  mediterranean: 92,
-  'middle-eastern': 63,
-  mexican: 58,
-  asian: 38,
-  japanese: 36,
-  american: 67,
-  french: 31,
-  indian: 32,
-  greek: 37,
-  thai: 16,
-  spanish: 21,
+  british: 380,
+  italian: 217,
+  mediterranean: 97,
+  'middle-eastern': 80,
+  mexican: 72,
+  greek: 64,
+  american: 59,
+  indian: 56,
+  french: 44,
+  japanese: 40,
+  asian: 37,
+  spanish: 37,
+  chinese: 30,
+  thai: 22,
+  moroccan: 19,
+  korean: 17,
   vietnamese: 14,
-  korean: 16,
-  moroccan: 11,
-  chinese: 19,
 };
 
 export const CUISINE_SLUGS = Object.keys(CUISINE_META)

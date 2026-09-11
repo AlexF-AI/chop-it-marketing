@@ -14,9 +14,12 @@
    ========================================================================== */
 
 :root {
-  --ground:    #FAF8F4;
-  --surface:   #FFFFFF;
-  --surface-2: #F2EFE9;
+  /* Sunday Supplement grounds. The page is paper, not white: every band
+     alternates paper -> paper-warm -> raspberry -> ink, and never more
+     than two grounds share a screen. */
+  --ground:    #F6F1E7;
+  --surface:   #FFFDF9;
+  --surface-2: #EFE7D9;
 
   --ink:       #14120F;
   --ink-2:     #5C574F;
@@ -27,8 +30,8 @@
   --accent-inv: #E4739A;
   --line-inv:   #302B27;
 
-  --line:      #E4E0D9;
-  --line-2:    #F0EDE7;
+  --line:      #DCD2BF;
+  --line-2:    #EAE2D2;
 
   /* --accent fills buttons and badges; --accent-text is the darker tint
      that clears 4.5:1 as text on --ground. Never swap the two. */
@@ -45,12 +48,73 @@
   /* Stand-in fill for imagery that hasn't landed yet. */
   --hatch: repeating-linear-gradient(45deg, #EEEAE2 0 7px, #F6F3EC 7px 14px);
 
-  --ff-display: var(--font-archivo), Archivo, system-ui, sans-serif;
-  --ff-sans:    var(--font-archivo), Archivo, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --ff-mono:    var(--font-jetbrains-mono), 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+  /* ---- Sunday Supplement named tokens ----
+     The spec names grounds `paper`, body ink `ink-body` and the accent
+     family `raspberry`. They are aliases onto the values above rather
+     than a second palette, so there is still one source of truth per
+     colour and the dark block below only has to restate one set. */
+  --paper:      var(--ground);
+  --paper-warm: var(--surface-2);
+  --paper-card: var(--surface);
+  --ink-body:   #3A342D;
+  --ink-muted:  var(--ink-2);
+  --ink-faint:  var(--ink-3);
+  --line-ink:   #302B27;
 
-  --maxw: 1240px;
-  --gutter: clamp(16px, 6.2vw, 56px);
+  --raspberry:      var(--accent);
+  --raspberry-ink:  var(--accent-text);
+  --raspberry-deep: #A8305A;
+  --raspberry-tint: var(--accent-wash);
+  --raspberry-pale: #E0C4CE;
+
+  /* Pinks for text sitting on the ink and raspberry floods. Each is
+     picked to clear 4.5:1 on its own ground, so they are not
+     interchangeable. */
+  --pink-on-ink:  #E4739A;
+  --pink-hot:     #FF9FC0;
+  --pink-on-rasp: #FFD3E0;
+  --pink-body:    #FFE2EB;
+  --pink-numeral: #FFC6D9;
+  --on-rasp:      #FFF4F7;
+
+  --photo-placeholder: #E2D9C8;
+
+  /* Raspberry as a FLOOD GROUND, distinct from raspberry as an accent.
+     The accent (#BD4D76) is too light to carry text: pure white is only
+     4.72:1 on it, so the pale pinks the design specifies for eyebrows and
+     body copy (#FFD3E0, #FFE2EB) come out at 3.49:1 and 3.86:1 against the
+     4.5:1 they need. One step deeper fixes every one of them at once and
+     still reads unmistakably as the brand raspberry.
+     --band-rasp-inset is the panel that sits *on* a raspberry band (the
+     share-link bar), which has to stay distinguishable from it. */
+  --band-rasp:       #A8305A;
+  --band-rasp-inset: #8E2A4C;
+
+  /* Text on the ink and raspberry floods. These are fixed in both themes:
+     the bands are floods, not themed surfaces, so a token that follows
+     --ground would invert out from under them. That is not hypothetical —
+     the ChatGPT band's body copy was #131110 on #0B0A09 in dark mode. */
+  --on-ink:       #F6F1E7;
+  --on-ink-muted: #BDB5AC;
+  --on-ink-faint: #9A938B;
+
+  /* The ink band is a flood, not the page ground. It needs its own
+     token because in dark mode the page is already near-black and an
+     ink band set to --ink would vanish into it. */
+  --band-ink: #14120F;
+
+  --ff-display: var(--font-instrument-serif), 'Instrument Serif', Georgia, serif;
+  --ff-sans:    var(--font-archivo), Archivo, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  /* JetBrains Mono is retired. The serif italic eyebrow replaces it;
+     the one surviving microlabel is uppercase Archivo 700, so --ff-mono
+     resolves to the UI face and `.mono` below carries the tracking. */
+  --ff-mono:    var(--font-archivo), Archivo, system-ui, sans-serif;
+
+  /* 1200px content cap; coloured bands stay full-bleed past it.
+     The gutter is a flat 20px at phone width per the spec, opening up
+     only once there is room for it. */
+  --maxw: 1200px;
+  --gutter: clamp(20px, 3.4vw, 40px);
 
   /* ---- Aliases for pages written against the previous token names ---- */
   --bg:        var(--ground);
@@ -67,7 +131,8 @@
   --amber:     #8F660A;
   --green:     #2F7A35;
   --purple:    #6C63C7;
-  --accent-secondary: var(--purple);
+  /* White on #7E74DD was 3.87:1; this fill carries button labels. */
+  --accent-secondary: #6A5FCB;
   color-scheme: light;
 }
 
@@ -95,6 +160,17 @@
     --amber:     #E0B54A;
     --green:     #9BB06A;
     --purple:    #7E74DD;
+    /* ---- Sunday Supplement, dark ----
+     The named aliases follow --ground / --surface / --accent-text
+     automatically. These four cannot: the raspberry flood must stay the
+     deep brand tone (white on #E4739A fails 4.5:1), and the ink band has
+     to sit below the page ground rather than level with it. */
+    --ink-body:   #D8D2C9;
+    --raspberry:      #BD4D76;
+    --raspberry-deep: #8E3A52;
+    --raspberry-pale: #5A3442;
+    --photo-placeholder: #2A2522;
+    --band-ink:   #0B0A09;
     color-scheme: dark;
   }
 }
@@ -122,6 +198,12 @@
   --amber:     #E0B54A;
   --green:     #9BB06A;
   --purple:    #7E74DD;
+  --ink-body:   #D8D2C9;
+  --raspberry:      #BD4D76;
+  --raspberry-deep: #8E3A52;
+  --raspberry-pale: #5A3442;
+  --photo-placeholder: #2A2522;
+  --band-ink:   #0B0A09;
   color-scheme: dark;
 }
 
@@ -139,9 +221,149 @@ body {
 }
 a { color: inherit; text-decoration: none; }
 em { font-style: italic; }
-.mono { font-family: var(--ff-mono); font-feature-settings: 'zero'; letter-spacing: 0.02em; }
+/* The one microlabel that survived the mono cull: 11-12px uppercase
+   Archivo 700 on wide tracking, used for small section labels inside
+   coloured blocks. Every `.mono` already in the markup becomes this, so
+   retiring JetBrains Mono needed no sweep of the call sites. */
+.mono {
+  font-family: var(--ff-sans);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
 .muted { color: var(--muted-2); }
 button { font-family: inherit; }
+
+/* ==========================================================================
+   Sunday Supplement primitives
+   Shared by the pages that are still written against globals.css (recipes
+   hub, blog, share, legal). The homepage and menu builder use CSS Modules
+   and read the same tokens rather than these classes.
+   ========================================================================== */
+
+/* Serif italic eyebrow. Replaces the uppercase mono kicker everywhere. */
+.ss-eyebrow {
+  font-family: var(--ff-display);
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--raspberry-ink);
+  margin-bottom: 10px;
+}
+.ss-eyebrow-on-ink  { color: var(--pink-on-ink); }
+.ss-eyebrow-on-rasp { color: var(--pink-on-rasp); }
+
+/* Display headings. Serif, near-solid leading, slight negative tracking. */
+.ss-h1,
+.ss-h2 {
+  font-family: var(--ff-display);
+  font-weight: 400;
+  margin: 0;
+  text-wrap: pretty;
+}
+.ss-h1 {
+  font-size: clamp(40px, 11.8vw, 52px);
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+}
+.ss-h2 {
+  font-size: clamp(34px, 10.8vw, 44px);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+/* Full-bleed colour bands. The page gutter is 20px and the content caps at
+   --maxw, but the ground itself always runs edge to edge. */
+.ss-band {
+  padding: 34px 0 36px;
+}
+.ss-band > * {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+.ss-band-warm { background: var(--paper-warm); }
+.ss-band-rasp { background: var(--band-rasp); color: var(--on-rasp); }
+.ss-band-ink  { background: var(--band-ink); color: var(--on-ink); }
+
+/* Buttons are the only rounded shape in the system. Everything else —
+   images, cards, panels, inputs — stays square, and that mix is what reads
+   as editorial rather than SaaS. */
+.ss-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 56px;
+  padding: 0 24px;
+  border: none;
+  border-radius: 28px;
+  font-family: var(--ff-sans);
+  font-size: 17px;
+  font-weight: 600;
+  text-align: center;
+  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+.ss-btn-primary { background: var(--raspberry); color: #fff; }
+.ss-btn-primary:hover { background: var(--raspberry-deep); color: #fff; }
+.ss-btn-outline {
+  background: none;
+  border: 1.5px solid var(--raspberry);
+  color: var(--raspberry-ink);
+}
+.ss-btn-outline:hover { background: var(--raspberry-tint); color: var(--raspberry-ink); }
+
+/* Underlined text link in the raspberry voice. */
+.ss-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--raspberry-ink);
+  border-bottom: 1.5px solid var(--raspberry-pale);
+  padding-bottom: 2px;
+  transition: border-color 150ms ease;
+}
+.ss-link:hover { border-bottom-color: var(--raspberry); color: var(--raspberry-ink); }
+
+/* Horizontal scroller that breaks the page gutter: the row scrolls edge to
+   edge while the first and last card still line up with the text column.
+   Used by the homepage recipe rail, the cuisine chips and the menu builder.
+   `scroll-padding` keeps a snapped card off the screen edge. */
+.ss-rail {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  scroll-padding-left: var(--gutter);
+  scroll-padding-right: var(--gutter);
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+.ss-rail::-webkit-scrollbar { display: none; }
+.ss-rail > * {
+  flex: none;
+  scroll-snap-align: start;
+}
+
+/* Stacked rows separated by a hairline: border-top on each, border-bottom
+   on the last, so the block is bracketed rather than trailing off. */
+.ss-rows > * {
+  border-top: 1px solid var(--line);
+}
+.ss-rows > *:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ss-rail { scroll-behavior: auto; }
+}
 
 /* ---------- Layout primitives ---------- */
 .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
@@ -150,141 +372,162 @@ button { font-family: inherit; }
 .section:first-of-type { border-top: none; }
 
 .section-head { display: flex; flex-direction: column; gap: 14px; margin-bottom: 56px; max-width: 880px; }
-.kicker { font-size: 11px; color: var(--muted-2); letter-spacing: 0.14em; }
+/* Serif italic eyebrow — the site-wide replacement for the uppercase mono
+   kicker. Call sites pass sentence-case text with no em-dash prefix; the
+   dash and the caps were part of the old mono treatment. */
+.kicker {
+  display: block;
+  font-family: var(--ff-display);
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--raspberry-ink);
+  margin-bottom: 10px;
+}
 .h-editorial {
   font-family: var(--ff-display);
-  font-weight: 700;
-  font-size: clamp(36px, 5vw, 66px);
-  line-height: 1.02;
-  letter-spacing: -0.032em;
+  font-weight: 400;
+  font-size: clamp(38px, 5.4vw, 62px);
+  line-height: 0.98;
+  letter-spacing: -0.015em;
   margin: 0;
   color: var(--ink);
+  text-wrap: pretty;
 }
 /* Pink discipline: italic emphasis stays italic but loses the pink fill —
    pink is reserved for CTAs and stat-strip dots on the homepage. */
 .h-editorial em { color: inherit; font-style: italic; }
 .lead {
-  font-size: 19px;
-  line-height: 1.55;
-  color: var(--text-2);
-  max-width: 56ch;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--ink-body);
+  max-width: 62ch;
+  text-wrap: pretty;
 }
 
 /* ---------- Nav ---------- */
 .nav {
   position: sticky; top: 0; z-index: 30;
-  background: var(--ground);
+  background: var(--paper);
   border-bottom: 1px solid var(--line);
 }
 .nav-inner {
   max-width: var(--maxw); margin: 0 auto;
-  padding: 0 clamp(20px, 4vw, 56px);
-  height: 64px;
+  padding: 10px var(--gutter) 14px;
   display: flex; align-items: center;
-  gap: 32px;
+  gap: 24px;
 }
 .wordmark {
   font-weight: 700;
-  font-size: 19px;
+  font-size: 20px;
   line-height: 1;
   letter-spacing: -0.03em;
   display: inline-flex; align-items: center; gap: 9px;
 }
 .wordmark-logo {
   width: 26px; height: 26px;
-  border-radius: 4px;
   object-fit: contain;
 }
 .wordmark-logo-lg {
-  width: 36px; height: 36px;
+  width: 34px; height: 34px;
 }
-.nav-links { display: flex; gap: 26px; font-size: 15px; color: var(--ink-2); margin-left: 8px; }
-.nav-links a:hover { color: var(--accent-text); }
+.nav-links { display: flex; gap: 24px; font-size: 15px; color: var(--ink-body); margin-left: 8px; }
+/* The bar carries seven links, a wordmark, a theme toggle and two CTAs.
+   Measured, that stops fitting at about 845px — below which the CTAs were
+   pushed off the right edge rather than wrapping. The drawer renders the
+   same links plus Get the app, so nothing is lost by handing over earlier.
+   Keep this in step with the .menuButton breakpoint in Nav.module.css. */
+@media (max-width: 880px) { .nav-links { display: none; } }
+.nav-links a { transition: color 150ms ease; }
+.nav-links a:hover { color: var(--raspberry-ink); }
 .nav-links a[aria-current='page'] { color: var(--ink); font-weight: 600; }
 .nav-spacer { flex: 1; }
-.nav-cta { display: flex; gap: 12px; align-items: center; }
+.nav-cta { display: flex; gap: 8px; align-items: center; }
 /* Two-dot appearance switch: filled dot = current ink, outline dot = the
    theme you'd get. Deliberately unlabelled beyond its aria-label. */
 .theme-toggle {
-  width: 44px; height: 36px;
+  width: 40px; height: 34px;
   display: flex; align-items: center; justify-content: center; gap: 4px;
   background: none;
-  border: 1px solid var(--line);
-  border-radius: 4px;
+  border: 1.5px solid var(--line);
+  border-radius: 17px;
   cursor: pointer;
 }
 .theme-toggle:hover { border-color: var(--ink-3); }
-.theme-toggle-on { width: 11px; height: 11px; border-radius: 50%; background: var(--ink); }
-.theme-toggle-off { width: 11px; height: 11px; border-radius: 50%; border: 1.5px solid var(--ink-3); }
+.theme-toggle-on { width: 10px; height: 10px; border-radius: 50%; background: var(--ink); }
+.theme-toggle-off { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid var(--ink-3); }
+/* The one filled pill in the bar. Fully rounded, like every button in the
+   system; everything else on the page stays square. */
 .nav-get {
-  display: flex; align-items: center;
-  height: 40px; padding: 0 18px;
-  background: var(--ink); color: var(--ground);
-  border-radius: 4px;
-  font-size: 15px; font-weight: 600;
-  /* Wrapped to two lines at 390px once the second CTA joined the bar. */
+  display: inline-flex; align-items: center;
+  height: 34px; padding: 0 14px;
+  background: var(--raspberry); color: #fff;
+  border-radius: 17px;
+  font-size: 14px; font-weight: 600;
   white-space: nowrap;
+  transition: background-color 150ms ease;
 }
-.nav-get:hover { color: var(--ground); filter: brightness(1.15); }
-/* Second nav CTA: the free ChatGPT path, outlined so the App Store pill
-   stays the single primary action in the bar. Both surfaces are live, so
-   both stay reachable from the bar at every width — see the ≤900px rules
-   below, which shorten the label and drop the theme toggle to make room
-   rather than hiding this button. */
+.nav-get:hover { color: #fff; background: var(--raspberry-deep); }
+/* The free ChatGPT path. A ruled text link rather than a second pill, so
+   the App Store pill stays the only primary action in the bar. */
 .nav-ghost {
-  display: flex; align-items: center;
-  height: 40px; padding: 0 16px;
-  border: 1px solid var(--line-2);
-  border-radius: 4px;
-  color: var(--ink);
-  font-size: 15px; font-weight: 600;
+  display: inline-flex; align-items: center;
+  color: var(--raspberry-ink);
+  font-size: 14px; font-weight: 600;
   white-space: nowrap;
+  border-bottom: 1.5px solid var(--raspberry-pale);
+  padding-bottom: 1px;
+  transition: border-color 150ms ease;
 }
-.nav-ghost:hover { color: var(--ink); border-color: var(--ink); background: var(--surface-2); }
+.nav-ghost:hover { color: var(--raspberry-ink); border-bottom-color: var(--raspberry); }
 @media (max-width: 900px) {
   /* The toggle is duplicated in the drawer under "Appearance", so the bar
-     can give its width to the second CTA. */
+     can give its width to the two CTAs. */
   .nav-cta .theme-toggle { display: none; }
-  .nav-ghost { padding: 0 12px; font-size: 14px; min-height: 44px; }
-  .nav-get { padding: 0 14px; font-size: 14px; min-height: 44px; }
 }
 
-/* ---------- Buttons ---------- */
+/* ---------- Buttons ----------
+   Fully rounded, always. Buttons and chips are the only rounded shapes in
+   the system — images, cards, panels and inputs stay square, and that
+   contrast is what reads as editorial rather than as an app UI. */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  padding: 14px 22px;
-  border-radius: 4px;
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: -0.005em;
-  border: 1px solid transparent;
-  cursor: pointer;
-  transition: transform 140ms ease, background 140ms ease, border-color 140ms ease, color 140ms ease;
-  white-space: nowrap;
-}
-.btn:hover { filter: brightness(1.06); }
-.btn-primary {
-  background: var(--accent);
-  color: var(--accent-on);
+  height: 56px;
+  padding: 0 24px;
+  border-radius: 28px;
+  font-size: 17px;
   font-weight: 600;
-  letter-spacing: -0.015em;
-  padding: 18px 24px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+  text-align: center;
 }
-.btn-primary:hover { filter: brightness(1.06); }
+.btn-primary {
+  background: var(--raspberry);
+  color: #fff;
+}
+.btn-primary:hover { background: var(--raspberry-deep); color: #fff; }
 /* Compact override (e.g. when paired with .btn-tiny) keeps the smaller pill. */
-.btn-primary.btn-tiny { padding: 8px 14px; }
-.btn-ghost { background: transparent; color: var(--text); border-color: var(--border-2); }
-.btn-ghost:hover { border-color: var(--ink-3); }
-/* Filled AI-accent button — the primary in ChatGPT CTA pairings (pairs
-   with .btn-ghost; never alongside another filled button). */
+.btn-tiny, .btn-primary.btn-tiny {
+  height: 38px;
+  padding: 0 16px;
+  border-radius: 19px;
+  font-size: 14px;
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--raspberry-ink);
+  border: 1.5px solid var(--raspberry);
+}
+.btn-ghost:hover { background: var(--raspberry-tint); color: var(--raspberry-ink); }
+/* The ChatGPT pairing's filled button. Still the purple accent, because it
+   marks a different destination rather than a different emphasis. */
 .btn-ai {
   background: var(--accent-secondary);
   color: #FFFFFF;
-  font-weight: 600;
-  letter-spacing: -0.015em;
-  padding: 18px 24px;
 }
-.btn-ai:hover { filter: brightness(1.08); }
+.btn-ai:hover { background: var(--accent-secondary); color: #FFFFFF; filter: brightness(1.08); }
 .btn-tiny { padding: 8px 14px; font-size: 13px; }
 
 /* ---------- Dish placeholder ---------- */
@@ -364,23 +607,36 @@ button { font-family: inherit; }
 /* ==========================================================================
    Footer
    ========================================================================== */
+/* The footer is an ink flood in both themes — it is the closing band of the
+   editorial system, not a themed surface. Text colours are therefore fixed
+   against ink rather than following --ink-2 / --ink-3. */
 .footer {
-  border-top: 1px solid var(--line);
-  background: var(--surface-2);
+  background: var(--band-ink);
+  color: var(--on-ink-muted);
 }
 .footer-grid {
   display: grid;
   grid-template-columns: minmax(220px, 1.4fr) repeat(auto-fit, minmax(150px, 1fr));
-  gap: 36px;
+  gap: 26px 18px;
   max-width: var(--maxw); margin: 0 auto;
-  padding: clamp(48px, 6vw, 80px) clamp(20px, 4vw, 56px) 28px;
+  padding: clamp(32px, 5vw, 64px) var(--gutter) 24px;
 }
-.footer-brand .wordmark { font-size: 22px; gap: 11px; margin-bottom: 12px; }
-.footer-tag { color: var(--ink-2); font-size: 15px; max-width: 28ch; }
-.footer-col { display: flex; flex-direction: column; gap: 10px; }
-.footer-col-h { font-size: 10px; color: var(--ink-3); letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 2px; }
-.footer-col a { color: var(--ink-2); font-size: 15px; }
-.footer-col a:hover { color: var(--accent-text); }
+.footer-brand .wordmark { font-size: 22px; gap: 10px; margin-bottom: 8px; color: var(--on-ink); }
+.footer-tag {
+  font-family: var(--ff-display);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.1;
+  color: var(--pink-on-ink);
+  max-width: 28ch;
+}
+.footer-col { display: flex; flex-direction: column; gap: 9px; }
+.footer-col-h {
+  font-size: 12px; font-weight: 700; color: var(--on-ink-faint);
+  letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 2px;
+}
+.footer-col a { color: var(--on-ink-muted); font-size: 15px; transition: color 150ms ease; }
+.footer-col a:hover { color: var(--pink-on-ink); }
 /* Non-clickable "coming soon" placeholders — match the nav/footer link look
    but carry no destination (features not built yet). */
 .soon-link { color: var(--text-2); font-size: 14px; cursor: default; }
@@ -396,11 +652,11 @@ button { font-family: inherit; }
 }
 .footer-base {
   max-width: var(--maxw); margin: 0 auto;
-  padding: 20px clamp(20px, 4vw, 56px) 40px;
-  border-top: 1px solid var(--line);
+  padding: 16px var(--gutter) 28px;
+  border-top: 1px solid var(--line-ink);
   display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between;
-  font-size: 10px; font-weight: 600; color: var(--ink-3);
-  letter-spacing: 0.16em; text-transform: uppercase;
+  font-size: 13px; font-weight: 400; color: var(--on-ink-faint);
+  letter-spacing: 0; text-transform: none;
 }
 
 /* ==========================================================================
@@ -486,7 +742,6 @@ button { font-family: inherit; }
   .what-grid { grid-template-columns: 1fr; }
   .recipes-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .hero-stats { flex-direction: column; gap: 16px; }
-  .nav-links { display: none; }
   .score-x-band-row { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr; }
 
@@ -580,9 +835,12 @@ button { font-family: inherit; }
    Google's perspective and they cut bounce-back-to-Google on direct
    landings. Server-rendered so the bot sees the anchors on first byte. */
 .recipe-related {
-  margin: 64px 0 48px;
-  padding-top: 48px;
-  border-top: 1px solid var(--border);
+  /* The article column already applies the page gutter, so the rail inside
+     scrolls within it rather than breaking out — see RecipeRail.module.css. */
+  --rail-gutter: 0px;
+  margin: 56px 0 40px;
+  padding-top: 34px;
+  border-top: 1px solid var(--line);
 }
 .recipe-related-head {
   display: flex;
@@ -594,22 +852,26 @@ button { font-family: inherit; }
 }
 .recipe-related-h {
   font-family: var(--ff-display);
-  font-weight: 600;
-  font-size: clamp(24px, 3vw, 32px);
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  font-weight: 400;
+  font-size: clamp(30px, 4.4vw, 40px);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
   margin: 0;
-  color: var(--text);
+  color: var(--ink);
 }
 .recipe-related-more {
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  color: var(--muted-2);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--raspberry-ink);
   min-height: 44px;
   display: inline-flex;
   align-items: center;
+  border-bottom: 1.5px solid var(--raspberry-pale);
+  transition: border-color 150ms ease;
 }
-.recipe-related-more:hover { color: var(--text); }
+.recipe-related-more:hover { color: var(--raspberry-ink); border-bottom-color: var(--raspberry); }
 .recipe-page-hero {
   position: relative;
   border-radius: 4px;
@@ -1404,207 +1666,213 @@ button { font-family: inherit; }
 
 /* ==========================================================================
    Shared-menu /m/<code> page
+
+   This is the page every share link lands on, and the menu builder renders
+   a preview of it on /menu. The two have to stay visually identical — the
+   preview's promise is "this is what they'll see" — so a change here needs
+   the matching change in MenuBuilder.module.css's .preview block.
    ========================================================================== */
 .share-menu {
-  max-width: 1080px;
+  max-width: 680px;
   margin: 0 auto;
-  padding: 48px 24px 96px;
+  padding: 26px var(--gutter) 0;
 }
 .share-menu-head {
-  text-align: center;
-  margin-bottom: 48px;
+  padding-bottom: 24px;
 }
 .share-menu-eyebrow {
-  color: var(--muted-2);
   font-size: 12px;
+  font-weight: 700;
   letter-spacing: 0.12em;
-  margin-bottom: 16px;
+  text-transform: uppercase;
+  color: var(--raspberry-ink);
+  margin-bottom: 10px;
 }
 .share-menu-h {
   font-family: var(--ff-display);
-  font-size: clamp(40px, 6vw, 72px);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  margin: 0 0 12px;
-  color: var(--text);
+  font-weight: 400;
+  font-size: clamp(34px, 10.2vw, 42px);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  margin: 0 0 10px;
+  text-wrap: pretty;
 }
 .share-menu-sub {
-  color: var(--muted);
-  font-size: 18px;
-  margin: 0 0 28px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink-muted);
+  margin: 0 0 20px;
 }
 .share-menu-cta-row {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
+  flex-direction: column;
+  gap: 10px;
 }
 .share-menu-empty {
-  color: var(--muted);
-  text-align: center;
-  padding: 64px 0;
+  color: var(--ink-muted);
+  font-size: 16px;
+  padding: 8px 0 24px;
 }
+
+/* Two-up crops, square corners. Same grid the builder's preview draws. */
 .share-menu-grid {
-  list-style: none;
-  padding: 0;
-  margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 24px;
-}
-.share-menu-card {
-  background: var(--card);
-  border: 1px solid var(--border-2);
-  border-radius: 4px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: border-color 140ms ease, transform 140ms ease;
-}
-.share-menu-card:hover {
-  border-color: var(--text);
-  transform: translateY(-2px);
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 32px;
 }
 .share-menu-card-link {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  color: inherit;
-  text-decoration: none;
-}
-.share-menu-card-link:focus-visible {
-  outline: 2px solid var(--text);
-  outline-offset: 2px;
+  display: block;
 }
 .share-menu-card-img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
   display: block;
-  background: var(--card-2);
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  background: var(--photo-placeholder);
 }
 .share-menu-card-img-fallback {
-  /* Placeholder when a recipe has no image. */
-  background: var(--hatch);
+  background: var(--photo-placeholder);
 }
 .share-menu-card-body {
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  padding-top: 7px;
 }
 .share-menu-card-title {
-  font-family: var(--ff-display);
-  font-size: 20px;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-  color: var(--text);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.25;
+  text-wrap: pretty;
+  transition: color 150ms ease;
+}
+.share-menu-card-link:hover .share-menu-card-title {
+  color: var(--raspberry-ink);
 }
 .share-menu-card-meta {
-  color: var(--muted-2);
+  margin-top: 3px;
   font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink-muted);
 }
+
+/* The closing band. Full-bleed raspberry, so it breaks the 680px measure. */
 .share-menu-footer {
-  margin-top: 80px;
-  padding: 48px 32px;
-  border-top: 1px solid var(--border-2);
-  text-align: center;
+  background: var(--band-rasp);
+  color: var(--on-rasp);
+  margin: 12px calc(50% - 50vw) 0;
+  padding: 32px calc(50vw - 50% + var(--gutter)) 36px;
 }
 .share-menu-footer-h {
   font-family: var(--ff-display);
-  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 400;
+  font-size: clamp(32px, 9.5vw, 40px);
+  line-height: 1;
+  color: #fff;
   margin: 0 0 12px;
-  letter-spacing: -0.02em;
-  color: var(--text);
+  text-wrap: pretty;
 }
 .share-menu-footer-sub {
-  color: var(--muted);
-  max-width: 640px;
-  margin: 0 auto 24px;
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.5;
+  color: var(--pink-body);
+  margin: 0 0 24px;
+  text-wrap: pretty;
+}
+.share-menu-footer .btn-primary {
+  background: #fff;
+  color: var(--raspberry-deep);
+  border: none;
+}
+.share-menu-footer .btn-primary:hover {
+  background: var(--pink-on-rasp);
+  color: var(--raspberry-deep);
+}
+.share-menu-footer .btn-ghost {
+  border: 1.5px solid var(--pink-on-rasp);
+  color: #fff;
+  background: none;
+}
+.share-menu-footer .btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
 }
 
+/* ---------- Single shared recipe ---------- */
+.share-recipe-head {
+  padding-bottom: 20px;
+}
 .share-recipe-meta {
-  color: var(--muted-2);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin: 0 0 28px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink-muted);
+  margin-bottom: 18px;
 }
 .share-recipe-hero {
   display: block;
   width: 100%;
-  max-width: 720px;
-  margin: 0 auto 40px;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: 4px;
-  background: var(--card-2);
+  height: auto;
+  margin-bottom: 28px;
+  background: var(--photo-placeholder);
 }
 .share-recipe-body {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
-  gap: 56px;
-  max-width: 960px;
-  margin: 0 auto;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 32px;
+  padding-bottom: 32px;
 }
 .share-recipe-h2 {
   font-family: var(--ff-display);
-  font-size: clamp(24px, 3vw, 32px);
-  letter-spacing: -0.01em;
-  margin: 0 0 20px;
-  color: var(--text);
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.02;
+  margin: 0 0 14px;
 }
 .share-recipe-ingredients-list {
   list-style: none;
-  padding: 0;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  color: var(--text);
-  font-size: 16px;
-  line-height: 1.5;
+  padding: 0;
 }
 .share-recipe-ingredients-list li {
-  padding: 10px 0;
-  border-bottom: 1px solid var(--border-2);
+  padding: 11px 0;
+  border-top: 1px solid var(--line);
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--ink-body);
 }
 .share-recipe-ingredients-list li:last-child {
-  border-bottom: none;
+  border-bottom: 1px solid var(--line);
 }
 .share-recipe-optional {
-  color: var(--muted-2);
-  font-size: 13px;
+  color: var(--ink-muted);
 }
 .share-recipe-steps-list {
   margin: 0;
-  padding: 0 0 0 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  color: var(--text);
+  padding-left: 22px;
+}
+.share-recipe-steps-list li {
+  margin-bottom: 14px;
+  color: var(--ink-body);
   font-size: 17px;
-  line-height: 1.6;
+  line-height: 1.55;
+  text-wrap: pretty;
 }
 .share-recipe-steps-list li::marker {
-  color: var(--muted-2);
-  font-family: var(--ff-mono);
-  font-size: 14px;
+  color: var(--raspberry-ink);
+  font-family: var(--ff-display);
+  font-size: 20px;
 }
 
-@media (max-width: 720px) {
-  .share-recipe-body { grid-template-columns: 1fr; gap: 40px; }
-}
-
-@media (max-width: 480px) {
-  .share-menu { padding: 32px 16px 64px; }
-  .share-menu-grid { grid-template-columns: 1fr; gap: 16px; }
-  .share-menu-footer { padding: 32px 16px; margin-top: 48px; }
-  .share-recipe-hero { margin-bottom: 28px; border-radius: 4px; }
+@media (min-width: 768px) {
+  .share-menu { padding-top: 44px; }
+  .share-menu-cta-row { flex-direction: row; }
+  .share-menu-cta-row > * { flex: 0 1 260px; }
+  .share-menu-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .share-recipe-body { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 48px; }
 }
 
 /* ---------- Blog ---------- */
@@ -1908,10 +2176,14 @@ button { font-family: inherit; }
   padding: clamp(64px, 8vw, 120px) clamp(20px, 4vw, 56px);
 }
 .eyebrow {
-  font-family: var(--ff-mono);
-  font-weight: 500; font-size: 11px;
-  letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--ink-3);
+  font-family: var(--ff-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--raspberry-ink);
 }
 .meta-line {
   font-family: var(--ff-mono);
@@ -1968,15 +2240,16 @@ button { font-family: inherit; }
 }
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 22px; }
 .cta-solid, .cta-outline {
-  display: flex; align-items: center;
-  height: 50px; padding: 0 24px;
-  border-radius: 4px;
-  font-size: 16px; font-weight: 600;
+  display: flex; align-items: center; justify-content: center;
+  height: 56px; padding: 0 24px;
+  border-radius: 28px;
+  font-size: 17px; font-weight: 600;
+  transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
 }
-.cta-solid { background: var(--ink); color: var(--ground); }
-.cta-solid:hover { color: var(--ground); filter: brightness(1.15); }
-.cta-outline { border: 1px solid var(--ink); }
-.cta-outline:hover { color: var(--ink); background: var(--surface-2); }
+.cta-solid { background: var(--raspberry); color: #fff; }
+.cta-solid:hover { color: #fff; background: var(--raspberry-deep); }
+.cta-outline { border: 1.5px solid var(--raspberry); color: var(--raspberry-ink); }
+.cta-outline:hover { color: var(--raspberry-ink); background: var(--raspberry-tint); }
 .hero-badges { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
 .badge-accent {
   display: inline-block; padding: 5px 9px;
@@ -2237,8 +2510,16 @@ button { font-family: inherit; }
 /* ---------- /method ---------- */
 .method { max-width: var(--maxw); margin: 0 auto; padding: clamp(44px, 6vw, 84px) clamp(20px, 4vw, 56px) clamp(64px, 8vw, 110px); }
 .method-intro { max-width: 760px; }
-.method-h1 { font-size: clamp(38px, 5.2vw, 72px); font-weight: 700; line-height: 1; letter-spacing: -0.035em; margin: 0 0 32px; }
-.method-lede { font-size: clamp(17px, 1.5vw, 21px); line-height: 1.6; color: var(--ink-2); margin: 0 0 56px; }
+.method-h1 {
+  font-family: var(--ff-display);
+  font-size: clamp(40px, 5.4vw, 66px);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  margin: 0 0 28px;
+  text-wrap: pretty;
+}
+.method-lede { font-size: clamp(17px, 1.5vw, 20px); line-height: 1.5; color: var(--ink-body); margin: 0 0 48px; text-wrap: pretty; }
 .stage-table { border-top: 1px solid var(--line); margin-bottom: 56px; }
 .stage-row {
   display: grid; grid-template-columns: 56px minmax(0, 220px) minmax(0, 1fr);
@@ -2248,9 +2529,10 @@ button { font-family: inherit; }
 /* Third column of the header row: mono like its siblings, not the 16px body
    size .stage-rule carries in the rows below. */
 .stage-head-rule { grid-column: 3; }
-.stage-n { font-family: var(--ff-mono); font-weight: 500; font-size: 15px; color: var(--accent-text); }
-.stage-name { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
-.stage-rule { font-size: 16px; line-height: 1.55; color: var(--ink-2); }
+/* Serif numerals, as everywhere else in the system. */
+.stage-n { font-family: var(--ff-display); font-weight: 400; font-size: 22px; line-height: 1; color: var(--raspberry-ink); }
+.stage-name { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
+.stage-rule { font-size: 16px; line-height: 1.5; color: var(--ink-body); }
 .method-aside {
   border: 1px solid var(--line); border-radius: 4px; background: var(--surface-2);
   padding: clamp(28px, 4vw, 44px); max-width: 760px;
@@ -2265,12 +2547,16 @@ button { font-family: inherit; }
   .composer { height: 560px; }
 }
 @media (max-width: 720px) {
-  .nav-links { display: none; }
   .capture-cell:first-child { padding-left: 22px; }
   .capture-cell:last-child { padding-right: 22px; }
   .stage-row { grid-template-columns: 28px minmax(0, 1fr); gap: 14px; }
   .stage-row .stage-rule { grid-column: 1 / -1; padding-left: 42px; }
-  .stage-head-rule { display: none; }
+  /* The header labels a three-column table. Below this width the table is
+     two columns with the rule wrapped underneath, so the labels no longer
+     line up with anything — and "Stage" overflowed its 28px column into
+     "What it is", rendering as "STAGEWHAT IT IS". The rows read fine
+     without it. */
+  .stage-row-head { display: none; }
 }
 @media (max-width: 520px) {
   .footer-grid { grid-template-columns: minmax(0, 1fr); }
