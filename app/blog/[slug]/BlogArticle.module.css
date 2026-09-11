@@ -16,12 +16,20 @@
    Both carry the badge and the h1, so the page reads the same either way.
 */
 
+/* The article plate.
+ *
+ * Raspberry rather than ink: this is the first thing a reader arriving
+ * from search sees, and the brand colour does more work there than a
+ * neutral black. --band-rasp is the deep flood (#A8305A), not the lighter
+ * accent — white on the accent is only 4.72:1, and on this it is 6.49:1,
+ * which the 34-40px headline and the 11px badge both clear comfortably.
+ */
 .hero {
   position: relative;
   min-height: 230px;
   display: flex;
   align-items: flex-end;
-  background: var(--band-ink);
+  background: var(--band-rasp);
   overflow: hidden;
 }
 
@@ -29,10 +37,14 @@
   object-fit: cover;
 }
 
+/* Only drawn when a post has a photograph. Legibility over a photo needs
+   depth rather than hue, so this stays dark — but it is a plum dark rather
+   than a neutral one, so a post with a picture and a post without read as
+   the same template. */
 .heroScrim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(16, 12, 10, 0.86), rgba(16, 12, 10, 0.05));
+  background: linear-gradient(to top, rgba(48, 12, 26, 0.88), rgba(48, 12, 26, 0.08));
   pointer-events: none;
 }
 
@@ -44,11 +56,19 @@
   padding: 28px var(--gutter) 22px;
 }
 
-/* Square, unlike the chips: this is a label, not a control. */
+/* Square, unlike the chips: this is a label, not a control. Inverted now
+   that the plate is raspberry — a raspberry badge on a raspberry ground
+   would be invisible.
+   The colour is --band-rasp rather than --raspberry-ink, which is the
+   obvious choice and the wrong one: --raspberry-ink follows the theme, so
+   on this fixed white plate it flipped to the light-on-dark pink in dark
+   mode and fell to 2.91:1. --band-rasp is one of the fixed flood tokens
+   and holds at 6.49:1 in both themes. Same trap as the --paper-on-a-flood
+   bug; a themed token cannot sit on an unthemed ground. */
 .badge {
   display: inline-block;
-  background: var(--band-rasp);
-  color: #fff;
+  background: #fff;
+  color: var(--band-rasp);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -64,7 +84,7 @@
   font-size: clamp(34px, 10.3vw, 40px);
   line-height: 1;
   letter-spacing: -0.015em;
-  color: #FBF7F0;
+  color: #fff;
   text-wrap: pretty;
 }
 
