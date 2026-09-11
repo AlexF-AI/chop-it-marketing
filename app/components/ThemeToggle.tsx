@@ -7,12 +7,15 @@ type Theme = 'light' | 'dark';
 const STORAGE_KEY = 'chopit-theme';
 
 // Reads whichever theme is on screen right now: an explicit choice already
-// written to <html> by the inline script in layout.tsx, otherwise the OS
-// preference. Runs on mount only — the server can't know either.
+// written to <html> by the inline script in layout.tsx, otherwise light.
+//
+// It must not consult prefers-color-scheme. The stylesheet stopped doing
+// so, so a visitor on a dark-scheme OS with no stored choice sees the
+// light site — and a toggle that disagreed would spend its first click
+// "switching to light" while nothing moved.
 function currentTheme(): Theme {
   const stamped = document.documentElement.dataset.theme;
-  if (stamped === 'light' || stamped === 'dark') return stamped;
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  return stamped === 'dark' ? 'dark' : 'light';
 }
 
 export default function ThemeToggle() {
