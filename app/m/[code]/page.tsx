@@ -280,7 +280,10 @@ function MenuView({
                   {r.image_url ? (
                     // Unoptimised on purpose — see file header.
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img src={r.image_url} alt={r.title ?? ''} loading="lazy" className="share-menu-card-img" />
+                    // alt="" on purpose: the card's own title element sits
+                    // directly below and names the dish, so alt text here
+                    // makes a screen reader announce it twice.
+                    <img src={r.image_url} alt="" loading="lazy" className="share-menu-card-img" />
                   ) : (
                     <div className="share-menu-card-img share-menu-card-img-fallback" aria-hidden />
                   )}

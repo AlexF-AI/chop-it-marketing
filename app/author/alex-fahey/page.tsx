@@ -59,7 +59,7 @@ export default function AlexFaheyAuthorPage() {
         <section className="section blog-index">
           <Breadcrumbs crumbs={crumbs} />
           <div className="section-head">
-            <div className="kicker mono">— FOUNDER</div>
+            <div className="kicker">Founder</div>
             <h1 className="h-editorial">Alex Fahey</h1>
             <p className="lead">
               Founder of Chop it, the UK cooking app that keeps recipes from AI, cookbooks,

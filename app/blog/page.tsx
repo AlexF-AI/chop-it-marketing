@@ -66,7 +66,7 @@ export default function BlogIndexPage() {
         <section className="section blog-index">
           <Breadcrumbs crumbs={crumbs} />
           <div className="section-head">
-            <div className="kicker mono">— BLOG</div>
+            <div className="kicker">Blog</div>
             <h1 className="h-editorial">Blog</h1>
             <p className="lead">
               Guides to AI cooking, saving good ideas, planning the week and making better use of

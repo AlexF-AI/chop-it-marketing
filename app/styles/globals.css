@@ -352,24 +352,38 @@ button { font-family: inherit; }
 .section:first-of-type { border-top: none; }
 
 .section-head { display: flex; flex-direction: column; gap: 14px; margin-bottom: 56px; max-width: 880px; }
-.kicker { font-size: 11px; color: var(--muted-2); letter-spacing: 0.14em; }
+/* Serif italic eyebrow — the site-wide replacement for the uppercase mono
+   kicker. Call sites pass sentence-case text with no em-dash prefix; the
+   dash and the caps were part of the old mono treatment. */
+.kicker {
+  display: block;
+  font-family: var(--ff-display);
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--raspberry-ink);
+  margin-bottom: 10px;
+}
 .h-editorial {
   font-family: var(--ff-display);
-  font-weight: 700;
-  font-size: clamp(36px, 5vw, 66px);
-  line-height: 1.02;
-  letter-spacing: -0.032em;
+  font-weight: 400;
+  font-size: clamp(38px, 5.4vw, 62px);
+  line-height: 0.98;
+  letter-spacing: -0.015em;
   margin: 0;
   color: var(--ink);
+  text-wrap: pretty;
 }
 /* Pink discipline: italic emphasis stays italic but loses the pink fill —
    pink is reserved for CTAs and stat-strip dots on the homepage. */
 .h-editorial em { color: inherit; font-style: italic; }
 .lead {
-  font-size: 19px;
-  line-height: 1.55;
-  color: var(--text-2);
-  max-width: 56ch;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--ink-body);
+  max-width: 62ch;
+  text-wrap: pretty;
 }
 
 /* ---------- Nav ---------- */
@@ -2137,10 +2151,14 @@ button { font-family: inherit; }
   padding: clamp(64px, 8vw, 120px) clamp(20px, 4vw, 56px);
 }
 .eyebrow {
-  font-family: var(--ff-mono);
-  font-weight: 500; font-size: 11px;
-  letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--ink-3);
+  font-family: var(--ff-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--raspberry-ink);
 }
 .meta-line {
   font-family: var(--ff-mono);
@@ -2197,15 +2215,16 @@ button { font-family: inherit; }
 }
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 22px; }
 .cta-solid, .cta-outline {
-  display: flex; align-items: center;
-  height: 50px; padding: 0 24px;
-  border-radius: 4px;
-  font-size: 16px; font-weight: 600;
+  display: flex; align-items: center; justify-content: center;
+  height: 56px; padding: 0 24px;
+  border-radius: 28px;
+  font-size: 17px; font-weight: 600;
+  transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
 }
-.cta-solid { background: var(--ink); color: var(--ground); }
-.cta-solid:hover { color: var(--ground); filter: brightness(1.15); }
-.cta-outline { border: 1px solid var(--ink); }
-.cta-outline:hover { color: var(--ink); background: var(--surface-2); }
+.cta-solid { background: var(--raspberry); color: #fff; }
+.cta-solid:hover { color: #fff; background: var(--raspberry-deep); }
+.cta-outline { border: 1.5px solid var(--raspberry); color: var(--raspberry-ink); }
+.cta-outline:hover { color: var(--raspberry-ink); background: var(--raspberry-tint); }
 .hero-badges { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
 .badge-accent {
   display: inline-block; padding: 5px 9px;
@@ -2466,8 +2485,16 @@ button { font-family: inherit; }
 /* ---------- /method ---------- */
 .method { max-width: var(--maxw); margin: 0 auto; padding: clamp(44px, 6vw, 84px) clamp(20px, 4vw, 56px) clamp(64px, 8vw, 110px); }
 .method-intro { max-width: 760px; }
-.method-h1 { font-size: clamp(38px, 5.2vw, 72px); font-weight: 700; line-height: 1; letter-spacing: -0.035em; margin: 0 0 32px; }
-.method-lede { font-size: clamp(17px, 1.5vw, 21px); line-height: 1.6; color: var(--ink-2); margin: 0 0 56px; }
+.method-h1 {
+  font-family: var(--ff-display);
+  font-size: clamp(40px, 5.4vw, 66px);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  margin: 0 0 28px;
+  text-wrap: pretty;
+}
+.method-lede { font-size: clamp(17px, 1.5vw, 20px); line-height: 1.5; color: var(--ink-body); margin: 0 0 48px; text-wrap: pretty; }
 .stage-table { border-top: 1px solid var(--line); margin-bottom: 56px; }
 .stage-row {
   display: grid; grid-template-columns: 56px minmax(0, 220px) minmax(0, 1fr);
@@ -2477,9 +2504,10 @@ button { font-family: inherit; }
 /* Third column of the header row: mono like its siblings, not the 16px body
    size .stage-rule carries in the rows below. */
 .stage-head-rule { grid-column: 3; }
-.stage-n { font-family: var(--ff-mono); font-weight: 500; font-size: 15px; color: var(--accent-text); }
-.stage-name { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
-.stage-rule { font-size: 16px; line-height: 1.55; color: var(--ink-2); }
+/* Serif numerals, as everywhere else in the system. */
+.stage-n { font-family: var(--ff-display); font-weight: 400; font-size: 22px; line-height: 1; color: var(--raspberry); }
+.stage-name { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
+.stage-rule { font-size: 16px; line-height: 1.5; color: var(--ink-body); }
 .method-aside {
   border: 1px solid var(--line); border-radius: 4px; background: var(--surface-2);
   padding: clamp(28px, 4vw, 44px); max-width: 760px;
@@ -2499,7 +2527,12 @@ button { font-family: inherit; }
   .capture-cell:last-child { padding-right: 22px; }
   .stage-row { grid-template-columns: 28px minmax(0, 1fr); gap: 14px; }
   .stage-row .stage-rule { grid-column: 1 / -1; padding-left: 42px; }
-  .stage-head-rule { display: none; }
+  /* The header labels a three-column table. Below this width the table is
+     two columns with the rule wrapped underneath, so the labels no longer
+     line up with anything — and "Stage" overflowed its 28px column into
+     "What it is", rendering as "STAGEWHAT IT IS". The rows read fine
+     without it. */
+  .stage-row-head { display: none; }
 }
 @media (max-width: 520px) {
   .footer-grid { grid-template-columns: minmax(0, 1fr); }

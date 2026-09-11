@@ -50,8 +50,8 @@ export default function MethodPage() {
       <main className="method">
         <Breadcrumbs crumbs={crumbs} />
         <div className="method-intro">
-          <div className="eyebrow" style={{ marginBottom: 22 }}>
-            — The standard
+          <div className="eyebrow" style={{ marginBottom: 14 }}>
+            The standard
           </div>
           <h1 className="method-h1">{TITLE}</h1>
           <p className="method-lede">
