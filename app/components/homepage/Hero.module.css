@@ -11,8 +11,23 @@
   align-items: center;
 }
 
+/* The hero eyebrow carries the brand line, not a section label, so it does
+   not take the shared microlabel treatment: 11px mono at 0.16em tracking in
+   --ink-3 is legible as a caption but hard work as a line you are meant to
+   read. Larger, tighter and at full ink weight. */
 .eyebrow {
   margin-bottom: 22px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+}
+
+@media (max-width: 560px) {
+  .eyebrow {
+    font-size: 13px;
+    letter-spacing: 0.08em;
+  }
 }
 
 /* Four short sentences rather than one long clause, so the type can run
