@@ -6,22 +6,18 @@ import shared from './shared.module.css';
 import styles from './Hero.module.css';
 
 /**
- * Stand-in for the hero photograph.
+ * The hero photograph: the Crispy Chicken Katsu Curry with Pickled Cucumber
+ * shot from the recipe library, copied in rather than read from its recipe
+ * row so the homepage can't change because someone re-shot a recipe.
  *
- * The design calls for "a dark, moody, close-cropped dish with hands in
- * frame" — food photography that has not been shot yet, and which the
- * handoff lists as the first outstanding asset.
+ * It is a 1024px square, so the wide desktop hero crops it to a band and
+ * scales it up. That is fine at phone and tablet width and soft on a large
+ * display — worth re-exporting wider from the original if one exists.
  *
- * Until it lands this is a crop cut out of the app's week screen (the same
- * source the design prototype reached for), with the card chrome trimmed
- * away and the exposure pulled down so the scrim can hold 4.5:1 on the
- * headline. It is 1054px wide, so it is soft on a large desktop hero —
- * another reason it is a placeholder rather than a choice.
- *
- * Swapping in the real photograph means replacing this one file, and
- * adjusting `object-position` on `.heroImg` only if the crop differs.
+ * Swapping it means replacing this one constant, plus `object-position` on
+ * `.heroImg` if the new crop puts its subject somewhere else.
  */
-const HERO_PHOTO = '/hero/hero-placeholder.webp';
+const HERO_PHOTO = '/hero/hero-chicken-katsu.webp';
 
 export function Hero() {
   return (

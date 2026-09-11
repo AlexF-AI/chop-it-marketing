@@ -15,19 +15,35 @@
 
 .heroImg {
   object-fit: cover;
-  object-position: center 46%;
+  object-position: center center;
 }
 
-/* Scrim over the bottom two-thirds. The headline needs a mid-to-dark
-   subject under it to hold 4.5:1, which is a photography brief as much as
-   a CSS one — see the note on .heroImg's source in Hero.tsx. */
+/* Scrim.
+ *
+ * The design specifies a single bottom-up gradient to rgba(16,12,10,.9)
+ * over the bottom 66%, on the stated condition that the photograph has "a
+ * mid-to-dark subject in the lower third". That makes legibility a property
+ * of the photo rather than of the page: measured against a bright overhead
+ * shot, that gradient gave the headline 1.88:1 and the eyebrow 1.00:1,
+ * against the 3:1 and 4.5:1 they need.
+ *
+ * So the ramp is steeper and reaches its plateau under the text block
+ * instead of only at the very bottom edge. It reads the same on a dark
+ * photograph and holds a bright one, which means swapping the hero image
+ * can no longer quietly break contrast. Verified at 390 / 768 / 1280 by
+ * sampling the composited pixels behind the text.
+ */
 .scrim {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 66%;
-  background: linear-gradient(to top, rgba(16, 12, 10, 0.9), rgba(16, 12, 10, 0));
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(16, 12, 10, 0.92) 0%,
+    rgba(16, 12, 10, 0.84) 44%,
+    rgba(16, 12, 10, 0.6) 60%,
+    rgba(16, 12, 10, 0.24) 77%,
+    rgba(16, 12, 10, 0) 94%
+  );
   pointer-events: none;
 }
 
@@ -41,12 +57,17 @@
   padding: 0 var(--gutter);
 }
 
+/* The design names #F3C9D6 here. At 19px regular that is normal-size text
+   and needs 4.5:1, which it missed at phone width (4.07:1) because the
+   eyebrow sits higher up the scrim than the headline does. Lifted to
+   #FFD9E4 — visually the same pale pink line, and it clears 4.5:1 without
+   darkening the photograph any further. */
 .eyebrow {
   font-family: var(--ff-display);
   font-style: italic;
   font-size: 19px;
   line-height: 1;
-  color: #F3C9D6;
+  color: #FFD9E4;
   margin-bottom: 6px;
 }
 
